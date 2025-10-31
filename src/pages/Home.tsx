@@ -4,8 +4,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Lightbulb, Users } from 'lucide-react';
-import { motion } from 'framer-motion';
-import Seo from '@/components/Seo'; // Importar o componente Seo
+import { motion, Variants, Easing } from 'framer-motion'; // Import Easing
+
+import Seo from '@/components/Seo'; 
 
 const Home = () => {
   const { t, i18n } = useTranslation('home');
@@ -20,14 +21,14 @@ const Home = () => {
   const testimonials = t('testimonials.quotes', { returnObjects: true }) as { text: string; author: string }[];
   const faqItems = t('faq.items', { returnObjects: true }) as { question: string; answer: string }[];
 
-  const sectionVariants = {
+  const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" } }, // Changed ease to string alias
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" as Easing } },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeInOut" } }, // Changed ease to string alias
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeInOut" as Easing } },
   };
 
   const pageTitle = t('hero.title');
