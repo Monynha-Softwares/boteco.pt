@@ -71,6 +71,7 @@ test('Reactbits sections apply expected depth variants', () => {
 });
 
 test('Reactbits components are used in each section', () => {
+  // Exclude FinalCtaSection (AnimatedSection) as it uses a custom animated wrapper instead of a direct reactbits component
   sectionsDepthExpectations.slice(0, -1).forEach(([relativePath, componentName]) => {
     const source = readSource(relativePath);
     assert.match(

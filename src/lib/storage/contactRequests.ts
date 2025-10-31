@@ -105,7 +105,6 @@ const normalizeRequests = (data: unknown): ContactRequest[] => {
     })
     .map((item) => ({
       ...item,
-      phone: item.phone ?? undefined,
       respondedAt: item.respondedAt ?? undefined,
       tags: Array.isArray(item.tags) ? item.tags : undefined,
       estimatedValue: typeof item.estimatedValue === 'number' ? item.estimatedValue : undefined,
