@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Lightbulb, Users } from 'lucide-react';
-import { motion } from 'framer-motion'; // Importar motion
+import { motion } from 'framer-motion';
 
 const Home = () => {
   const { t } = useTranslation('home');
@@ -21,12 +21,12 @@ const Home = () => {
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0, 0, 0.2, 1] } }, // Changed ease to cubic-bezier array
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0, 0, 0.2, 1] } }, // Changed ease to cubic-bezier array
   };
 
   return (
