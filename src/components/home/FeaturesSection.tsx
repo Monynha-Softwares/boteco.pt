@@ -27,10 +27,10 @@ const FeaturesSection: React.FC = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={sectionVariants}
-      className="w-full py-16 bg-monynha-neutral-50"
+      className="w-full py-16 bg-boteco-beige/30"
     >
       <div className="container mx-auto px-4 text-center">
-        <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-12 text-monynha-neutral-700">
+        <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-12 text-boteco-brown">
           {t('featuresTitle', { defaultValue: 'Nossas Funcionalidades' })}
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -38,13 +38,13 @@ const FeaturesSection: React.FC = () => {
             <motion.div key={index} variants={itemVariants} custom={index}>
               <Card className="p-6 text-left shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardHeader>
-                  <CardTitle className="text-monynha-primary flex items-center">
-                    <CheckCircle className="mr-3 h-6 w-6 text-monynha-secondary" />
+                  <CardTitle className="text-boteco-wine flex items-center">
+                    <CheckCircle className="mr-3 h-6 w-6 text-boteco-mustard" />
                     {feature.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-monynha-neutral-500">
+                  <CardDescription className="text-boteco-brown/80">
                     {feature.description}
                   </CardDescription>
                 </CardContent>

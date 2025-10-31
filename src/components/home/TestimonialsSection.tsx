@@ -29,17 +29,17 @@ const TestimonialsSection: React.FC = () => {
       className="w-full py-16 bg-white"
     >
       <div className="container mx-auto px-4 text-center">
-        <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-12 text-monynha-neutral-700">
+        <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-12 text-boteco-brown">
           {t('testimonials.title')}
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-2xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <motion.div key={index} variants={itemVariants} custom={index}>
-              <Card className="p-6 shadow-lg bg-monynha-neutral-50">
-                <CardContent className="text-lg italic text-monynha-neutral-600 mb-4">
+              <Card className="p-6 shadow-lg bg-boteco-beige/30">
+                <CardContent className="text-lg italic text-boteco-brown/80 mb-4">
                   "{testimonial.text}"
                 </CardContent>
-                <CardFooter className="text-right font-semibold text-monynha-primary">
+                <CardFooter className="text-right font-semibold text-boteco-wine">
                   - {testimonial.author}
                 </CardFooter>
               </Card>

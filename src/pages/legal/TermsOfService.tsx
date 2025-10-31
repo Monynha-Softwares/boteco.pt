@@ -20,17 +20,17 @@ const TermsOfService: React.FC = () => {
         locale={i18n.language}
       />
       <div className="container mx-auto px-4 py-12 max-w-4xl">
-        <h1 className="text-4xl font-bold text-center mb-4 text-monynha-primary">
+        <h1 className="text-4xl font-bold text-center mb-4 text-boteco-wine">
           {t('title')}
         </h1>
-        <p className="text-center text-monynha-neutral-500 mb-12">
+        <p className="text-center text-boteco-brown/80 mb-12">
           {t('lastUpdatedLabel', { defaultValue: 'Última atualização' })}: {t('lastUpdated')}
         </p>
 
-        <div className="space-y-8 text-monynha-neutral-700">
+        <div className="space-y-8 text-boteco-brown">
           {contentSections.map((section, index) => (
             <section key={index}>
-              <h2 className="text-2xl font-semibold mb-4 text-monynha-neutral-800">
+              <h2 className="text-2xl font-semibold mb-4 text-boteco-brown">
                 {section.heading}
               </h2>
               <p className="text-lg leading-relaxed">

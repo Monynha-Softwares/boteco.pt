@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
   const getLocalizedPath = (path: string) => `/${currentLocale}${path}`;
 
   return (
-    <footer className="bg-monynha-primary text-monynha-primary-foreground p-4 shadow-inner mt-8">
+    <footer className="bg-boteco-wine text-boteco-wine-foreground p-4 shadow-inner mt-8">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
         <div className="flex space-x-4 mb-2 md:mb-0">
           <Link to={getLocalizedPath('/legal/privacidade')} className="hover:underline">

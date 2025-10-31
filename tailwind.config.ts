@@ -62,28 +62,23 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Cores personalizadas Monynha
-        monynha: {
-          primary: {
-            DEFAULT: "#7C3AED", // Rich purple
-            foreground: "hsl(0 0% 100%)", // White text on primary
+        // Novas cores personalizadas Boteco Pro
+        boteco: {
+          wine: {
+            DEFAULT: "#8B1E3F", // Deep Red/Wine
+            foreground: "hsl(0 0% 100%)", // White text
           },
-          secondary: {
-            DEFAULT: "#EC4899", // Pink
-            foreground: "hsl(0 0% 100%)", // White text on secondary
+          mustard: {
+            DEFAULT: "#B3701A", // Mustard Yellow/Orange
+            foreground: "hsl(0 0% 100%)", // White text
           },
-          neutral: {
-            50: "hsl(210 40% 98%)", // Tailwind zinc/slate equivalent
-            100: "hsl(210 40% 96.1%)",
-            200: "hsl(214.3 31.8% 91.4%)",
-            300: "hsl(215 20.2% 65.1%)",
-            400: "hsl(215.4 16.3% 46.9%)",
-            500: "hsl(222.2 47.4% 11.2%)",
-            600: "hsl(222.2 84% 4.9%)",
-            700: "hsl(222.2 84% 4.9%)",
-            800: "hsl(222.2 84% 4.9%)",
-            900: "hsl(222.2 84% 4.9%)",
-            950: "hsl(222.2 84% 4.9%)",
+          beige: {
+            DEFAULT: "#F1DDAD", // Light Beige
+            foreground: "hsl(222.2 47.4% 11.2%)", // Dark text
+          },
+          brown: {
+            DEFAULT: "#4F3222", // Dark Brown
+            foreground: "hsl(0 0% 100%)", // White text
           },
         },
       },

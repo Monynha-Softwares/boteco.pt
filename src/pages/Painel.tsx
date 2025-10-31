@@ -15,13 +15,13 @@ const Painel: React.FC = () => {
   const getIcon = (title: string) => {
     switch (title) {
       case t('cards.0.title'): // Pedidos Recentes
-        return <Package className="h-8 w-8 text-monynha-secondary" />;
+        return <Package className="h-8 w-8 text-boteco-mustard" />;
       case t('cards.1.title'): // Mesas Abertas
-        return <Utensils className="h-8 w-8 text-monynha-secondary" />;
+        return <Utensils className="h-8 w-8 text-boteco-mustard" />;
       case t('cards.2.title'): // Estoque Baixo
-        return <AlertTriangle className="h-8 w-8 text-monynha-secondary" />;
+        return <AlertTriangle className="h-8 w-8 text-boteco-mustard" />;
       case t('cards.3.title'): // Vendas Hoje
-        return <DollarSign className="h-8 w-8 text-monynha-secondary" />;
+        return <DollarSign className="h-8 w-8 text-boteco-mustard" />;
       default:
         return null;
     }
@@ -40,13 +40,13 @@ const Painel: React.FC = () => {
         locale={i18n.language}
       />
       <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-4 text-monynha-primary">
+        <h1 className="text-4xl font-bold mb-4 text-boteco-wine">
           {t('greeting', { userName })}
         </h1>
-        <p className="text-xl text-monynha-neutral-600 mb-8">
+        <p className="text-xl text-boteco-brown/90 mb-8">
           {t('title')}
         </p>
-        <p className="text-sm text-monynha-neutral-500 mb-12 italic">
+        <p className="text-sm text-boteco-brown/80 mb-12 italic">
           {t('demoNotice')}
         </p>
 
@@ -54,14 +54,14 @@ const Painel: React.FC = () => {
           {cards.map((card, index) => (
             <Card key={index} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-lg font-medium text-monynha-neutral-700">
+                <CardTitle className="text-lg font-medium text-boteco-brown">
                   {card.title}
                 </CardTitle>
                 {getIcon(card.title)}
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold text-monynha-primary">{card.value}</div>
-                <p className="text-xs text-monynha-neutral-500">
+                <div className="text-3xl font-bold text-boteco-wine">{card.value}</div>
+                <p className="text-xs text-boteco-brown/80">
                   {card.description}
                 </p>
               </CardContent>

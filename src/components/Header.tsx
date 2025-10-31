@@ -18,7 +18,7 @@ const Header: React.FC = () => {
   const getLocalizedPath = (path: string) => `/${currentLocale}${path}`;
 
   return (
-    <header className="bg-monynha-primary text-monynha-primary-foreground p-4 shadow-md">
+    <header className="bg-boteco-wine text-boteco-wine-foreground p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <Link to={getLocalizedPath('/')} className="text-2xl font-bold">
           Boteco Pro

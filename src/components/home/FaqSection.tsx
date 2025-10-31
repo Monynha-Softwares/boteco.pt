@@ -26,20 +26,20 @@ const FaqSection: React.FC = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={sectionVariants}
-      className="w-full py-16 bg-monynha-neutral-50"
+      className="w-full py-16 bg-boteco-beige/30"
     >
       <div className="container mx-auto px-4 text-center">
-        <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-12 text-monynha-neutral-700">
+        <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-12 text-boteco-brown">
           {t('faq.title')}
         </motion.h2>
         <motion.div variants={itemVariants}>
           <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto text-left">
             {faqItems.map((item, index) => (
               <AccordionItem value={`item-${index}`} key={index}>
-                <AccordionTrigger className="text-lg font-semibold text-monynha-primary hover:no-underline">
+                <AccordionTrigger className="text-lg font-semibold text-boteco-wine hover:no-underline">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-monynha-neutral-600">
+                <AccordionContent className="text-boteco-brown/80">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>

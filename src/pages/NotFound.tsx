@@ -31,17 +31,17 @@ const NotFound = () => {
       />
       <div className="min-h-[calc(100vh-150px)] flex flex-col items-center justify-center bg-background text-foreground p-4">
         <div className="text-center max-w-md">
-          <h1 className="text-6xl md:text-8xl font-extrabold text-monynha-primary mb-4">
+          <h1 className="text-6xl md:text-8xl font-extrabold text-boteco-wine mb-4">
             404
           </h1>
-          <p className="text-2xl md:text-3xl font-semibold text-monynha-neutral-700 mb-4">
+          <p className="text-2xl md:text-3xl font-semibold text-boteco-brown mb-4">
             {t('notFound:message', { defaultValue: 'Oops! Página não encontrada.' })}
           </p>
-          <p className="text-lg text-monynha-neutral-500 mb-8">
+          <p className="text-lg text-boteco-brown/80 mb-8">
             {t('notFound:description', { defaultValue: 'Parece que a página que você tentou acessar não existe ou foi movida.' })}
           </p>
           <Link to={`/${currentLocale}`}>
-            <Button className="bg-monynha-secondary text-monynha-primary-foreground hover:bg-monynha-secondary/90 transition-colors duration-300">
+            <Button className="bg-boteco-mustard text-boteco-mustard-foreground hover:bg-boteco-mustard/90 transition-colors duration-300">
               {t('notFound:returnHome', { defaultValue: 'Voltar para a Página Inicial' })}
             </Button>
           </Link>

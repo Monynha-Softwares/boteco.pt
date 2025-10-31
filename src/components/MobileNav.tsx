@@ -31,29 +31,29 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen }) => {
   return (
     <Sheet open={isOpen} onOpenChange={onOpenChange}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="lg:hidden text-monynha-primary-foreground hover:bg-monynha-primary/80">
+        <Button variant="ghost" size="icon" className="lg:hidden text-boteco-wine-foreground hover:bg-boteco-wine/80">
           <Menu className="h-6 w-6" />
           <span className="sr-only">{t('openMenu', { defaultValue: 'Abrir menu' })}</span>
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="w-[250px] sm:w-[300px] bg-background flex flex-col">
         <SheetHeader className="mb-6">
-          <SheetTitle className="text-2xl font-bold text-monynha-primary">Boteco Pro</SheetTitle>
+          <SheetTitle className="text-2xl font-bold text-boteco-wine">Boteco Pro</SheetTitle>
         </SheetHeader>
         <nav className="flex flex-col space-y-4 flex-grow">
-          <Link to={getLocalizedPath('/')} className="text-lg font-medium text-monynha-neutral-700 hover:text-monynha-primary transition-colors" onClick={() => onOpenChange(false)}>
+          <Link to={getLocalizedPath('/')} className="text-lg font-medium text-foreground hover:text-boteco-wine transition-colors" onClick={() => onOpenChange(false)}>
             {t('home:hero.title', { ns: 'home' }).split(':')[0]}
           </Link>
-          <Link to={getLocalizedPath('/sobre')} className="text-lg font-medium text-monynha-neutral-700 hover:text-monynha-primary transition-colors" onClick={() => onOpenChange(false)}>
+          <Link to={getLocalizedPath('/sobre')} className="text-lg font-medium text-foreground hover:text-boteco-wine transition-colors" onClick={() => onOpenChange(false)}>
             {t('about:title', { ns: 'about' })}
           </Link>
-          <Link to={getLocalizedPath('/contato')} className="text-lg font-medium text-monynha-neutral-700 hover:text-monynha-primary transition-colors" onClick={() => onOpenChange(false)}>
+          <Link to={getLocalizedPath('/contato')} className="text-lg font-medium text-foreground hover:text-boteco-wine transition-colors" onClick={() => onOpenChange(false)}>
             {t('contact:title', { ns: 'contact' })}
           </Link>
-          <Link to={getLocalizedPath('/blog')} className="text-lg font-medium text-monynha-neutral-700 hover:text-monynha-primary transition-colors" onClick={() => onOpenChange(false)}>
+          <Link to={getLocalizedPath('/blog')} className="text-lg font-medium text-foreground hover:text-boteco-wine transition-colors" onClick={() => onOpenChange(false)}>
             {t('blog:title', { ns: 'blog' })}
           </Link>
-          <Link to="/painel" className="text-lg font-medium text-monynha-neutral-700 hover:text-monynha-primary transition-colors" onClick={() => onOpenChange(false)}>
+          <Link to="/painel" className="text-lg font-medium text-foreground hover:text-boteco-wine transition-colors" onClick={() => onOpenChange(false)}>
             {t('painel:title', { ns: 'painel' })}
           </Link>
         </nav>
@@ -63,7 +63,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen }) => {
           <SignedIn>
             <div className="flex items-center justify-start">
               <UserButton afterSignOutUrl="/" />
-              <span className="ml-2 text-monynha-neutral-700">{t('profile', { defaultValue: 'Perfil' })}</span>
+              <span className="ml-2 text-foreground">{t('profile', { defaultValue: 'Perfil' })}</span>
             </div>
           </SignedIn>
         </div>
