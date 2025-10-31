@@ -25,21 +25,21 @@ const HowItWorksSection: React.FC = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={sectionVariants}
-      className="w-full py-16 bg-white"
+      className="w-full py-16 bg-depth-surface"
     >
       <div className="container mx-auto px-4 text-center">
-        <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-12 text-boteco-brown">
+        <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-12 text-boteco-neutral">
           {t('howItWorks.title')}
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {howItWorksSteps.map((step, index) => (
             <motion.div key={index} variants={itemVariants} custom={index}>
               <div className="flex flex-col items-center text-center p-6">
-                <div className="bg-boteco-mustard text-boteco-mustard-foreground rounded-full h-12 w-12 flex items-center justify-center text-xl font-bold mb-4">
+                <div className="bg-boteco-secondary text-boteco-secondary-foreground rounded-full h-12 w-12 flex items-center justify-center text-xl font-bold mb-4">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-boteco-brown">{step.title}</h3>
-                <p className="text-boteco-brown/80">{step.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-boteco-neutral">{step.title}</h3>
+                <p className="text-boteco-neutral/80">{step.description}</p>
               </div>
             </motion.div>
           ))}

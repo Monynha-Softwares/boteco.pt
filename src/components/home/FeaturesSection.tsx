@@ -27,24 +27,27 @@ const FeaturesSection: React.FC = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={sectionVariants}
-      className="w-full py-16 bg-boteco-beige/30"
+      className="w-full py-16 bg-depth-surface"
     >
       <div className="container mx-auto px-4 text-center">
-        <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-12 text-boteco-brown">
+        <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-12 text-boteco-neutral">
           {t('featuresTitle', { defaultValue: 'Nossas Funcionalidades' })}
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <motion.div key={index} variants={itemVariants} custom={index}>
-              <Card className="p-6 text-left shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-boteco-beige">
+              <Card
+                depth="overlay"
+                className="p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
                 <CardHeader>
-                  <CardTitle className="text-boteco-wine flex items-center">
-                    <CheckCircle className="mr-3 h-6 w-6 text-boteco-mustard" />
+                  <CardTitle className="text-boteco-primary flex items-center">
+                    <CheckCircle className="mr-3 h-6 w-6 text-boteco-secondary" />
                     {feature.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-boteco-brown/80">
+                  <CardDescription className="text-boteco-neutral/80">
                     {feature.description}
                   </CardDescription>
                 </CardContent>

@@ -18,7 +18,7 @@ const Header: React.FC = () => {
   const getLocalizedPath = (path: string) => `/${currentLocale}${path}`;
 
   return (
-    <header className="bg-boteco-wine text-boteco-wine-foreground p-4 shadow-md">
+    <header className="bg-boteco-primary text-boteco-primary-foreground p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <Link to={getLocalizedPath('/')} className="text-2xl font-bold">
           Boteco Pro
@@ -34,19 +34,19 @@ const Header: React.FC = () => {
           </div>
         ) : (
           <nav className="flex items-center space-x-4">
-            <Link to={getLocalizedPath('/')} className="hover:underline hover:text-boteco-mustard transition-colors">
+            <Link to={getLocalizedPath('/')} className="hover:underline hover:text-boteco-secondary transition-colors">
               {t('home:hero.title', { ns: 'home' }).split(':')[0]}
             </Link>
-            <Link to={getLocalizedPath('/sobre')} className="hover:underline hover:text-boteco-mustard transition-colors">
+            <Link to={getLocalizedPath('/sobre')} className="hover:underline hover:text-boteco-secondary transition-colors">
               {t('about:title', { ns: 'about' })}
             </Link>
-            <Link to={getLocalizedPath('/contato')} className="hover:underline hover:text-boteco-mustard transition-colors">
+            <Link to={getLocalizedPath('/contato')} className="hover:underline hover:text-boteco-secondary transition-colors">
               {t('contact:title', { ns: 'contact' })}
             </Link>
-            <Link to={getLocalizedPath('/blog')} className="hover:underline hover:text-boteco-mustard transition-colors">
+            <Link to={getLocalizedPath('/blog')} className="hover:underline hover:text-boteco-secondary transition-colors">
               {t('blog:title', { ns: 'blog' })}
             </Link>
-            <Link to="/painel" className="hover:underline hover:text-boteco-mustard transition-colors">
+            <Link to="/painel" className="hover:underline hover:text-boteco-secondary transition-colors">
               {t('painel:title', { ns: 'painel' })}
             </Link>
             <LanguageSwitcher />

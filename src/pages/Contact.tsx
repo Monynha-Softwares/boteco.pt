@@ -101,12 +101,15 @@ const Contact: React.FC = () => {
         locale={i18n.language}
       />
       <div className="container mx-auto px-4 py-12 max-w-3xl">
-        <Card className="shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-boteco-beige">
+        <Card
+          depth="elevated"
+          className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+        >
           <CardHeader className="text-center">
-            <CardTitle className="text-3xl font-bold text-boteco-wine mb-2">
+            <CardTitle className="text-3xl font-bold text-boteco-primary mb-2">
               {t('title')}
             </CardTitle>
-            <CardDescription className="text-lg text-boteco-brown/90">
+            <CardDescription className="text-lg text-boteco-neutral/90">
               {t('description')}
             </CardDescription>
           </CardHeader>
@@ -118,7 +121,7 @@ const Contact: React.FC = () => {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-boteco-brown">{t('form.nameLabel')}</FormLabel>
+                      <FormLabel className="text-boteco-neutral">{t('form.nameLabel')}</FormLabel>
                       <FormControl>
                         <Input placeholder={t('form.namePlaceholder')} {...field} className="mt-1" disabled={isSubmitting} />
                       </FormControl>
@@ -131,7 +134,7 @@ const Contact: React.FC = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-boteco-brown">{t('form.emailLabel')}</FormLabel>
+                      <FormLabel className="text-boteco-neutral">{t('form.emailLabel')}</FormLabel>
                       <FormControl>
                         <Input type="email" placeholder={t('form.emailPlaceholder')} {...field} className="mt-1" disabled={isSubmitting} />
                       </FormControl>
@@ -144,7 +147,7 @@ const Contact: React.FC = () => {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-boteco-brown">{t('form.phoneLabel')}</FormLabel>
+                      <FormLabel className="text-boteco-neutral">{t('form.phoneLabel')}</FormLabel>
                       <FormControl>
                         <Input type="tel" placeholder={t('form.phonePlaceholder')} {...field} className="mt-1" disabled={isSubmitting} />
                       </FormControl>
@@ -157,7 +160,7 @@ const Contact: React.FC = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-boteco-brown">{t('form.messageLabel')}</FormLabel>
+                      <FormLabel className="text-boteco-neutral">{t('form.messageLabel')}</FormLabel>
                       <FormControl>
                         <Textarea placeholder={t('form.messagePlaceholder')} rows={5} {...field} className="mt-1" disabled={isSubmitting} />
                       </FormControl>
@@ -165,7 +168,11 @@ const Contact: React.FC = () => {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full bg-boteco-wine text-boteco-wine-foreground hover:bg-boteco-wine/90 active:scale-98 transition-transform duration-100" disabled={isSubmitting}>
+                <Button
+                  type="submit"
+                  className="w-full active:scale-98 transition-transform duration-100"
+                  disabled={isSubmitting}
+                >
                   {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />

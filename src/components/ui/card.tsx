@@ -2,19 +2,31 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
-      className,
-    )}
-    {...props}
-  />
-));
+type DepthLevel = "none" | "surface" | "overlay" | "elevated";
+
+const cardDepthStyles: Record<DepthLevel, string> = {
+  none: "bg-transparent text-foreground",
+  surface:
+    "bg-depth-surface text-foreground border border-depth-surface/60 shadow-sm",
+  overlay:
+    "bg-depth-overlay text-foreground border border-depth-overlay/60 shadow-md",
+  elevated:
+    "bg-depth-elevated text-foreground border border-depth-elevated/50 shadow-lg",
+};
+
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  depth?: DepthLevel;
+}
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, depth = "surface", ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn("rounded-lg transition-shadow", cardDepthStyles[depth], className)}
+      {...props}
+    />
+  ),
+);
 Card.displayName = "Card";
 
 const CardHeader = React.forwardRef<

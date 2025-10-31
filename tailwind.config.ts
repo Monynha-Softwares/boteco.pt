@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -62,24 +63,32 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Novas cores personalizadas Boteco Pro
         boteco: {
-          wine: {
-            DEFAULT: "#8B1E3F", // Deep Red/Wine
-            foreground: "hsl(0 0% 100%)", // White text
+          primary: {
+            DEFAULT: "hsl(var(--boteco-primary))",
+            foreground: "hsl(var(--boteco-primary-foreground))",
           },
-          mustard: {
-            DEFAULT: "#B3701A", // Mustard Yellow/Orange
-            foreground: "hsl(0 0% 100%)", // White text
+          secondary: {
+            DEFAULT: "hsl(var(--boteco-secondary))",
+            foreground: "hsl(var(--boteco-secondary-foreground))",
           },
-          beige: {
-            DEFAULT: "#F1DDAD", // Light Beige
-            foreground: "hsl(222.2 47.4% 11.2%)", // Dark text
+          tertiary: {
+            DEFAULT: "hsl(var(--boteco-tertiary))",
+            foreground: "hsl(var(--boteco-tertiary-foreground))",
           },
-          brown: {
-            DEFAULT: "#4F3222", // Dark Brown
-            foreground: "hsl(0 0% 100%)", // White text
+          neutral: {
+            DEFAULT: "hsl(var(--boteco-neutral))",
+            foreground: "hsl(var(--boteco-neutral-foreground))",
           },
+          "neutral-soft": {
+            DEFAULT: "hsl(var(--boteco-neutral-soft))",
+            foreground: "hsl(var(--boteco-neutral-soft-foreground))",
+          },
+        },
+        depth: {
+          surface: "hsl(var(--depth-surface))",
+          overlay: "hsl(var(--depth-overlay))",
+          elevated: "hsl(var(--depth-elevated))",
         },
       },
       borderRadius: {
@@ -111,5 +120,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;

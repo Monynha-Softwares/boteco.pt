@@ -29,7 +29,7 @@ const HeroSection: React.FC = () => {
       initial="hidden"
       animate="visible"
       variants={sectionVariants}
-      className="w-full py-20 md:py-32 lg:py-48 bg-gradient-to-r from-boteco-wine to-boteco-mustard text-boteco-wine-foreground text-center"
+      className="w-full py-20 md:py-32 lg:py-48 bg-gradient-to-r from-boteco-primary to-boteco-secondary text-boteco-primary-foreground text-center"
     >
       <div className="container mx-auto px-4">
         <motion.h1 variants={itemVariants} className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
@@ -40,7 +40,11 @@ const HeroSection: React.FC = () => {
         </motion.p>
         <motion.div variants={itemVariants}>
           <Link to={getLocalizedPath('/contato')}>
-            <Button size="lg" className="bg-boteco-beige text-boteco-brown hover:bg-boteco-beige/80 hover:text-boteco-brown transition-colors duration-300 active:scale-98">
+            <Button
+              size="lg"
+              depth="surface"
+              className="bg-boteco-tertiary text-boteco-neutral hover:bg-boteco-tertiary/80 hover:text-boteco-neutral transition-colors duration-300 active:scale-98"
+            >
               {t('hero.cta')} <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>

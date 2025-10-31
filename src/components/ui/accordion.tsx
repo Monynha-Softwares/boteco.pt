@@ -4,15 +4,32 @@ import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
+type DepthLevel = "none" | "surface" | "overlay" | "elevated";
+
+const accordionDepthStyles: Record<DepthLevel, string> = {
+  none: "border-b border-border bg-transparent",
+  surface:
+    "rounded-lg border border-depth-surface/60 bg-depth-surface shadow-sm transition-shadow [&:not(:first-child)]:mt-2",
+  overlay:
+    "rounded-lg border border-depth-overlay/60 bg-depth-overlay shadow-md transition-shadow [&:not(:first-child)]:mt-2",
+  elevated:
+    "rounded-lg border border-depth-elevated/50 bg-depth-elevated shadow-lg transition-shadow [&:not(:first-child)]:mt-2",
+};
+
+interface AccordionItemProps
+  extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {
+  depth?: DepthLevel;
+}
+
 const Accordion = AccordionPrimitive.Root;
 
 const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
->(({ className, ...props }, ref) => (
+  AccordionItemProps
+>(({ className, depth = "surface", ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn("border-b", className)}
+    className={cn(accordionDepthStyles[depth], className)}
     {...props}
   />
 ));
