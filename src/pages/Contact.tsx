@@ -18,6 +18,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Loader2 } from 'lucide-react'; // Importar o ícone de carregamento
 
 // Define o esquema de validação com Zod
 const formSchema = z.object({
@@ -40,6 +41,7 @@ const formSchema = z.object({
 const Contact: React.FC = () => {
   const { t, i18n } = useTranslation('contact');
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = React.useState(false); // Estado para controlar o carregamento
 
   // Inicializa o formulário com react-hook-form e zodResolver
   const form = useForm<z.infer<typeof formSchema>>({
@@ -53,16 +55,37 @@ const Contact: React.FC = () => {
   });
 
   // Função de submissão do formulário
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    setIsSubmitting(true); // Inicia o estado de carregamento
     console.log('Formulário de Contato Enviado:', data);
 
-    toast({
-      title: t('form.successMessage'),
-      description: "Sua mensagem foi recebida e entraremos em contato em breve.",
-      variant: "default",
-    });
+    try {
+      // Simula uma chamada de API
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Atraso de 2 segundos
 
-    form.reset(); // Limpa o formulário após o envio
+      // Simula um sucesso ou falha aleatória para demonstração
+      const success = Math.random() > 0.2; // 80% de chance de sucesso
+
+      if (success) {
+        toast({
+          title: t('form.successMessage'),
+          description: "Sua mensagem foi recebida e entraremos em contato em breve.",
+          variant: "default",
+        });
+        form.reset(); // Limpa o formulário após o envio
+      } else {
+        throw new Error(t('form.errorMessage'));
+      }
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      toast({
+        title: t('form.errorMessage'),
+        description: "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false); // Finaliza o estado de carregamento
+    }
   };
 
   const pageTitle = t('title');
@@ -97,7 +120,7 @@ const Contact: React.FC = () => {
                     <FormItem>
                       <FormLabel className="text-monynha-neutral-700">{t('form.nameLabel')}</FormLabel>
                       <FormControl>
-                        <Input placeholder={t('form.namePlaceholder')} {...field} className="mt-1" />
+                        <Input placeholder={t('form.namePlaceholder')} {...field} className="mt-1" disabled={isSubmitting} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -110,7 +133,7 @@ const Contact: React.FC = () => {
                     <FormItem>
                       <FormLabel className="text-monynha-neutral-700">{t('form.emailLabel')}</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder={t('form.emailPlaceholder')} {...field} className="mt-1" />
+                        <Input type="email" placeholder={t('form.emailPlaceholder')} {...field} className="mt-1" disabled={isSubmitting} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -123,7 +146,7 @@ const Contact: React.FC = () => {
                     <FormItem>
                       <FormLabel className="text-monynha-neutral-700">{t('form.phoneLabel')}</FormLabel>
                       <FormControl>
-                        <Input type="tel" placeholder={t('form.phonePlaceholder')} {...field} className="mt-1" />
+                        <Input type="tel" placeholder={t('form.phonePlaceholder')} {...field} className="mt-1" disabled={isSubmitting} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -136,14 +159,21 @@ const Contact: React.FC = () => {
                     <FormItem>
                       <FormLabel className="text-monynha-neutral-700">{t('form.messageLabel')}</FormLabel>
                       <FormControl>
-                        <Textarea placeholder={t('form.messagePlaceholder')} rows={5} {...field} className="mt-1" />
+                        <Textarea placeholder={t('form.messagePlaceholder')} rows={5} {...field} className="mt-1" disabled={isSubmitting} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full bg-monynha-primary text-monynha-primary-foreground hover:bg-monynha-primary/90">
-                  {t('form.submitButton')}
+                <Button type="submit" className="w-full bg-monynha-primary text-monynha-primary-foreground hover:bg-monynha-primary/90" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      {t('form.submitting', { defaultValue: 'Enviando...' })}
+                    </>
+                  ) : (
+                    t('form.submitButton')
+                  )}
                 </Button>
               </form>
             </Form>
