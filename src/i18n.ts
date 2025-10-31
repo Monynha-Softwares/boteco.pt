@@ -15,7 +15,6 @@ import ptFornecedores from './content/pt/fornecedores.json';
 import ptFidelidade from './content/pt/fidelidade.json';
 import ptEventos from './content/pt/eventos.json';
 import ptIntegracoes from './content/pt/integracoes.json';
-import ptBlogPost1 from './content/pt/blog-posts/5-dicas-para-otimizar-seu-atendimento.json'; // Novo
 
 import enHome from './content/en/home.json';
 import enAbout from './content/en/about.json';
@@ -29,7 +28,6 @@ import enFornecedores from './content/en/fornecedores.json';
 import enFidelidade from './content/en/fidelidade.json';
 import enEventos from './content/en/eventos.json';
 import enIntegracoes from './content/en/integracoes.json';
-import enBlogPost1 from './content/en/blog-posts/5-tips-to-optimize-your-service.json'; // Novo
 
 import esHome from './content/es/home.json';
 import esAbout from './content/es/about.json';
@@ -43,7 +41,6 @@ import esFornecedores from './content/es/fornecedores.json';
 import esFidelidade from './content/es/fidelidade.json';
 import esEventos from './content/es/eventos.json';
 import esIntegracoes from './content/es/integracoes.json';
-import esBlogPost1 from './content/es/blog-posts/5-consejos-para-optimizar-tu-servicio.json'; // Novo
 
 import frHome from './content/fr/home.json';
 import frAbout from './content/fr/about.json';
@@ -57,7 +54,6 @@ import frFornecedores from './content/fr/fornecedores.json';
 import frFidelidade from './content/fr/fidelidade.json';
 import frEventos from './content/fr/eventos.json';
 import frIntegracoes from './content/fr/integracoes.json';
-import frBlogPost1 from './content/fr/blog-posts/5-astuces-pour-optimiser-votre-service.json'; // Novo
 
 const resources = {
   pt: {
@@ -73,9 +69,6 @@ const resources = {
     fidelidade: ptFidelidade,
     eventos: ptEventos,
     integracoes: ptIntegracoes,
-    "blog-posts": {
-      "5-dicas-para-otimizar-seu-atendimento": ptBlogPost1,
-    },
   },
   en: {
     home: enHome,
@@ -90,9 +83,6 @@ const resources = {
     fidelidade: enFidelidade,
     eventos: enEventos,
     integracoes: enIntegracoes,
-    "blog-posts": {
-      "5-tips-to-optimize-your-service": enBlogPost1,
-    },
   },
   es: {
     home: esHome,
@@ -107,9 +97,6 @@ const resources = {
     fidelidade: esFidelidade,
     eventos: esEventos,
     integracoes: esIntegracoes,
-    "blog-posts": {
-      "5-consejos-para-optimizar-tu-servicio": esBlogPost1,
-    },
   },
   fr: {
     home: frHome,
@@ -124,9 +111,6 @@ const resources = {
     fidelidade: frFidelidade,
     eventos: frEventos,
     integracoes: frIntegracoes,
-    "blog-posts": {
-      "5-astuces-pour-optimiser-votre-service": frBlogPost1,
-    },
   },
 };
 
@@ -153,7 +137,6 @@ i18n
       'fidelidade',
       'eventos',
       'integracoes',
-      'blog-posts',
     ], // Adicionar 'blog-posts'
     defaultNS: 'home',
     detection: {

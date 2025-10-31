@@ -12,7 +12,7 @@ import Blog from "./pages/Blog";
 import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
 import TermsOfService from "./pages/legal/TermsOfService";
 import Painel from "./pages/Painel";
-import BlogPostDetail from "./pages/BlogPostDetail"; // Importar BlogPostDetail
+import BlogPost from "./pages/BlogPost";
 import MenuDigital from "./pages/MenuDigital";
 import Fornecedores from "./pages/Fornecedores";
 import Fidelidade from "./pages/Fidelidade";
@@ -38,7 +38,7 @@ const App = () => (
             <Route path="sobre" element={<About />} />
             <Route path="contato" element={<Contact />} />
             <Route path="blog" element={<Blog />} />
-            <Route path="blog/:slug" element={<BlogPostDetail />} /> {/* Nova rota para detalhes do blog */}
+            <Route path="blog/:slug" element={<BlogPost />} />
             <Route path="menu-digital" element={<MenuDigital />} />
             <Route path="fornecedores" element={<Fornecedores />} />
             <Route path="fidelidade" element={<Fidelidade />} />

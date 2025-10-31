@@ -1,24 +1,49 @@
 {
   "title": "Nosso Blog",
   "description": "Fique por dentro das novidades e dicas para seu bar ou restaurante.",
+  "readingTime": "{{count}} min de leitura",
+  "readMore": "Ler mais",
+  "tagsLabel": "Etiquetas",
+  "depthLabels": {
+    "surface": "Superfície",
+    "overlay": "Camada",
+    "elevated": "Elevado"
+  },
+  "notFound": {
+    "title": "Post não encontrado",
+    "message": "O conteúdo que você procura não está mais disponível.",
+    "cta": "Voltar para o blog"
+  },
   "posts": [
     {
       "id": "1",
+      "slug": "5-dicas-para-otimizar-seu-atendimento",
       "title": "5 Dicas para Otimizar seu Atendimento",
       "excerpt": "Descubra como melhorar a experiência dos seus clientes.",
-      "date": "2023-10-26"
+      "date": "2023-10-26",
+      "cover": "/images/blog/service-tips.svg",
+      "tags": ["Operações", "Experiência do cliente"],
+      "content": "# 5 Dicas para Otimizar seu Atendimento\n\nUm atendimento excelente é essencial para o sucesso de qualquer bar ou restaurante. Clientes satisfeitos retornam e indicam o seu negócio. Reunimos cinco dicas práticas para ajudar a encantar o público.\n\n## 1. Treine a equipe continuamente\n\nPromova reciclagens frequentes para quem atende o público. Garçons, bartenders e anfitriões precisam conhecer o cardápio, entender o fluxo de pedidos e agir com agilidade e cordialidade. Uma equipe confiante transmite segurança.\n\n## 2. Agilize a tomada de pedidos\n\nUse sistemas de gestão que permitam lançar pedidos com rapidez e precisão. Tablets e cardápios digitais reduzem filas, minimizam erros e mantêm a cozinha organizada.\n\n## 3. Personalize a experiência\n\nGestos simples têm grande impacto. Chamar o cliente pelo nome, lembrar preferências ou sugerir algo de acordo com o momento demonstra cuidado e gera conexão.\n\n## 4. Peça feedback e coloque em prática\n\nEstimule os clientes a compartilhar opiniões em pesquisas rápidas ou conversas presenciais. Mais importante que coletar feedback é agir sobre ele. Mostre que você está atento e quer evoluir.\n\n## 5. Cuide do ambiente\n\nO clima do estabelecimento faz parte da experiência. Mantenha o espaço limpo, bem iluminado e com trilha sonora adequada. Um ambiente acolhedor prolonga a permanência e aumenta o retorno.\n\nAo aplicar essas dicas, sua equipe estará preparada para oferecer um atendimento memorável e fidelizar clientes."
     },
     {
       "id": "2",
+      "slug": "gestao-de-estoque-evite-desperdicios",
       "title": "Gestão de Estoque: Evite Desperdícios",
       "excerpt": "Aprenda a controlar seu estoque de forma eficiente.",
-      "date": "2023-10-20"
+      "date": "2023-10-20",
+      "cover": "/images/blog/inventory-management.svg",
+      "tags": ["Finanças", "Estoque"],
+      "content": "# Gestão de Estoque: Evite Desperdícios\n\nUma rotina bem estruturada evita compras desnecessárias e mantém o cardápio rentável. Faça revisões semanais dos itens mais vendidos e acompanhe o consumo com relatórios simples.\n\n## Mapeie ingredientes críticos\n\nListe os produtos que mais impactam as vendas e monitore o estoque de perto. Defina pontos de reposição que disparem alertas antes da ruptura.\n\n## Padronize porções\n\nDocumente as quantidades de cada receita para que a equipe sirva de forma consistente. A padronização reduz erros e facilita a previsão de compras.\n\n## Use o método PEPS\n\nOrganize as prateleiras para que os itens mais antigos saiam primeiro. Aplicar o método PEPS (primeiro que entra, primeiro que sai) diminui perdas e preserva a qualidade.\n\n## Fortaleça a relação com fornecedores\n\nRevise acordos periodicamente e negocie entregas flexíveis. Compartilhar o comportamento da demanda ajuda o fornecedor a manter seu estoque abastecido sem excessos.\n\nCom disciplina no controle você reduz custos e entrega qualidade em cada pedido."
     },
     {
       "id": "3",
+      "slug": "em-breve-novas-funcionalidades-no-boteco-pro",
       "title": "Em Breve: Novas Funcionalidades no Boteco Pro",
       "excerpt": "Fique atento às próximas atualizações da nossa plataforma.",
-      "date": "2023-10-15"
+      "date": "2023-10-15",
+      "cover": "/images/blog/product-updates.svg",
+      "tags": ["Produto", "Roadmap"],
+      "content": "# Em Breve: Novas Funcionalidades no Boteco Pro\n\nEstamos preparando melhorias que deixarão a operação diária ainda mais inteligente. Confira um resumo do que vem por aí.\n\n## Painéis mais inteligentes\n\nEm breve será possível cruzar dados de vendas, reservas e fidelidade em uma única visão para acelerar decisões.\n\n## Experimentos de cardápio\n\nCrie menus sazonais e teste preços sem sair da plataforma. O retorno em tempo real ajuda a descobrir campeões de venda rapidamente.\n\n## Suporte integrado\n\nO novo centro de suporte reúne tutoriais, webinars e chat direto com o nosso time.\n\nEstamos ansiosos para compartilhar essas novidades. Acompanhe o blog e seja o primeiro a testar."
     }
   ]
 }
