@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
 import { Button } from '@/components/ui/button';
 import { SignedIn, UserButton } from '@clerk/clerk-react';
+import { ThemeToggle } from './ThemeToggle'; // Importar ThemeToggle
 
 const Header: React.FC = () => {
   const { t } = useTranslation();
@@ -35,6 +36,7 @@ const Header: React.FC = () => {
             {t('painel:title', { ns: 'painel' })}
           </Link>
           <LanguageSwitcher />
+          <ThemeToggle /> {/* Adicionar o ThemeToggle aqui */}
           <SignedIn>
             <UserButton afterSignOutUrl="/" />
           </SignedIn>
