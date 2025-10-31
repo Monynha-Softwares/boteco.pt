@@ -22,12 +22,12 @@ const Home = () => {
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0, 0, 0.2, 1] } }, // Changed ease to cubic-bezier array
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" } }, // Changed ease to string alias
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0, 0, 0.2, 1] } }, // Changed ease to cubic-bezier array
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeInOut" } }, // Changed ease to string alias
   };
 
   const pageTitle = t('hero.title');
