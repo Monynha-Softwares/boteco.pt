@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useUser } from '@clerk/clerk-react';
 import { Package, Utensils, DollarSign, AlertTriangle } from 'lucide-react';
+import Seo from '@/components/Seo'; // Importar o componente Seo
 
 const Painel: React.FC = () => {
-  const { t } = useTranslation('painel');
+  const { t, i18n } = useTranslation('painel');
   const { user } = useUser();
 
   const userName = user?.firstName || t('guest', { defaultValue: 'Usuário' });
@@ -26,37 +27,49 @@ const Painel: React.FC = () => {
     }
   };
 
-  return (
-    <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-4 text-monynha-primary">
-        {t('greeting', { userName })}
-      </h1>
-      <p className="text-xl text-monynha-neutral-600 mb-8">
-        {t('title')}
-      </p>
-      <p className="text-sm text-monynha-neutral-500 mb-12 italic">
-        {t('demoNotice')}
-      </p>
+  const pageTitle = t('title');
+  const pageDescription = t('demoNotice');
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {cards.map((card, index) => (
-          <Card key={index} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-lg font-medium text-monynha-neutral-700">
-                {card.title}
-              </CardTitle>
-              {getIcon(card.title)}
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-monynha-primary">{card.value}</div>
-              <p className="text-xs text-monynha-neutral-500">
-                {card.description}
-              </p>
-            </CardContent>
-          </Card>
-        ))}
+  return (
+    <>
+      <Seo
+        title={pageTitle}
+        description={pageDescription}
+        ogTitle={pageTitle}
+        ogDescription={pageDescription}
+        locale={i18n.language}
+      />
+      <div className="container mx-auto px-4 py-12">
+        <h1 className="text-4xl font-bold mb-4 text-monynha-primary">
+          {t('greeting', { userName })}
+        </h1>
+        <p className="text-xl text-monynha-neutral-600 mb-8">
+          {t('title')}
+        </p>
+        <p className="text-sm text-monynha-neutral-500 mb-12 italic">
+          {t('demoNotice')}
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {cards.map((card, index) => (
+            <Card key={index} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-lg font-medium text-monynha-neutral-700">
+                  {card.title}
+                </CardTitle>
+                {getIcon(card.title)}
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold text-monynha-primary">{card.value}</div>
+                <p className="text-xs text-monynha-neutral-500">
+                  {card.description}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
