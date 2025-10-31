@@ -4,12 +4,16 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
 import { Button } from '@/components/ui/button';
 import { SignedIn, UserButton } from '@clerk/clerk-react';
-import { ThemeToggle } from './ThemeToggle'; // Importar ThemeToggle
+import { ThemeToggle } from './ThemeToggle';
+import MobileNav from './MobileNav'; // Importar MobileNav
+import { useIsMobile } from '@/hooks/use-mobile'; // Importar useIsMobile
 
 const Header: React.FC = () => {
   const { t } = useTranslation();
   const { locale } = useParams<{ locale: string }>();
   const currentLocale = locale || 'pt';
+  const isMobile = useIsMobile();
+  const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false);
 
   const getLocalizedPath = (path: string) => `/${currentLocale}${path}`;
 
@@ -19,28 +23,39 @@ const Header: React.FC = () => {
         <Link to={getLocalizedPath('/')} className="text-2xl font-bold">
           Boteco Pro
         </Link>
-        <nav className="flex items-center space-x-4">
-          <Link to={getLocalizedPath('/')} className="hover:underline">
-            {t('home:hero.title', { ns: 'home' }).split(':')[0]} {/* Using a part of the home title as link text */}
-          </Link>
-          <Link to={getLocalizedPath('/sobre')} className="hover:underline">
-            {t('about:title', { ns: 'about' })}
-          </Link>
-          <Link to={getLocalizedPath('/contato')} className="hover:underline">
-            {t('contact:title', { ns: 'contact' })}
-          </Link>
-          <Link to={getLocalizedPath('/blog')} className="hover:underline">
-            {t('blog:title', { ns: 'blog' })}
-          </Link>
-          <Link to="/painel" className="hover:underline">
-            {t('painel:title', { ns: 'painel' })}
-          </Link>
-          <LanguageSwitcher />
-          <ThemeToggle /> {/* Adicionar o ThemeToggle aqui */}
-          <SignedIn>
-            <UserButton afterSignOutUrl="/" />
-          </SignedIn>
-        </nav>
+        
+        {isMobile ? (
+          <div className="flex items-center space-x-2">
+            <ThemeToggle />
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+            <MobileNav isOpen={isMobileNavOpen} onOpenChange={setIsMobileNavOpen} />
+          </div>
+        ) : (
+          <nav className="flex items-center space-x-4">
+            <Link to={getLocalizedPath('/')} className="hover:underline">
+              {t('home:hero.title', { ns: 'home' }).split(':')[0]}
+            </Link>
+            <Link to={getLocalizedPath('/sobre')} className="hover:underline">
+              {t('about:title', { ns: 'about' })}
+            </Link>
+            <Link to={getLocalizedPath('/contato')} className="hover:underline">
+              {t('contact:title', { ns: 'contact' })}
+            </Link>
+            <Link to={getLocalizedPath('/blog')} className="hover:underline">
+              {t('blog:title', { ns: 'blog' })}
+            </Link>
+            <Link to="/painel" className="hover:underline">
+              {t('painel:title', { ns: 'painel' })}
+            </Link>
+            <LanguageSwitcher />
+            <ThemeToggle />
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+          </nav>
+        )}
       </div>
     </header>
   );
