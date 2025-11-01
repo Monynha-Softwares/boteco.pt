@@ -15,18 +15,18 @@ This document tracks the progress of redesigning all visual assets (images, icon
 ## BotecoPro Color Palette
 
 ### Light Theme Colors
-- **Primary (Deep Rose)**: `hsl(341.8, 64.5%, 33.1%)` → `#9b1d5a`
-- **Secondary (Burnt Orange)**: `hsl(33.7, 74.6%, 40.2%)` → `#b35f1a`
-- **Tertiary (Warm Cream)**: `hsl(42.4, 70.8%, 81.2%)` → `#f5e7c8`
-- **Neutral (Dark Brown)**: `hsl(21.3, 39.8%, 22.2%)` → `#4e3829`
-- **Neutral Soft**: `hsl(22.3, 40.2%, 34.1%)` → `#7a5842`
+- **Primary (Deep Rose)**: `hsl(341.8, 64.5%, 33.1%)` → `#8a1d3e`
+- **Secondary (Burnt Orange)**: `hsl(33.7, 74.6%, 40.2%)` → `#b26f1a`
+- **Tertiary (Warm Cream)**: `hsl(42.4, 70.8%, 81.2%)` → `#f1ddad`
+- **Neutral (Dark Brown)**: `hsl(21.3, 39.8%, 22.2%)` → `#4f3222`
+- **Neutral Soft**: `hsl(22.3, 40.2%, 34.1%)` → `#794d33`
 
 ### Dark Theme Colors
-- **Primary (Lighter Rose)**: `hsl(341.8, 64.5%, 56%)` → `#d9467e`
-- **Secondary (Lighter Orange)**: `hsl(33.7, 74.6%, 52%)` → `#e07d2d`
-- **Tertiary (Dark Warm Gray)**: `hsl(26, 28%, 18%)` → `#382f28`
-- **Neutral (Light Cream)**: `hsl(42.4, 70.8%, 92%)` → `#faf3e8`
-- **Neutral Soft**: `hsl(26, 28%, 26%)` → `#534437`
+- **Primary (Lighter Rose)**: `hsl(341.8, 64.5%, 56%)` → `#d74672`
+- **Secondary (Lighter Orange)**: `hsl(33.7, 74.6%, 52%)` → `#df8f29`
+- **Tertiary (Dark Warm Gray)**: `hsl(26, 28%, 18%)` → `#3a2c21`
+- **Neutral (Light Cream)**: `hsl(42.4, 70.8%, 92%)` → `#f9f0dc`
+- **Neutral Soft**: `hsl(26, 28%, 26%)` → `#543f2f`
 
 ### Support Colors
 - **Success/Accent**: Use Secondary (Orange tones)
@@ -211,16 +211,16 @@ The project uses **lucide-react** library for UI icons. These are already integr
 ### Color Palette Quick Reference
 ```css
 /* Light Theme */
---boteco-primary: #9b1d5a;      /* Deep Rose */
---boteco-secondary: #b35f1a;    /* Burnt Orange */
---boteco-tertiary: #f5e7c8;     /* Warm Cream */
---boteco-neutral: #4e3829;      /* Dark Brown */
+--boteco-primary: #8a1d3e;      /* Deep Rose */
+--boteco-secondary: #b26f1a;    /* Burnt Orange */
+--boteco-tertiary: #f1ddad;     /* Warm Cream */
+--boteco-neutral: #4f3222;      /* Dark Brown */
 
 /* Dark Theme */
---boteco-primary: #d9467e;      /* Lighter Rose */
---boteco-secondary: #e07d2d;    /* Lighter Orange */
---boteco-tertiary: #382f28;     /* Dark Warm Gray */
---boteco-neutral: #faf3e8;      /* Light Cream */
+--boteco-primary: #d74672;      /* Lighter Rose */
+--boteco-secondary: #df8f29;    /* Lighter Orange */
+--boteco-tertiary: #3a2c21;     /* Dark Warm Gray */
+--boteco-neutral: #f9f0dc;      /* Light Cream */
 ```
 
 ---
