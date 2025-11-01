@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <!-- BotecoPro Open Graph Image -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8a1d3e;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#9b2d4e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#b26f1a;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background gradient -->
+  <rect width="1200" height="630" fill="url(#bg-gradient)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="100" r="120" fill="#f1ddad" opacity="0.1"/>
+  <circle cx="1100" cy="530" r="150" fill="#f1ddad" opacity="0.08"/>
+  <circle cx="950" cy="80" r="100" fill="#fff" opacity="0.06"/>
+  
+  <!-- Main content area -->
+  <g transform="translate(100, 140)">
+    <!-- Logo/Brand mark -->
+    <rect x="0" y="0" width="120" height="120" rx="20" fill="#fff" opacity="0.15" filter="url(#shadow)"/>
+    <rect x="8" y="8" width="104" height="104" rx="16" fill="#fff"/>
+    
+    <!-- Icon elements (simplified bar/restaurant icon) -->
+    <g transform="translate(25, 25)">
+      <!-- Glass icon -->
+      <path d="M35 15 L45 15 L42 45 L38 45 Z" fill="#8a1d3e" opacity="0.9"/>
+      <ellipse cx="40" cy="15" rx="5" ry="3" fill="#b26f1a"/>
+      
+      <!-- Plate icon -->
+      <circle cx="55" cy="55" r="12" fill="none" stroke="#8a1d3e" stroke-width="3"/>
+      <circle cx="55" cy="55" r="7" fill="#b26f1a" opacity="0.3"/>
+      
+      <!-- Fork icon -->
+      <g transform="translate(15, 45)">
+        <line x1="5" y1="0" x2="5" y2="20" stroke="#b26f1a" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="2" y1="0" x2="2" y2="8" stroke="#b26f1a" stroke-width="2" stroke-linecap="round"/>
+        <line x1="8" y1="0" x2="8" y2="8" stroke="#b26f1a" stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </g>
+    
+    <!-- Title -->
+    <text x="150" y="50" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="62" font-weight="800" fill="#fff" letter-spacing="-1">
+      Boteco Pro
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="150" y="100" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="32" font-weight="600" fill="#f1ddad">
+      Gestão Inteligente
+    </text>
+    <text x="150" y="140" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="32" font-weight="600" fill="#f1ddad">
+      para Bares e Restaurantes
+    </text>
+  </g>
+  
+  <!-- Feature badges -->
+  <g transform="translate(100, 400)">
+    <!-- Badge 1 -->
+    <rect x="0" y="0" width="180" height="50" rx="25" fill="#fff" opacity="0.2"/>
+    <text x="90" y="33" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#fff" text-anchor="middle">
+      Cardápio Digital
+    </text>
+    
+    <!-- Badge 2 -->
+    <rect x="200" y="0" width="140" height="50" rx="25" fill="#fff" opacity="0.2"/>
+    <text x="270" y="33" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#fff" text-anchor="middle">
+      Gestão PDV
+    </text>
+    
+    <!-- Badge 3 -->
+    <rect x="360" y="0" width="180" height="50" rx="25" fill="#fff" opacity="0.2"/>
+    <text x="450" y="33" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#fff" text-anchor="middle">
+      Relatórios em Tempo Real
+    </text>
+  </g>
+  
+  <!-- Bottom brand line -->
+  <g transform="translate(100, 540)">
+    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="500" fill="#f1ddad" opacity="0.9">
+      boteco.pt • Transforme seu negócio
+    </text>
+  </g>
+</svg>
