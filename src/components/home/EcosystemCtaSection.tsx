@@ -1,8 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AnimatedSection, { AnimatedItem } from '@/components/reactbits/AnimatedSection';
 import { Button } from '@/components/ui/button';
+import { useLocalizedPath } from '@/hooks/use-localized-path';
 
 interface CtaAction {
   label: string;
@@ -18,24 +19,7 @@ interface EcosystemContent {
 
 const EcosystemCtaSection: React.FC = () => {
   const { t } = useTranslation('home');
-  const { locale } = useParams<{ locale: string }>();
-  const currentLocale = locale || 'pt';
-
-  const localizePath = React.useCallback(
-    (path: string) => {
-      if (!path) {
-        return `/${currentLocale}`;
-      }
-
-      if (path.startsWith('http')) {
-        return path;
-      }
-
-      const normalized = path.startsWith('/') ? path : `/${path}`;
-      return `/${currentLocale}${normalized}`;
-    },
-    [currentLocale],
-  );
+  const localizePath = useLocalizedPath();
 
   const content = t('ecosystemCta', { returnObjects: true }) as EcosystemContent;
 
