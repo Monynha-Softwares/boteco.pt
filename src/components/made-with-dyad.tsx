@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 const linkClassName = cn(
   'text-sm text-boteco-primary-foreground/80',
@@ -9,16 +10,20 @@ const linkClassName = cn(
 );
 
 export const MadeWithDyad = () => {
+  const { t } = useTranslation('common');
+  
   return (
     <div className="p-4 text-center">
       <a
-        href="https://www.dyad.sh/"
+        href="https://monynha.com"
         target="_blank"
         rel="noopener noreferrer"
         className={linkClassName}
+        aria-label={t('footer.poweredByAriaLabel', 'Powered by Monynha Softwares - abre em nova aba')}
       >
-        Made with Dyad
+        {t('footer.poweredBy', 'Powered by Monynha Softwares')}
       </a>
     </div>
   );
 };
+

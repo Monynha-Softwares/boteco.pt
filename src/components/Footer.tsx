@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
   const getLocalizedPath = (path: string) => `/${currentLocale}${path}`;
 
   return (
-    <footer className="bg-boteco-primary text-boteco-primary-foreground p-4 shadow-inner mt-8 transition-colors duration-300">
+    <footer className="bg-boteco-primary text-boteco-primary-foreground p-4 shadow-inner mt-8 transition-colors duration-300" role="contentinfo">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
         <div className="flex space-x-4 mb-2 md:mb-0">
           <Link
@@ -28,7 +28,16 @@ const Footer: React.FC = () => {
           </Link>
         </div>
         <p className="text-center md:text-right mb-2 md:mb-0">
-          &copy; {new Date().getFullYear()} Monynha Softwares. Todos os direitos reservados.
+          &copy; {new Date().getFullYear()} BotecoPro &middot; {t('common:footer.developedWith', 'Desenvolvido com tecnologia')}{' '}
+          <a
+            href="https://monynha.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-boteco-secondary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-boteco-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-boteco-primary"
+            aria-label={t('common:footer.monynhaAriaLabel', 'Monynha Softwares - abre em nova aba')}
+          >
+            Monynha Softwares
+          </a>
         </p>
         <MadeWithDyad />
       </div>

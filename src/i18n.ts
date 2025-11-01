@@ -15,6 +15,7 @@ import ptFornecedores from './content/pt/fornecedores.json';
 import ptFidelidade from './content/pt/fidelidade.json';
 import ptEventos from './content/pt/eventos.json';
 import ptIntegracoes from './content/pt/integracoes.json';
+import ptCommon from './content/pt/common.json';
 
 import enHome from './content/en/home.json';
 import enAbout from './content/en/about.json';
@@ -28,6 +29,7 @@ import enFornecedores from './content/en/fornecedores.json';
 import enFidelidade from './content/en/fidelidade.json';
 import enEventos from './content/en/eventos.json';
 import enIntegracoes from './content/en/integracoes.json';
+import enCommon from './content/en/common.json';
 
 import esHome from './content/es/home.json';
 import esAbout from './content/es/about.json';
@@ -41,6 +43,7 @@ import esFornecedores from './content/es/fornecedores.json';
 import esFidelidade from './content/es/fidelidade.json';
 import esEventos from './content/es/eventos.json';
 import esIntegracoes from './content/es/integracoes.json';
+import esCommon from './content/es/common.json';
 
 import frHome from './content/fr/home.json';
 import frAbout from './content/fr/about.json';
@@ -54,6 +57,7 @@ import frFornecedores from './content/fr/fornecedores.json';
 import frFidelidade from './content/fr/fidelidade.json';
 import frEventos from './content/fr/eventos.json';
 import frIntegracoes from './content/fr/integracoes.json';
+import frCommon from './content/fr/common.json';
 
 const resources = {
   pt: {
@@ -69,6 +73,7 @@ const resources = {
     fidelidade: ptFidelidade,
     eventos: ptEventos,
     integracoes: ptIntegracoes,
+    common: ptCommon,
   },
   en: {
     home: enHome,
@@ -83,6 +88,7 @@ const resources = {
     fidelidade: enFidelidade,
     eventos: enEventos,
     integracoes: enIntegracoes,
+    common: enCommon,
   },
   es: {
     home: esHome,
@@ -97,6 +103,7 @@ const resources = {
     fidelidade: esFidelidade,
     eventos: esEventos,
     integracoes: esIntegracoes,
+    common: esCommon,
   },
   fr: {
     home: frHome,
@@ -111,6 +118,7 @@ const resources = {
     fidelidade: frFidelidade,
     eventos: frEventos,
     integracoes: frIntegracoes,
+    common: frCommon,
   },
 };
 
@@ -137,7 +145,8 @@ i18n
       'fidelidade',
       'eventos',
       'integracoes',
-    ], // Adicionar 'blog-posts'
+      'common',
+    ],
     defaultNS: 'home',
     detection: {
       order: ['path', 'localStorage', 'navigator'],

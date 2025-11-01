@@ -131,6 +131,35 @@ const About: React.FC = () => {
             {t('story')}
           </motion.p>
         </motion.section>
+
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={sectionVariants}
+          className="max-w-4xl mx-auto text-boteco-neutral mt-12"
+        >
+          <motion.h2 variants={itemVariants} className="text-3xl font-bold text-center mb-8 text-boteco-neutral">
+            {t('partnership.title', { defaultValue: 'Parceria Tecnológica' })}
+          </motion.h2>
+          <motion.p variants={itemVariants} className="text-lg leading-relaxed mb-4 text-center">
+            {t('partnership.description')}
+          </motion.p>
+          <motion.div variants={itemVariants} className="text-center">
+            <a
+              href={t('partnership.linkUrl')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-boteco-primary hover:text-boteco-secondary transition-colors duration-300 font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-boteco-secondary focus-visible:ring-offset-2"
+              aria-label={t('partnership.linkAriaLabel')}
+            >
+              {t('partnership.linkText')}
+              <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </motion.div>
+        </motion.section>
       </div>
     </>
   );
