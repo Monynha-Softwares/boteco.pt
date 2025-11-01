@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           </Link>
         </div>
         <p className="text-center md:text-right mb-2 md:mb-0">
-          &copy; 2025 BotecoPro &middot; {t('common:footer.developedWith', 'Desenvolvido com tecnologia')}{' '}
+          &copy; {new Date().getFullYear()} BotecoPro &middot; {t('common:footer.developedWith', 'Desenvolvido com tecnologia')}{' '}
           <a
             href="https://monynha.com/about"
             target="_blank"
