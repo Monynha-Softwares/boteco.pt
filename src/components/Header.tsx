@@ -53,7 +53,7 @@ const Header: React.FC = () => {
     [currentLocale],
   );
 
-  const navItems = (navigation.items as NavItem[]) ?? [];
+  const navItems = React.useMemo(() => (navigation.items as NavItem[]) ?? [], []);
 
   return (
     <header className="bg-boteco-primary text-boteco-primary-foreground p-4 shadow-md transition-colors duration-300">
@@ -149,4 +149,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);
