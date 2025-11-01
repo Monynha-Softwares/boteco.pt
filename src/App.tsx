@@ -1,37 +1,46 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate as Redirect } from "react-router-dom"; // Renomear Navigate para Redirect
+import { BrowserRouter, Routes, Route, Navigate as Redirect } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import LocaleWrapper from "./components/LocaleWrapper";
 import ScrollToTop from "./components/ScrollToTop";
-import Home from "./pages/Home"; // Renamed from Index
-import NotFound from "./pages/NotFound";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Blog from "./pages/Blog";
-import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
-import TermsOfService from "./pages/legal/TermsOfService";
-import Painel from "./pages/Painel";
-import BlogPost from "./pages/BlogPost";
-import MenuDigital from "./pages/MenuDigital";
-import Fornecedores from "./pages/Fornecedores";
-import Fidelidade from "./pages/Fidelidade";
-import Eventos from "./pages/Eventos";
-import Integracoes from "./pages/Integracoes";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 import { hasClerkAuth } from "./utils/clerk";
 
+// Lazy load page components for better code splitting
+const Home = lazy(() => import("./pages/Home"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const PrivacyPolicy = lazy(() => import("./pages/legal/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/legal/TermsOfService"));
+const Painel = lazy(() => import("./pages/Painel"));
+const MenuDigital = lazy(() => import("./pages/MenuDigital"));
+const Fornecedores = lazy(() => import("./pages/Fornecedores"));
+const Fidelidade = lazy(() => import("./pages/Fidelidade"));
+const Eventos = lazy(() => import("./pages/Eventos"));
+const Integracoes = lazy(() => import("./pages/Integracoes"));
 
-const queryClient = new QueryClient();
+// Simple loading fallback
+const PageLoader = () => (
+  <div className="flex min-h-screen items-center justify-center">
+    <div className="text-center">
+      <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-boteco-primary border-r-transparent"></div>
+      <p className="mt-2 text-sm text-boteco-neutral/80">Carregando...</p>
+    </div>
+  </div>
+);
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
+  <TooltipProvider>
+    <Toaster />
+    <Sonner />
+    <BrowserRouter>
+      <ScrollToTop />
+      <Suspense fallback={<PageLoader />}>
         <Routes>
           {/* Redirect root to default locale (pt) */}
           <Route path="/" element={<Redirect to="/pt" />} />
@@ -73,9 +82,9 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+      </Suspense>
+    </BrowserRouter>
+  </TooltipProvider>
 );
 
 export default App;

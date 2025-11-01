@@ -128,7 +128,7 @@ i18n
   .init({
     resources,
     fallbackLng: 'pt',
-    debug: true,
+    debug: import.meta.env.DEV, // Only enable debug in development
     interpolation: {
       escapeValue: false, // react already safes from xss
     },

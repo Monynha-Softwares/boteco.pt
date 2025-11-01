@@ -12,7 +12,22 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Obtenha a chave pública do Clerk do ambiente
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-const queryClient = new QueryClient();
+
+// Configure QueryClient with optimized defaults
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // Cache data for 5 minutes by default
+      staleTime: 5 * 60 * 1000,
+      // Keep unused data in cache for 10 minutes
+      gcTime: 10 * 60 * 1000,
+      // Retry failed requests once
+      retry: 1,
+      // Don't refetch on window focus in development
+      refetchOnWindowFocus: !import.meta.env.DEV,
+    },
+  },
+});
 
 const wrapWithProviders = (node: ReactNode) => (
   <QueryClientProvider client={queryClient}>

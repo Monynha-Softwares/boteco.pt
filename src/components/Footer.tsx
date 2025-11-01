@@ -8,7 +8,12 @@ const Footer: React.FC = () => {
   const { locale } = useParams<{ locale: string }>();
   const currentLocale = locale || 'pt';
 
-  const getLocalizedPath = (path: string) => `/${currentLocale}${path}`;
+  const getLocalizedPath = React.useCallback(
+    (path: string) => `/${currentLocale}${path}`,
+    [currentLocale]
+  );
+
+  const currentYear = React.useMemo(() => new Date().getFullYear(), []);
 
   return (
     <footer className="bg-boteco-primary text-boteco-primary-foreground p-4 shadow-inner mt-8 transition-colors duration-300" role="contentinfo">
@@ -28,7 +33,7 @@ const Footer: React.FC = () => {
           </Link>
         </div>
         <p className="text-center md:text-right mb-2 md:mb-0">
-          &copy; {new Date().getFullYear()} BotecoPro &middot; {t('common:footer.developedWith', 'Desenvolvido com tecnologia')}{' '}
+          &copy; {currentYear} BotecoPro &middot; {t('common:footer.developedWith', 'Desenvolvido com tecnologia')}{' '}
           <a
             href="https://monynha.com"
             target="_blank"
@@ -45,4 +50,4 @@ const Footer: React.FC = () => {
   );
 };
 
-export default Footer;
+export default React.memo(Footer);

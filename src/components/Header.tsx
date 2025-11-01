@@ -53,6 +53,7 @@ const Header: React.FC = () => {
     [currentLocale],
   );
 
+  // Navigation items are static from JSON import, no need for useMemo
   const navItems = (navigation.items as NavItem[]) ?? [];
 
   return (
@@ -149,4 +150,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);
