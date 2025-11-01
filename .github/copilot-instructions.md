@@ -90,43 +90,64 @@ export const getContactRequests = async (): Promise<ContactRequest[]> => {
 
 **Pattern**: Functions named `get*`, `create*`, `calculate*Metrics` with full TypeScript interfaces.
 
+### 6. Optional Features via Environment
+**Clerk Auth**: Conditionally rendered based on `hasClerkAuth` from `src/utils/clerk.ts`:
+```tsx
+import { hasClerkAuth } from '@/utils/clerk';
+
+{hasClerkAuth && <SignedIn><UserButton /></SignedIn>}
+```
+
+App gracefully degrades without `VITE_CLERK_PUBLISHABLE_KEY` - never assume auth is present.
+
 ## Development Workflows
 
 ### Adding a New Page
-1. Create route in `src/App.tsx` under `/:locale` wrapper
-2. Create page component in `src/pages/NomeDaPagina.tsx`
-3. Add content JSON files: `src/content/{pt,en,es,fr}/nome-da-pagina.json`
-4. Update `src/i18n.ts` to import new translations
-5. Add navigation entry to `src/content/common/navigation.json`
+1. Create route in `src/App.tsx` under `/:locale` wrapper:
+   ```tsx
+   <Route path="nova-pagina" element={<NovaPagina />} />
+   ```
+2. Create page component in `src/pages/NovaPagina.tsx`
+3. Add i18n files: `src/content/{pt,en,es,fr}/nova-pagina.json`
+4. Update `src/i18n.ts`: import JSON + add to `resources` object + add to `ns` array
+5. (Optional) Add nav entry to `src/content/common/navigation.json`
 
 ### Running & Testing
-```powershell
+```bash
 pnpm dev              # Dev server on localhost:8080
 pnpm build            # Production build
 pnpm build:dev        # Development build (for debugging)
-pnpm test             # Node.js test runner (see tests/*.test.mjs)
+pnpm test             # Node.js test runner (tests/*.test.mjs)
+pnpm test:visual      # Playwright visual regression tests
+pnpm test:visual:ui   # Interactive Playwright UI mode
 pnpm lint             # ESLint with TypeScript
 ```
 
 ### Testing Philosophy
-Tests live in `tests/*.test.mjs` (Node.js native test runner, not Jest). Focus on:
-- Content structure validation (JSON schemas)
-- Theme configuration correctness
-- Critical data flows (contact requests)
+- **Unit tests** (`tests/*.test.mjs`): Node.js native runner (NOT Jest)
+  - Content structure validation (JSON schemas)
+  - Theme configuration correctness
+  - Data flow integrity
+- **Visual tests** (`tests/visual/*.spec.ts`): Playwright
+  - Cross-browser screenshot comparisons (Chromium, Mobile)
+  - Layout shift detection (CLS < 0.1)
+  - Accessibility audits (Lighthouse score ≥ 90)
 
-See `tests/theme.test.mjs` for assertion patterns using regex matching.
+**CI/CD**: All PRs trigger automated linting, tests, builds, Lighthouse audits, and visual regression checks.
 
 ## Common Pitfalls
 
-1. **Layout shifts during sidebar toggle**: Current issue documented in `UI_UX_CORRECTION_PLAN.md`. Avoid translate-based animations; use width transitions.
+1. **Breaking locale routing**: URLs without `/:locale` prefix will 404. Always test nav links after changes.
 
-2. **Skeleton loaders jumping**: Always provide explicit width/height on skeleton components. Don't rely on parent container.
+2. **Theme transitions flashing**: `ThemeProvider` uses `disableTransitionOnChange={true}` - don't override.
 
-3. **Breaking locale routing**: Test all navigation links after changes. URLs without `/:locale` prefix will 404.
+3. **Clerk auth assumptions**: App degrades gracefully without `VITE_CLERK_PUBLISHABLE_KEY`. Always check `hasClerkAuth`.
 
-4. **Theme transitions flashing**: `ThemeProvider` uses `disableTransitionOnChange={true}` to prevent flash. Don't override.
+4. **Reinstalling shadcn/ui**: All components already installed in `src/components/ui/`. Never run `shadcn add` again.
 
-5. **Clerk auth in dev**: App gracefully degrades without `VITE_CLERK_PUBLISHABLE_KEY`. Never assume auth is present.
+5. **Missing i18n namespaces**: If text doesn't appear, ensure namespace is imported in `src/i18n.ts` AND added to `ns` array.
+
+6. **Skeleton loaders jumping**: Always provide explicit width/height. Don't rely on parent container dimensions.
 
 ## Utility Functions
 
@@ -157,5 +178,5 @@ resolveHref({ href: "/sobre", localeAware: true }) // → "/pt/sobre"
 
 ---
 
-**Maintained by**: AI conventions sourced from `AI_RULES.md` (legacy) and `UI_UX_CORRECTION_PLAN.md` (active)  
-**Last Updated**: 2025-11-01 (Dark theme implementation branch)
+**Last Updated**: 2025-11-01  
+**See also**: `AGENTS.md`, `docs/VISUAL_TESTING.md`, `README.md`
