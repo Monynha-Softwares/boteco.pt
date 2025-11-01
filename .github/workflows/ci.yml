@@ -1,5 +1,7 @@
 name: CI
 
+# Runs on all branches as per requirements to catch issues early
+# This includes feature branches, main, dev, and any other branches
 on:
   pull_request:
     branches: ['**']

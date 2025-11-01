@@ -58,7 +58,7 @@ The project uses multiple testing strategies:
 All pull requests and pushes trigger automated checks:
 
 - ✅ **Linting**: ESLint validation
-- ✅ **Tests**: All 15+ unit tests must pass
+- ✅ **Tests**: All unit tests must pass
 - ✅ **Build**: Production build verification
 - ✅ **Lighthouse**: Performance and accessibility audits
 - ✅ **Visual Tests**: Cross-browser screenshot comparisons
