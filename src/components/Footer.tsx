@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="transition-colors hover:text-boteco-secondary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-boteco-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-boteco-primary"
-            aria-label={t('common:footer.monynhaAriaLabel', 'Monynha Softwares - opens in new tab')}
+            aria-label={t('common:footer.monynhaAriaLabel', 'Monynha Softwares - abre em nova aba')}
           >
             Monynha Softwares
           </a>

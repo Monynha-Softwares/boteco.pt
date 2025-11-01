@@ -19,7 +19,7 @@ export const MadeWithDyad = () => {
         target="_blank"
         rel="noopener noreferrer"
         className={linkClassName}
-        aria-label={t('footer.poweredByAriaLabel', 'Powered by Monynha Softwares - opens in new tab')}
+        aria-label={t('footer.poweredByAriaLabel', 'Powered by Monynha Softwares - abre em nova aba')}
       >
         {t('footer.poweredBy', 'Powered by Monynha Softwares')}
       </a>
