@@ -79,11 +79,21 @@ App degrades gracefully without `VITE_CLERK_PUBLISHABLE_KEY` env var.
 ```bash
 pnpm dev              # Dev server on localhost:8080
 pnpm build            # Production build with chunk splitting
+pnpm lint             # ESLint with TypeScript
+pnpm lint:fix         # ESLint with auto-fix
+pnpm format           # Prettier code formatting
 pnpm test             # Node.js native test runner (NOT Jest)
 pnpm test:visual      # Playwright visual regression tests
 pnpm test:visual:ui   # Interactive Playwright UI mode
-pnpm lint             # ESLint with TypeScript
+pnpm serve            # Serve dist/ with npx serve (port 8080)
+pnpm serve:build      # Build + serve in one command
 ```
+
+## Package Manager
+- **Required**: pnpm 10.18.3+ (enforced via `packageManager` field)
+- **Node.js**: 20.18.0+ (specified in `.node-version`)
+- **DO NOT** use npm or yarn - causes dependency conflicts
+- Configuration in `.npmrc` (shamefully-hoist enabled for compatibility)
 
 ## Testing Strategy
 1. **Unit tests** (`tests/*.test.mjs`): Node.js native runner validates JSON schemas, theme config, data flows

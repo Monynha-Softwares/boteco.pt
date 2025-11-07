@@ -19,14 +19,27 @@ A multilingual (pt/en/es/fr) React SPA for restaurant management built with mode
 
 ### Prerequisites
 
-- Node.js 20+
-- pnpm 10+
+- Node.js 20.18.0+
+- pnpm 10.18.3+
+
+> **Important**: This project enforces pnpm as the package manager via the `packageManager` field in package.json.
 
 ### Installation
 
 ```bash
 pnpm install
 ```
+
+### Environment Setup
+
+1. Copy the environment template:
+```bash
+cp .env.example .env.local
+```
+
+2. Update `.env.local` with your Clerk credentials (test keys are pre-configured for development)
+
+For detailed setup instructions, see [SETUP.md](./SETUP.md).
 
 ### Available Scripts
 
@@ -35,9 +48,13 @@ pnpm dev              # Start development server on localhost:8080
 pnpm build            # Production build
 pnpm build:dev        # Development build for debugging
 pnpm lint             # Run ESLint
+pnpm lint:fix         # Run ESLint with auto-fix
+pnpm format           # Format code with Prettier
 pnpm test             # Run Node.js tests
 pnpm test:visual      # Run Playwright visual regression tests
-pnpm preview          # Preview production build
+pnpm preview          # Preview production build with Vite
+pnpm serve            # Serve dist/ with npx serve
+pnpm serve:build      # Build and serve production
 ```
 
 ### Testing
