@@ -1,152 +1,83 @@
-# BotecoPro Development Roadmap# BotecoPro Development Roadmap
+# BotecoPro Development Roadmap
 
-
-
-> **Last Updated**: November 7, 2025  ## Overview
-
-> **Project**: Boteco.pt - BotecoPro Admin Panel  This document tracks the progress of redesigning all visual assets (images, icons, placeholders, SVGs) to align with the BotecoPro brand identity.
-
+> **Last Updated**: November 7, 2025  
+> **Project**: Boteco.pt - BotecoPro Admin Panel  
 > **Maintained by**: Monynha Softwares
 
-## Project Goals
+## Overview
 
-## Overview1. Consistent visual identity across all assets
+This document tracks the development roadmap for implementing the BotecoPro admin panel features with Supabase backend integration. The sidebar navigation structure has been created, and now we need to build the actual page components and integrate them with real data.
 
-2. Proper color palette implementation (light/dark theme support)
+## Current Status
 
-This document tracks the development roadmap for implementing the BotecoPro admin panel features with Supabase backend integration. The sidebar navigation structure has been created, and now we need to build the actual page components and integrate them with real data.3. Optimized SVG files for web performance
-
-4. Accessibility compliance (contrast, readability)
-
-## Current Status5. Responsive and scalable assets
-
-
-
-✅ **Completed**:---
-
-
-
-- Admin sidebar navigation with full menu structure## BotecoPro Color Palette
-
+✅ **Completed**:
+- Admin sidebar navigation with full menu structure
 - Admin layout with breadcrumbs and responsive design
+- Supabase database schema (21 migrations applied + schema cleanup)
+- i18n infrastructure for Portuguese (ready for en/es/fr)
+- Dark/light theme system with Boteco brand colors
+- Authentication system with Clerk (optional, feature-flagged)
+- **Phase 1**: Supabase client setup, types, and base API layer
+- **Phase 2.1**: Complete dashboard with all metrics, charts, and realtime updates
+- **Phase 3.1**: Tables Floor View with realtime status management
+- **Schema Migration**: Added `name` column to `tables` table (resolves API/DB mismatch)
+- **Integration Planning**: Comprehensive integration plan for BotecoPRO mobile app + web admin
 
-- Supabase database schema (21 migrations applied)### Light Theme Colors
-
-- i18n infrastructure for Portuguese (ready for en/es/fr)- **Primary (Deep Rose)**: `hsl(341.8, 64.5%, 33.1%)` → `#8a1d3e`
-
-- Dark/light theme system with Boteco brand colors- **Secondary (Burnt Orange)**: `hsl(33.7, 74.6%, 40.2%)` → `#b26f1a`
-
-- Authentication system with Clerk (optional, feature-flagged)- **Tertiary (Warm Cream)**: `hsl(42.4, 70.8%, 81.2%)` → `#f1ddad`
-
-- **Neutral (Dark Brown)**: `hsl(21.3, 39.8%, 22.2%)` → `#4f3222`
-
-⏳ **In Progress**:- **Neutral Soft**: `hsl(22.3, 40.2%, 34.1%)` → `#794d33`
-
-
-
-- Supabase data integration### Dark Theme Colors
-
-- Real-time features implementation- **Primary (Lighter Rose)**: `hsl(341.8, 64.5%, 56%)` → `#d74672`
-
-- Admin panel page components- **Secondary (Lighter Orange)**: `hsl(33.7, 74.6%, 52%)` → `#df8f29`
-
-- **Tertiary (Dark Warm Gray)**: `hsl(26, 28%, 18%)` → `#3a2c21`
-
----- **Neutral (Light Cream)**: `hsl(42.4, 70.8%, 92%)` → `#f9f0dc`
-
-- **Neutral Soft**: `hsl(26, 28%, 26%)` → `#543f2f`
-
-## Architecture Overview
-
-### Support Colors
-
-### Tech Stack- **Success/Accent**: Use Secondary (Orange tones)
-
-- **Destructive**: `hsl(4, 84%, 58%)` for errors
-
-- **Frontend**: React 18 + TypeScript + Vite- **Border**: `hsl(22, 28%, 74%)` (light) / `hsl(26, 26%, 28%)` (dark)
-
-- **Backend**: Supabase (PostgreSQL + Realtime + Auth)
-
-- **State**: TanStack Query for data fetching---
-
-- **UI**: shadcn/ui + Tailwind CSS + Lucide icons
-
-- **i18n**: i18next with JSON content files## Asset Inventory & Status
-
-- **Routing**: React Router v6
-
-### 1. Core Placeholder Assets
-
-### Supabase Schema Summary
-
-#### `/public/placeholder.svg`
-
-The database has the following main tables:- **Current**: Generic gray placeholder with image icon
-
-- **Status**: ⏳ Pending redesign
-
-- **Companies**: Multi-tenant organizations (`companies`, `company_users`, `company_settings`)- **Requirements**:
-
-- **Products**: Product catalog (`products`, `recipes`, `recipe_ingredients`)  - Use BotecoPro primary and secondary colors
-
-- **Inventory**: Stock management (`stock_movements`, `internal_productions`, `production_ingredients`)  - Maintain 1200x1200 dimensions
-
-- **Operations**: Orders & Tables (`tables`, `orders`, `order_items`)  - Add subtle pattern or texture
-
-- **Sales**: Financial data (`sales`)  - Ensure readability in both themes
-
-- **Suppliers**: Vendor management (`suppliers`)  - Keep file size under 10KB
-
-- **Users**: Authentication (`profiles`, `company_users`)
+⏳ **In Progress**:
+- Schema cleanup (removal of 16 legacy tables)
+- BotecoPRO mobile app integration strategy
+- Testing and validation
 
 ---
 
-### Integration Pattern
+## Architecture Overview
 
-### 2. Blog Post Cover Images
+### Tech Stack
+
+- **Frontend**: React 18 + TypeScript + Vite
+- **Backend**: Supabase (PostgreSQL + Realtime + Auth)
+- **State**: TanStack Query for data fetching
+- **UI**: shadcn/ui + Tailwind CSS + Lucide icons
+- **i18n**: i18next with JSON content files
+- **Routing**: React Router v6
+
+### Supabase Schema Summary
+
+The database has the following main tables:
+- **Companies**: Multi-tenant organizations (`companies`, `company_users`, `company_settings`)
+- **Products**: Product catalog (`products`, `recipes`, `recipe_ingredients`)
+- **Inventory**: Stock management (`stock_movements`, `internal_productions`, `production_ingredients`)
+- **Operations**: Orders & Tables (`tables`, `orders`, `order_items`)
+- **Sales**: Financial data (`sales`)
+- **Suppliers**: Vendor management (`suppliers`)
+- **Users**: Authentication (`profiles`, `company_users`)
+
+**Note**: 16 legacy tables (`*_legacy`) are scheduled for removal after archival backup.
+
+### Integration Pattern
 
 All Supabase integrations should follow this pattern:
 
-#### `/public/images/blog/service-tips.svg`
+```typescript
+// src/lib/api/products.ts
+import { createClient } from '@supabase/supabase-js';
 
-```typescript- **Current**: Dark blue theme with generic icons
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
 
-// src/lib/api/products.ts- **Status**: ⏳ Pending redesign
-
-import { createClient } from '@supabase/supabase-js';- **Content**: Service/customer experience illustration
-
-- **Requirements**:
-
-const supabase = createClient(  - Dimensions: 640x360 (16:9 aspect ratio)
-
-  import.meta.env.VITE_SUPABASE_URL,  - Primary color: Deep Rose/Lighter Rose
-
-  import.meta.env.VITE_SUPABASE_ANON_KEY  - Secondary color: Burnt/Light Orange
-
-);  - Include service-related iconography (e.g., waiter, table, customer)
-
-  - Modern, friendly illustration style
-
-export const getProducts = async (companyId: string) => {  - File size under 15KB
-
+export const getProducts = async (companyId: string) => {
   const { data, error } = await supabase
-
-    .from('products')#### `/public/images/blog/inventory-management.svg`
-
-    .select('*')- **Current**: Dark theme with chart/analytics imagery
-
-    .eq('company_id', companyId)- **Status**: ⏳ Pending redesign
-
-    .eq('is_active', true)- **Content**: Inventory/stock management illustration
-
-    .order('name');- **Requirements**:
-
-    - Dimensions: 640x360 (16:9 aspect ratio)
-
-  if (error) throw error;  - Use tertiary background with primary accents
-
-  return data;  - Include inventory icons (boxes, clipboard, chart)
+    .from('products')
+    .select('*')
+    .eq('company_id', companyId)
+    .eq('is_active', true)
+    .order('name');
+  
+  if (error) throw error;
+  return data;
+```
 
 };  - Clean, professional look
 
