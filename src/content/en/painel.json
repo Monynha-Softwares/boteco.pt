@@ -10,9 +10,9 @@
       { "id": "activeOrders", "title": "Active orders", "description": "Orders open or in progress." },
       { "id": "lowStock", "title": "Stock alerts", "description": "Products below minimum stock." },
       { "id": "weekRevenue", "title": "Sales (7d)", "description": "Sales total over the last 7 days." },
-      { "id": "monthRevenue", "title": "Sales (30d)", "description": "Sales total over the last 30 days." }
-    ]
-    ,
+      { "id": "monthRevenue", "title": "Sales (30d)", "description": "Sales total over the last 30 days." },
+      { "id": "tableOccupancy", "title": "Floor occupancy", "description": "Share of tables occupied (excludes maintenance)." }
+    ],
     "charts": {
       "dailySalesTitle": "Sales last 7 days",
       "paymentMethodsTitle": "Sales by payment method",
@@ -83,5 +83,9 @@
   },
   "actions": {
     "retry": "Try again"
+  },
+  "noCompany": {
+    "title": "Select a company",
+    "helper": "Choose a company below to view metrics and operational data."
   }
 }

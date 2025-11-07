@@ -19,6 +19,8 @@ import { useCompany } from '@/contexts/CompanyContext';
 import { getTodaysSalesTotal, getPeriodSalesTotal, getSalesByPaymentMethod, getRecentDailySales } from '@/lib/api/sales';
 import { getActiveOrders } from '@/lib/api/orders';
 import { getLowStockProducts } from '@/lib/api/products';
+import { getTableOccupancyMetrics } from '@/lib/api/tables';
+import CompanySelector from '@/components/CompanySelector';
 import { supabase } from '@/lib/supabase';
 
 const cardIcons: Record<string, React.ReactNode> = {
@@ -112,6 +114,13 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
     staleTime: 60 * 1000,
   });
 
+  const tableOccupancyQuery = useQuery({
+    queryKey: ['dashboard', 'tableOccupancy', companyId],
+    queryFn: () => getTableOccupancyMetrics(companyId!),
+    enabled: !!companyId,
+    staleTime: 15 * 1000,
+  });
+
   // Realtime subscriptions to keep queries fresh
   React.useEffect(() => {
     if (!companyId) return;
@@ -161,7 +170,7 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
   }[];
 
   const opsCards = t('dashboard.cards', { returnObjects: true }) as {
-    id: 'todayRevenue' | 'activeOrders' | 'lowStock' | 'weekRevenue' | 'monthRevenue';
+    id: 'todayRevenue' | 'activeOrders' | 'lowStock' | 'weekRevenue' | 'monthRevenue' | 'tableOccupancy';
     title: string;
     description: string;
   }[];
@@ -220,6 +229,18 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
   const userName = user?.firstName || t('guest', { defaultValue: 'Usuário' });
   const pageTitle = t('title');
   const pageDescription = t('demoNotice');
+
+  if (!selectedCompany) {
+    return (
+      <div className="space-y-6">
+        <h1 className="text-3xl font-bold text-boteco-primary">{t('noCompany.title', { defaultValue: 'Selecione uma empresa' })}</h1>
+        <p className="text-boteco-neutral/80 max-w-prose">
+          {t('noCompany.helper', { defaultValue: 'Para visualizar métricas e dados operacionais, escolha uma empresa abaixo.' })}
+        </p>
+        <CompanySelector />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -326,6 +347,8 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
                     return weekSalesQuery.isLoading;
                   case 'monthRevenue':
                     return monthSalesQuery.isLoading;
+                  case 'tableOccupancy':
+                    return tableOccupancyQuery.isLoading;
                   default:
                     return false;
                 }
@@ -343,21 +366,28 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
                     return weekSalesQuery.data ?? 0;
                   case 'monthRevenue':
                     return monthSalesQuery.data ?? 0;
+                  case 'tableOccupancy':
+                    return tableOccupancyQuery.data?.occupancyRate ?? 0;
                   default:
                     return 0;
                 }
               })();
 
               const isCurrency = ['todayRevenue', 'weekRevenue', 'monthRevenue'].includes(card.id);
+              const isPercentage = card.id === 'tableOccupancy';
               const displayValue = isCurrency
                 ? new Intl.NumberFormat(i18n.language, { style: 'currency', currency: 'BRL', minimumFractionDigits: 0 }).format(rawValue)
-                : numberFormatter.format(rawValue);
+                : isPercentage
+                  ? `${percentageFormatter.format(rawValue * 100)}%`
+                  : numberFormatter.format(rawValue);
 
               const icon =
                 card.id === 'todayRevenue' ? (
                   <DollarSign className="h-8 w-8 text-boteco-secondary" />
                 ) : card.id === 'activeOrders' ? (
                   <ShoppingBasket className="h-8 w-8 text-boteco-secondary" />
+                ) : card.id === 'tableOccupancy' ? (
+                  <Timer className="h-8 w-8 text-boteco-secondary" />
                 ) : (
                   <PackageOpen className="h-8 w-8 text-boteco-secondary" />
                 );
@@ -385,7 +415,13 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
                         <div className="text-3xl font-bold text-boteco-primary">
                           {displayValue}
                         </div>
-                        <p className="text-xs text-boteco-neutral/80">{card.description}</p>
+                        {card.id === 'tableOccupancy' && tableOccupancyQuery.data ? (
+                          <p className="text-xs text-boteco-neutral/80">
+                            {tableOccupancyQuery.data.occupied} / {tableOccupancyQuery.data.total}
+                          </p>
+                        ) : (
+                          <p className="text-xs text-boteco-neutral/80">{card.description}</p>
+                        )}
                       </>
                     )}
                   </CardContent>

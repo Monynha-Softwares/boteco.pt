@@ -30,9 +30,13 @@
         "id": "monthRevenue",
         "title": "Vendas (30d)",
         "description": "Total de vendas nos últimos 30 dias."
+      },
+      {
+        "id": "tableOccupancy",
+        "title": "Ocupação do salão",
+        "description": "Percentual de mesas ocupadas (exclui manutenção)."
       }
-    ]
-    ,
+    ],
     "charts": {
       "dailySalesTitle": "Vendas últimos 7 dias",
       "paymentMethodsTitle": "Vendas por método de pagamento",
@@ -164,5 +168,9 @@
   },
   "actions": {
     "retry": "Tentar novamente"
+  },
+  "noCompany": {
+    "title": "Selecione uma empresa",
+    "helper": "Para visualizar métricas e dados operacionais, escolha uma empresa abaixo."
   }
 }
