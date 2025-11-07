@@ -61,49 +61,38 @@ All Supabase integrations should follow this pattern:
 ```typescript
 // src/lib/api/products.ts
 import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
-
-export const getProducts = async (companyId: string) => {
-  const { data, error } = await supabase
-    .from('products')
-    .select('*')
-    .eq('company_id', companyId)
-    .eq('is_active', true)
-    .order('name');
-  
   if (error) throw error;
   return data;
-```
-
-};  - Clean, professional look
+⏳ **In Progress**:
+ - Legacy table cleanup (remaining `_legacy` tables & archival export)
+ - BotecoPRO mobile app integration strategy (sync API endpoints + enum index ↔ text conversion)
+ - Testing and validation (add integration tests for RLS + membership helper)
+ - Textual enum enforcement (CHECK constraints pending for product category & order status)
 
 ```  - File size under 15KB
+**Status**: ✅ COMPLETE (Implemented as `src/pages/admin/TablesFloor.tsx` with realtime, status management)
 
-
-
-Use with TanStack Query:#### `/public/images/blog/product-updates.svg`
-
-- **Current**: Dark purple/pink theme with update imagery
-
-```typescript- **Status**: ⏳ Pending redesign
-
-// In component- **Content**: Product updates/features illustration
+**Enhancement Backlog**:
+- [ ] Reservation modal integration (after reservations table migration)
+- [ ] Drag-and-drop arrangement persistence
+- [ ] Table grouping zones (e.g., Terrace, Bar, VIP)
 
 const { data: products, isLoading, error } = useQuery({- **Requirements**:
-
+**Database Tables**: `products`, `stock_movements` (now includes `company_id`)
+**Upcoming Hardening**:
+- [ ] Set `company_id` NOT NULL after verifying all rows backfilled
+- [ ] Add trigger to auto-set `company_id` on insert based on referenced product
   queryKey: ['products', companyId],  - Dimensions: 640x360 (16:9 aspect ratio)
 
-  queryFn: () => getProducts(companyId),  - Secondary color as primary element
+ - [ ] `0022_enforce_text_enums.sql` - Add CHECK constraints for `products.category` & `orders.status`
+ - [ ] `0023_set_stock_movements_company_id_not_null.sql` - Enforce NOT NULL & trigger for consistency
 
   enabled: !!companyId,  - Include tech/update icons (checkmarks, arrows, screens)
-
+ - [ ] Add composite indexes for frequent filters (`orders(status, company_id)`, `products(category, company_id)`, `stock_movements(company_id, created_at)`) - analyze with EXPLAIN before creation
 });  - Modern, energetic feel
 
 ```  - File size under 15KB
+✅ RLS policies consolidated & documented (`docs/RLS.md`)  
 
 
 

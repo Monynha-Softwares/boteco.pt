@@ -227,6 +227,46 @@
 **Status**: ✅ Applied to production
 **Rollback**: Not straightforward (data merged); would require restoration from archival backup
 
+### 2025-11-07: refactor_rls_policies
+
+- Introduced `is_company_member(company_id uuid) STABLE` helper function
+- Added composite index `company_users(user_id, company_id)` for membership lookups
+- Consolidated policies into `*_select` and `*_modify` per table using `is_company_member()`
+- Kept owner semantics for `companies` via `owner_id` checks
+- Temporarily tightened `stock_movements` to `auth.role() = 'authenticated'` until schema gains `company_id`
+
+**Status**: ✅ Applied to production
+**Rollback**: Recreate previous per-policy rules (see migration history prior to this entry)
+
+### 2025-11-07: add_company_id_to_stock_movements
+
+- Added `company_id uuid` to `stock_movements`
+- Backfilled `company_id` from `products.company_id` (via `product_id` FK)
+- Added FK constraint and index on `company_id`
+- Switched RLS to membership-based: `is_company_member(company_id)`
+
+**Status**: ✅ Applied to production
+**Rollback**: Drop FK/index and column (data loss risk if application depends on it)
+
+### 2025-11-07: enforce_text_enums
+
+- Added NOT VALID CHECK constraint `products_category_check` enforcing (`drink`,`food`,`other`)
+- Added NOT VALID CHECK constraint `orders_status_check` enforcing (`pending`,`preparing`,`ready`,`delivered`,`canceled`)
+- Attempted validation; if any existing rows violate, constraints remain NOT VALID pending data cleanup
+- Establishes groundwork for consistent enum mapping across mobile ↔ web sync
+
+**Status**: ✅ Applied to production (may remain NOT VALID if legacy rows exist)
+**Rollback**: `ALTER TABLE ... DROP CONSTRAINT products_category_check;` / `orders_status_check;`
+
+### 2025-11-07: validate_text_enums
+
+- Verified zero rows in `products` and `orders` violate allowed sets
+- Successfully validated `products_category_check` and `orders_status_check` constraints
+- Textual enum integrity now enforced at write-time
+
+**Status**: ✅ Constraints VALIDATED
+**Rollback**: Drop constraints or reintroduce NOT VALID state by recreating them
+
 ---
 
 ## Breaking Changes
