@@ -259,7 +259,7 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
                 {t('dashboard.charts.dailySalesTitle')}
               </CardTitle>
               <CardDescription>
-                {i18n.language === 'pt' ? 'Receita diária (últimos 7 dias)' : ''}
+                {t('dashboard.charts.dailySalesDescription')}
               </CardDescription>
             </CardHeader>
             <CardContent>
