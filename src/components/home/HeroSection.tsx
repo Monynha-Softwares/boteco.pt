@@ -11,6 +11,7 @@ const HeroSection = () => {
 
   return (
     <Hero
+      testId="hero-section"
       title={t('hero.title')}
       subtitle={t('hero.subtitle')}
       action={{ label: t('hero.cta'), href: getLocalizedPath('/contato') }}

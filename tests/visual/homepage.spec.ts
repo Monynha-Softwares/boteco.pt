@@ -17,8 +17,9 @@ test.describe('Home Page Visual Regression', () => {
   });
 
   test('hero section renders correctly', async ({ page }) => {
-    const hero = page.locator('section').first();
-    await hero.waitFor({ state: 'visible' });
+    const hero = page.getByTestId('hero-section');
+    // Allow initial animations/fonts to settle
+    await page.waitForTimeout(300);
     await expect(hero).toHaveScreenshot('hero-section.png');
   });
 

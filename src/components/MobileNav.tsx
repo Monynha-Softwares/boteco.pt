@@ -66,7 +66,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLoca
           variant="ghost"
           size="icon"
           depth="overlay"
-          className="lg:hidden text-boteco-primary-foreground hover:bg-boteco-primary/80 active:scale-98"
+          className="lg:hidden text-boteco-primary-foreground hover:bg-boteco-primary/80 active:scale-98 h-11 w-11 min-h-11 min-w-11"
         >
           <Menu className="h-6 w-6" />
           <span className="sr-only">{t('openMenu', { defaultValue: 'Abrir menu' })}</span>
@@ -81,7 +81,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLoca
             {items.map((item) =>
               item.type === 'mega' && item.items?.length ? (
                 <AccordionItem key={item.id} value={item.id} className="border-b border-border/40">
-                  <AccordionTrigger className="text-left text-lg font-medium text-foreground transition-colors hover:text-boteco-primary">
+                  <AccordionTrigger className="text-left text-lg font-medium text-foreground transition-colors hover:text-boteco-primary min-h-11 py-3">
                     {getLabel(item)}
                   </AccordionTrigger>
                   <AccordionContent className="space-y-2 pb-3">
@@ -90,7 +90,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLoca
                         key={child.id}
                         to={resolveHref(child)}
                         onClick={handleNavigate}
-                        className="block rounded-md bg-muted/40 px-3 py-2 transition-colors hover:bg-muted"
+                        className="block rounded-md bg-muted/40 px-4 py-3 transition-colors hover:bg-muted min-h-11"
                       >
                         <span className="block text-sm font-medium text-foreground">{getLabel(child)}</span>
                         {child.description && (
@@ -105,7 +105,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLoca
                   key={item.id}
                   to={resolveHref(item)}
                   onClick={handleNavigate}
-                  className="block rounded-md px-3 py-2 text-lg font-medium text-foreground transition-colors hover:bg-muted/60 hover:text-boteco-primary"
+                  className="block rounded-md px-4 py-3 text-lg font-medium text-foreground transition-colors hover:bg-muted/60 hover:text-boteco-primary min-h-11"
                 >
                   {getLabel(item)}
                 </Link>
@@ -114,7 +114,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLoca
           </Accordion>
         </nav>
         <div className="flex flex-col space-y-4 mt-auto pb-4">
-          <LanguageSwitcher />
+          {/* Removed duplicate LanguageSwitcher to avoid hidden aria-label collision */}
           <ThemeToggle />
           {hasClerkAuth && (
             <SignedIn>

@@ -20,6 +20,7 @@ type HeroProps = {
   depth?: DepthLevel;
   align?: 'center' | 'start';
   className?: string;
+  testId?: string; // for stable visual + accessibility testing
 };
 
 const Hero = ({
@@ -30,6 +31,7 @@ const Hero = ({
   depth = 'overlay',
   align = 'center',
   className,
+  testId,
 }: HeroProps) => {
   const ActionLink = ({ action: actionToRender, children }: { action: HeroAction; children: ReactNode }) => {
     if (actionToRender.external) {
@@ -54,6 +56,7 @@ const Hero = ({
 
   return (
     <AnimatedSection
+      data-testid={testId}
       depth={depth}
       className={cn(
         'relative overflow-hidden py-20 md:py-28 lg:py-36',

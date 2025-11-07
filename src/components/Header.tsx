@@ -68,6 +68,8 @@ const Header: React.FC = () => {
 
         {isMobile ? (
           <div className="flex items-center space-x-2">
+            {/* Provide language switching on mobile for accessibility & parity */}
+            <LanguageSwitcher />
             <ThemeToggle />
             {hasClerkAuth && (
               <SignedIn>
@@ -91,7 +93,7 @@ const Header: React.FC = () => {
                       <>
                         <NavigationMenuTrigger className={cn(
                           navigationMenuTriggerStyle(),
-                          'bg-transparent text-boteco-primary-foreground transition-colors hover:text-boteco-secondary focus-visible:ring-boteco-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-boteco-primary',
+                          'bg-transparent text-boteco-primary-foreground transition-colors hover:text-boteco-secondary focus-visible:ring-boteco-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-boteco-primary min-h-11',
                         )}>
                           {getLabel(item)}
                         </NavigationMenuTrigger>
@@ -125,7 +127,7 @@ const Header: React.FC = () => {
                       <NavigationMenuLink asChild>
                         <Link
                           to={resolveHref(item)}
-                          className="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-boteco-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-boteco-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-boteco-primary"
+                          className="rounded-md px-4 py-3 text-sm font-medium transition-colors hover:text-boteco-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-boteco-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-boteco-primary min-h-11"
                         >
                           {getLabel(item)}
                         </Link>
