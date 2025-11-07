@@ -270,5 +270,5 @@ The project uses **lucide-react** library for UI icons. These are already integr
 
 ---
 
-*Last Updated: 2025-11-01*
-*Maintained by: Boteco.pt Development Team*
+*Last Updated: 2025-11-07*
+*Maintained by: Monynha Softwares Development Team*

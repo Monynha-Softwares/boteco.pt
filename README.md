@@ -28,6 +28,21 @@ A multilingual (pt/en/es/fr) React SPA for restaurant management built with mode
 pnpm install
 ```
 
+### Environment Setup
+
+1. Copy the example environment file:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. (Optional) Add your Clerk credentials to `.env`:
+   ```bash
+   VITE_CLERK_PUBLISHABLE_KEY=your_key_here
+   VITE_CLERK_FRONTEND_API_URL=https://your-app.clerk.accounts.dev
+   ```
+
+   **Note**: The app works perfectly without Clerk authentication. See `docs/ENVIRONMENT_SETUP.md` for details.
+
 ### Available Scripts
 
 ```bash
@@ -63,6 +78,40 @@ All pull requests and pushes trigger automated checks:
 - ✅ **Lighthouse**: Performance and accessibility audits
 - ✅ **Visual Tests**: Cross-browser screenshot comparisons
 
+## Docker Deployment
+
+### Quick Start
+
+```bash
+# Build the image
+docker build -t boteco-pt:latest .
+
+# Run the container
+docker run -d -p 3000:80 --name boteco-pt boteco-pt:latest
+
+# Or use Docker Compose
+docker-compose up -d
+```
+
+Access at: http://localhost:3000
+
+### Automated Build Script
+
+**Windows (PowerShell)**:
+```powershell
+.\docker-build.ps1
+```
+
+**Linux/Mac (Bash)**:
+```bash
+chmod +x docker-build.sh
+./docker-build.sh
+```
+
+**See also**: 
+- `DOCKER_QUICK_REF.md` - Quick reference for common commands
+- `docs/DOCKER_DEPLOYMENT.md` - Comprehensive deployment guide
+
 ## Architecture
 
 - **Frontend**: React 18 + TypeScript + Vite
@@ -74,4 +123,21 @@ All pull requests and pushes trigger automated checks:
 
 ## Documentation
 
-See [AGENTS.md](./AGENTS.md) for detailed coding conventions and architecture patterns.
+- **[AGENTS.md](./AGENTS.md)** - Comprehensive AI agent instructions and architecture patterns
+- **[docs/README.md](./docs/README.md)** - Technical documentation index
+- **[.github/copilot-instructions.md](./.github/copilot-instructions.md)** - Concise AI coding guidelines
+
+## About
+
+**Boteco.pt** is developed and maintained by [Monynha Softwares](https://github.com/Monynha-Softwares).
+
+### Links
+
+- **Organization**: [github.com/Monynha-Softwares](https://github.com/Monynha-Softwares)
+- **Repository**: [github.com/Monynha-Softwares/boteco.pt](https://github.com/Monynha-Softwares/boteco.pt)
+- **Issues**: [Report a bug or request a feature](https://github.com/Monynha-Softwares/boteco.pt/issues)
+- **Discussions**: [Join the conversation](https://github.com/Monynha-Softwares/boteco.pt/discussions)
+
+## License
+
+© 2025 Monynha Softwares. All rights reserved.
