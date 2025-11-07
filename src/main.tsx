@@ -9,6 +9,7 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "./components/ThemeProvider.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { CompanyProvider } from "./contexts/CompanyContext.tsx";
 
 // Obtenha a chave pública do Clerk do ambiente
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -34,7 +35,9 @@ const wrapWithProviders = (node: ReactNode) => (
     <I18nextProvider i18n={i18n}>
       <HelmetProvider>
         <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-          {node}
+          <CompanyProvider>
+            {node}
+          </CompanyProvider>
         </ThemeProvider>
       </HelmetProvider>
     </I18nextProvider>
