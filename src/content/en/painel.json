@@ -12,6 +12,12 @@
       { "id": "weekRevenue", "title": "Sales (7d)", "description": "Sales total over the last 7 days." },
       { "id": "monthRevenue", "title": "Sales (30d)", "description": "Sales total over the last 30 days." }
     ]
+    ,
+    "charts": {
+      "dailySalesTitle": "Sales last 7 days",
+      "paymentMethodsTitle": "Sales by payment method",
+      "empty": "Not enough data to display chart." 
+    }
   },
   "cards": [
     {

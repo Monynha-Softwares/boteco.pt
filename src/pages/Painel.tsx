@@ -16,7 +16,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Progress } from '@/components/ui/progress';
 import { hasClerkAuth } from '@/utils/clerk';
 import { useCompany } from '@/contexts/CompanyContext';
-import { getTodaysSalesTotal, getPeriodSalesTotal } from '@/lib/api/sales';
+import { getTodaysSalesTotal, getPeriodSalesTotal, getSalesByPaymentMethod, getRecentDailySales } from '@/lib/api/sales';
 import { getActiveOrders } from '@/lib/api/orders';
 import { getLowStockProducts } from '@/lib/api/products';
 import { supabase } from '@/lib/supabase';
@@ -76,6 +76,20 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
     queryFn: () => getPeriodSalesTotal(companyId!, 30),
     enabled: !!companyId,
     staleTime: 5 * 60 * 1000,
+  });
+
+  const paymentMethodQuery = useQuery({
+    queryKey: ['dashboard', 'paymentMethods', companyId],
+    queryFn: () => getSalesByPaymentMethod(companyId!, undefined, undefined),
+    enabled: !!companyId,
+    staleTime: 5 * 60 * 1000,
+  });
+
+  const dailySalesQuery = useQuery({
+    queryKey: ['dashboard', 'dailySales', companyId],
+    queryFn: () => getRecentDailySales(companyId!, 7),
+    enabled: !!companyId,
+    staleTime: 60 * 1000,
   });
 
   const activeOrdersQuery = useQuery({
@@ -217,6 +231,82 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
         locale={i18n.language}
       />
       <div className="space-y-6">
+        {/* Charts */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Card depth="surface">
+            <CardHeader>
+              <CardTitle className="text-lg text-boteco-neutral">
+                {t('dashboard.charts.dailySalesTitle')}
+              </CardTitle>
+              <CardDescription>
+                {i18n.language === 'pt' ? 'Receita diária (últimos 7 dias)' : ''}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {dailySalesQuery.isLoading ? (
+                <Skeleton className="h-64 w-full" />
+              ) : dailySalesQuery.data && dailySalesQuery.data.length > 0 ? (
+                <div className="h-64">
+                  {/* Simple SVG-based sparkline fallback to avoid heavy Recharts code here */}
+                  <svg width="100%" height="100%" viewBox="0 0 100 40" preserveAspectRatio="none">
+                    {(() => {
+                      const vals = dailySalesQuery.data.map(d => d.total);
+                      const max = Math.max(...vals, 1);
+                      const points = dailySalesQuery.data.map((d, idx) => {
+                        const x = (idx / Math.max(dailySalesQuery.data!.length - 1, 1)) * 100;
+                        const y = 40 - (d.total / max) * 36 - 2;
+                        return `${x},${y}`;
+                      }).join(' ');
+                      return (
+                        <>
+                          <polyline fill="none" stroke="hsl(var(--boteco-secondary))" strokeWidth="1.5" points={points} />
+                          {dailySalesQuery.data.map((d, idx) => {
+                            const x = (idx / Math.max(dailySalesQuery.data!.length - 1, 1)) * 100;
+                            const y = 40 - (d.total / max) * 36 - 2;
+                            return <circle key={idx} cx={x} cy={y} r={0.8} fill="hsl(var(--boteco-secondary))" />;
+                          })}
+                        </>
+                      );
+                    })()}
+                  </svg>
+                </div>
+              ) : (
+                <p className="text-sm text-boteco-neutral/60">{t('dashboard.charts.empty')}</p>
+              )}
+            </CardContent>
+          </Card>
+
+          <Card depth="surface">
+            <CardHeader>
+              <CardTitle className="text-lg text-boteco-neutral">
+                {t('dashboard.charts.paymentMethodsTitle')}
+              </CardTitle>
+              <CardDescription>
+                {i18n.language === 'pt' ? 'Distribuição por método' : ''}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {paymentMethodQuery.isLoading ? (
+                <Skeleton className="h-64 w-full" />
+              ) : paymentMethodQuery.data && Object.keys(paymentMethodQuery.data).length > 0 ? (
+                <div className="grid grid-cols-1 gap-2">
+                  {Object.entries(paymentMethodQuery.data).map(([method, total]) => (
+                    <div key={method} className="flex items-center gap-3">
+                      <div className="h-2 w-2 rounded-sm bg-boteco-secondary" />
+                      <div className="flex-1 text-sm text-boteco-neutral/80 capitalize">{method.replace(/_/g, ' ')}</div>
+                      <div className="font-mono text-sm text-boteco-neutral">
+                        {new Intl.NumberFormat(i18n.language, { style: 'currency', currency: 'BRL', minimumFractionDigits: 0 }).format(total)}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-boteco-neutral/60">{t('dashboard.charts.empty')}</p>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Operational metrics (Supabase) */}
         <div className="space-y-3">
           <h2 className="text-2xl font-semibold text-boteco-primary">

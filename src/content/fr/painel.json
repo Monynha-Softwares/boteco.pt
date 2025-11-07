@@ -32,6 +32,12 @@
         "description": "Total des ventes sur les 30 derniers jours."
       }
     ]
+    ,
+    "charts": {
+      "dailySalesTitle": "Ventes sur les 7 derniers jours",
+      "paymentMethodsTitle": "Ventes par mode de paiement",
+      "empty": "Pas assez de données pour afficher le graphique." 
+    }
   },
   "cards": [
     {

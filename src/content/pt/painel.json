@@ -32,6 +32,12 @@
         "description": "Total de vendas nos últimos 30 dias."
       }
     ]
+    ,
+    "charts": {
+      "dailySalesTitle": "Vendas últimos 7 dias",
+      "paymentMethodsTitle": "Vendas por método de pagamento",
+      "empty": "Sem dados suficientes para exibir o gráfico." 
+    }
   },
   "sidebar": {
     "subtitle": "Painel de Controle",
