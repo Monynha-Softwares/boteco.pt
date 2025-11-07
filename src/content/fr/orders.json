@@ -1,0 +1,84 @@
+{
+  "title": "Gestion des Commandes",
+  "description": "Gérer les commandes actives et l'historique",
+  "newOrder": "Nouvelle Commande",
+  "searchPlaceholder": "Rechercher des commandes...",
+  "filterAll": "Toutes",
+  "filterPending": "En Attente",
+  "filterPreparing": "En Préparation",
+  "filterReady": "Prêtes",
+  "filterDelivered": "Livrées",
+  "filterCanceled": "Annulées",
+  "emptyState": {
+    "title": "Aucune commande trouvée",
+    "description": "Les commandes apparaîtront ici lorsqu'elles seront créées",
+    "action": "Créer Première Commande"
+  },
+  "table": {
+    "number": "N°",
+    "table": "Table",
+    "items": "Articles",
+    "total": "Total",
+    "status": "Statut",
+    "created": "Créée",
+    "actions": "Actions"
+  },
+  "status": {
+    "pending": "En Attente",
+    "preparing": "En Préparation",
+    "ready": "Prête",
+    "delivered": "Livrée",
+    "canceled": "Annulée"
+  },
+  "form": {
+    "createTitle": "Nouvelle Commande",
+    "editTitle": "Modifier Commande",
+    "selectTable": "Sélectionner Table",
+    "selectTablePlaceholder": "Choisissez une table",
+    "addItem": "Ajouter Article",
+    "product": "Produit",
+    "quantity": "Qté",
+    "price": "Prix",
+    "subtotal": "Sous-total",
+    "total": "Total",
+    "remove": "Retirer",
+    "noItems": "Aucun article",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "saving": "Enregistrement..."
+  },
+  "actions": {
+    "view": "Voir Détails",
+    "edit": "Modifier",
+    "changeStatus": "Changer Statut",
+    "cancel": "Annuler Commande",
+    "complete": "Finaliser"
+  },
+  "details": {
+    "title": "Détails de la Commande",
+    "orderNumber": "Commande #",
+    "table": "Table",
+    "status": "Statut",
+    "created": "Créée le",
+    "updated": "Mise à jour le",
+    "items": "Articles",
+    "total": "Total",
+    "close": "Fermer"
+  },
+  "cancel": {
+    "title": "Annuler Commande",
+    "description": "Êtes-vous sûr de vouloir annuler cette commande ?",
+    "cancel": "Non",
+    "confirm": "Oui, Annuler"
+  },
+  "toast": {
+    "createSuccess": "Commande créée avec succès",
+    "createError": "Erreur lors de la création de la commande",
+    "updateSuccess": "Commande mise à jour avec succès",
+    "updateError": "Erreur lors de la mise à jour de la commande",
+    "cancelSuccess": "Commande annulée avec succès",
+    "cancelError": "Erreur lors de l'annulation de la commande",
+    "statusSuccess": "Statut mis à jour avec succès",
+    "statusError": "Erreur lors de la mise à jour du statut"
+  }
+}

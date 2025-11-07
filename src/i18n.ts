@@ -18,6 +18,7 @@ import ptIntegracoes from './content/pt/integracoes.json';
 import ptCommon from './content/pt/common.json';
 import ptTablesFloor from './content/pt/tables-floor.json';
 import ptProducts from './content/pt/products.json';
+import ptOrders from './content/pt/orders.json';
 
 import enHome from './content/en/home.json';
 import enAbout from './content/en/about.json';
@@ -34,6 +35,7 @@ import enIntegracoes from './content/en/integracoes.json';
 import enCommon from './content/en/common.json';
 import enTablesFloor from './content/en/tables-floor.json';
 import enProducts from './content/en/products.json';
+import enOrders from './content/en/orders.json';
 
 import esHome from './content/es/home.json';
 import esAbout from './content/es/about.json';
@@ -50,6 +52,7 @@ import esIntegracoes from './content/es/integracoes.json';
 import esCommon from './content/es/common.json';
 import esTablesFloor from './content/es/tables-floor.json';
 import esProducts from './content/es/products.json';
+import esOrders from './content/es/orders.json';
 
 import frHome from './content/fr/home.json';
 import frAbout from './content/fr/about.json';
@@ -66,6 +69,7 @@ import frIntegracoes from './content/fr/integracoes.json';
 import frCommon from './content/fr/common.json';
 import frTablesFloor from './content/fr/tables-floor.json';
 import frProducts from './content/fr/products.json';
+import frOrders from './content/fr/orders.json';
 
 const resources = {
   pt: {
@@ -84,6 +88,7 @@ const resources = {
     common: ptCommon,
     'tables-floor': ptTablesFloor,
     products: ptProducts,
+  orders: ptOrders,
   },
   en: {
     home: enHome,
@@ -101,6 +106,7 @@ const resources = {
     common: enCommon,
     'tables-floor': enTablesFloor,
     products: enProducts,
+  orders: enOrders,
   },
   es: {
     home: esHome,
@@ -118,6 +124,7 @@ const resources = {
     common: esCommon,
     'tables-floor': esTablesFloor,
     products: esProducts,
+  orders: esOrders,
   },
   fr: {
     home: frHome,
@@ -135,6 +142,7 @@ const resources = {
     common: frCommon,
     'tables-floor': frTablesFloor,
     products: frProducts,
+  orders: frOrders,
   },
 };
 
@@ -164,6 +172,7 @@ i18n
       'common',
       'tables-floor',
       'products',
+  'orders',
     ],
     defaultNS: 'home',
     detection: {
