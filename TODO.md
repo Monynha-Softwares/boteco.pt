@@ -372,42 +372,75 @@ export const CompanyProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
 
 
-**Path**: `/painel`  ### Phase 3: Build & Validation ✅ Complete
+**Path**: `/painel`
 
-**Component**: `src/pages/Painel.tsx` (already exists, needs Supabase integration)- [x] Run `npm run build` successfully
+**Component**: `src/pages/Painel.tsx` (already exists, needs Supabase integration)
 
-- [x] Test in preview mode (manual testing done)
+**Status**: ✅ **COMPLETE** - All core metrics and charts implemented!
 
 **Tasks**:
 
-- [x] Visual regression test with Playwright (manual screenshots taken)
-- [x] Cross-browser testing (assets are SVG, universally supported)
-- [ ] Replace mock data with real Supabase queries
-- [ ] Implement dashboard metrics:
+- [x] Replace mock data with real Supabase queries
+- [x] Implement dashboard metrics:
   - [x] Total sales (today)
   - [x] Total sales (week)
   - [x] Total sales (month)
   - [x] Active orders count
   - [x] Low stock alerts
-  - [ ] Table occupancy rate
+  - [x] Table occupancy rate
 - [x] Add real-time updates for active orders
-- [ ] Create dashboard analytics charts (using shadcn/ui Chart components)
+- [x] Create dashboard analytics charts (lightweight SVG):
+  - [x] 7-day sales sparkline chart
+  - [x] Sales by payment method breakdown
+- [x] Add empty-state UX when no company selected
+- [ ] Add date range selector for custom periods
+- [ ] Implement export to PDF/CSV
 
-- [ ] Add date range selector
+**Completed APIs**:
+- `src/lib/api/sales.ts` - Sales aggregation and metrics
+- `src/lib/api/orders.ts` - Active orders and counts
+- `src/lib/api/products.ts` - Low stock alerts
+- `src/lib/api/tables.ts` - Table occupancy metrics
 
-- [ ] Implement export to PDF/CSV## Tools & Resources
+**Realtime Features**:
+- Real-time subscriptions on `orders`, `sales`, `products` tables
+- Automatic refetch on data changes scoped by `company_id`
 
+---
 
+### 2.2 Dashboard Enhancements (NEXT)
 
-**Supabase Queries Needed**:### Recommended Tools
+**Priority**: 🟡 Medium  
+**Estimated Time**: 6 hours
 
-- **Vector Editing**: Figma, Adobe Illustrator, or Inkscape
+**Tasks**:
 
-```typescript- **SVG Optimization**: SVGO, SVGOMG (web interface)
+- [ ] Add date range selector (DateRangePicker from shadcn/ui)
+  - Custom periods (last 7/30/90 days, custom range)
+  - Update all metrics based on selected range
+  - Persist selection in localStorage
+- [ ] Implement CSV export for dashboard data
+  - Export sales data to CSV
+  - Export orders list to CSV
+  - Export low stock report to CSV
+- [ ] Add trend indicators to metric cards
+  - Show percentage change vs previous period
+  - Up/down arrows with color coding
+  - Tooltip with historical comparison
+- [ ] Add more chart types
+  - Sales by hour of day (bar chart)
+  - Top products by revenue (horizontal bar)
+  - Order status distribution (pie/donut chart)
 
-// Get today's sales total- **Color Conversion**: [HSL to HEX converter](https://www.rapidtables.com/convert/color/hsl-to-hex.html)
+---
 
-const getTodaysSales = () => supabase- **Contrast Checker**: [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
+## Phase 3: Operations Module
+
+### 3.1 Tables & Orders - Floor View
+
+**Priority**: 🔴 High  
+**Estimated Time**: 12 hours
+
 
   .from('sales')- **Image Optimization**: ImageOptim, TinyPNG
 
