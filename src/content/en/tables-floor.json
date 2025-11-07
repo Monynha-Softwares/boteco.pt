@@ -1,0 +1,21 @@
+{
+  "title": "Floor View",
+  "subtitle": "Monitor and manage the status of all tables in real-time",
+  "description": "Manage table status in real-time",
+  "noCompany": {
+    "title": "Select a company",
+    "helper": "Choose a company to view the floor."
+  },
+  "status": {
+    "available": "Available",
+    "occupied": "Occupied",
+    "reserved": "Reserved",
+    "maintenance": "Maintenance"
+  },
+  "seats": "seat",
+  "seats_plural": "seats",
+  "actions": {
+    "changeStatus": "Change status"
+  },
+  "empty": "No tables registered yet."
+}

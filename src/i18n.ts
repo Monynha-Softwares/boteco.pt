@@ -16,6 +16,7 @@ import ptFidelidade from './content/pt/fidelidade.json';
 import ptEventos from './content/pt/eventos.json';
 import ptIntegracoes from './content/pt/integracoes.json';
 import ptCommon from './content/pt/common.json';
+import ptTablesFloor from './content/pt/tables-floor.json';
 
 import enHome from './content/en/home.json';
 import enAbout from './content/en/about.json';
@@ -30,6 +31,7 @@ import enFidelidade from './content/en/fidelidade.json';
 import enEventos from './content/en/eventos.json';
 import enIntegracoes from './content/en/integracoes.json';
 import enCommon from './content/en/common.json';
+import enTablesFloor from './content/en/tables-floor.json';
 
 import esHome from './content/es/home.json';
 import esAbout from './content/es/about.json';
@@ -44,6 +46,7 @@ import esFidelidade from './content/es/fidelidade.json';
 import esEventos from './content/es/eventos.json';
 import esIntegracoes from './content/es/integracoes.json';
 import esCommon from './content/es/common.json';
+import esTablesFloor from './content/es/tables-floor.json';
 
 import frHome from './content/fr/home.json';
 import frAbout from './content/fr/about.json';
@@ -58,6 +61,7 @@ import frFidelidade from './content/fr/fidelidade.json';
 import frEventos from './content/fr/eventos.json';
 import frIntegracoes from './content/fr/integracoes.json';
 import frCommon from './content/fr/common.json';
+import frTablesFloor from './content/fr/tables-floor.json';
 
 const resources = {
   pt: {
@@ -74,6 +78,7 @@ const resources = {
     eventos: ptEventos,
     integracoes: ptIntegracoes,
     common: ptCommon,
+    'tables-floor': ptTablesFloor,
   },
   en: {
     home: enHome,
@@ -89,6 +94,7 @@ const resources = {
     eventos: enEventos,
     integracoes: enIntegracoes,
     common: enCommon,
+    'tables-floor': enTablesFloor,
   },
   es: {
     home: esHome,
@@ -104,6 +110,7 @@ const resources = {
     eventos: esEventos,
     integracoes: esIntegracoes,
     common: esCommon,
+    'tables-floor': esTablesFloor,
   },
   fr: {
     home: frHome,
@@ -119,6 +126,7 @@ const resources = {
     eventos: frEventos,
     integracoes: frIntegracoes,
     common: frCommon,
+    'tables-floor': frTablesFloor,
   },
 };
 
@@ -146,6 +154,7 @@ i18n
       'eventos',
       'integracoes',
       'common',
+      'tables-floor',
     ],
     defaultNS: 'home',
     detection: {
