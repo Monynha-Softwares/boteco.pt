@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { SidebarProvider, SidebarInset, SidebarTrigger } from '@/components/ui/sidebar';
 import { AdminSidebar } from '@/components/AdminSidebar';
+import { CompanySelector } from '@/components/CompanySelector';
 import { Separator } from '@/components/ui/separator';
 import {
   Breadcrumb,
@@ -84,6 +85,9 @@ export const AdminLayout: React.FC = () => {
                 ))}
               </BreadcrumbList>
             </Breadcrumb>
+          </div>
+          <div className="flex items-center gap-2">
+            <CompanySelector />
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 md:p-6">
