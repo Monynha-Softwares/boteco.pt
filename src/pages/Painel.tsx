@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useUser } from '@clerk/clerk-react';
-import { Users, Sparkles, BadgeCheck, Timer } from 'lucide-react';
+import { Users, Sparkles, BadgeCheck, Timer, DollarSign, ShoppingBasket, PackageOpen } from 'lucide-react';
 import Seo from '@/components/Seo';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -15,6 +15,11 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Progress } from '@/components/ui/progress';
 import { hasClerkAuth } from '@/utils/clerk';
+import { useCompany } from '@/contexts/CompanyContext';
+import { getTodaysSalesTotal, getPeriodSalesTotal, getSalesByPaymentMethod, getRecentDailySales } from '@/lib/api/sales';
+import { getActiveOrders } from '@/lib/api/orders';
+import { getLowStockProducts } from '@/lib/api/products';
+import { supabase } from '@/lib/supabase';
 
 const cardIcons: Record<string, React.ReactNode> = {
   totalLeads: <Users className="h-8 w-8 text-boteco-secondary" />,
@@ -41,12 +46,95 @@ interface PainelContentProps {
 
 const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
   const { t, i18n } = useTranslation('painel');
+  const { selectedCompany } = useCompany();
 
   const query = useQuery({
     queryKey: CONTACT_REQUESTS_QUERY_KEY,
     queryFn: getContactRequests,
     staleTime: 60 * 1000,
   });
+
+  // Dashboard metrics (Supabase-backed)
+  const companyId = selectedCompany?.id;
+
+  const todaySalesQuery = useQuery({
+    queryKey: ['dashboard', 'todaySales', companyId],
+    queryFn: () => getTodaysSalesTotal(companyId!),
+    enabled: !!companyId,
+    staleTime: 30 * 1000,
+  });
+
+  const weekSalesQuery = useQuery({
+    queryKey: ['dashboard', 'weekSales', companyId],
+    queryFn: () => getPeriodSalesTotal(companyId!, 7),
+    enabled: !!companyId,
+    staleTime: 60 * 1000,
+  });
+
+  const monthSalesQuery = useQuery({
+    queryKey: ['dashboard', 'monthSales', companyId],
+    queryFn: () => getPeriodSalesTotal(companyId!, 30),
+    enabled: !!companyId,
+    staleTime: 5 * 60 * 1000,
+  });
+
+  const paymentMethodQuery = useQuery({
+    queryKey: ['dashboard', 'paymentMethods', companyId],
+    queryFn: () => getSalesByPaymentMethod(companyId!, undefined, undefined),
+    enabled: !!companyId,
+    staleTime: 5 * 60 * 1000,
+  });
+
+  const dailySalesQuery = useQuery({
+    queryKey: ['dashboard', 'dailySales', companyId],
+    queryFn: () => getRecentDailySales(companyId!, 7),
+    enabled: !!companyId,
+    staleTime: 60 * 1000,
+  });
+
+  const activeOrdersQuery = useQuery({
+    queryKey: ['dashboard', 'activeOrders', companyId],
+    queryFn: async () => {
+      const orders = await getActiveOrders(companyId!);
+      return orders.length;
+    },
+    enabled: !!companyId,
+    staleTime: 15 * 1000,
+  });
+
+  const lowStockQuery = useQuery({
+    queryKey: ['dashboard', 'lowStock', companyId],
+    queryFn: async () => {
+      const lowStock = await getLowStockProducts(companyId!);
+      return lowStock.length;
+    },
+    enabled: !!companyId,
+    staleTime: 60 * 1000,
+  });
+
+  // Realtime subscriptions to keep queries fresh
+  React.useEffect(() => {
+    if (!companyId) return;
+
+    const channel = supabase
+      .channel('dashboard-realtime')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'orders', filter: `company_id=eq.${companyId}` }, () => {
+        activeOrdersQuery.refetch();
+      })
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'sales', filter: `company_id=eq.${companyId}` }, () => {
+        todaySalesQuery.refetch();
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'products', filter: `company_id=eq.${companyId}` }, () => {
+        lowStockQuery.refetch();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+    // We only want to (re)subscribe when company changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [companyId]);
 
   const metrics = React.useMemo(() => {
     if (!query.data) {
@@ -68,6 +156,12 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
 
   const cards = t('cards', { returnObjects: true }) as {
     id: string;
+    title: string;
+    description: string;
+  }[];
+
+  const opsCards = t('dashboard.cards', { returnObjects: true }) as {
+    id: 'todayRevenue' | 'activeOrders' | 'lowStock' | 'weekRevenue' | 'monthRevenue';
     title: string;
     description: string;
   }[];
@@ -137,6 +231,170 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
         locale={i18n.language}
       />
       <div className="space-y-6">
+        {/* Charts */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Card depth="surface">
+            <CardHeader>
+              <CardTitle className="text-lg text-boteco-neutral">
+                {t('dashboard.charts.dailySalesTitle')}
+              </CardTitle>
+              <CardDescription>
+                {i18n.language === 'pt' ? 'Receita diária (últimos 7 dias)' : ''}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {dailySalesQuery.isLoading ? (
+                <Skeleton className="h-64 w-full" />
+              ) : dailySalesQuery.data && dailySalesQuery.data.length > 0 ? (
+                <div className="h-64">
+                  {/* Simple SVG-based sparkline fallback to avoid heavy Recharts code here */}
+                  <svg width="100%" height="100%" viewBox="0 0 100 40" preserveAspectRatio="none">
+                    {(() => {
+                      const vals = dailySalesQuery.data.map(d => d.total);
+                      const max = Math.max(...vals, 1);
+                      const points = dailySalesQuery.data.map((d, idx) => {
+                        const x = (idx / Math.max(dailySalesQuery.data!.length - 1, 1)) * 100;
+                        const y = 40 - (d.total / max) * 36 - 2;
+                        return `${x},${y}`;
+                      }).join(' ');
+                      return (
+                        <>
+                          <polyline fill="none" stroke="hsl(var(--boteco-secondary))" strokeWidth="1.5" points={points} />
+                          {dailySalesQuery.data.map((d, idx) => {
+                            const x = (idx / Math.max(dailySalesQuery.data!.length - 1, 1)) * 100;
+                            const y = 40 - (d.total / max) * 36 - 2;
+                            return <circle key={idx} cx={x} cy={y} r={0.8} fill="hsl(var(--boteco-secondary))" />;
+                          })}
+                        </>
+                      );
+                    })()}
+                  </svg>
+                </div>
+              ) : (
+                <p className="text-sm text-boteco-neutral/60">{t('dashboard.charts.empty')}</p>
+              )}
+            </CardContent>
+          </Card>
+
+          <Card depth="surface">
+            <CardHeader>
+              <CardTitle className="text-lg text-boteco-neutral">
+                {t('dashboard.charts.paymentMethodsTitle')}
+              </CardTitle>
+              <CardDescription>
+                {i18n.language === 'pt' ? 'Distribuição por método' : ''}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {paymentMethodQuery.isLoading ? (
+                <Skeleton className="h-64 w-full" />
+              ) : paymentMethodQuery.data && Object.keys(paymentMethodQuery.data).length > 0 ? (
+                <div className="grid grid-cols-1 gap-2">
+                  {Object.entries(paymentMethodQuery.data).map(([method, total]) => (
+                    <div key={method} className="flex items-center gap-3">
+                      <div className="h-2 w-2 rounded-sm bg-boteco-secondary" />
+                      <div className="flex-1 text-sm text-boteco-neutral/80 capitalize">{method.replace(/_/g, ' ')}</div>
+                      <div className="font-mono text-sm text-boteco-neutral">
+                        {new Intl.NumberFormat(i18n.language, { style: 'currency', currency: 'BRL', minimumFractionDigits: 0 }).format(total)}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-boteco-neutral/60">{t('dashboard.charts.empty')}</p>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Operational metrics (Supabase) */}
+        <div className="space-y-3">
+          <h2 className="text-2xl font-semibold text-boteco-primary">
+            {t('dashboard.opsTitle')}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {opsCards.map((card) => {
+              const isLoading = (() => {
+                switch (card.id) {
+                  case 'todayRevenue':
+                    return todaySalesQuery.isLoading;
+                  case 'activeOrders':
+                    return activeOrdersQuery.isLoading;
+                  case 'lowStock':
+                    return lowStockQuery.isLoading;
+                  case 'weekRevenue':
+                    return weekSalesQuery.isLoading;
+                  case 'monthRevenue':
+                    return monthSalesQuery.isLoading;
+                  default:
+                    return false;
+                }
+              })();
+
+              const rawValue = (() => {
+                switch (card.id) {
+                  case 'todayRevenue':
+                    return todaySalesQuery.data ?? 0;
+                  case 'activeOrders':
+                    return activeOrdersQuery.data ?? 0;
+                  case 'lowStock':
+                    return lowStockQuery.data ?? 0;
+                  case 'weekRevenue':
+                    return weekSalesQuery.data ?? 0;
+                  case 'monthRevenue':
+                    return monthSalesQuery.data ?? 0;
+                  default:
+                    return 0;
+                }
+              })();
+
+              const isCurrency = ['todayRevenue', 'weekRevenue', 'monthRevenue'].includes(card.id);
+              const displayValue = isCurrency
+                ? new Intl.NumberFormat(i18n.language, { style: 'currency', currency: 'BRL', minimumFractionDigits: 0 }).format(rawValue)
+                : numberFormatter.format(rawValue);
+
+              const icon =
+                card.id === 'todayRevenue' ? (
+                  <DollarSign className="h-8 w-8 text-boteco-secondary" />
+                ) : card.id === 'activeOrders' ? (
+                  <ShoppingBasket className="h-8 w-8 text-boteco-secondary" />
+                ) : (
+                  <PackageOpen className="h-8 w-8 text-boteco-secondary" />
+                );
+
+              return (
+                <Card
+                  key={card.id}
+                  depth="overlay"
+                  className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-lg font-medium text-boteco-neutral">
+                      {card.title}
+                    </CardTitle>
+                    {icon}
+                  </CardHeader>
+                  <CardContent>
+                    {isLoading ? (
+                      <>
+                        <Skeleton className="h-8 w-24 mb-2" />
+                        <Skeleton className="h-4 w-32" />
+                      </>
+                    ) : (
+                      <>
+                        <div className="text-3xl font-bold text-boteco-primary">
+                          {displayValue}
+                        </div>
+                        <p className="text-xs text-boteco-neutral/80">{card.description}</p>
+                      </>
+                    )}
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+
         <div>
           <h1 className="text-3xl font-bold text-boteco-primary">
             {t('greeting', { userName })}

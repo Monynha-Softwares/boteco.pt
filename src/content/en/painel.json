@@ -3,6 +3,22 @@
   "guest": "Guest",
   "title": "Control Panel",
   "demoNotice": "(Sample data for demonstration – future integration with internal API)",
+  "dashboard": {
+    "opsTitle": "Operational overview",
+    "cards": [
+      { "id": "todayRevenue", "title": "Sales today", "description": "Total sales since midnight." },
+      { "id": "activeOrders", "title": "Active orders", "description": "Orders open or in progress." },
+      { "id": "lowStock", "title": "Stock alerts", "description": "Products below minimum stock." },
+      { "id": "weekRevenue", "title": "Sales (7d)", "description": "Sales total over the last 7 days." },
+      { "id": "monthRevenue", "title": "Sales (30d)", "description": "Sales total over the last 30 days." }
+    ]
+    ,
+    "charts": {
+      "dailySalesTitle": "Sales last 7 days",
+      "paymentMethodsTitle": "Sales by payment method",
+      "empty": "Not enough data to display chart." 
+    }
+  },
   "cards": [
     {
       "id": "totalLeads",

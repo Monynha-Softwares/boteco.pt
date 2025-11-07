@@ -3,6 +3,42 @@
   "guest": "Invitado",
   "title": "Panel de control",
   "demoNotice": "(Datos de ejemplo para demostración – futura integración con API interna)",
+  "dashboard": {
+    "opsTitle": "Resumen operativo",
+    "cards": [
+      {
+        "id": "todayRevenue",
+        "title": "Ventas de hoy",
+        "description": "Ventas totales desde medianoche."
+      },
+      {
+        "id": "activeOrders",
+        "title": "Pedidos activos",
+        "description": "Pedidos abiertos o en progreso."
+      },
+      {
+        "id": "lowStock",
+        "title": "Alertas de stock",
+        "description": "Productos por debajo del stock mínimo."
+      },
+      {
+        "id": "weekRevenue",
+        "title": "Ventas (7d)",
+        "description": "Total de ventas en los últimos 7 días."
+      },
+      {
+        "id": "monthRevenue",
+        "title": "Ventas (30d)",
+        "description": "Total de ventas en los últimos 30 días."
+      }
+    ]
+    ,
+    "charts": {
+      "dailySalesTitle": "Ventas últimos 7 días",
+      "paymentMethodsTitle": "Ventas por método de pago",
+      "empty": "No hay suficientes datos para mostrar el gráfico." 
+    }
+  },
   "cards": [
     {
       "id": "totalLeads",

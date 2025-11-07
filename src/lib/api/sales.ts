@@ -172,3 +172,46 @@ export const getSalesByPaymentMethod = async (
     handleSupabaseError(error, 'getSalesByPaymentMethod');
   }
 };
+
+/**
+ * Get recent daily sales totals
+ *
+ * @param companyId - Company ID filter
+ * @param days - Number of past days (default 7)
+ * @returns Promise resolving to array of { date: string (YYYY-MM-DD), total: number }
+ */
+export const getRecentDailySales = async (
+  companyId: string,
+  days = 7
+): Promise<{ date: string; total: number }[]> => {
+  try {
+    const startDate = new Date();
+    startDate.setDate(startDate.getDate() - (days - 1));
+    startDate.setHours(0, 0, 0, 0);
+
+    const { data, error } = await supabase
+      .from('sales')
+      .select('sale_date, total')
+      .eq('company_id', companyId)
+      .gte('sale_date', startDate.toISOString());
+
+    if (error) throw error;
+
+    // Build a map for each day to ensure zero totals appear
+    const dailyMap: Record<string, number> = {};
+    for (let i = 0; i < days; i++) {
+      const d = new Date(startDate.getTime());
+      d.setDate(startDate.getDate() + i);
+      dailyMap[d.toISOString().slice(0, 10)] = 0;
+    }
+
+    data?.forEach((sale) => {
+      const key = new Date(sale.sale_date).toISOString().slice(0, 10);
+      dailyMap[key] = (dailyMap[key] || 0) + sale.total;
+    });
+
+    return Object.entries(dailyMap).map(([date, total]) => ({ date, total }));
+  } catch (error) {
+    handleSupabaseError(error, 'getRecentDailySales');
+  }
+};
