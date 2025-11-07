@@ -136,15 +136,17 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
         ogDescription={pageDescription}
         locale={i18n.language}
       />
-      <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-4 text-boteco-primary">
-          {t('greeting', { userName })}
-        </h1>
-        <p className="text-xl text-boteco-neutral/90 mb-4">{t('title')}</p>
-        <p className="text-sm text-boteco-neutral/80 mb-8 italic">{t('demoNotice')}</p>
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold text-boteco-primary">
+            {t('greeting', { userName })}
+          </h1>
+          <p className="text-lg text-boteco-neutral/90 mt-1">{t('title')}</p>
+          <p className="text-sm text-boteco-neutral/70 mt-1 italic">{t('demoNotice')}</p>
+        </div>
 
         {query.isError && (
-          <Alert variant="destructive" className="mb-8">
+          <Alert variant="destructive">
             <AlertTitle>{t('errors.title')}</AlertTitle>
             <AlertDescription className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <span>{t('errors.leadsLoad')}</span>
