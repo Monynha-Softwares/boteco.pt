@@ -142,9 +142,8 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
       supabase.removeChannel(channel);
     };
     // We only want to (re)subscribe when company changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [companyId]);
 
+  }, [companyId, activeOrdersQuery.refetch, todaySalesQuery.refetch, lowStockQuery.refetch]);
   const metrics = React.useMemo(() => {
     if (!query.data) {
       return null;
