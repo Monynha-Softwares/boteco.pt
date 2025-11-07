@@ -20,6 +20,16 @@
         "id": "lowStock",
         "title": "Alertas de estoque",
         "description": "Produtos abaixo do estoque mínimo."
+      },
+      {
+        "id": "weekRevenue",
+        "title": "Vendas (7d)",
+        "description": "Total de vendas nos últimos 7 dias."
+      },
+      {
+        "id": "monthRevenue",
+        "title": "Vendas (30d)",
+        "description": "Total de vendas nos últimos 30 dias."
       }
     ]
   },

@@ -16,7 +16,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Progress } from '@/components/ui/progress';
 import { hasClerkAuth } from '@/utils/clerk';
 import { useCompany } from '@/contexts/CompanyContext';
-import { getTodaysSalesTotal } from '@/lib/api/sales';
+import { getTodaysSalesTotal, getPeriodSalesTotal } from '@/lib/api/sales';
 import { getActiveOrders } from '@/lib/api/orders';
 import { getLowStockProducts } from '@/lib/api/products';
 import { supabase } from '@/lib/supabase';
@@ -62,6 +62,20 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
     queryFn: () => getTodaysSalesTotal(companyId!),
     enabled: !!companyId,
     staleTime: 30 * 1000,
+  });
+
+  const weekSalesQuery = useQuery({
+    queryKey: ['dashboard', 'weekSales', companyId],
+    queryFn: () => getPeriodSalesTotal(companyId!, 7),
+    enabled: !!companyId,
+    staleTime: 60 * 1000,
+  });
+
+  const monthSalesQuery = useQuery({
+    queryKey: ['dashboard', 'monthSales', companyId],
+    queryFn: () => getPeriodSalesTotal(companyId!, 30),
+    enabled: !!companyId,
+    staleTime: 5 * 60 * 1000,
   });
 
   const activeOrdersQuery = useQuery({
@@ -133,7 +147,7 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
   }[];
 
   const opsCards = t('dashboard.cards', { returnObjects: true }) as {
-    id: 'todayRevenue' | 'activeOrders' | 'lowStock';
+    id: 'todayRevenue' | 'activeOrders' | 'lowStock' | 'weekRevenue' | 'monthRevenue';
     title: string;
     description: string;
   }[];
@@ -210,18 +224,44 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {opsCards.map((card) => {
-              const isLoading =
-                card.id === 'todayRevenue'
-                  ? todaySalesQuery.isLoading
-                  : card.id === 'activeOrders'
-                  ? activeOrdersQuery.isLoading
-                  : lowStockQuery.isLoading;
-              const value =
-                card.id === 'todayRevenue'
-                  ? todaySalesQuery.data ?? 0
-                  : card.id === 'activeOrders'
-                  ? activeOrdersQuery.data ?? 0
-                  : lowStockQuery.data ?? 0;
+              const isLoading = (() => {
+                switch (card.id) {
+                  case 'todayRevenue':
+                    return todaySalesQuery.isLoading;
+                  case 'activeOrders':
+                    return activeOrdersQuery.isLoading;
+                  case 'lowStock':
+                    return lowStockQuery.isLoading;
+                  case 'weekRevenue':
+                    return weekSalesQuery.isLoading;
+                  case 'monthRevenue':
+                    return monthSalesQuery.isLoading;
+                  default:
+                    return false;
+                }
+              })();
+
+              const rawValue = (() => {
+                switch (card.id) {
+                  case 'todayRevenue':
+                    return todaySalesQuery.data ?? 0;
+                  case 'activeOrders':
+                    return activeOrdersQuery.data ?? 0;
+                  case 'lowStock':
+                    return lowStockQuery.data ?? 0;
+                  case 'weekRevenue':
+                    return weekSalesQuery.data ?? 0;
+                  case 'monthRevenue':
+                    return monthSalesQuery.data ?? 0;
+                  default:
+                    return 0;
+                }
+              })();
+
+              const isCurrency = ['todayRevenue', 'weekRevenue', 'monthRevenue'].includes(card.id);
+              const displayValue = isCurrency
+                ? new Intl.NumberFormat(i18n.language, { style: 'currency', currency: 'BRL', minimumFractionDigits: 0 }).format(rawValue)
+                : numberFormatter.format(rawValue);
 
               const icon =
                 card.id === 'todayRevenue' ? (
@@ -253,9 +293,7 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
                     ) : (
                       <>
                         <div className="text-3xl font-bold text-boteco-primary">
-                          {card.id === 'todayRevenue'
-                            ? numberFormatter.format(value)
-                            : numberFormatter.format(value)}
+                          {displayValue}
                         </div>
                         <p className="text-xs text-boteco-neutral/80">{card.description}</p>
                       </>

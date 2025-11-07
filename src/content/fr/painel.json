@@ -20,6 +20,16 @@
         "id": "lowStock",
         "title": "Alertes de stock",
         "description": "Produits sous le stock minimum."
+      },
+      {
+        "id": "weekRevenue",
+        "title": "Ventes (7j)",
+        "description": "Total des ventes sur les 7 derniers jours."
+      },
+      {
+        "id": "monthRevenue",
+        "title": "Ventes (30j)",
+        "description": "Total des ventes sur les 30 derniers jours."
       }
     ]
   },

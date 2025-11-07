@@ -6,21 +6,11 @@
   "dashboard": {
     "opsTitle": "Operational overview",
     "cards": [
-      {
-        "id": "todayRevenue",
-        "title": "Today's sales",
-        "description": "Total sales since midnight."
-      },
-      {
-        "id": "activeOrders",
-        "title": "Active orders",
-        "description": "Open or in-progress orders."
-      },
-      {
-        "id": "lowStock",
-        "title": "Low stock alerts",
-        "description": "Products below minimum stock."
-      }
+      { "id": "todayRevenue", "title": "Sales today", "description": "Total sales since midnight." },
+      { "id": "activeOrders", "title": "Active orders", "description": "Orders open or in progress." },
+      { "id": "lowStock", "title": "Stock alerts", "description": "Products below minimum stock." },
+      { "id": "weekRevenue", "title": "Sales (7d)", "description": "Sales total over the last 7 days." },
+      { "id": "monthRevenue", "title": "Sales (30d)", "description": "Sales total over the last 30 days." }
     ]
   },
   "cards": [
