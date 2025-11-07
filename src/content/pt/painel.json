@@ -3,6 +3,67 @@
   "guest": "Convidado",
   "title": "Painel de Controle",
   "demoNotice": "(Dados de exemplo para demonstração – integração futura com API interna)",
+  "sidebar": {
+    "subtitle": "Painel de Controle",
+    "dashboard": "Dashboard",
+    "notifications": "Notificações",
+    "tablesMain": "Mesas & Pedidos",
+    "productsMain": "Produtos & Receitas",
+    "inventoryMain": "Estoque",
+    "suppliersMain": "Fornecedores",
+    "salesMain": "Vendas",
+    "reportsMain": "Relatórios",
+    "teamMain": "Equipe",
+    "settingsMain": "Configurações",
+    "groups": {
+      "overview": "Visão Geral",
+      "operations": "Operações",
+      "purchasing": "Compras",
+      "financial": "Financeiro",
+      "management": "Gestão"
+    },
+    "tables": {
+      "floor": "Visão do Salão",
+      "orders": "Pedidos Ativos",
+      "reservations": "Reservas"
+    },
+    "products": {
+      "menu": "Cardápio",
+      "recipes": "Receitas",
+      "categories": "Categorias"
+    },
+    "inventory": {
+      "current": "Estoque Atual",
+      "movements": "Movimentações",
+      "alerts": "Alertas"
+    },
+    "suppliers": {
+      "list": "Lista de Fornecedores",
+      "orders": "Pedidos de Compra",
+      "contracts": "Contratos"
+    },
+    "sales": {
+      "history": "Histórico",
+      "payments": "Pagamentos",
+      "invoices": "Notas Fiscais"
+    },
+    "reports": {
+      "sales": "Vendas",
+      "inventory": "Estoque",
+      "financial": "Financeiro",
+      "custom": "Personalizados"
+    },
+    "team": {
+      "members": "Membros",
+      "roles": "Cargos & Permissões",
+      "schedule": "Escalas"
+    },
+    "settings": {
+      "organization": "Organização",
+      "integrations": "Integrações",
+      "promotions": "Promoções"
+    }
+  },
   "cards": [
     {
       "id": "totalLeads",

@@ -23,6 +23,7 @@ const Fornecedores = lazy(() => import("./pages/Fornecedores"));
 const Fidelidade = lazy(() => import("./pages/Fidelidade"));
 const Eventos = lazy(() => import("./pages/Eventos"));
 const Integracoes = lazy(() => import("./pages/Integracoes"));
+const AdminLayout = lazy(() => import("./components/AdminLayout").then(m => ({ default: m.AdminLayout })));
 
 // Simple loading fallback
 const PageLoader = () => (
@@ -60,24 +61,26 @@ const App = () => (
             <Route path="legal/termos" element={<TermsOfService />} />
           </Route>
 
-          {/* Protected Painel route */}
+          {/* Protected Painel route with AdminLayout */}
           <Route
             path="/painel"
             element={
               hasClerkAuth ? (
                 <>
                   <SignedIn>
-                    <Painel />
+                    <AdminLayout />
                   </SignedIn>
                   <SignedOut>
                     <RedirectToSignIn />
                   </SignedOut>
                 </>
               ) : (
-                <Painel />
+                <AdminLayout />
               )
             }
-          />
+          >
+            <Route index element={<Painel />} />
+          </Route>
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
