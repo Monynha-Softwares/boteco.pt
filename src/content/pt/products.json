@@ -1,0 +1,76 @@
+{
+  "title": "Gestão de Produtos",
+  "description": "Gerir catálogo de produtos, stock e preços",
+  "addProduct": "Adicionar Produto",
+  "searchPlaceholder": "Procurar produtos...",
+  "filterAll": "Todos",
+  "filterDrink": "Bebidas",
+  "filterFood": "Comida",
+  "filterOther": "Outros",
+  "filterActive": "Ativos",
+  "filterInactive": "Inativos",
+  "filterLowStock": "Stock Baixo",
+  "emptyState": {
+    "title": "Nenhum produto encontrado",
+    "description": "Comece por adicionar o seu primeiro produto ao catálogo",
+    "action": "Adicionar Primeiro Produto"
+  },
+  "table": {
+    "name": "Nome",
+    "category": "Categoria",
+    "price": "Preço",
+    "stock": "Stock",
+    "minStock": "Stock Mínimo",
+    "status": "Estado",
+    "actions": "Ações"
+  },
+  "status": {
+    "active": "Ativo",
+    "inactive": "Inativo",
+    "lowStock": "Stock Baixo"
+  },
+  "category": {
+    "drink": "Bebida",
+    "food": "Comida",
+    "other": "Outro"
+  },
+  "form": {
+    "createTitle": "Novo Produto",
+    "editTitle": "Editar Produto",
+    "name": "Nome do Produto",
+    "namePlaceholder": "Ex: Cerveja Super Bock",
+    "category": "Categoria",
+    "price": "Preço",
+    "pricePlaceholder": "0.00",
+    "stock": "Quantidade em Stock",
+    "stockPlaceholder": "0",
+    "minStock": "Stock Mínimo",
+    "minStockPlaceholder": "5",
+    "description": "Descrição",
+    "descriptionPlaceholder": "Descrição opcional do produto",
+    "isActive": "Produto Ativo",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "saving": "A guardar..."
+  },
+  "actions": {
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "activate": "Ativar",
+    "deactivate": "Desativar"
+  },
+  "delete": {
+    "title": "Eliminar Produto",
+    "description": "Tem a certeza que deseja eliminar este produto? Esta ação não pode ser revertida.",
+    "cancel": "Cancelar",
+    "confirm": "Eliminar"
+  },
+  "toast": {
+    "createSuccess": "Produto criado com sucesso",
+    "createError": "Erro ao criar produto",
+    "updateSuccess": "Produto atualizado com sucesso",
+    "updateError": "Erro ao atualizar produto",
+    "deleteSuccess": "Produto eliminado com sucesso",
+    "deleteError": "Erro ao eliminar produto"
+  }
+}

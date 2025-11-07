@@ -1,0 +1,84 @@
+{
+  "title": "Orders Management",
+  "description": "Manage active orders and history",
+  "newOrder": "New Order",
+  "searchPlaceholder": "Search orders...",
+  "filterAll": "All",
+  "filterPending": "Pending",
+  "filterPreparing": "Preparing",
+  "filterReady": "Ready",
+  "filterDelivered": "Delivered",
+  "filterCanceled": "Canceled",
+  "emptyState": {
+    "title": "No orders found",
+    "description": "Orders will appear here when created",
+    "action": "Create First Order"
+  },
+  "table": {
+    "number": "No.",
+    "table": "Table",
+    "items": "Items",
+    "total": "Total",
+    "status": "Status",
+    "created": "Created",
+    "actions": "Actions"
+  },
+  "status": {
+    "pending": "Pending",
+    "preparing": "Preparing",
+    "ready": "Ready",
+    "delivered": "Delivered",
+    "canceled": "Canceled"
+  },
+  "form": {
+    "createTitle": "New Order",
+    "editTitle": "Edit Order",
+    "selectTable": "Select Table",
+    "selectTablePlaceholder": "Choose a table",
+    "addItem": "Add Item",
+    "product": "Product",
+    "quantity": "Qty",
+    "price": "Price",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "remove": "Remove",
+    "noItems": "No items added",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving..."
+  },
+  "actions": {
+    "view": "View Details",
+    "edit": "Edit",
+    "changeStatus": "Change Status",
+    "cancel": "Cancel Order",
+    "complete": "Complete"
+  },
+  "details": {
+    "title": "Order Details",
+    "orderNumber": "Order #",
+    "table": "Table",
+    "status": "Status",
+    "created": "Created at",
+    "updated": "Updated at",
+    "items": "Items",
+    "total": "Total",
+    "close": "Close"
+  },
+  "cancel": {
+    "title": "Cancel Order",
+    "description": "Are you sure you want to cancel this order?",
+    "cancel": "No",
+    "confirm": "Yes, Cancel"
+  },
+  "toast": {
+    "createSuccess": "Order created successfully",
+    "createError": "Error creating order",
+    "updateSuccess": "Order updated successfully",
+    "updateError": "Error updating order",
+    "cancelSuccess": "Order canceled successfully",
+    "cancelError": "Error canceling order",
+    "statusSuccess": "Status updated successfully",
+    "statusError": "Error updating status"
+  }
+}

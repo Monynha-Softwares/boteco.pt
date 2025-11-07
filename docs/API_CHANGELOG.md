@@ -57,6 +57,13 @@
   - Security considerations and RLS policies
 - Added enum/status mapping spec (`docs/ENUM_MAPPING.md`) describing index↔text conversion for mobile → web sync (table status, product category, order status)
 
+### Documentation
+
+- Added OpenAPI 3.0 draft for Sync API: `docs/sync.openapi.yaml`
+  - Defines `/sync/meta`, `/sync/download`, `/sync/upload`
+  - JWT bearer auth, delta params (`since`, `limit`), and structured upload responses
+  - Schemas for tables, products, orders, order_items, sales, stock_movements
+
 ---
 
 ## [2025-11-06] - Phase 3.1: Tables Floor View
@@ -266,6 +273,36 @@
 
 **Status**: ✅ Constraints VALIDATED
 **Rollback**: Drop constraints or reintroduce NOT VALID state by recreating them
+
+### 2025-11-07: ensure_updated_at_triggers
+
+- Added `set_updated_at()` trigger function to auto-update `updated_at` on row modifications
+- Applied triggers to all public tables containing an `updated_at` column
+- Supports Sync API delta queries with consistent server-side timestamps
+
+**Status**: ✅ Applied
+**Rollback**: Drop triggers and/or function (`DROP FUNCTION public.set_updated_at();`)
+
+### 2025-11-07: sync_api_spec
+
+- Authored `docs/SYNC_API.md` defining endpoints: `/sync/meta`, `/sync/download`, `/sync/upload`
+- Established conflict resolution rules and validation matrix
+- Included rate limiting strategy and telemetry plan
+- Enumerations published via `/sync/meta` for mobile index ↔ text mapping
+
+**Status**: ✅ Draft Published
+**OpenAPI**: Added `docs/sync.openapi.yaml`
+**Next**: Implement endpoints
+
+### 2025-11-07: enforce_stock_movements_company_id_not_null
+
+- Added trigger `set_stock_movements_company_id_trg` to populate `company_id` from `products` on insert/update
+- Backfilled any missing/mismatched `company_id` values
+- Set `stock_movements.company_id` to NOT NULL
+- Added index `(company_id, created_at)` for common filters
+
+**Status**: ✅ Applied
+**Rollback**: Drop trigger, relax NOT NULL, and remove index
 
 ---
 

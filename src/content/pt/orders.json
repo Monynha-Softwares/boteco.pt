@@ -1,0 +1,84 @@
+{
+  "title": "Gestão de Pedidos",
+  "description": "Gerir pedidos ativos e histórico",
+  "newOrder": "Novo Pedido",
+  "searchPlaceholder": "Procurar pedidos...",
+  "filterAll": "Todos",
+  "filterPending": "Pendentes",
+  "filterPreparing": "Em Preparação",
+  "filterReady": "Prontos",
+  "filterDelivered": "Entregues",
+  "filterCanceled": "Cancelados",
+  "emptyState": {
+    "title": "Nenhum pedido encontrado",
+    "description": "Os pedidos aparecerão aqui quando forem criados",
+    "action": "Criar Primeiro Pedido"
+  },
+  "table": {
+    "number": "Nº",
+    "table": "Mesa",
+    "items": "Itens",
+    "total": "Total",
+    "status": "Estado",
+    "created": "Criado",
+    "actions": "Ações"
+  },
+  "status": {
+    "pending": "Pendente",
+    "preparing": "Em Preparação",
+    "ready": "Pronto",
+    "delivered": "Entregue",
+    "canceled": "Cancelado"
+  },
+  "form": {
+    "createTitle": "Novo Pedido",
+    "editTitle": "Editar Pedido",
+    "selectTable": "Selecionar Mesa",
+    "selectTablePlaceholder": "Escolha uma mesa",
+    "addItem": "Adicionar Item",
+    "product": "Produto",
+    "quantity": "Qtd",
+    "price": "Preço",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "remove": "Remover",
+    "noItems": "Nenhum item adicionado",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "saving": "A guardar..."
+  },
+  "actions": {
+    "view": "Ver Detalhes",
+    "edit": "Editar",
+    "changeStatus": "Mudar Estado",
+    "cancel": "Cancelar Pedido",
+    "complete": "Finalizar"
+  },
+  "details": {
+    "title": "Detalhes do Pedido",
+    "orderNumber": "Pedido #",
+    "table": "Mesa",
+    "status": "Estado",
+    "created": "Criado em",
+    "updated": "Atualizado em",
+    "items": "Itens",
+    "total": "Total",
+    "close": "Fechar"
+  },
+  "cancel": {
+    "title": "Cancelar Pedido",
+    "description": "Tem a certeza que deseja cancelar este pedido?",
+    "cancel": "Não",
+    "confirm": "Sim, Cancelar"
+  },
+  "toast": {
+    "createSuccess": "Pedido criado com sucesso",
+    "createError": "Erro ao criar pedido",
+    "updateSuccess": "Pedido atualizado com sucesso",
+    "updateError": "Erro ao atualizar pedido",
+    "cancelSuccess": "Pedido cancelado com sucesso",
+    "cancelError": "Erro ao cancelar pedido",
+    "statusSuccess": "Estado atualizado com sucesso",
+    "statusError": "Erro ao atualizar estado"
+  }
+}

@@ -24,6 +24,7 @@ const Fidelidade = lazy(() => import("./pages/Fidelidade"));
 const Eventos = lazy(() => import("./pages/Eventos"));
 const Integracoes = lazy(() => import("./pages/Integracoes"));
 const TablesFloor = lazy(() => import("./pages/admin/TablesFloor"));
+const Products = lazy(() => import("./pages/admin/Products"));
 const AdminLayout = lazy(() => import("./components/AdminLayout").then(m => ({ default: m.AdminLayout })));
 
 // Simple loading fallback
@@ -82,6 +83,7 @@ const App = () => (
           >
             <Route index element={<Painel />} />
             <Route path="mesas/salao" element={<TablesFloor />} />
+            <Route path="produtos" element={<Products />} />
           </Route>
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -17,6 +17,7 @@ import ptEventos from './content/pt/eventos.json';
 import ptIntegracoes from './content/pt/integracoes.json';
 import ptCommon from './content/pt/common.json';
 import ptTablesFloor from './content/pt/tables-floor.json';
+import ptProducts from './content/pt/products.json';
 
 import enHome from './content/en/home.json';
 import enAbout from './content/en/about.json';
@@ -32,6 +33,7 @@ import enEventos from './content/en/eventos.json';
 import enIntegracoes from './content/en/integracoes.json';
 import enCommon from './content/en/common.json';
 import enTablesFloor from './content/en/tables-floor.json';
+import enProducts from './content/en/products.json';
 
 import esHome from './content/es/home.json';
 import esAbout from './content/es/about.json';
@@ -47,6 +49,7 @@ import esEventos from './content/es/eventos.json';
 import esIntegracoes from './content/es/integracoes.json';
 import esCommon from './content/es/common.json';
 import esTablesFloor from './content/es/tables-floor.json';
+import esProducts from './content/es/products.json';
 
 import frHome from './content/fr/home.json';
 import frAbout from './content/fr/about.json';
@@ -62,6 +65,7 @@ import frEventos from './content/fr/eventos.json';
 import frIntegracoes from './content/fr/integracoes.json';
 import frCommon from './content/fr/common.json';
 import frTablesFloor from './content/fr/tables-floor.json';
+import frProducts from './content/fr/products.json';
 
 const resources = {
   pt: {
@@ -79,6 +83,7 @@ const resources = {
     integracoes: ptIntegracoes,
     common: ptCommon,
     'tables-floor': ptTablesFloor,
+    products: ptProducts,
   },
   en: {
     home: enHome,
@@ -95,6 +100,7 @@ const resources = {
     integracoes: enIntegracoes,
     common: enCommon,
     'tables-floor': enTablesFloor,
+    products: enProducts,
   },
   es: {
     home: esHome,
@@ -111,6 +117,7 @@ const resources = {
     integracoes: esIntegracoes,
     common: esCommon,
     'tables-floor': esTablesFloor,
+    products: esProducts,
   },
   fr: {
     home: frHome,
@@ -127,6 +134,7 @@ const resources = {
     integracoes: frIntegracoes,
     common: frCommon,
     'tables-floor': frTablesFloor,
+    products: frProducts,
   },
 };
 
@@ -155,6 +163,7 @@ i18n
       'integracoes',
       'common',
       'tables-floor',
+      'products',
     ],
     defaultNS: 'home',
     detection: {

@@ -1,0 +1,76 @@
+{
+  "title": "Gestion des Produits",
+  "description": "Gérer le catalogue de produits, stock et prix",
+  "addProduct": "Ajouter Produit",
+  "searchPlaceholder": "Rechercher des produits...",
+  "filterAll": "Tous",
+  "filterDrink": "Boissons",
+  "filterFood": "Nourriture",
+  "filterOther": "Autres",
+  "filterActive": "Actifs",
+  "filterInactive": "Inactifs",
+  "filterLowStock": "Stock Bas",
+  "emptyState": {
+    "title": "Aucun produit trouvé",
+    "description": "Commencez par ajouter votre premier produit au catalogue",
+    "action": "Ajouter Premier Produit"
+  },
+  "table": {
+    "name": "Nom",
+    "category": "Catégorie",
+    "price": "Prix",
+    "stock": "Stock",
+    "minStock": "Stock Minimum",
+    "status": "Statut",
+    "actions": "Actions"
+  },
+  "status": {
+    "active": "Actif",
+    "inactive": "Inactif",
+    "lowStock": "Stock Bas"
+  },
+  "category": {
+    "drink": "Boisson",
+    "food": "Nourriture",
+    "other": "Autre"
+  },
+  "form": {
+    "createTitle": "Nouveau Produit",
+    "editTitle": "Modifier Produit",
+    "name": "Nom du Produit",
+    "namePlaceholder": "Ex: Bière Super Bock",
+    "category": "Catégorie",
+    "price": "Prix",
+    "pricePlaceholder": "0.00",
+    "stock": "Quantité en Stock",
+    "stockPlaceholder": "0",
+    "minStock": "Stock Minimum",
+    "minStockPlaceholder": "5",
+    "description": "Description",
+    "descriptionPlaceholder": "Description optionnelle du produit",
+    "isActive": "Produit Actif",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "saving": "Enregistrement..."
+  },
+  "actions": {
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "activate": "Activer",
+    "deactivate": "Désactiver"
+  },
+  "delete": {
+    "title": "Supprimer Produit",
+    "description": "Êtes-vous sûr de vouloir supprimer ce produit? Cette action ne peut pas être annulée.",
+    "cancel": "Annuler",
+    "confirm": "Supprimer"
+  },
+  "toast": {
+    "createSuccess": "Produit créé avec succès",
+    "createError": "Erreur lors de la création du produit",
+    "updateSuccess": "Produit mis à jour avec succès",
+    "updateError": "Erreur lors de la mise à jour du produit",
+    "deleteSuccess": "Produit supprimé avec succès",
+    "deleteError": "Erreur lors de la suppression du produit"
+  }
+}
