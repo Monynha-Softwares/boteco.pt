@@ -1,5 +1,7 @@
 # API Changelog
 
+<!-- markdownlint-disable MD005 MD007 MD024 -->
+
 **Project**: Boteco.pt Web Admin Panel  
 **Last Updated**: November 7, 2025
 
@@ -15,6 +17,16 @@
   - Added unique constraint `tables_company_name_unique` on `(company_id, name)`
   - Column comments added for documentation
   - Resolves mismatch between API (expected `name`) and DB (had only `number`)
+- **Schema Migration**: `cleanup_legacy_tables`
+  - Migrated rows from `bar_tables` into `tables` with robust name/number parsing
+  - Mapped legacy status `free` -> current `available`
+  - Dropped legacy `bar_tables` table
+  - Dropped obsolete `table_status` enum type (replaced by TEXT values)
+  - Added unique constraints `(company_id, number)` and `(company_id, name)` hardening multi-tenant data integrity
+  - Added index on `company_users.invited_by` (FK performance)
+  - Hardened function search paths (`ALTER FUNCTION ... SET search_path TO public`)
+  - Moved `unaccent` extension out of `public` schema into dedicated `extensions` schema
+  - Ensured no duplicate `company_settings` row creation during migration (idempotent guard)
 
 ### Changed
 
@@ -23,12 +35,14 @@
   - Updated `tables.Insert` interface to require `name: string`
   - Updated `tables.Update` interface to allow `name?: string`
   - Regenerated from Supabase schema
+  - Removed legacy references to `bar_tables`, `table_status` enum and other `_legacy` tables from local type declarations
 
 ### Fixed
 
 - **Tables API** (`src/lib/api/tables.ts`)
   - API already used `table.name` field - now compatible with database schema
   - `getTables()` sorts by `name` column (now exists in DB)
+- Eliminated potential mismatches by removing any stale type imports relying on legacy enum
 
 ### Documentation
 
@@ -41,6 +55,7 @@
   - Detailed migration roadmap (6 phases over 10 weeks)
   - Conflict resolution strategy
   - Security considerations and RLS policies
+- Added enum/status mapping spec (`docs/ENUM_MAPPING.md`) describing index↔text conversion for mobile → web sync (table status, product category, order status)
 
 ---
 
@@ -163,7 +178,7 @@
 
 ## Schema Evolution
 
-### Current Schema (10 Production Tables)
+### Current Schema (Production Tables After Legacy Cleanup)
 
 1. `companies` - Multi-tenant company records
 2. `company_users` - User-company associations
@@ -176,22 +191,13 @@
 9. `sales` - Finalized sales records
 10. `recipes`, `recipe_ingredients`, `suppliers`, `internal_productions`, `production_ingredients` - Inventory management
 
-### Legacy Schema (16 Tables - Pending Removal)
+### Legacy Schema (Status)
 
-All tables suffixed with `_legacy`:
-- `products_legacy`, `orders_legacy`, `sales_legacy`
-- `recipes_legacy`, `recipe_ingredients_legacy`
-- `internal_production_legacy`, `production_ingredients_legacy`
-- `suppliers_legacy`
-- `bar_tables` (old table structure)
-- `stock_movements` (references legacy tables - needs cleanup)
-
-**Removal Blockers**:
-- `stock_movements` has foreign keys to legacy tables
-- Need to export legacy data for archival
-- Requires migration plan approval
-
-**Planned Removal**: After completing `docs/INTEGRATION_PLAN.md` Phase 2
+- `bar_tables` (removed 2025-11-07 via `cleanup_legacy_tables` migration)
+- `table_status` enum (dropped 2025-11-07)
+- Remaining `_legacy` tables scheduled for archival & deletion (Phase 2) after resolving `stock_movements` foreign key dependencies
+  - `stock_movements` still references legacy tables → blocker to be addressed
+  - Data export to JSON archive planned prior to deletion
 
 ---
 
@@ -206,6 +212,20 @@ All tables suffixed with `_legacy`:
 
 **Status**: ✅ Applied to production  
 **Rollback**: Drop `name` column if needed
+
+### 2025-11-07: cleanup_legacy_tables
+
+- Migrated data from `bar_tables` → `tables`
+- Normalized names; parsed numeric portions where available
+- Mapped statuses (`free` → `available`)
+- Added uniqueness guarantees on `(company_id, number)` and `(company_id, name)`
+- Dropped `bar_tables` & `table_status` enum
+- Added performance index on `company_users.invited_by`
+- Hardened function search paths
+- Moved `unaccent` extension to `extensions` schema
+
+**Status**: ✅ Applied to production
+**Rollback**: Not straightforward (data merged); would require restoration from archival backup
 
 ---
 
