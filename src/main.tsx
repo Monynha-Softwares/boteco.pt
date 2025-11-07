@@ -52,13 +52,7 @@ const appTree = wrapWithProviders(<App />);
 
 if (PUBLISHABLE_KEY) {
   root.render(
-    <ClerkProvider 
-      publishableKey={PUBLISHABLE_KEY}
-      signInUrl="/sign-in"
-      signUpUrl="/sign-up"
-      afterSignInUrl="/painel"
-      afterSignUpUrl="/painel"
-    >
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
       {appTree}
     </ClerkProvider>,
   );

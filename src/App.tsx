@@ -23,8 +23,6 @@ const Fornecedores = lazy(() => import("./pages/Fornecedores"));
 const Fidelidade = lazy(() => import("./pages/Fidelidade"));
 const Eventos = lazy(() => import("./pages/Eventos"));
 const Integracoes = lazy(() => import("./pages/Integracoes"));
-const SignIn = lazy(() => import("./pages/SignIn"));
-const SignUp = lazy(() => import("./pages/SignUp"));
 
 // Simple loading fallback
 const PageLoader = () => (
@@ -46,10 +44,6 @@ const App = () => (
         <Routes>
           {/* Redirect root to default locale (pt) */}
           <Route path="/" element={<Redirect to="/pt" />} />
-
-          {/* Clerk Authentication Routes */}
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/sign-up" element={<SignUp />} />
 
           <Route path="/:locale" element={<LocaleWrapper />}>
             <Route index element={<Home />} />
