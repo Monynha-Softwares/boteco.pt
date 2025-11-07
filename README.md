@@ -28,6 +28,21 @@ A multilingual (pt/en/es/fr) React SPA for restaurant management built with mode
 pnpm install
 ```
 
+### Environment Setup
+
+1. Copy the example environment file:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. (Optional) Add your Clerk credentials to `.env`:
+   ```bash
+   VITE_CLERK_PUBLISHABLE_KEY=your_key_here
+   VITE_CLERK_FRONTEND_API_URL=https://your-app.clerk.accounts.dev
+   ```
+
+   **Note**: The app works perfectly without Clerk authentication. See `docs/ENVIRONMENT_SETUP.md` for details.
+
 ### Available Scripts
 
 ```bash
