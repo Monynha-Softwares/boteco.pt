@@ -1,0 +1,38 @@
+{
+  "title": "Mesas",
+  "subtitle": "Gerencie cadastro e status das mesas",
+  "actions": {
+    "new": "Nova mesa",
+    "edit": "Editar mesa",
+    "delete": "Excluir",
+    "confirmDeleteTitle": "Excluir mesa",
+    "confirmDeleteBody": "Tem certeza que deseja excluir esta mesa? Se ela estiver associada a um pedido em andamento não poderá ser removida.",
+    "save": "Salvar",
+    "cancel": "Cancelar"
+  },
+  "fields": {
+    "name": "Nome",
+    "number": "Número",
+    "capacity": "Capacidade",
+    "location": "Localização",
+    "notes": "Notas",
+    "status": "Status"
+  },
+  "status": {
+    "available": "Disponível",
+    "occupied": "Ocupada",
+    "reserved": "Reservada",
+    "maintenance": "Manutenção"
+  },
+  "validation": {
+    "requiredName": "Nome é obrigatório",
+    "requiredNumber": "Número é obrigatório",
+    "uniqueNumber": "Número já utilizado",
+    "positiveCapacity": "Capacidade deve ser maior que zero"
+  },
+  "empty": "Nenhuma mesa cadastrada ainda.",
+  "modal": {
+    "createTitle": "Cadastrar mesa",
+    "editTitle": "Editar mesa"
+  }
+}

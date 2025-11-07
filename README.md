@@ -127,6 +127,12 @@ chmod +x docker-build.sh
 - **[docs/README.md](./docs/README.md)** - Technical documentation index
 - **[.github/copilot-instructions.md](./.github/copilot-instructions.md)** - Concise AI coding guidelines
 
+## Developer notes
+
+The repository includes a canonical generated file at `src/types/database.ts` with the TypeScript representation of the Supabase schema.
+
+If you modify the database schema (migrations), regenerate the types and run the build/tests before committing. See `docs/TYPES_GENERATION.md` for the exact commands.
+
 ## About
 
 **Boteco.pt** is developed and maintained by [Monynha Softwares](https://github.com/Monynha-Softwares).

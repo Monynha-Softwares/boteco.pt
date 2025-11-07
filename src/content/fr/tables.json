@@ -1,0 +1,38 @@
+{
+  "title": "Tables",
+  "subtitle": "Gérer l'enregistrement et les statuts des tables",
+  "actions": {
+    "new": "Nouvelle table",
+    "edit": "Modifier la table",
+    "delete": "Supprimer",
+    "confirmDeleteTitle": "Supprimer la table",
+    "confirmDeleteBody": "Êtes-vous sûr de vouloir supprimer cette table ? Si elle est liée à une commande active, elle ne peut pas être supprimée.",
+    "save": "Enregistrer",
+    "cancel": "Annuler"
+  },
+  "fields": {
+    "name": "Nom",
+    "number": "Numéro",
+    "capacity": "Capacité",
+    "location": "Emplacement",
+    "notes": "Notes",
+    "status": "Statut"
+  },
+  "status": {
+    "available": "Disponible",
+    "occupied": "Occupée",
+    "reserved": "Réservée",
+    "maintenance": "Maintenance"
+  },
+  "validation": {
+    "requiredName": "Le nom est requis",
+    "requiredNumber": "Le numéro est requis",
+    "uniqueNumber": "Numéro déjà utilisé",
+    "positiveCapacity": "La capacité doit être supérieure à zéro"
+  },
+  "empty": "Aucune table enregistrée pour le moment.",
+  "modal": {
+    "createTitle": "Créer une table",
+    "editTitle": "Modifier la table"
+  }
+}

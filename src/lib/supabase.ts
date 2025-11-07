@@ -72,7 +72,7 @@ export const handleSupabaseError = (error: unknown, context: string): never => {
  *   .eq('is_active', true);
  * ```
  */
-export const queryBuilder = (table: string) => {
+export const queryBuilder = <T extends keyof Database['public']['Tables']>(table: T) => {
   return supabase.from(table);
 };
 

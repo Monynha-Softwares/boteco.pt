@@ -1,0 +1,38 @@
+{
+  "title": "Tables",
+  "subtitle": "Manage table registry and statuses",
+  "actions": {
+    "new": "New table",
+    "edit": "Edit table",
+    "delete": "Delete",
+    "confirmDeleteTitle": "Delete table",
+    "confirmDeleteBody": "Are you sure you want to delete this table? If linked to an active order it cannot be removed.",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "fields": {
+    "name": "Name",
+    "number": "Number",
+    "capacity": "Capacity",
+    "location": "Location",
+    "notes": "Notes",
+    "status": "Status"
+  },
+  "status": {
+    "available": "Available",
+    "occupied": "Occupied",
+    "reserved": "Reserved",
+    "maintenance": "Maintenance"
+  },
+  "validation": {
+    "requiredName": "Name is required",
+    "requiredNumber": "Number is required",
+    "uniqueNumber": "Number already in use",
+    "positiveCapacity": "Capacity must be greater than zero"
+  },
+  "empty": "No tables registered yet.",
+  "modal": {
+    "createTitle": "Create table",
+    "editTitle": "Edit table"
+  }
+}

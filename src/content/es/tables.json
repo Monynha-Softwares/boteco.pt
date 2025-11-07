@@ -1,0 +1,38 @@
+{
+  "title": "Mesas",
+  "subtitle": "Gestiona el registro y estado de las mesas",
+  "actions": {
+    "new": "Nueva mesa",
+    "edit": "Editar mesa",
+    "delete": "Eliminar",
+    "confirmDeleteTitle": "Eliminar mesa",
+    "confirmDeleteBody": "¿Seguro que deseas eliminar esta mesa? Si está vinculada a un pedido activo no se puede eliminar.",
+    "save": "Guardar",
+    "cancel": "Cancelar"
+  },
+  "fields": {
+    "name": "Nombre",
+    "number": "Número",
+    "capacity": "Capacidad",
+    "location": "Ubicación",
+    "notes": "Notas",
+    "status": "Estado"
+  },
+  "status": {
+    "available": "Disponible",
+    "occupied": "Ocupada",
+    "reserved": "Reservada",
+    "maintenance": "Mantenimiento"
+  },
+  "validation": {
+    "requiredName": "El nombre es obligatorio",
+    "requiredNumber": "El número es obligatorio",
+    "uniqueNumber": "Número ya utilizado",
+    "positiveCapacity": "La capacidad debe ser mayor que cero"
+  },
+  "empty": "Todavía no hay mesas registradas.",
+  "modal": {
+    "createTitle": "Crear mesa",
+    "editTitle": "Editar mesa"
+  }
+}

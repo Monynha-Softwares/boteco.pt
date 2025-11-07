@@ -162,6 +162,19 @@
       }
     },
     {
+      "id": "painel-mesas",
+      "type": "link",
+      "href": "/painel/mesas/gerenciar",
+      "localeAware": false,
+      "depth": "link",
+      "label": {
+        "pt": "Mesas",
+        "en": "Tables",
+        "es": "Mesas",
+        "fr": "Tables"
+      }
+    },
+    {
       "id": "painel",
       "type": "link",
       "href": "/painel",

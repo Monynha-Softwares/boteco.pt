@@ -17,6 +17,7 @@ import ptEventos from './content/pt/eventos.json';
 import ptIntegracoes from './content/pt/integracoes.json';
 import ptCommon from './content/pt/common.json';
 import ptTablesFloor from './content/pt/tables-floor.json';
+import ptTables from './content/pt/tables.json';
 import ptProducts from './content/pt/products.json';
 import ptOrders from './content/pt/orders.json';
 
@@ -34,6 +35,7 @@ import enEventos from './content/en/eventos.json';
 import enIntegracoes from './content/en/integracoes.json';
 import enCommon from './content/en/common.json';
 import enTablesFloor from './content/en/tables-floor.json';
+import enTables from './content/en/tables.json';
 import enProducts from './content/en/products.json';
 import enOrders from './content/en/orders.json';
 
@@ -51,6 +53,7 @@ import esEventos from './content/es/eventos.json';
 import esIntegracoes from './content/es/integracoes.json';
 import esCommon from './content/es/common.json';
 import esTablesFloor from './content/es/tables-floor.json';
+import esTables from './content/es/tables.json';
 import esProducts from './content/es/products.json';
 import esOrders from './content/es/orders.json';
 
@@ -68,6 +71,7 @@ import frEventos from './content/fr/eventos.json';
 import frIntegracoes from './content/fr/integracoes.json';
 import frCommon from './content/fr/common.json';
 import frTablesFloor from './content/fr/tables-floor.json';
+import frTables from './content/fr/tables.json';
 import frProducts from './content/fr/products.json';
 import frOrders from './content/fr/orders.json';
 
@@ -86,7 +90,8 @@ const resources = {
     eventos: ptEventos,
     integracoes: ptIntegracoes,
     common: ptCommon,
-    'tables-floor': ptTablesFloor,
+  'tables-floor': ptTablesFloor,
+  tables: ptTables,
     products: ptProducts,
   orders: ptOrders,
   },
@@ -104,7 +109,8 @@ const resources = {
     eventos: enEventos,
     integracoes: enIntegracoes,
     common: enCommon,
-    'tables-floor': enTablesFloor,
+  'tables-floor': enTablesFloor,
+  tables: enTables,
     products: enProducts,
   orders: enOrders,
   },
@@ -122,7 +128,8 @@ const resources = {
     eventos: esEventos,
     integracoes: esIntegracoes,
     common: esCommon,
-    'tables-floor': esTablesFloor,
+  'tables-floor': esTablesFloor,
+  tables: esTables,
     products: esProducts,
   orders: esOrders,
   },
@@ -140,7 +147,8 @@ const resources = {
     eventos: frEventos,
     integracoes: frIntegracoes,
     common: frCommon,
-    'tables-floor': frTablesFloor,
+  'tables-floor': frTablesFloor,
+  tables: frTables,
     products: frProducts,
   orders: frOrders,
   },
@@ -170,7 +178,8 @@ i18n
       'eventos',
       'integracoes',
       'common',
-      'tables-floor',
+  'tables-floor',
+  'tables',
       'products',
   'orders',
     ],

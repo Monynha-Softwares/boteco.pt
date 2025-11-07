@@ -26,6 +26,7 @@ const Integracoes = lazy(() => import("./pages/Integracoes"));
 const TablesFloor = lazy(() => import("./pages/admin/TablesFloor"));
 const Orders = lazy(() => import("./pages/admin/Orders"));
 const Products = lazy(() => import("./pages/admin/Products"));
+const TablesAdmin = lazy(() => import("./pages/admin/Tables"));
 const AdminLayout = lazy(() => import("./components/AdminLayout").then(m => ({ default: m.AdminLayout })));
 
 // Simple loading fallback
@@ -84,6 +85,7 @@ const App = () => (
           >
             <Route index element={<Painel />} />
             <Route path="mesas/salao" element={<TablesFloor />} />
+            <Route path="mesas/gerenciar" element={<TablesAdmin />} />
             <Route path="pedidos" element={<Orders />} />
             <Route path="produtos" element={<Products />} />
           </Route>
