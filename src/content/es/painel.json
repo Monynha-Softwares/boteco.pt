@@ -3,6 +3,26 @@
   "guest": "Invitado",
   "title": "Panel de control",
   "demoNotice": "(Datos de ejemplo para demostración – futura integración con API interna)",
+  "dashboard": {
+    "opsTitle": "Resumen operativo",
+    "cards": [
+      {
+        "id": "todayRevenue",
+        "title": "Ventas de hoy",
+        "description": "Ventas totales desde medianoche."
+      },
+      {
+        "id": "activeOrders",
+        "title": "Pedidos activos",
+        "description": "Pedidos abiertos o en progreso."
+      },
+      {
+        "id": "lowStock",
+        "title": "Alertas de stock",
+        "description": "Productos por debajo del stock mínimo."
+      }
+    ]
+  },
   "cards": [
     {
       "id": "totalLeads",

@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useUser } from '@clerk/clerk-react';
-import { Users, Sparkles, BadgeCheck, Timer } from 'lucide-react';
+import { Users, Sparkles, BadgeCheck, Timer, DollarSign, ShoppingBasket, PackageOpen } from 'lucide-react';
 import Seo from '@/components/Seo';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -15,6 +15,11 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Progress } from '@/components/ui/progress';
 import { hasClerkAuth } from '@/utils/clerk';
+import { useCompany } from '@/contexts/CompanyContext';
+import { getTodaysSalesTotal } from '@/lib/api/sales';
+import { getActiveOrders } from '@/lib/api/orders';
+import { getLowStockProducts } from '@/lib/api/products';
+import { supabase } from '@/lib/supabase';
 
 const cardIcons: Record<string, React.ReactNode> = {
   totalLeads: <Users className="h-8 w-8 text-boteco-secondary" />,
@@ -41,12 +46,67 @@ interface PainelContentProps {
 
 const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
   const { t, i18n } = useTranslation('painel');
+  const { selectedCompany } = useCompany();
 
   const query = useQuery({
     queryKey: CONTACT_REQUESTS_QUERY_KEY,
     queryFn: getContactRequests,
     staleTime: 60 * 1000,
   });
+
+  // Dashboard metrics (Supabase-backed)
+  const companyId = selectedCompany?.id;
+
+  const todaySalesQuery = useQuery({
+    queryKey: ['dashboard', 'todaySales', companyId],
+    queryFn: () => getTodaysSalesTotal(companyId!),
+    enabled: !!companyId,
+    staleTime: 30 * 1000,
+  });
+
+  const activeOrdersQuery = useQuery({
+    queryKey: ['dashboard', 'activeOrders', companyId],
+    queryFn: async () => {
+      const orders = await getActiveOrders(companyId!);
+      return orders.length;
+    },
+    enabled: !!companyId,
+    staleTime: 15 * 1000,
+  });
+
+  const lowStockQuery = useQuery({
+    queryKey: ['dashboard', 'lowStock', companyId],
+    queryFn: async () => {
+      const lowStock = await getLowStockProducts(companyId!);
+      return lowStock.length;
+    },
+    enabled: !!companyId,
+    staleTime: 60 * 1000,
+  });
+
+  // Realtime subscriptions to keep queries fresh
+  React.useEffect(() => {
+    if (!companyId) return;
+
+    const channel = supabase
+      .channel('dashboard-realtime')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'orders', filter: `company_id=eq.${companyId}` }, () => {
+        activeOrdersQuery.refetch();
+      })
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'sales', filter: `company_id=eq.${companyId}` }, () => {
+        todaySalesQuery.refetch();
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'products', filter: `company_id=eq.${companyId}` }, () => {
+        lowStockQuery.refetch();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+    // We only want to (re)subscribe when company changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [companyId]);
 
   const metrics = React.useMemo(() => {
     if (!query.data) {
@@ -68,6 +128,12 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
 
   const cards = t('cards', { returnObjects: true }) as {
     id: string;
+    title: string;
+    description: string;
+  }[];
+
+  const opsCards = t('dashboard.cards', { returnObjects: true }) as {
+    id: 'todayRevenue' | 'activeOrders' | 'lowStock';
     title: string;
     description: string;
   }[];
@@ -137,6 +203,70 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
         locale={i18n.language}
       />
       <div className="space-y-6">
+        {/* Operational metrics (Supabase) */}
+        <div className="space-y-3">
+          <h2 className="text-2xl font-semibold text-boteco-primary">
+            {t('dashboard.opsTitle')}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {opsCards.map((card) => {
+              const isLoading =
+                card.id === 'todayRevenue'
+                  ? todaySalesQuery.isLoading
+                  : card.id === 'activeOrders'
+                  ? activeOrdersQuery.isLoading
+                  : lowStockQuery.isLoading;
+              const value =
+                card.id === 'todayRevenue'
+                  ? todaySalesQuery.data ?? 0
+                  : card.id === 'activeOrders'
+                  ? activeOrdersQuery.data ?? 0
+                  : lowStockQuery.data ?? 0;
+
+              const icon =
+                card.id === 'todayRevenue' ? (
+                  <DollarSign className="h-8 w-8 text-boteco-secondary" />
+                ) : card.id === 'activeOrders' ? (
+                  <ShoppingBasket className="h-8 w-8 text-boteco-secondary" />
+                ) : (
+                  <PackageOpen className="h-8 w-8 text-boteco-secondary" />
+                );
+
+              return (
+                <Card
+                  key={card.id}
+                  depth="overlay"
+                  className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-lg font-medium text-boteco-neutral">
+                      {card.title}
+                    </CardTitle>
+                    {icon}
+                  </CardHeader>
+                  <CardContent>
+                    {isLoading ? (
+                      <>
+                        <Skeleton className="h-8 w-24 mb-2" />
+                        <Skeleton className="h-4 w-32" />
+                      </>
+                    ) : (
+                      <>
+                        <div className="text-3xl font-bold text-boteco-primary">
+                          {card.id === 'todayRevenue'
+                            ? numberFormatter.format(value)
+                            : numberFormatter.format(value)}
+                        </div>
+                        <p className="text-xs text-boteco-neutral/80">{card.description}</p>
+                      </>
+                    )}
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+
         <div>
           <h1 className="text-3xl font-bold text-boteco-primary">
             {t('greeting', { userName })}

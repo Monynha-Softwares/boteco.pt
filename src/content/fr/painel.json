@@ -3,6 +3,26 @@
   "guest": "Invité",
   "title": "Tableau de bord",
   "demoNotice": "(Données d'exemple pour démonstration – future intégration avec l'API interne)",
+  "dashboard": {
+    "opsTitle": "Vue opérationnelle",
+    "cards": [
+      {
+        "id": "todayRevenue",
+        "title": "Ventes du jour",
+        "description": "Total des ventes depuis minuit."
+      },
+      {
+        "id": "activeOrders",
+        "title": "Commandes actives",
+        "description": "Commandes ouvertes ou en cours."
+      },
+      {
+        "id": "lowStock",
+        "title": "Alertes de stock",
+        "description": "Produits sous le stock minimum."
+      }
+    ]
+  },
   "cards": [
     {
       "id": "totalLeads",
