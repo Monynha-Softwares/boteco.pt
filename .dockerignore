@@ -52,17 +52,12 @@ tests/
 *.test.*
 *.spec.*
 
-# Config files not needed in production
-.editorconfig
-.prettierrc*
-eslint.config.js
-tsconfig*.json
-vite.config.ts
-playwright.config.ts
-tailwind.config.ts
-postcss.config.js
-components.json
-
-# Misc
+# Misc development files
 TODO.md
 SETUP_FIXES.md
+DOCKER_SETUP.md
+DOCKER_QUICK_REF.md
+docker-build.ps1
+docker-build.sh
+.editorconfig
+.prettierrc*
