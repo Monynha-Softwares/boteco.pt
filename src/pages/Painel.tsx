@@ -20,7 +20,7 @@ import { getTodaysSalesTotal, getPeriodSalesTotal, getSalesByPaymentMethod, getR
 import { getActiveOrders } from '@/lib/api/orders';
 import { getLowStockProducts } from '@/lib/api/products';
 import { getTableOccupancyMetrics } from '@/lib/api/tables';
-import CompanySelector from '@/components/CompanySelector';
+import { CompanySelector } from '@/components/CompanySelector';
 import { supabase } from '@/lib/supabase';
 
 const cardIcons: Record<string, React.ReactNode> = {
