@@ -378,25 +378,20 @@ export const CompanyProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
 - [x] Test in preview mode (manual testing done)
 
-**Tasks**:- [x] Visual regression test with Playwright (manual screenshots taken)
+**Tasks**:
 
+- [x] Visual regression test with Playwright (manual screenshots taken)
 - [x] Cross-browser testing (assets are SVG, universally supported)
-
 - [ ] Replace mock data with real Supabase queries
-
-- [ ] Implement dashboard metrics:### Phase 4: Documentation & Handoff ✅ Complete
-
-  - Total sales (today, week, month)- [x] Document design decisions (in TODO.md)
-
-  - Active orders count- [x] Create asset source files (SVG format - easily editable)
-
-  - Low stock alerts- [x] Update TODO with lessons learned
-
-  - Table occupancy rate- [x] Add future asset creation guidelines to TODO.md
-
-- [ ] Add real-time updates for active orders
-
-- [ ] Create dashboard analytics charts (using shadcn/ui Chart components)---
+- [ ] Implement dashboard metrics:
+  - [x] Total sales (today)
+  - [x] Total sales (week)
+  - [x] Total sales (month)
+  - [x] Active orders count
+  - [x] Low stock alerts
+  - [ ] Table occupancy rate
+- [x] Add real-time updates for active orders
+- [ ] Create dashboard analytics charts (using shadcn/ui Chart components)
 
 - [ ] Add date range selector
 
