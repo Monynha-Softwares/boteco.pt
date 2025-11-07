@@ -123,4 +123,21 @@ chmod +x docker-build.sh
 
 ## Documentation
 
-See [AGENTS.md](./AGENTS.md) for detailed coding conventions and architecture patterns.
+- **[AGENTS.md](./AGENTS.md)** - Comprehensive AI agent instructions and architecture patterns
+- **[docs/README.md](./docs/README.md)** - Technical documentation index
+- **[.github/copilot-instructions.md](./.github/copilot-instructions.md)** - Concise AI coding guidelines
+
+## About
+
+**Boteco.pt** is developed and maintained by [Monynha Softwares](https://github.com/Monynha-Softwares).
+
+### Links
+
+- **Organization**: [github.com/Monynha-Softwares](https://github.com/Monynha-Softwares)
+- **Repository**: [github.com/Monynha-Softwares/boteco.pt](https://github.com/Monynha-Softwares/boteco.pt)
+- **Issues**: [Report a bug or request a feature](https://github.com/Monynha-Softwares/boteco.pt/issues)
+- **Discussions**: [Join the conversation](https://github.com/Monynha-Softwares/boteco.pt/discussions)
+
+## License
+
+© 2025 Monynha Softwares. All rights reserved.
