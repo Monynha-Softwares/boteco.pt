@@ -377,7 +377,7 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
               const displayValue = isCurrency
                 ? new Intl.NumberFormat(i18n.language, { style: 'currency', currency: 'BRL', minimumFractionDigits: 0 }).format(rawValue)
                 : isPercentage
-                  ? `${percentageFormatter.format(rawValue * 100)}%`
+                  ? percentageFormatter.format(rawValue)
                   : numberFormatter.format(rawValue);
 
               const icon =
