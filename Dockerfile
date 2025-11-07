@@ -16,6 +16,14 @@ RUN pnpm install --frozen-lockfile
 # Copy source code
 COPY . .
 
+# Build arguments for environment variables (optional)
+ARG VITE_CLERK_PUBLISHABLE_KEY
+ARG VITE_CLERK_FRONTEND_API_URL
+
+# Set environment variables for build
+ENV VITE_CLERK_PUBLISHABLE_KEY=$VITE_CLERK_PUBLISHABLE_KEY
+ENV VITE_CLERK_FRONTEND_API_URL=$VITE_CLERK_FRONTEND_API_URL
+
 # Build the application
 RUN pnpm build
 

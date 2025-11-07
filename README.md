@@ -78,6 +78,40 @@ All pull requests and pushes trigger automated checks:
 - ✅ **Lighthouse**: Performance and accessibility audits
 - ✅ **Visual Tests**: Cross-browser screenshot comparisons
 
+## Docker Deployment
+
+### Quick Start
+
+```bash
+# Build the image
+docker build -t boteco-pt:latest .
+
+# Run the container
+docker run -d -p 3000:80 --name boteco-pt boteco-pt:latest
+
+# Or use Docker Compose
+docker-compose up -d
+```
+
+Access at: http://localhost:3000
+
+### Automated Build Script
+
+**Windows (PowerShell)**:
+```powershell
+.\docker-build.ps1
+```
+
+**Linux/Mac (Bash)**:
+```bash
+chmod +x docker-build.sh
+./docker-build.sh
+```
+
+**See also**: 
+- `DOCKER_QUICK_REF.md` - Quick reference for common commands
+- `docs/DOCKER_DEPLOYMENT.md` - Comprehensive deployment guide
+
 ## Architecture
 
 - **Frontend**: React 18 + TypeScript + Vite

@@ -90,6 +90,22 @@ pnpm test:visual:ui   # Interactive Playwright UI mode
 pnpm lint             # ESLint with TypeScript
 ```
 
+## Docker Deployment
+```bash
+# Build and run with scripts
+.\docker-build.ps1    # Windows
+./docker-build.sh     # Linux/Mac
+
+# Or manually
+docker build -t boteco-pt:latest .
+docker run -d -p 3000:80 --name boteco-pt boteco-pt:latest
+
+# Or use Docker Compose
+docker-compose up -d
+```
+
+See `DOCKER_QUICK_REF.md` for common commands and `docs/DOCKER_DEPLOYMENT.md` for full guide.
+
 ## Testing Strategy
 1. **Unit tests** (`tests/*.test.mjs`): Node.js native runner validates JSON schemas, theme config, data flows
 2. **Visual tests** (`tests/visual/*.spec.ts`): Playwright cross-browser screenshots + CLS detection
