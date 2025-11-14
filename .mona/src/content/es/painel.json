@@ -1,0 +1,115 @@
+{
+  "greeting": "Hola, {{userName}}!",
+  "guest": "Invitado",
+  "title": "Panel de control",
+  "demoNotice": "(Datos de ejemplo para demostración – futura integración con API interna)",
+  "dashboard": {
+    "opsTitle": "Resumen operativo",
+    "cards": [
+      {
+        "id": "todayRevenue",
+        "title": "Ventas de hoy",
+        "description": "Ventas totales desde medianoche."
+      },
+      {
+        "id": "activeOrders",
+        "title": "Pedidos activos",
+        "description": "Pedidos abiertos o en progreso."
+      },
+      {
+        "id": "lowStock",
+        "title": "Alertas de stock",
+        "description": "Productos por debajo del stock mínimo."
+      },
+      {
+        "id": "weekRevenue",
+        "title": "Ventas (7d)",
+        "description": "Total de ventas en los últimos 7 días."
+      },
+      {
+        "id": "monthRevenue",
+        "title": "Ventas (30d)",
+        "description": "Total de ventas en los últimos 30 días."
+      },
+      {
+        "id": "tableOccupancy",
+        "title": "Ocupación del salón",
+        "description": "Porcentaje de mesas ocupadas (excluye mantenimiento)."
+      }
+    ],
+    "charts": {
+      "dailySalesTitle": "Ventas últimos 7 días",
+      "paymentMethodsTitle": "Ventas por método de pago",
+      "empty": "No hay suficientes datos para mostrar el gráfico." 
+    }
+  },
+  "cards": [
+    {
+      "id": "totalLeads",
+      "title": "Leads activos",
+      "description": "Contactos que ingresaron al embudo en los últimos 90 días."
+    },
+    {
+      "id": "leadsThisWeek",
+      "title": "Nuevos esta semana",
+      "description": "Entradas provenientes de formularios e integraciones en los últimos 7 días."
+    },
+    {
+      "id": "qualifiedLeads",
+      "title": "Leads calificados",
+      "description": "Marcas con alto potencial para activación comercial."
+    },
+    {
+      "id": "responseRate24h",
+      "title": "Respuestas en 24h",
+      "description": "Porcentaje de leads que recibieron respuesta en un día."
+    }
+  ],
+  "leadInsights": {
+    "title": "Insights del embudo de leads",
+    "subtitle": "Monitorea la profundidad del pipeline e identifica las prioridades de seguimiento.",
+    "averageResponseTime": {
+      "title": "Tiempo medio de respuesta",
+      "helper": "Calculado solo para leads con respuesta registrada.",
+      "responseRateLabel": "Respuestas en hasta 24h",
+      "empty": "Aún no hay respuestas registradas para estimar el tiempo medio.",
+      "lessThanHour": "{{minutes}} min",
+      "inHours": "{{hours}} h",
+      "inDays": "{{days}} d"
+    },
+    "channels": {
+      "title": "Principales canales de captación",
+      "helper": "Distribución de leads por origen en los últimos 90 días.",
+      "empty": "Todavía no hay canales con leads.",
+      "labels": {
+        "web-form": "Formulario del sitio",
+        "instagram": "Instagram",
+        "referral": "Referencia",
+        "events": "Eventos",
+        "partnership": "Alianzas"
+      }
+    },
+    "status": {
+      "title": "Estado del pipeline",
+      "helper": "Cómo se distribuyen los leads en las etapas de seguimiento.",
+      "empty": "Agrega leads para visualizar el pipeline.",
+      "labels": {
+        "new": "Nuevos",
+        "contacted": "En contacto",
+        "qualified": "Calificados"
+      }
+    },
+    "empty": "Todavía no hay leads suficientes para generar insights."
+  },
+  "errors": {
+    "title": "No se pudieron cargar los datos",
+    "leadsLoad": "No pudimos obtener los leads en este momento. Verifica tu conexión e inténtalo de nuevo."
+  },
+  "actions": {
+    "retry": "Reintentar"
+  },
+  "noCompany": {
+    "title": "Selecciona una empresa",
+    "helper": "Elige una empresa abajo para ver métricas y datos operativos."
+  }
+}

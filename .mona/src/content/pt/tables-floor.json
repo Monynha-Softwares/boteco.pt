@@ -1,0 +1,21 @@
+{
+  "title": "Visão do Salão",
+  "subtitle": "Acompanhe e gerencie o status de todas as mesas em tempo real",
+  "description": "Gerencie o status das mesas em tempo real",
+  "noCompany": {
+    "title": "Selecione uma empresa",
+    "helper": "Escolha uma empresa para visualizar o salão."
+  },
+  "status": {
+    "available": "Disponível",
+    "occupied": "Ocupada",
+    "reserved": "Reservada",
+    "maintenance": "Manutenção"
+  },
+  "seats": "lugar",
+  "seats_plural": "lugares",
+  "actions": {
+    "changeStatus": "Alterar status"
+  },
+  "empty": "Nenhuma mesa cadastrada ainda."
+}

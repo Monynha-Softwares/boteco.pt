@@ -1,0 +1,176 @@
+{
+  "greeting": "Olá, {{userName}}!",
+  "guest": "Convidado",
+  "title": "Painel de Controle",
+  "demoNotice": "(Dados de exemplo para demonstração – integração futura com API interna)",
+  "dashboard": {
+    "opsTitle": "Visão operacional",
+    "cards": [
+      {
+        "id": "todayRevenue",
+        "title": "Vendas de hoje",
+        "description": "Total de vendas desde 00:00."
+      },
+      {
+        "id": "activeOrders",
+        "title": "Pedidos ativos",
+        "description": "Pedidos abertos ou em andamento."
+      },
+      {
+        "id": "lowStock",
+        "title": "Alertas de estoque",
+        "description": "Produtos abaixo do estoque mínimo."
+      },
+      {
+        "id": "weekRevenue",
+        "title": "Vendas (7d)",
+        "description": "Total de vendas nos últimos 7 dias."
+      },
+      {
+        "id": "monthRevenue",
+        "title": "Vendas (30d)",
+        "description": "Total de vendas nos últimos 30 dias."
+      },
+      {
+        "id": "tableOccupancy",
+        "title": "Ocupação do salão",
+        "description": "Percentual de mesas ocupadas (exclui manutenção)."
+      }
+    ],
+    "charts": {
+      "dailySalesTitle": "Vendas últimos 7 dias",
+      "paymentMethodsTitle": "Vendas por método de pagamento",
+      "empty": "Sem dados suficientes para exibir o gráfico." 
+    }
+  },
+  "sidebar": {
+    "subtitle": "Painel de Controle",
+    "dashboard": "Dashboard",
+    "notifications": "Notificações",
+    "tablesMain": "Mesas & Pedidos",
+    "productsMain": "Produtos & Receitas",
+    "inventoryMain": "Estoque",
+    "suppliersMain": "Fornecedores",
+    "salesMain": "Vendas",
+    "reportsMain": "Relatórios",
+    "teamMain": "Equipe",
+    "settingsMain": "Configurações",
+    "groups": {
+      "overview": "Visão Geral",
+      "operations": "Operações",
+      "purchasing": "Compras",
+      "financial": "Financeiro",
+      "management": "Gestão"
+    },
+    "tables": {
+      "floor": "Visão do Salão",
+      "orders": "Pedidos Ativos",
+      "reservations": "Reservas"
+    },
+    "products": {
+      "menu": "Cardápio",
+      "recipes": "Receitas",
+      "categories": "Categorias"
+    },
+    "inventory": {
+      "current": "Estoque Atual",
+      "movements": "Movimentações",
+      "alerts": "Alertas"
+    },
+    "suppliers": {
+      "list": "Lista de Fornecedores",
+      "orders": "Pedidos de Compra",
+      "contracts": "Contratos"
+    },
+    "sales": {
+      "history": "Histórico",
+      "payments": "Pagamentos",
+      "invoices": "Notas Fiscais"
+    },
+    "reports": {
+      "sales": "Vendas",
+      "inventory": "Estoque",
+      "financial": "Financeiro",
+      "custom": "Personalizados"
+    },
+    "team": {
+      "members": "Membros",
+      "roles": "Cargos & Permissões",
+      "schedule": "Escalas"
+    },
+    "settings": {
+      "organization": "Organização",
+      "integrations": "Integrações",
+      "promotions": "Promoções"
+    }
+  },
+  "cards": [
+    {
+      "id": "totalLeads",
+      "title": "Leads ativos",
+      "description": "Contatos que chegaram pelo funil nos últimos 90 dias."
+    },
+    {
+      "id": "leadsThisWeek",
+      "title": "Novos nesta semana",
+      "description": "Entradas a partir do formulário e integrações nos últimos 7 dias."
+    },
+    {
+      "id": "qualifiedLeads",
+      "title": "Leads qualificados",
+      "description": "Marcas com potencial alto para ativação comercial."
+    },
+    {
+      "id": "responseRate24h",
+      "title": "Respostas em 24h",
+      "description": "Percentual de leads que receberam retorno em até um dia."
+    }
+  ],
+  "leadInsights": {
+    "title": "Insights do funil de leads",
+    "subtitle": "Acompanhe a profundidade do pipeline e identifique prioridades de atendimento.",
+    "averageResponseTime": {
+      "title": "Tempo médio de resposta",
+      "helper": "Baseado apenas nos leads com retorno registrado.",
+      "responseRateLabel": "Respostas em até 24h",
+      "empty": "Ainda não registramos respostas para calcular o tempo médio.",
+      "lessThanHour": "{{minutes}} min",
+      "inHours": "{{hours}} h",
+      "inDays": "{{days}} d"
+    },
+    "channels": {
+      "title": "Principais canais de entrada",
+      "helper": "Distribuição de leads por origem nos últimos 90 dias.",
+      "empty": "Nenhum canal com leads até o momento.",
+      "labels": {
+        "web-form": "Formulário do site",
+        "instagram": "Instagram",
+        "referral": "Indicação",
+        "events": "Eventos",
+        "partnership": "Parcerias"
+      }
+    },
+    "status": {
+      "title": "Status do pipeline",
+      "helper": "Como os leads estão distribuídos entre as etapas de atendimento.",
+      "empty": "Cadastre leads para visualizar o pipeline.",
+      "labels": {
+        "new": "Novos",
+        "contacted": "Em contato",
+        "qualified": "Qualificados"
+      }
+    },
+    "empty": "Ainda não há leads suficientes para gerar insights."
+  },
+  "errors": {
+    "title": "Não foi possível carregar os dados",
+    "leadsLoad": "Não conseguimos carregar os leads agora. Verifique sua conexão e tente novamente."
+  },
+  "actions": {
+    "retry": "Tentar novamente"
+  },
+  "noCompany": {
+    "title": "Selecione uma empresa",
+    "helper": "Para visualizar métricas e dados operacionais, escolha uma empresa abaixo."
+  }
+}
