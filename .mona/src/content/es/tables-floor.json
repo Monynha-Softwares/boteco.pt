@@ -1,0 +1,21 @@
+{
+  "title": "Vista del Salón",
+  "subtitle": "Monitoree y gestione el estado de todas las mesas en tiempo real",
+  "description": "Gestione el estado de las mesas en tiempo real",
+  "noCompany": {
+    "title": "Selecciona una empresa",
+    "helper": "Elige una empresa para ver el salón."
+  },
+  "status": {
+    "available": "Disponible",
+    "occupied": "Ocupada",
+    "reserved": "Reservada",
+    "maintenance": "Mantenimiento"
+  },
+  "seats": "asiento",
+  "seats_plural": "asientos",
+  "actions": {
+    "changeStatus": "Cambiar estado"
+  },
+  "empty": "Aún no hay mesas registradas."
+}
