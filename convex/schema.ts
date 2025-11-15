@@ -13,4 +13,11 @@ export default defineSchema({
       .index("byPaymentId", ["payment_id"])
       .index("byUserId", ["userId"])
       .index("byPayerUserId", ["payer.user_id"]),
+    leads: defineTable({
+      name: v.string(),
+      email: v.string(),
+      message: v.string(),
+      pageUrl: v.optional(v.string()),
+      createdAt: v.int64(),
+    }).index("byEmail", ["email"]),
   });

@@ -4,7 +4,8 @@
     "about": "About",
     "contact": "Contact",
     "blog": "Blog",
-    "solutions": "Solutions"
+    "solutions": "Solutions",
+    "pricing": "Pricing"
     ,"login": "Login",
     "signUp": "Sign Up",
     "getStarted": "Get Started"
@@ -12,5 +13,20 @@
   "home": {
     "hero-headline": "Transform your business",
     "hero-subhead": "Automate, manage and grow with Boteco Pro"
+  }
+  ,"contact": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "thanks": "Thanks — We'll get back to you!"
+  }
+  ,"labels": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "thanks": "Thanks — We'll get back to you!",
+    "error": "Error submitting. Try again."
   }
 }

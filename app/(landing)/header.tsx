@@ -1,8 +1,8 @@
 "use client"
 import Link from 'next/link'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
-import pt from '@/../locales/pt-BR.json'
-import en from '@/../locales/en.json'
+import pt from '../../locales/pt-BR.json'
+import en from '../../locales/en.json'
 import { useLanguage } from '@/components/LanguageProvider'
 import { ChatMaxingIconColoured } from '@/components/logo'
 import { Loader2, Menu, X } from 'lucide-react'
@@ -19,7 +19,8 @@ import { useTheme } from "next-themes"
 
 
 
-const englishRoutes = [
+type NavKey = keyof typeof pt.nav
+const englishRoutes: { key: NavKey; href: string }[] = [
     { key: 'home', href: '/' },
     { key: 'solutions', href: '/solutions' },
     { key: 'pricing', href: '/pricing' },
@@ -61,6 +62,10 @@ export const HeroHeader = () => {
                                 <span className="text-xl font-medium">Starter.diy</span>
                                 <Badge variant="outline" className="text-muted-foreground  text-xs">Demo</Badge>
                             </Link>
+
+                            <div className="ml-3 flex items-center">
+                                <LanguageSwitcher />
+                            </div>
 
                             <button
                                 onClick={() => setMenuState(!menuState)}

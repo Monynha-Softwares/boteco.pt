@@ -14,7 +14,7 @@ const patterns = [
 ] // intentionally exclude httpAction because it returns a Response
 
 test('convex functions include returns validators', async () => {
-  const files = ['users.ts', 'paymentAttempts.ts', 'http.ts']
+  const files = ['users.ts', 'paymentAttempts.ts', 'http.ts', 'leads.ts']
   for (const file of files) {
     const filePath = join(convexDir, file)
     const content = await readFile(filePath, 'utf8')

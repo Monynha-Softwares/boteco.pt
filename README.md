@@ -133,6 +133,26 @@ npm run dev
 
 Your application will be available at `http://localhost:3000`.
 
+## Testing
+
+- Unit & small integration tests (Node-based):
+
+```bash
+node --test --test-reporter=spec tests/*.test.mjs
+```
+
+- Playwright E2E tests (requires Playwright and a running dev server + Convex dev):
+
+```bash
+# Install dev dependencies (if new)
+npm install
+# Run dev servers (in separate terminals or background jobs)
+npm run dev ; npx convex dev
+# Run Playwright tests:
+npx playwright test
+```
+
+
 ## Architecture
 
 ### Key Routes
