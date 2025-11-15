@@ -1,5 +1,9 @@
-'use client'
+"use client"
 import Link from 'next/link'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
+import pt from '@/../locales/pt-BR.json'
+import en from '@/../locales/en.json'
+import { useLanguage } from '@/components/LanguageProvider'
 import { ChatMaxingIconColoured } from '@/components/logo'
 import { Loader2, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -15,11 +19,11 @@ import { useTheme } from "next-themes"
 
 
 
-const menuItems = [
-    { name: 'Features', href: '#link' },
-    { name: 'Solution', href: '#link' },
-    { name: 'Pricing', href: '#link' },
-    { name: 'About', href: '#link' },
+const englishRoutes = [
+    { key: 'home', href: '/' },
+    { key: 'solutions', href: '/solutions' },
+    { key: 'pricing', href: '/pricing' },
+    { key: 'about', href: '/about' },
 ]
 
 export const HeroHeader = () => {
@@ -38,6 +42,9 @@ export const HeroHeader = () => {
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
+    const { locale } = useLanguage()
+    const messages = locale === 'pt-BR' ? pt : en
+    const menuItems = englishRoutes.map(r => ({ name: messages.nav[r.key] ?? r.key, href: r.href }))
     return (
         <header>
             <nav
@@ -115,7 +122,7 @@ export const HeroHeader = () => {
                                             size="sm"
                                             className={cn(isScrolled && 'lg:hidden')}>
                                             <Link href="#">
-                                                <span>Login</span>
+                                                <span>{messages.nav.login}</span>
                                             </Link>
                                         </Button>
                                     </SignInButton>
@@ -125,20 +132,22 @@ export const HeroHeader = () => {
                                             size="sm"
                                             className={cn(isScrolled && 'lg:hidden')}>
                                             <Link href="#">
-                                                <span>Sign Up</span>
+                                                <span>{messages.nav.signUp}</span>
                                             </Link>
                                         </Button>
                                     </SignUpButton>
-                                    <SignUpButton mode="modal">
-                                        <Button
-                                            asChild
-                                            size="sm"
-                                            className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
-                                            <Link href="#">
-                                                <span>Get Started</span>
-                                            </Link>
-                                        </Button>
-                                    </SignUpButton>
+                                    <Button
+                                        asChild
+                                        size="sm"
+                                        className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}
+                                    >
+                                      <Link href="#">
+                                        <span>{messages.nav.getStarted}</span>
+                                      </Link>
+                                    </Button>
+                                    <div className="flex items-center gap-2">
+                                      <LanguageSwitcher />
+                                    </div>
                                 </Unauthenticated>
                             </div>
                         </div>

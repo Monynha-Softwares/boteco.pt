@@ -4,6 +4,12 @@ import { v, Validator } from "convex/values";
 
 export const current = query({
   args: {},
+  returns: v.union(v.null(), v.object({
+    _id: v.id('users'),
+    _creationTime: v.number(),
+    name: v.string(),
+    externalId: v.string(),
+  })),
   handler: async (ctx) => {
     return await getCurrentUser(ctx);
   },
@@ -11,6 +17,7 @@ export const current = query({
 
 export const upsertFromClerk = internalMutation({
   args: { data: v.any() as Validator<UserJSON> }, // no runtime validation, trust Clerk
+  returns: v.null(),
   async handler(ctx, { data }) {
     const userAttributes = {
       name: `${data.first_name} ${data.last_name}`,
@@ -28,6 +35,7 @@ export const upsertFromClerk = internalMutation({
 
 export const deleteFromClerk = internalMutation({
   args: { clerkUserId: v.string() },
+  returns: v.null(),
   async handler(ctx, { clerkUserId }) {
     const user = await userByExternalId(ctx, clerkUserId);
 

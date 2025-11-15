@@ -5,6 +5,9 @@
     "contact": "Contact",
     "blog": "Blog",
     "solutions": "Solutions"
+    ,"login": "Login",
+    "signUp": "Sign Up",
+    "getStarted": "Get Started"
   },
   "home": {
     "hero-headline": "Transform your business",
