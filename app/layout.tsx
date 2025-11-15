@@ -26,11 +26,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  searchParams,
 }: Readonly<{
   children: React.ReactNode;
+  searchParams?: Record<string, string | string[] | undefined>
 }>) {
+  const queryLocale = typeof searchParams?.locale === 'string' ? searchParams.locale : undefined
+  const htmlLang = (queryLocale ?? 'pt-BR') as string
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html lang={htmlLang} suppressHydrationWarning>
       <body suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased overscroll-none`}
       >

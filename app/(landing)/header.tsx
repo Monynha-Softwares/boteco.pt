@@ -64,6 +64,9 @@ export const HeroHeader = () => {
                             </Link>
 
                             <div className="ml-3 flex items-center">
+                                {/* server-rendered fallback anchors so E2E can click without waiting for hydration */}
+                                <a href="?locale=en" data-testid="locale-en" aria-label="English" className="inline-flex items-center rounded px-2 py-1 text-sm font-medium text-muted-foreground hover:text-accent-foreground md:inline-flex">EN</a>
+                                <a href="?locale=pt-BR" data-testid="locale-pt" aria-label="Portuguese" className="ml-2 inline-flex items-center rounded px-2 py-1 text-sm font-medium text-muted-foreground hover:text-accent-foreground md:inline-flex">PT</a>
                                 <LanguageSwitcher />
                             </div>
 

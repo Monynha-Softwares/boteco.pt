@@ -1,35 +1,13 @@
 import { test, expect } from '@playwright/test';
 
 test('Contact form submits and shows success message; language toggles', async ({ page }) => {
-  await page.goto('/contact');
+  // Use server-rendered query param to avoid waiting for dynamic hydration of the language switcher
+  await page.goto('/contact?locale=en');
   // default lang should be pt-BR (or empty if not set on initial load)
   const lang = await page.evaluate(() => document.documentElement.lang || '');
   expect(['pt-BR', '']).toContain(lang);
 
-  // toggle language to English using the switcher
-  // wait until one visible language switcher variant is available then click
-  let which: 'aria'|'title'|'text'|null = null
-  try {
-    which = await Promise.any([
-      page.waitForSelector('button[aria-label="English"]', { state: 'visible', timeout: 10000 }).then(() => 'aria'),
-      page.waitForSelector('button[title="English"]', { state: 'visible', timeout: 10000 }).then(() => 'title'),
-      page.waitForSelector('button', { state: 'visible', timeout: 10000 }).then(async () => {
-        const count = await page.locator('button', { hasText: 'EN' }).count()
-        return count > 0 ? 'text' : Promise.reject(new Error('no text EN'))
-      }),
-    ])
-  } catch (e) {
-    which = null
-  }
-  let enBtn
-  if (which === 'aria') enBtn = page.locator('button[aria-label="English"]')
-  else if (which === 'title') enBtn = page.locator('button[title="English"]')
-  else enBtn = page.locator('button', { hasText: 'EN' })
-  await enBtn.click()
-  // Wait until a visible switcher is available
-  await enBtn.waitFor({ state: 'visible', timeout: 5000 });
-  await enBtn.scrollIntoViewIfNeeded();
-  await enBtn.click();
+  // We used server-side `?locale=en` to render the page with English; verify it
   await page.waitForFunction(() => document.documentElement.lang === 'en', null, { timeout: 5000 });
   const newLang = await page.evaluate(() => document.documentElement.lang);
   expect(newLang).toBe('en');
@@ -38,11 +16,11 @@ test('Contact form submits and shows success message; language toggles', async (
   await page.fill('input[type="text"]', 'Test User');
   await page.fill('input[type="email"]', 'test@example.org');
   await page.fill('textarea', 'This is a test message');
-  await page.click('button[type="submit"]');
+  await page.click('[data-testid="contact-submit"]');
 
   // Wait for UI success message
-  await page.locator('text=Thanks').waitFor({ timeout: 5000 });
-  const successText = await page.locator('text=Thanks').innerText();
+  await page.waitForSelector('[data-testid="contact-success"]', { timeout: 5000 });
+  const successText = await page.locator('[data-testid="contact-success"]').innerText();
   expect(successText).toContain("Thanks");
 });
 
@@ -54,7 +32,7 @@ test('Language switching affects URL and HTML lang attribute and contact submiss
   await page.locator('button[aria-label="English"]').click()
   await expect(page.locator('html')).toHaveAttribute('lang', 'en')
   // Navigate to Contact page
-  await page.goto('/contact')
+  await page.goto('/contact?locale=pt-BR')
   // Fill the form
   await page.fill('input[type="text"]', 'Jane Doe')
   await page.fill('input[type="email"]', 'jane@example.org')

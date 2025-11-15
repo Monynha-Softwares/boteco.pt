@@ -64,8 +64,8 @@ export default function ContactPage() {
           {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
         </div>
         <div>
-          <button type="submit" className="rounded-md bg-accent px-4 py-2 text-white" disabled={status === 'sending'}>{status === 'sending' ? (messages.labels?.send ?? 'Sending...') : (messages.contact?.send ?? 'Send')}</button>
-          {status === 'success' && <span className="ml-2 text-green-600">{messages.contact?.thanks ?? messages.labels?.thanks ?? 'Thanks — We\'ll get back to you!'}</span>}
+          <button data-testid="contact-submit" type="submit" className="rounded-md bg-accent px-4 py-2 text-white" disabled={status === 'sending'}>{status === 'sending' ? (messages.labels?.send ?? 'Sending...') : (messages.contact?.send ?? 'Send')}</button>
+          {status === 'success' && <span data-testid="contact-success" className="ml-2 text-green-600">{messages.contact?.thanks ?? messages.labels?.thanks ?? 'Thanks — We\'ll get back to you!'}</span>}
           {status === 'error' && <span className="ml-2 text-red-600">Error submitting. Try again.</span>}
         </div>
       </form>
