@@ -78,6 +78,7 @@ Pre-built marketing components from @react-bits registry:
 - **`BlogPost.tsx`** - Individual blog post
 - **`Painel.tsx`** - Dashboard (auth-protected if Clerk enabled)
 - **Solution Pages**: `MenuDigital.tsx`, `Fornecedores.tsx`, `Fidelidade.tsx`, `Eventos.tsx`, `Integracoes.tsx`
+- **Solution Pages**: `MenuDigital.tsx`, `Fornecedores.tsx`, `Integracoes.tsx`
 - **Legal**: `legal/PrivacyPolicy.tsx`, `legal/TermsOfService.tsx`
 - **`NotFound.tsx`** - 404 page
 

@@ -2,13 +2,9 @@
   "seo": {
     "title": "Fidelidade | Boteco Pro",
     "description": "Crie programas de fidelidade que mantêm clientes voltando com regras simples e automações."
-  },
-  "hero": {
-    "title": "Fidelidade que gera retorno",
-    "subtitle": "Pontos, cashback e regras por perfil com notificações automáticas.",
-    "cta": {
-      "label": "Conhecer fidelidade",
-      "href": "/contato"
-    }
+  {
+    "archived": true,
+    "note": "This content was removed — archived by code cleanup.",
+    "redirect": "/"
   }
-}
+      "label": "Conhecer fidelidade",

@@ -2,13 +2,9 @@
   "seo": {
     "title": "Loyalty | Boteco Pro",
     "description": "Create loyalty programs that keep guests coming back with simple rules and automation."
-  },
-  "hero": {
-    "title": "Loyalty that drives repeat business",
-    "subtitle": "Points, cashback, and tier rules with automated notifications.",
-    "cta": {
-      "label": "Discover loyalty",
-      "href": "/contact"
-    }
+  {
+    "archived": true,
+    "note": "This content was removed — archived by code cleanup.",
+    "redirect": "/"
   }
-}
+      "label": "Discover loyalty",
