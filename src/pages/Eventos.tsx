@@ -1,8 +1,10 @@
 import React from 'react';
-import MarketingPageTemplate from '@/components/templates/MarketingPageTemplate';
+import { useParams, Navigate } from 'react-router-dom';
 
 const Eventos: React.FC = () => {
-  return <MarketingPageTemplate translationNamespace="eventos" />;
+  const { locale } = useParams();
+  const target = `/${locale ?? 'pt'}/gestao-estoque`;
+  return <Navigate to={target} replace />;
 };
 
 export default Eventos;

@@ -1,0 +1,10 @@
+{
+  "seo": {"title": "Sincronização em Tempo Real | Boteco Pro"},
+  "hero": {
+    "title": "Sincronização e Broadcast em Tempo Real",
+    "description": "Atualize pedidos, mesas e estoque automaticamente entre dispositivos com baixa latência.",
+    "cta": {"label": "Conhecer Sincronização", "href": "/contato"}
+  },
+  "benefits": ["Atualização automática de pedidos, mesas e estoque", "Indicadores de atividade e status operacional", "Broadcast entre dispositivos"],
+  "cta": {"label": "Solicitar demonstração", "href": "/contato"}
+}

@@ -1,0 +1,10 @@
+{
+  "seo": {"title": "Gestion des Stocks & Opérations | Boteco Pro"},
+  "hero": {
+    "title": "Gestion des stocks, commandes et ventes",
+    "description": "Contrôlez l'inventaire, les mouvements de stock et les ventes avec des mises à jour automatiques.",
+    "cta": {"label": "Découvrir la gestion des stocks", "href": "/contact"}
+  },
+  "benefits": ["Contrôle d'inventaire", "Mouvements de stock", "Enregistrements de ventes et rapports simples quotidiens"],
+  "cta": {"label": "Demander une démo", "href": "/contact"}
+}

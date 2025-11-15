@@ -20,8 +20,8 @@ const TermsOfService = lazy(() => import("./pages/legal/TermsOfService"));
 const Painel = lazy(() => import("./pages/Painel"));
 const MenuDigital = lazy(() => import("./pages/MenuDigital"));
 const Fornecedores = lazy(() => import("./pages/Fornecedores"));
-const Fidelidade = lazy(() => import("./pages/Fidelidade"));
-const Eventos = lazy(() => import("./pages/Eventos"));
+const Realtime = lazy(() => import("./pages/Realtime"));
+const GestaoEstoque = lazy(() => import("./pages/GestaoEstoque"));
 const Integracoes = lazy(() => import("./pages/Integracoes"));
 
 // Simple loading fallback
@@ -53,8 +53,8 @@ const App = () => (
             <Route path="blog/:slug" element={<BlogPost />} />
             <Route path="menu-digital" element={<MenuDigital />} />
             <Route path="fornecedores" element={<Fornecedores />} />
-            <Route path="fidelidade" element={<Fidelidade />} />
-            <Route path="eventos" element={<Eventos />} />
+            <Route path="realtime" element={<Realtime />} />
+            <Route path="gestao-estoque" element={<GestaoEstoque />} />
             <Route path="integracoes" element={<Integracoes />} />
             <Route path="legal/privacidade" element={<PrivacyPolicy />} />
             <Route path="legal/termos" element={<TermsOfService />} />

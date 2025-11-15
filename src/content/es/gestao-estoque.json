@@ -1,0 +1,10 @@
+{
+  "seo": {"title": "Gestión de Inventario y Operaciones | Boteco Pro"},
+  "hero": {
+    "title": "Gestión de Inventario, Pedidos y Ventas",
+    "description": "Controle inventario, movimientos de stock y registros de ventas con actualizaciones automáticas.",
+    "cta": {"label": "Conocer Gestión de Inventario", "href": "/contacto"}
+  },
+  "benefits": ["Control de inventario", "Movimientos de stock", "Registros de ventas y reportes simples del día"],
+  "cta": {"label": "Solicitar demo", "href": "/contacto"}
+}

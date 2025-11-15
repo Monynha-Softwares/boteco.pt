@@ -1,0 +1,10 @@
+{
+  "seo": {"title": "Realtime Sync | Boteco Pro"},
+  "hero": {
+    "title": "Realtime Synchronization & Broadcast",
+    "description": "Keep orders, tables and stock in sync across devices with near-instant updates.",
+    "cta": {"label": "Learn about Realtime", "href": "/contact"}
+  },
+  "benefits": ["Automatic updates for orders, tables and stock", "Activity indicators and operational status", "Device-to-device broadcast"],
+  "cta": {"label": "Request demo", "href": "/contact"}
+}

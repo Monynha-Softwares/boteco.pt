@@ -1,9 +1,8 @@
 {
-  "seo": {
-    "title": "Gestion d'Événements | Boteco Pro",
-    "description": "Planifiez agendas, équipes et expérience client avec des check-lists intelligentes et des rapports post-événement."
-  },
-  "hero": {
+  "archived": true,
+  "redirect": "/gestao-estoque",
+  "note": "Ce contenu a été supprimé — voir /gestao-estoque pour inventaire et opérations."
+}
     "title": "Des événements impeccables du brief au débrief",
     "subtitle": "Gérez réservations, production et communication d'équipe via un tableau visuel collaboratif.",
     "cta": {

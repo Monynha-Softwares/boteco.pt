@@ -1,0 +1,10 @@
+{
+  "seo": {"title": "Synchronisation en Temps Réel | Boteco Pro"},
+  "hero": {
+    "title": "Synchronisation et Broadcast en Temps Réel",
+    "description": "Mettez à jour commandes, tables et stock automatiquement entre appareils avec une faible latence.",
+    "cta": {"label": "Découvrir le temps réel", "href": "/contact"}
+  },
+  "benefits": ["Mises à jour automatiques des commandes, tables et stocks", "Indicateurs d'activité et statut opérationnel", "Broadcast entre appareils"],
+  "cta": {"label": "Demander une démo", "href": "/contact"}
+}

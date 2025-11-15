@@ -11,42 +11,11 @@
       "href": "/contato"
     }
   },
-  "benefits": {
-    "title": "Organização completa para festivais, shows e ativações",
-    "items": [
-      {
-        "title": "Agenda inteligente",
-        "description": "Sincronize reservas, montagem e desmontagem com visões por equipe e fornecedor."
-      },
-      {
-        "title": "Checklist colaborativo",
-        "description": "Distribua tarefas com responsáveis, prazos e anexos compartilhados em tempo real."
-      },
-      {
-        "title": "Relatório pós-evento",
-        "description": "Capture feedback, vendas e custos para replicar o que funciona e corrigir rapidamente."
-      }
-    ]
-  },
-  "workflow": {
-    "title": "Do convite à fidelização",
-    "steps": [
-      {
-        "title": "Desenhe a experiência",
-        "description": "Monte cronogramas, mapinhas de mesa e playlists em um ambiente visual."
-      },
-      {
-        "title": "Coordene a operação",
-        "description": "Atribua responsáveis, notifique parceiros e acompanhe status em dashboards ao vivo."
-      },
-      {
-        "title": "Analise resultados",
-        "description": "Compare ticket médio, ocupação e satisfação para planejar o próximo evento."
-      }
-    ]
-  },
-  "highlights": {
-    "title": "Recursos que garantem eventos memoráveis",
+  {
+    "archived": true,
+    "redirect": "/gestao-estoque",
+    "note": "Funcionalidade de eventos foi removida — veja /gestao-estoque para operações e gestão de stock."
+  }
     "items": [
       {
         "title": "Reservas integradas",

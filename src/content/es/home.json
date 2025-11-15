@@ -16,13 +16,13 @@
       "description": "Centraliza proveedores, contratos y entregas con alertas automáticas."
     },
     {
-      "title": "Fidelización e insights",
-      "description": "Lanza campañas personalizadas y monitorea resultados con paneles completos."
+      "title": "Inventario, Pedidos y Ventas",
+      "description": "Gestiona inventario, movimientos de stock y registros de ventas con actualizaciones automáticas."
     }
   ],
   "solutions": {
     "title": "Soluciones conectadas para tu operación",
-    "subtitle": "Integra menú digital, proveedores, fidelidad, eventos e integraciones en un solo ecosistema.",
+    "subtitle": "Integra menú digital, proveedores, sincronización en tiempo real y gestión de inventario en un solo ecosistema.",
     "items": [
       {
         "title": "Menú digital",
@@ -38,16 +38,16 @@
         "ctaLabel": "Optimizar compras"
       },
       {
-        "title": "Programa de fidelidad",
-        "description": "Billetera digital, campañas segmentadas y métricas de retención en tiempo real.",
-        "href": "/fidelidade",
-        "ctaLabel": "Enganchar clientes"
+        "title": "Sincronización en Tiempo Real",
+        "description": "Sincroniza pedidos, mesas y stock entre dispositivos con broadcast y baja latencia.",
+        "href": "/realtime",
+        "ctaLabel": "Conocer sincronización"
       },
       {
-        "title": "Eventos y experiencias",
-        "description": "Checklists colaborativos, reservas integradas y reportes post-evento.",
-        "href": "/eventos",
-        "ctaLabel": "Planificar agenda"
+        "title": "Gestión de Inventario y Operaciones",
+        "description": "Controla artículos, movimientos y ventas con informes simples diarios.",
+        "href": "/gestao-estoque",
+        "ctaLabel": "Gestionar inventario"
       },
       {
         "title": "Integraciones nativas",
@@ -113,10 +113,10 @@
         "href": "/menu-digital"
       },
       {
-        "title": "Fidelidad omnicanal",
-        "description": "Campañas segmentadas, cashback y automatizaciones para aumentar la recurrencia.",
-        "ctaLabel": "Crear fidelidad",
-        "href": "/fidelidade"
+        "title": "Sincronización y operaciones",
+        "description": "Actualizaciones automáticas de pedidos, mesas y stock con indicadores de actividad.",
+        "ctaLabel": "Conocer sincronización",
+        "href": "/realtime"
       }
     ]
   },
@@ -137,12 +137,12 @@
         "answer": "Sí. Boteco Pro sincroniza carta, pedidos y pagos para actualizar inventario y reportes automáticamente."
       },
       {
-        "question": "¿Puedo gestionar proveedores y eventos juntos?",
-        "answer": "Controlas cotizaciones, entregas, agenda de eventos y equipo en flujos colaborativos dentro de la plataforma."
+        "question": "¿Puedo gestionar proveedores y operaciones juntos?",
+        "answer": "Controlas cotizaciones, entregas, inventario y equipo en flujos colaborativos dentro de la plataforma."
       },
       {
-        "question": "¿Hay un programa de fidelidad listo para usar?",
-        "answer": "Sí. Configura puntos, cashback o sellos con notificaciones automáticas y métricas de retención."
+        "question": "¿Hay control de inventario listo para usar?",
+        "answer": "Sí. Controla artículos, movimientos de stock y reportes simples del día para mantener la operación."
       }
     ]
   },
