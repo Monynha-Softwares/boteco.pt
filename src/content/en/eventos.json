@@ -1,8 +1,8 @@
 {
   "archived": true,
   "redirect": "/gestao-estoque",
-  "note": "This page was removed — see /gestao-estoque for inventory & operations features."
-}
+  "note": "This page was removed — see /gestao-estoque for inventory & operations features.",
+  "hero": {
     "title": "Flawless events from kickoff to encore",
     "subtitle": "Manage reservations, production, and team communication through a collaborative visual board.",
     "cta": {

@@ -1,0 +1,14 @@
+{
+  "seo": {
+    "title": "Fidelidad | Boteco Pro",
+    "description": "Crea programas de fidelidad que retienen clientes con reglas sencillas y automatizaciones."
+  },
+  "hero": {
+    "title": "Fidelidad que genera recurrencia",
+    "subtitle": "Puntos, cashback y reglas por nivel con notificaciones automáticas.",
+    "cta": {
+      "label": "Conocer fidelidad",
+      "href": "/contacto"
+    }
+  }
+}

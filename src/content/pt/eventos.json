@@ -11,26 +11,23 @@
       "href": "/contato"
     }
   },
-  {
-    "archived": true,
-    "redirect": "/gestao-estoque",
-    "note": "Funcionalidade de eventos foi removida — veja /gestao-estoque para operações e gestão de stock."
-  }
-    "items": [
-      {
-        "title": "Reservas integradas",
-        "description": "Blocos específicos conectados ao menu digital para venda antecipada de combos."
-      },
-      {
-        "title": "Comunicação com convidados",
-        "description": "Envie convites personalizados, confirmações e lembretes automatizados."
-      },
-      {
-        "title": "Dashboard em tempo real",
-        "description": "Monitore consumo, filas e feedback instantâneo para ajustar durante o evento."
-      }
-    ]
-  },
+  "archived": true,
+  "redirect": "/gestao-estoque",
+  "note": "Funcionalidade de eventos foi removida — veja /gestao-estoque para operações e gestão de stock.",
+  "items": [
+    {
+      "title": "Reservas integradas",
+      "description": "Blocos específicos conectados ao menu digital para venda antecipada de combos."
+    },
+    {
+      "title": "Comunicação com convidados",
+      "description": "Envie convites personalizados, confirmações e lembretes automatizados."
+    },
+    {
+      "title": "Dashboard em tempo real",
+      "description": "Monitore consumo, filas e feedback instantâneo para ajustar durante o evento."
+    }
+  ],
   "cta": {
     "title": "Encante cada evento com precisão",
     "description": "Simplifique a produção e entregue experiências inesquecíveis.",

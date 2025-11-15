@@ -6,6 +6,20 @@
     "demoCta": "Try the demo",
     "demoCtaAria": "Try the Boteco Pro demo (opens in a new tab)"
   },
+  "features": [
+    {
+      "title": "Omnichannel Digital Menu",
+      "description": "Update your menu in real time and offer inclusive QR Code experiences."
+    },
+    {
+      "title": "Smart Purchasing",
+      "description": "Centralize suppliers, contracts, and deliveries with automated alerts."
+    },
+    {
+      "title": "Stock, Orders & Sales Management",
+      "description": "Control inventory, stock movements and sales records with automatic updates."
+    }
+  ],
   "faq": [
     {
       "question": "Can I manage suppliers and operations together?",

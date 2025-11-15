@@ -1,8 +1,8 @@
 {
   "archived": true,
   "redirect": "/gestao-estoque",
-  "note": "Ce contenu a été supprimé — voir /gestao-estoque pour inventaire et opérations."
-}
+  "note": "Ce contenu a été supprimé — voir /gestao-estoque pour inventaire et opérations.",
+  "hero": {
     "title": "Des événements impeccables du brief au débrief",
     "subtitle": "Gérez réservations, production et communication d'équipe via un tableau visuel collaboratif.",
     "cta": {
