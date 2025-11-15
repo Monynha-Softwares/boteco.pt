@@ -29,4 +29,32 @@
     "thanks": "Obrigado — Entraremos em contato!",
     "error": "Erro ao enviar. Tente novamente."
   }
+    ,"cta": {
+      "title": "Comece",
+      "subtitle": "Entregue mais rápido com ferramentas inteligentes e assistência de IA.",
+      "primary": "Comece",
+      "secondary": "Agende uma demonstração"
+    }
+    ,"features": {
+      "heading": "Gerenciamento de Tarefas Sem Esforço",
+      "lead": "Automatize suas tarefas e fluxos de trabalho conectando suas ferramentas favoritas como Notion, Todoist e mais. Agendamento com IA ajuda a manter o ritmo.",
+      "campaigns": "Campanhas de Marketing",
+      "scheduler": "Agendador de Reuniões com IA",
+      "blockquote": "Uau, páginas auto-geradas são algo que você nem sabia que precisava até ver. É como um CRM nativo para IA.",
+      "creator": "Criador"
+    }
+    ,"faqs": {
+      "title": "Perguntas Frequentes",
+      "refundHeading": "Qual é a política de reembolso?",
+      "refundBody": "Oferecemos garantia de devolução em 30 dias. Se não estiver satisfeito, solicite o reembolso num prazo de 30 dias.",
+      "refundStep1": "Para solicitar um reembolso, entre em contato com nossa equipe de suporte fornecendo o número do pedido e o motivo.",
+      "refundStep2": "Os reembolsos serão processados em 3-5 dias úteis.",
+      "refundStep3": "Observe que reembolsos são válidos apenas para novos clientes e limitados a um por cliente.",
+      "cancelHeading": "Como cancelo minha assinatura?",
+      "cancelBody": "Você pode cancelar sua assinatura a qualquer momento, entrando na sua conta e clicando no botão de cancelar.",
+      "upgradeHeading": "Posso atualizar meu plano?",
+      "upgradeBody": "Sim, você pode atualizar seu plano a qualquer momento selecionando o plano desejado na sua conta.",
+      "supportHeading": "Vocês oferecem suporte por telefone?",
+      "supportBody": "Não oferecemos suporte por telefone no momento. Entre em contato via e-mail ou chat ao vivo para dúvidas ou ajudar."
+    }
 }

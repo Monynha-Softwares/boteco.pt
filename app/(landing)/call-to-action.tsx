@@ -1,22 +1,25 @@
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import PixelCard from '@/components/react-bits/pixel-card'
+import pt from '../../locales/pt-BR.json'
 
 export default function CallToAction() {
+    // Server-rendered default language is pt-BR; the LanguageProvider will update at runtime
+    const messages = pt
     return (
         <section className="py-16 px-6">
             <div className=" mx-auto max-w-5xl rounded-3xl px-6 py-12 md:py-20 lg:py-32">
                 <PixelCard variant="blue" className="w-full max-w-5xl h-auto aspect-[16/9]">
                 <div className="absolute text-center">
-                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Start Building</h2>
-                    <p className="mt-4">Libero sapiente aliquam quibusdam aspernatur.</p>
+                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl">{messages.cta.title}</h2>
+                    <p className="mt-4">{messages.cta.subtitle}</p>
 
                     <div className="mt-12 flex flex-wrap justify-center gap-4">
                         <Button
                             asChild
                             size="lg">
                             <Link href="/">
-                                <span>Get Started</span>
+                                <span>{messages.cta.primary}</span>
                             </Link>
                         </Button>
 
@@ -25,7 +28,7 @@ export default function CallToAction() {
                             size="lg"
                             variant="outline">
                             <Link href="/">
-                                <span>Book Demo</span>
+                                <span>{messages.cta.secondary}</span>
                             </Link>
                         </Button>
                     </div>

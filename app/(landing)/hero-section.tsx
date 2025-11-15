@@ -3,9 +3,11 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { HeroHeader } from "./header"
+import pt from '../../locales/pt-BR.json'
 import { Sparkle } from 'lucide-react'
 
 export default function HeroSection() {
+    const messages = pt
     return (
         <>
             <HeroHeader />
@@ -26,15 +28,15 @@ export default function HeroSection() {
                                     </div>
                                     <span className="font-medium">Introducing AI Agents</span>
                                 </Link>
-                                <h1 className="mx-auto mt-8 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">Build 10x Faster with Starter</h1>
-                                <p className="text-muted-foreground mx-auto my-6 max-w-xl text-balance text-xl">Craft. Build. Ship Modern Websites With AI Support.</p>
+                                <h1 className="mx-auto mt-8 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">{messages.home["hero-headline"]}</h1>
+                                <p className="text-muted-foreground mx-auto my-6 max-w-xl text-balance text-xl">{messages.home["hero-subhead"]}</p>
 
                                 <div className="flex items-center justify-center gap-3">
                                     <Button
                                         asChild
                                         size="lg">
                                         <Link href="#link">
-                                            <span className="text-nowrap">Start Building</span>
+                                            <span className="text-nowrap">{messages.cta.primary}</span>
                                         </Link>
                                     </Button>
                                     <Button

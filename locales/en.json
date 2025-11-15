@@ -28,5 +28,33 @@
     "send": "Send",
     "thanks": "Thanks — We'll get back to you!",
     "error": "Error submitting. Try again."
+  },
+  "cta": {
+    "title": "Start Building",
+    "subtitle": "Ship faster with intelligent tooling and AI assistance.",
+    "primary": "Get Started",
+    "secondary": "Book Demo"
+  },
+  "features": {
+    "heading": "Effortless Task Management",
+    "lead": "Automate your tasks and workflows by connecting your favorite tools like Notion, Todoist, and more. AI-powered scheduling helps you stay on track and adapt to changing priorities.",
+    "campaigns": "Marketing Campaigns",
+    "scheduler": "AI Meeting Scheduler",
+    "blockquote": "Wow, auto-generated pages are the kind of thing that you don't even know you need until you see it. It's like an AI-native CRM.",
+    "creator": "Creator"
+  },
+  "faqs": {
+    "title": "Frequently Asked Questions",
+    "refundHeading": "What is the refund policy?",
+    "refundBody": "We offer a 30-day money back guarantee. If you are not satisfied with our product, you can request a refund within 30 days of your purchase.",
+    "refundStep1": "To request a refund, please contact our support team with your order number and reason for the refund.",
+    "refundStep2": "Refunds will be processed within 3-5 business days.",
+    "refundStep3": "Please note that refunds are only available for new customers and are limited to one per customer.",
+    "cancelHeading": "How do I cancel my subscription?",
+    "cancelBody": "You can cancel your subscription at any time by logging into your account and clicking on the cancel button.",
+    "upgradeHeading": "Can I upgrade my plan?",
+    "upgradeBody": "Yes, you can upgrade your plan at any time by logging into your account and selecting the plan you want to upgrade to.",
+    "supportHeading": "Do you offer phone support?",
+    "supportBody": "We do not offer phone support at this time. However, you can contact us via email or live chat for any questions or concerns you may have."
   }
 }
