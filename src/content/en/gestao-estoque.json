@@ -1,0 +1,10 @@
+{
+  "seo": {"title": "Inventory & Operations | Boteco Pro"},
+  "hero": {
+    "title": "Inventory, Orders and Sales Management",
+    "description": "Manage inventory, stock movements and sales records with automated updates.",
+    "cta": {"label": "Learn about Inventory", "href": "/contact"}
+  },
+  "benefits": ["Inventory control", "Stock movements", "Sales records and simple daily reports"],
+  "cta": {"label": "Request demo", "href": "/contact"}
+}

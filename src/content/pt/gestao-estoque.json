@@ -1,0 +1,10 @@
+{
+  "seo": {"title": "Gestão de Estoque & Operações | Boteco Pro"},
+  "hero": {
+    "title": "Gestão de Stock, Pedidos e Vendas",
+    "description": "Controle inventário, movimentações de stock e registros de vendas com atualizações automáticas.",
+    "cta": {"label": "Conhecer Gestão de Estoque", "href": "/contato"}
+  },
+  "benefits": ["Controle de inventário", "Movimentações de stock", "Registros de vendas e relatórios do dia"],
+  "cta": {"label": "Solicitar demonstração", "href": "/contato"}
+}

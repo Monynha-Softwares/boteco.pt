@@ -1,8 +1,79 @@
 {
-  "seo": {
-    "title": "Gestión de Eventos | Boteco Pro",
-    "description": "Planifica agendas, equipos y experiencias de clientes con checklists inteligentes y reportes post-evento."
+  "archived": true,
+  "redirect": "/gestao-estoque",
+  "note": "Este contenido fue eliminado — consulte /gestao-estoque para inventario y operaciones.",
+  "hero": {
+    "title": "Eventos impecables de principio a fin",
+    "subtitle": "Controla reservas, producción y comunicación del equipo en un tablero visual colaborativo.",
+    "cta": {
+      "label": "Planificar evento",
+      "href": "/contacto"
+    }
   },
+  "benefits": {
+    "title": "Organización total para festivales, shows y activaciones",
+    "items": [
+      {
+        "title": "Agenda inteligente",
+        "description": "Sincroniza reservas, montaje y desmontaje con vistas por equipo y proveedor."
+      },
+      {
+        "title": "Checklist colaborativo",
+        "description": "Asigna tareas con responsables, plazos y archivos compartidos en tiempo real."
+      },
+      {
+        "title": "Reporte post-evento",
+        "description": "Registra feedback, ventas y costos para repetir lo que funciona y corregir rápido."
+      }
+    ]
+  },
+  "workflow": {
+    "title": "Del convite a la fidelización",
+    "steps": [
+      {
+        "title": "Diseña la experiencia",
+        "description": "Crea cronogramas, mapas de mesas y playlists en un espacio visual."
+      },
+      {
+        "title": "Coordina la operación",
+        "description": "Asigna responsables, notifica socios y sigue el estado con dashboards en vivo."
+      },
+      {
+        "title": "Analiza resultados",
+        "description": "Compara ticket promedio, ocupación y satisfacción para el próximo evento."
+      }
+    ]
+  },
+  "highlights": {
+    "title": "Recursos para eventos memorables",
+    "items": [
+      {
+        "title": "Reservas integradas",
+        "description": "Bloques conectados al menú digital para vender combos anticipados."
+      },
+      {
+        "title": "Comunicación con invitados",
+        "description": "Envía invitaciones personalizadas, confirmaciones y recordatorios automáticos."
+      },
+      {
+        "title": "Dashboard en tiempo real",
+        "description": "Monitorea consumo, filas y feedback instantáneo para ajustar sobre la marcha."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Encanta cada evento con precisión",
+    "description": "Simplifica la producción y entrega experiencias inolvidables.",
+    "button": {
+      "label": "Diseñar cronograma",
+      "href": "/contacto"
+    }
+  }
+}
+{
+  "archived": true,
+  "redirect": "/gestao-estoque",
+  "note": "Este contenido fue eliminado — consulte /gestao-estoque para inventario y operaciones.",
   "hero": {
     "title": "Eventos impecables de principio a fin",
     "subtitle": "Controla reservas, producción y comunicación del equipo en un tablero visual colaborativo.",

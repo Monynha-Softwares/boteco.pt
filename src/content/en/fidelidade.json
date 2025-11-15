@@ -1,73 +1,10 @@
 {
   "seo": {
-    "title": "Omnichannel Loyalty Program | Boteco Pro",
-    "description": "Launch segmented campaigns with automated rewards and measure their impact on recurrence and spend."
-  },
-  "hero": {
-    "title": "Turn guests into loyal fans",
-    "subtitle": "Deploy clubs, cashback, and personalized challenges powered by real-time insights.",
-    "cta": {
-      "label": "Build my program",
-      "href": "/contact"
-    }
-  },
-  "benefits": {
-    "title": "Predictable retention with personalized journeys",
-    "items": [
-      {
-        "title": "Dynamic segmentation",
-        "description": "Create rules by frequency, spend, or preferences and deliver benefits automatically."
-      },
-      {
-        "title": "Digital wallet",
-        "description": "Guests collect points, stamps, or credits in a ready-to-use app integrated with your POS."
-      },
-      {
-        "title": "Retention analytics",
-        "description": "Visualize cohorts, churn, and average visit gap to adjust campaigns."
-      }
-    ]
-  },
-  "workflow": {
-    "title": "How to launch loyalty campaigns",
-    "steps": [
-      {
-        "title": "Set objectives",
-        "description": "Choose targets for visits, spend, or frequency and pick your audiences."
-      },
-      {
-        "title": "Activate rewards",
-        "description": "Configure stamps, vouchers, or VIP experiences with automated notifications."
-      },
-      {
-        "title": "Evaluate results",
-        "description": "Track adoption, redemption, and financial impact to iterate fast."
-      }
-    ]
-  },
-  "highlights": {
-    "title": "Features guests will love",
-    "items": [
-      {
-        "title": "Inclusive gamification",
-        "description": "Accessible challenges with screen-reader support, alt text, and synced progress."
-      },
-      {
-        "title": "Omnichannel messaging",
-        "description": "Send push, email, or SMS with automatically localized templates."
-      },
-      {
-        "title": "Payment integrations",
-        "description": "Redeem rewards right at the register with anti-fraud validation."
-      }
-    ]
-  },
-  "cta": {
-    "title": "Create fans who return every week",
-    "description": "Personalize loyalty journeys without complicating operations.",
-    "button": {
-      "label": "Schedule a consultation",
-      "href": "/contact"
-    }
+    "title": "Loyalty | Boteco Pro",
+    "description": "Create loyalty programs that keep guests coming back with simple rules and automation."
+  {
+    "archived": true,
+    "note": "This content was removed — archived by code cleanup.",
+    "redirect": "/"
   }
-}
+      "label": "Discover loyalty",

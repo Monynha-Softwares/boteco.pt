@@ -1,8 +1,7 @@
 {
-  "seo": {
-    "title": "Event Management | Boteco Pro",
-    "description": "Plan schedules, staff, and guest experiences with smart checklists and post-event analytics."
-  },
+  "archived": true,
+  "redirect": "/gestao-estoque",
+  "note": "This page was removed — see /gestao-estoque for inventory & operations features.",
   "hero": {
     "title": "Flawless events from kickoff to encore",
     "subtitle": "Manage reservations, production, and team communication through a collaborative visual board.",

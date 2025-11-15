@@ -64,41 +64,41 @@
           }
         },
         {
-          "id": "fidelidade",
+          "id": "realtime",
           "type": "link",
-          "href": "/fidelidade",
+          "href": "/realtime",
           "localeAware": true,
           "depth": "surface",
           "label": {
-            "pt": "Fidelidade",
-            "en": "Loyalty",
-            "es": "Fidelidad",
-            "fr": "Fidélité"
+            "pt": "Sincronização (Tempo Real)",
+            "en": "Realtime",
+            "es": "Sincronización",
+            "fr": "Temps réel"
           },
           "description": {
-            "pt": "Campanhas personalizadas e recompensas automáticas para clientes fiéis.",
-            "en": "Personalized campaigns and automated rewards for loyal guests.",
-            "es": "Campañas personalizadas y recompensas automáticas para clientes fieles.",
-            "fr": "Campagnes personnalisées et récompenses automatiques pour les clients fidèles."
+            "pt": "Sincronize pedidos, mesas e estoque em tempo real com broadcast entre dispositivos.",
+            "en": "Sync orders, tables and stock in realtime with device broadcast.",
+            "es": "Sincroniza pedidos, mesas y stock en tiempo real con broadcast entre dispositivos.",
+            "fr": "Synchronisez commandes, tables et stocks en temps réel avec broadcast entre appareils."
           }
         },
         {
-          "id": "eventos",
+          "id": "gestao-estoque",
           "type": "link",
-          "href": "/eventos",
+          "href": "/gestao-estoque",
           "localeAware": true,
           "depth": "surface",
           "label": {
-            "pt": "Eventos",
-            "en": "Events",
-            "es": "Eventos",
-            "fr": "Événements"
+            "pt": "Gestão do Estoque",
+            "en": "Inventory & Operations",
+            "es": "Gestión de Inventario",
+            "fr": "Gestion des stocks"
           },
           "description": {
-            "pt": "Agenda integrada com reservas, checklist da equipe e pós-evento.",
-            "en": "Integrated calendar with reservations, staff checklists, and follow-ups.",
-            "es": "Agenda integrada con reservas, checklist del equipo y seguimiento.",
-            "fr": "Agenda intégré avec réservations, checklist d'équipe et suivi."
+            "pt": "Controle itens, movimentações de stock e registros de vendas a partir do painel.",
+            "en": "Manage items, stock movements and sales records from a central panel.",
+            "es": "Controle artículos, movimientos de stock y registros de ventas desde un panel central.",
+            "fr": "Gérez articles, mouvements de stock et enregistrements de ventes depuis un panneau central."
           }
         },
         {

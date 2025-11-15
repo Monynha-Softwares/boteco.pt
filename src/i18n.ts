@@ -12,8 +12,6 @@ import ptTerms from './content/pt/legal/terms.json';
 import ptPainel from './content/pt/painel.json';
 import ptMenuDigital from './content/pt/menu-digital.json';
 import ptFornecedores from './content/pt/fornecedores.json';
-import ptFidelidade from './content/pt/fidelidade.json';
-import ptEventos from './content/pt/eventos.json';
 import ptIntegracoes from './content/pt/integracoes.json';
 import ptCommon from './content/pt/common.json';
 
@@ -26,8 +24,6 @@ import enTerms from './content/en/legal/terms.json';
 import enPainel from './content/en/painel.json';
 import enMenuDigital from './content/en/menu-digital.json';
 import enFornecedores from './content/en/fornecedores.json';
-import enFidelidade from './content/en/fidelidade.json';
-import enEventos from './content/en/eventos.json';
 import enIntegracoes from './content/en/integracoes.json';
 import enCommon from './content/en/common.json';
 
@@ -40,8 +36,6 @@ import esTerms from './content/es/legal/terms.json';
 import esPainel from './content/es/painel.json';
 import esMenuDigital from './content/es/menu-digital.json';
 import esFornecedores from './content/es/fornecedores.json';
-import esFidelidade from './content/es/fidelidade.json';
-import esEventos from './content/es/eventos.json';
 import esIntegracoes from './content/es/integracoes.json';
 import esCommon from './content/es/common.json';
 
@@ -54,8 +48,6 @@ import frTerms from './content/fr/legal/terms.json';
 import frPainel from './content/fr/painel.json';
 import frMenuDigital from './content/fr/menu-digital.json';
 import frFornecedores from './content/fr/fornecedores.json';
-import frFidelidade from './content/fr/fidelidade.json';
-import frEventos from './content/fr/eventos.json';
 import frIntegracoes from './content/fr/integracoes.json';
 import frCommon from './content/fr/common.json';
 
@@ -70,8 +62,6 @@ const resources = {
     painel: ptPainel,
     'menu-digital': ptMenuDigital,
     fornecedores: ptFornecedores,
-    fidelidade: ptFidelidade,
-    eventos: ptEventos,
     integracoes: ptIntegracoes,
     common: ptCommon,
   },
@@ -85,8 +75,6 @@ const resources = {
     painel: enPainel,
     'menu-digital': enMenuDigital,
     fornecedores: enFornecedores,
-    fidelidade: enFidelidade,
-    eventos: enEventos,
     integracoes: enIntegracoes,
     common: enCommon,
   },
@@ -100,8 +88,6 @@ const resources = {
     painel: esPainel,
     'menu-digital': esMenuDigital,
     fornecedores: esFornecedores,
-    fidelidade: esFidelidade,
-    eventos: esEventos,
     integracoes: esIntegracoes,
     common: esCommon,
   },
@@ -115,8 +101,6 @@ const resources = {
     painel: frPainel,
     'menu-digital': frMenuDigital,
     fornecedores: frFornecedores,
-    fidelidade: frFidelidade,
-    eventos: frEventos,
     integracoes: frIntegracoes,
     common: frCommon,
   },
@@ -142,8 +126,6 @@ i18n
       'painel',
       'menu-digital',
       'fornecedores',
-      'fidelidade',
-      'eventos',
       'integracoes',
       'common',
     ],

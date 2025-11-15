@@ -9,20 +9,31 @@
   "features": [
     {
       "title": "Omnichannel Digital Menu",
-      "description": "Update the menu in real time and deliver inclusive QR experiences."
+      "description": "Update your menu in real time and offer inclusive QR Code experiences."
     },
     {
       "title": "Smart Purchasing",
       "description": "Centralize suppliers, contracts, and deliveries with automated alerts."
     },
     {
-      "title": "Loyalty and Insights",
-      "description": "Launch personalized campaigns and track results with rich dashboards."
+      "title": "Stock, Orders & Sales Management",
+      "description": "Control inventory, stock movements and sales records with automatic updates."
     }
   ],
+  "faq": [
+    {
+      "question": "Can I manage suppliers and operations together?",
+      "answer": "Yes — manage quotes, deliveries, inventory and staff in collaborative flows within the platform."
+    },
+    {
+      "question": "Is there inventory control ready to use?",
+      "answer": "Yes. Track items, stock movements and simple daily reports to keep operations aligned."
+    }
+  ],
+  "description": "Centralize suppliers, contracts, and deliveries with automated alerts.",
   "solutions": {
     "title": "Connected solutions for your operation",
-    "subtitle": "Bring digital menu, suppliers, loyalty, events, and integrations together in one ecosystem.",
+    "subtitle": "Bring digital menu, suppliers, realtime sync and inventory management together in one ecosystem.",
     "items": [
       {
         "title": "Digital Menu",
@@ -38,16 +49,16 @@
         "ctaLabel": "Streamline purchasing"
       },
       {
-        "title": "Loyalty Program",
-        "description": "Digital wallet, segmented campaigns, and real-time retention metrics.",
-        "href": "/fidelidade",
-        "ctaLabel": "Engage guests"
+        "title": "Realtime Synchronization",
+        "description": "Keep orders, tables and stock in sync across devices with device-to-device broadcast.",
+        "href": "/realtime",
+        "ctaLabel": "Learn about realtime"
       },
       {
-        "title": "Events and Experiences",
-        "description": "Collaborative checklists, integrated reservations, and post-event reports.",
-        "href": "/eventos",
-        "ctaLabel": "Plan the calendar"
+        "title": "Inventory & Operations",
+        "description": "Manage items, stock movements and sales records with simple daily reports.",
+        "href": "/gestao-estoque",
+        "ctaLabel": "Manage inventory"
       },
       {
         "title": "Native Integrations",
@@ -97,7 +108,7 @@
       }
     ]
   },
-  "platformCarousel": {
+  "ecosystem": {
     "title": "See the Boteco Pro ecosystem in action",
     "items": [
       {
@@ -113,10 +124,10 @@
         "href": "/menu-digital"
       },
       {
-        "title": "Omnichannel loyalty",
-        "description": "Segmented campaigns, cashback, and automations to boost recurrence.",
-        "ctaLabel": "Build loyalty",
-        "href": "/fidelidade"
+        "title": "Realtime & Operations",
+        "description": "Automatic updates for orders, tables and stock with activity indicators.",
+        "ctaLabel": "Learn about realtime",
+        "href": "/realtime"
       }
     ]
   },
@@ -129,7 +140,7 @@
       }
     ]
   },
-  "faq": {
+  "faqSection": {
     "title": "Frequently Asked Questions",
     "items": [
       {
@@ -146,7 +157,7 @@
       }
     ]
   },
-  "ecosystemCta": {
+  "contact": {
     "title": "Connect hospitality with technology",
     "description": "Talk to the Boteco Pro team to craft digital journeys that delight guests from booking to re-engagement.",
     "actions": [
@@ -162,7 +173,7 @@
       }
     ]
   },
-  "finalCta": {
+  "readyToTransform": {
     "title": "Ready to transform your business?",
     "button": "Contact Us"
   }

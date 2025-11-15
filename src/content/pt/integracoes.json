@@ -50,7 +50,7 @@
     "items": [
       {
         "title": "Webhooks e API GraphQL",
-        "description": "Acesse eventos em tempo real e construa integrações personalizadas com segurança."
+        "description": "Acesse sincronização em tempo real e construa integrações personalizadas com segurança."
       },
       {
         "title": "Biblioteca de conectores",

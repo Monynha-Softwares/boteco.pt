@@ -45,7 +45,7 @@ To verify your environment is set up correctly:
 
 ```bash
 # Start dev server
-pnpm dev
+bun dev
 
 # Check browser console - should see i18n loaded, no Clerk errors
 ```
