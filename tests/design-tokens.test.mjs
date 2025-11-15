@@ -12,6 +12,7 @@ const files = [
       "--depth-surface",
       "--depth-overlay",
       "--shadow-lg",
+      "--container",
     ],
   },
   {

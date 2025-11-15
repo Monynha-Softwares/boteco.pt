@@ -11,6 +11,7 @@ const config = {
   theme: {
     extend: {
       colors: {
+        container: "var(--container)",
         background: "var(--background)",
         foreground: "var(--foreground)",
         border: "var(--border)",

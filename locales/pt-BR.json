@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "contact": "Contato",
+    "blog": "Blog",
+    "solutions": "Soluções"
+  },
+  "home": {
+    "hero-headline": "Transforme seu negócio",
+    "hero-subhead": "Automatize, gerencie e cresça com Boteco Pro"
+  }
+}
