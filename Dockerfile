@@ -16,13 +16,17 @@ RUN pnpm install --frozen-lockfile
 # Copy source code
 COPY . .
 
-# Build arguments for environment variables (optional)
-ARG VITE_CLERK_PUBLISHABLE_KEY
-ARG VITE_CLERK_FRONTEND_API_URL
+# Build arguments for environment variables (optional). These are injected at build time
+# so Vite will include them in the static assets. Example build:
+# docker build --build-arg VITE_CLERK_PUBLISHABLE_KEY=pk_xxx --build-arg VITE_PROVISIONAL_REDIRECT=true -t boteco-pt:latest .
+ARG VITE_CLERK_PUBLISHABLE_KEY=""
+ARG VITE_CLERK_FRONTEND_API_URL=""
+ARG VITE_PROVISIONAL_REDIRECT="false"
 
-# Set environment variables for build
+# Set environment variables for build (these are injected at build-time)
 ENV VITE_CLERK_PUBLISHABLE_KEY=$VITE_CLERK_PUBLISHABLE_KEY
 ENV VITE_CLERK_FRONTEND_API_URL=$VITE_CLERK_FRONTEND_API_URL
+ENV VITE_PROVISIONAL_REDIRECT=$VITE_PROVISIONAL_REDIRECT
 
 # Build the application
 RUN pnpm build

@@ -23,6 +23,7 @@ This project uses **Vite** (not Next.js), so environment variables must be prefi
 |----------|----------|-------------|
 | `VITE_CLERK_PUBLISHABLE_KEY` | No | Clerk publishable key for authentication (app works without it) |
 | `VITE_CLERK_FRONTEND_API_URL` | No | Clerk frontend API URL |
+| `VITE_PROVISIONAL_REDIRECT` | No | If set to `true` at build-time, the app redirects likely-authenticated users to [https://painel.boteco.pt](https://painel.boteco.pt). **This is a build-time flag** |
 
 ### Important Notes
 
@@ -51,7 +52,8 @@ bun dev
 ```
 
 If Clerk keys are missing, you'll see:
-```
+
+```text
 ⚠️ Missing Publishable Key from Clerk. Rendering without authentication.
 ```
 

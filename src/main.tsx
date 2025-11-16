@@ -9,6 +9,7 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "./components/ThemeProvider.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { isLikelyAuthenticated } from "./utils/clerk";
 
 // Obtenha a chave pública do Clerk do ambiente
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -49,6 +50,14 @@ if (!rootElement) {
 
 const root = createRoot(rootElement);
 const appTree = wrapWithProviders(<App />);
+
+// Provisional redirect to external painel. Enable by setting
+// VITE_PROVISIONAL_REDIRECT=true in environment.
+const PROVISIONAL_REDIRECT = import.meta.env.VITE_PROVISIONAL_REDIRECT === "true";
+if (PROVISIONAL_REDIRECT && isLikelyAuthenticated()) {
+  // Immediate hard redirect to the external dashboard
+  window.location.href = "https://painel.boteco.pt";
+}
 
 if (PUBLISHABLE_KEY) {
   root.render(

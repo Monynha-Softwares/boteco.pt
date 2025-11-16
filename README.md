@@ -83,8 +83,12 @@ All pull requests and pushes trigger automated checks:
 ### Quick Start
 
 ```bash
-# Build the image
-docker build -t boteco-pt:latest .
+# Build the image (include Vite build-time vars via --build-arg)
+docker build \
+  --build-arg VITE_CLERK_PUBLISHABLE_KEY=pk_xxx \
+  --build-arg VITE_CLERK_FRONTEND_API_URL=https://your-app.clerk.accounts.dev \
+  --build-arg VITE_PROVISIONAL_REDIRECT=true \
+  -t boteco-pt:latest .
 
 # Run the container
 docker run -d -p 3000:80 --name boteco-pt boteco-pt:latest
