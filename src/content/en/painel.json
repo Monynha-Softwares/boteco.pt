@@ -61,17 +61,6 @@
     },
     "empty": "There are not enough leads yet to generate insights."
   },
-  "recentContactRequests": {
-    "title": "Recent Contact Requests",
-    "description": "View the latest contact requests submitted through the website form.",
-    "tableHeaders": {
-      "name": "Name",
-      "email": "Email",
-      "status": "Status",
-      "date": "Date"
-    },
-    "empty": "No recent contact requests."
-  },
   "errors": {
     "title": "We couldn't load the data",
     "leadsLoad": "We were unable to fetch the leads right now. Check your connection and try again."
