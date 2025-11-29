@@ -20,6 +20,15 @@
       "description": "Controle inventário, movimentações de stock e registros de vendas com atualizações automáticas."
     }
   ],
+  "geographicPresence": {
+    "title": "Nossa Presença Global",
+    "description": "Com o Boteco Pro, você tem a confiança de uma solução robusta e adaptada às necessidades de diferentes mercados. Atendemos clientes em:",
+    "countries": [
+      { "name": "Brasil", "description": "Soluções adaptadas ao mercado brasileiro." },
+      { "name": "Portugal", "description": "Experiência no mercado europeu e regulamentações locais." },
+      { "name": "Suíça", "description": "Atendimento a clientes em um dos mercados mais exigentes." }
+    ]
+  },
   "solutions": {
     "title": "Soluções conectadas para a sua operação",
     "subtitle": "Combine menu digital, fornecedores, sincronização em tempo real e gestão de estoque em um único ecossistema.",

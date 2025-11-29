@@ -31,6 +31,15 @@
     }
   ],
   "description": "Centralize suppliers, contracts, and deliveries with automated alerts.",
+  "geographicPresence": {
+    "title": "Our Global Presence",
+    "description": "With Boteco Pro, you have the confidence of a robust solution adapted to the needs of different markets. We serve clients in:",
+    "countries": [
+      { "name": "Brazil", "description": "Solutions adapted to the Brazilian market." },
+      { "name": "Portugal", "description": "Experience in the European market and local regulations." },
+      { "name": "Switzerland", "description": "Serving clients in one of the most demanding markets." }
+    ]
+  },
   "solutions": {
     "title": "Connected solutions for your operation",
     "subtitle": "Bring digital menu, suppliers, realtime sync and inventory management together in one ecosystem.",

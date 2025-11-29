@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Lightbulb, Users, ShieldCheck } from 'lucide-react';
 import Seo from '@/components/Seo';
 import AnimatedSection, { AnimatedItem } from '@/components/reactbits/AnimatedSection'; // Import AnimatedSection and AnimatedItem
+import GeographicPresenceSection from '@/components/home/GeographicPresenceSection'; // Import new component
 
 const About: React.FC = () => {
   const { t, i18n } = useTranslation('about');
@@ -108,6 +109,8 @@ const About: React.FC = () => {
             {t('story')}
           </AnimatedItem>
         </AnimatedSection>
+
+        <GeographicPresenceSection translationNamespace="about" /> {/* New section here */}
 
         <AnimatedSection
           depth="overlay"

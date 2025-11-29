@@ -7,7 +7,21 @@
     "Resistencia e Innovación",
     "Colaboración y Transparencia"
   ],
+  "valuesTitle": "Nuestros Valores",
+  "valueDescription1": "Celebramos la individualidad y la riqueza de las diferentes perspectivas.",
+  "valueDescription2": "Buscamos constantemente nuevas formas de superar desafíos e innovar.",
+  "valueDescription3": "Trabajamos juntos, con honestidad, para alcanzar nuestros objetivos.",
+  "storyTitle": "Nuestra Historia",
   "story": "Monynha Softwares nació de la pasión por la tecnología y la industria de alimentos y bebidas. Nuestro nombre, 'Monynha', representa la fuerza y la resiliencia de quienes buscan marcar la diferencia, celebrando la diversidad y la innovación en cada solución que creamos. Creemos que la tecnología debe ser una herramienta de empoderamiento, y es con este espíritu que desarrollamos Boteco Pro, para que cada emprendedor pueda gestionar su negocio con orgullo y eficiencia.",
+  "geographicPresence": {
+    "title": "Nuestra Presencia Global",
+    "description": "Con Boteco Pro, tienes la confianza de una solución robusta y adaptada a las necesidades de diferentes mercados. Atendemos clientes en:",
+    "countries": [
+      { "name": "Brasil", "description": "Soluciones adaptadas al mercado brasileño." },
+      { "name": "Portugal", "description": "Experiencia en el mercado europeo y regulaciones locales." },
+      { "name": "Suiza", "description": "Atención a clientes en uno de los mercados más exigentes." }
+    ]
+  },
   "partnership": {
     "title": "Asociación Tecnológica",
     "description": "BotecoPro se desarrolla con el soporte tecnológico de Monynha Softwares, especializada en plataformas web y móviles, integraciones/APIs y consultoría técnica. Una asociación enfocada en confiabilidad, accesibilidad y evolución continua.",

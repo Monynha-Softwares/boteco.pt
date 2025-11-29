@@ -21,7 +21,7 @@
     }
   ],
   "solutions": {
-    "title": "Solutions connectées pour votre opération",
+    "title": "Soluções connectées pour votre opération",
     "subtitle": "Intégrez menu numérique, fournisseurs, synchronisation en temps réel et gestion des stocks dans un seul écosystème.",
     "items": [
       {
@@ -50,11 +50,20 @@
         "ctaLabel": "Gérer les stocks"
       },
       {
-        "title": "Intégrations natives",
+        "title": "Integrações natives",
         "description": "Connecteurs pour POS, livraison, comptabilité et BI sans friction.",
         "href": "/integracoes",
         "ctaLabel": "Explorer les intégrations"
       }
+    ]
+  },
+  "geographicPresence": {
+    "title": "Notre Présence Mondiale",
+    "description": "Avec Boteco Pro, vous avez la confiance d'une solution robuste et adaptée aux besoins de différents marchés. Nous servons des clients en :",
+    "countries": [
+      { "name": "Brésil", "description": "Solutions adaptées au marché brésilien." },
+      { "name": "Portugal", "description": "Expérience sur le marché européen et réglementations locales." },
+      { "name": "Suisse", "description": "Service client sur l'un des marchés les plus exigeants." }
     ]
   },
   "howItWorks": {

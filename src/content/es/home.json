@@ -57,6 +57,15 @@
       }
     ]
   },
+  "geographicPresence": {
+    "title": "Nuestra Presencia Global",
+    "description": "Con Boteco Pro, tienes la confianza de una solución robusta y adaptada a las necesidades de diferentes mercados. Atendemos clientes en:",
+    "countries": [
+      { "name": "Brasil", "description": "Soluciones adaptadas al mercado brasileño." },
+      { "name": "Portugal", "description": "Experiencia en el mercado europeo y regulaciones locales." },
+      { "name": "Suiza", "description": "Atención a clientes en uno de los mercados más exigentes." }
+    ]
+  },
   "howItWorks": {
     "title": "Cómo funciona",
     "steps": [

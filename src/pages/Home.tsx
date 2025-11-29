@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Seo from '@/components/Seo';
 import HeroSection from '@/components/home/HeroSection';
 import FeaturesSection from '@/components/home/FeaturesSection';
+import GeographicPresenceSection from '@/components/home/GeographicPresenceSection'; // Import new component
 
 // Lazy load below-the-fold sections to improve initial page load
 const SolutionsSection = lazy(() => import('@/components/home/SolutionsSection'));
@@ -42,6 +43,7 @@ const Home = () => {
         {/* Above-the-fold content loads immediately */}
         <HeroSection />
         <FeaturesSection />
+        <GeographicPresenceSection translationNamespace="home" /> {/* New section here */}
         
         {/* Group 1: Core product information - loads first */}
         <Suspense fallback={<SectionSkeleton />}>
