@@ -21,10 +21,11 @@ serve(async (req) => {
   // In a real scenario, you would verify this token using a library like 'jose'
   // or Supabase's `supabase.auth.getClaims()` with the service role client.
   // For this example, we'll assume the token is valid for demonstration.
+  // For production, use `supabaseAdmin.auth.getUser(token)` to verify.
 
-  const { companyId } = await req.json();
-  if (!companyId) {
-    return new Response('Missing companyId', { status: 400, headers: corsHeaders });
+  const { companyId, operation, payload } = await req.json();
+  if (!companyId || !operation) {
+    return new Response('Missing companyId or operation', { status: 400, headers: corsHeaders });
   }
 
   // Create a Supabase client with the service role key to access protected tables/secrets
@@ -34,7 +35,24 @@ serve(async (req) => {
   );
 
   try {
-    // Fetch the tenant database mapping from the main project's boteco schema
+    // 1. Verify user's company membership and role (Authorization)
+    const { data: companyUser, error: companyUserError } = await supabaseAdmin
+      .from('company_users')
+      .select('role')
+      .eq('company_id', companyId)
+      .eq('user_id', (await supabaseAdmin.auth.getUser(token)).data.user?.id) // Get user ID from token
+      .single();
+
+    if (companyUserError || !companyUser) {
+      console.error('User not authorized for this company:', companyUserError?.message || 'Membership not found');
+      return new Response('Forbidden: User not authorized for this company', { status: 403, headers: corsHeaders });
+    }
+
+    const userRole = companyUser.role; // e.g., 'owner', 'manager', 'employee'
+    // Implement role-based access control here if needed for specific operations
+    // e.g., if (operation === 'delete_product' && userRole !== 'owner') return new Response('Forbidden', { status: 403 });
+
+    // 2. Fetch the tenant database mapping from the main project's boteco schema
     const { data: tenantMapping, error: mappingError } = await supabaseAdmin
       .from('tenant_databases')
       .select('database_name, connection_string_secret_name')
@@ -46,8 +64,7 @@ serve(async (req) => {
       return new Response('Tenant database mapping not found or access denied', { status: 404, headers: corsHeaders });
     }
 
-    // Retrieve the connection string from Supabase secrets
-    // Note: Deno.env.get() can directly access secrets configured in Supabase Edge Functions
+    // 3. Retrieve the connection string from Supabase secrets
     const tenantDbConnectionString = Deno.env.get(tenantMapping.connection_string_secret_name);
 
     if (!tenantDbConnectionString) {
@@ -55,16 +72,27 @@ serve(async (req) => {
       return new Response('Tenant database connection string not configured', { status: 500, headers: corsHeaders });
     }
 
-    // In a full implementation, you would now use this connection string
-    // to connect to the tenant's database and perform the requested operation.
-    // For this example, we'll just return the database name (not the connection string itself).
-    return new Response(JSON.stringify({
-      databaseName: tenantMapping.database_name,
-      // In a real scenario, you would NOT return the connection string to the client.
-      // Instead, the Edge Function would use it internally to query the tenant DB.
-      // For demonstration, we'll indicate success.
-      message: "Tenant database details retrieved successfully by Edge Function."
-    }), {
+    // 4. Connect to the tenant-specific database
+    // In a real scenario, you'd use a PostgreSQL client library (e.g., 'pg')
+    // to connect using `tenantDbConnectionString` and perform the `operation`.
+    // For this example, we'll simulate the operation.
+
+    let resultData;
+    switch (operation) {
+      case 'get_products':
+        // Simulate fetching products from tenant DB
+        resultData = { message: `Simulated: Fetched products for company ${companyId} from DB ${tenantMapping.database_name}` };
+        break;
+      case 'create_order':
+        // Simulate creating an order in tenant DB
+        resultData = { message: `Simulated: Created order for company ${companyId} in DB ${tenantMapping.database_name}`, order: payload };
+        break;
+      // Add more operations as needed
+      default:
+        return new Response('Invalid operation', { status: 400, headers: corsHeaders });
+    }
+
+    return new Response(JSON.stringify(resultData), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       status: 200,
     });
