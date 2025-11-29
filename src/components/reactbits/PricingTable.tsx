@@ -69,7 +69,6 @@ const PricingTable = ({
                   <Button
                     variant={option.highlight ? 'default' : 'outline'}
                     className={cn(
-                      'py-2.5', // Adjusted vertical padding
                       option.highlight
                         ? 'bg-boteco-secondary text-boteco-secondary-foreground hover:bg-boteco-secondary/90'
                         : 'border-boteco-primary text-boteco-primary hover:bg-boteco-primary hover:text-boteco-primary-foreground',

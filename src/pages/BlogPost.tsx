@@ -125,7 +125,7 @@ const BlogPost: React.FC = () => {
               <Button
                 asChild
                 variant="secondary"
-                className="active:scale-98 transition-transform py-2.5"
+                className="active:scale-98 transition-transform"
               >
                 <Link to={`/${normalizedLocale}/blog`}>{handleReturnLabel}</Link>
               </Button>
@@ -156,7 +156,7 @@ const BlogPost: React.FC = () => {
         <Button
           asChild
           variant="ghost"
-          className="text-boteco-secondary hover:text-boteco-secondary/80 py-2.5"
+          className="text-boteco-secondary hover:text-boteco-secondary/80"
         >
           <Link
             to={`/${normalizedLocale}/blog`}

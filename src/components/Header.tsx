@@ -45,12 +45,12 @@ const Header: React.FC = () => {
         return '#';
       }
 
-      if (item.href.startsWith('http')) {
+      if (item.localeAware === false || item.href.startsWith('http')) {
         return item.href;
       }
 
       const normalized = item.href.startsWith('/') ? item.href : `/${item.href}`;
-      return item.localeAware === false ? normalized : `/${currentLocale}${normalized}`;
+      return `/${currentLocale}${normalized}`;
     },
     [currentLocale],
   );
@@ -93,7 +93,7 @@ const Header: React.FC = () => {
                       <>
                         <NavigationMenuTrigger className={cn(
                           navigationMenuTriggerStyle(),
-                          'bg-transparent text-boteco-primary-foreground transition-colors hover:text-boteco-secondary focus-visible:ring-boteco-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-boteco-primary px-4 py-2.5',
+                          'bg-transparent text-boteco-primary-foreground transition-colors hover:text-boteco-secondary focus-visible:ring-boteco-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-boteco-primary',
                         )}>
                           {getLabel(item)}
                         </NavigationMenuTrigger>
@@ -127,7 +127,7 @@ const Header: React.FC = () => {
                       <NavigationMenuLink asChild>
                         <Link
                           to={resolveHref(item)}
-                          className="rounded-md px-4 py-2.5 text-sm font-medium transition-colors hover:text-boteco-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-boteco-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-boteco-primary"
+                          className="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-boteco-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-boteco-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-boteco-primary"
                         >
                           {getLabel(item)}
                         </Link>
