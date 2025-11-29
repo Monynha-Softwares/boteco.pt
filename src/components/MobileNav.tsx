@@ -65,8 +65,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLoca
         <Button
           variant="ghost"
           size="icon"
-          depth="overlay"
-          className="lg:hidden text-boteco-primary-foreground hover:bg-boteco-primary/80 active:scale-98"
+          className="lg:hidden bg-boteco-tertiary text-boteco-neutral transition-colors hover:bg-boteco-tertiary/80 focus-visible:ring-2 focus-visible:ring-boteco-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-98"
         >
           <Menu className="h-6 w-6" />
           <span className="sr-only">{t('openMenu')}</span> {/* Use translated string */}
