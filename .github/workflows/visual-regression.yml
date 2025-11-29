@@ -1,0 +1,39 @@
+name: Visual Regression Tests
+
+on:
+  pull_request:
+    branches: ['**']
+  push:
+    branches: ['**']
+  merge_group:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  visual-test:
+    name: Run Playwright Visual Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20 # Visual tests can take longer
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        run: npm install -g pnpm@latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm playwright install --with-deps
+
+      - name: Run Playwright visual tests
+        run: pnpm test:visual
