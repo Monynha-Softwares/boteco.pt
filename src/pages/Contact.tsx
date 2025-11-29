@@ -231,7 +231,7 @@ const Contact: React.FC = () => {
                     <FormItem>
                       <FormLabel className="text-boteco-neutral">{t('form.nameLabel')}</FormLabel>
                       <FormControl>
-                        <Input placeholder={t('form.namePlaceholder')} {...field} className="mt-1" disabled={isSubmitting} />
+                        <Input placeholder={t('form.namePlaceholder')} {...field} className="mt-1 px-4 py-2.5" disabled={isSubmitting} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -244,7 +244,7 @@ const Contact: React.FC = () => {
                     <FormItem>
                       <FormLabel className="text-boteco-neutral">{t('form.emailLabel')}</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder={t('form.emailPlaceholder')} {...field} className="mt-1" disabled={isSubmitting} />
+                        <Input type="email" placeholder={t('form.emailPlaceholder')} {...field} className="mt-1 px-4 py-2.5" disabled={isSubmitting} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -257,7 +257,7 @@ const Contact: React.FC = () => {
                     <FormItem>
                       <FormLabel className="text-boteco-neutral">{t('form.phoneLabel')}</FormLabel>
                       <FormControl>
-                        <Input type="tel" placeholder={t('form.phonePlaceholder')} {...field} className="mt-1" disabled={isSubmitting} />
+                        <Input type="tel" placeholder={t('form.phonePlaceholder')} {...field} className="mt-1 px-4 py-2.5" disabled={isSubmitting} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -270,7 +270,7 @@ const Contact: React.FC = () => {
                     <FormItem>
                       <FormLabel className="text-boteco-neutral">{t('form.messageLabel')}</FormLabel>
                       <FormControl>
-                        <Textarea placeholder={t('form.messagePlaceholder')} rows={5} {...field} className="mt-1" disabled={isSubmitting} />
+                        <Textarea placeholder={t('form.messagePlaceholder')} rows={5} {...field} className="mt-1 px-4 py-2.5" disabled={isSubmitting} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -278,7 +278,7 @@ const Contact: React.FC = () => {
                 />
                 <Button
                   type="submit"
-                  className="w-full active:scale-98 transition-transform duration-100"
+                  className="w-full active:scale-98 transition-transform duration-100 py-2.5"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (

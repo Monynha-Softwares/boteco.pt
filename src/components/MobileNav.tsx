@@ -45,12 +45,12 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLoca
         return '#';
       }
 
-      if (item.localeAware === false || item.href.startsWith('http')) {
+      if (item.href.startsWith('http')) {
         return item.href;
       }
 
       const normalized = item.href.startsWith('/') ? item.href : `/${item.href}`;
-      return `/${currentLocale}${normalized}`;
+      return item.localeAware === false ? normalized : `/${currentLocale}${normalized}`;
     },
     [currentLocale],
   );
@@ -89,7 +89,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLoca
                         key={child.id}
                         to={resolveHref(child)}
                         onClick={handleNavigate}
-                        className="block rounded-md bg-muted/40 px-3 py-2 transition-colors hover:bg-muted"
+                        className="block rounded-md bg-muted/40 px-4 py-2.5 transition-colors hover:bg-muted"
                       >
                         <span className="block text-sm font-medium text-foreground">{getLabel(child)}</span>
                         {child.description && (
@@ -104,7 +104,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLoca
                   key={item.id}
                   to={resolveHref(item)}
                   onClick={handleNavigate}
-                  className="block rounded-md px-3 py-2 text-lg font-medium text-foreground transition-colors hover:bg-muted/60 hover:text-boteco-primary"
+                  className="block rounded-md px-4 py-2.5 text-lg font-medium text-foreground transition-colors hover:bg-muted/60 hover:text-boteco-primary"
                 >
                   {getLabel(item)}
                 </Link>

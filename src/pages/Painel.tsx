@@ -148,7 +148,7 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
             <AlertTitle>{t('errors.title')}</AlertTitle>
             <AlertDescription className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <span>{t('errors.leadsLoad')}</span>
-              <Button variant="outline" size="sm" onClick={() => query.refetch()}>
+              <Button variant="outline" size="sm" onClick={() => query.refetch()} className="px-4 py-2.5">
                 {t('actions.retry')}
               </Button>
             </AlertDescription>
