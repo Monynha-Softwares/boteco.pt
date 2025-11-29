@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
 import { useUserCompany } from '@/hooks/use-user-company';
-import { hasClerkAuth } from '@/utils/clerk';
+import { hasClerkAuth } from '@/utils/clerk'; // Corrected import
 import { Loader2 } from 'lucide-react';
 
 interface AuthRedirectorProps {
@@ -41,8 +41,7 @@ const AuthRedirector: React.FC<AuthRedirectorProps> = ({ children }) => {
       // Or, if on a public route, allow access.
       // For now, we assume if Clerk is enabled, non-public routes require sign-in.
       // The /painel route is already handled by Clerk's <SignedIn>/<SignedOut>
-      // For other routes, we let the app flow, but if they try to access /company-registration while signed out,
-      // Clerk's RedirectToSignIn will catch it.
+      // For other routes, we let the app flow, but they will be redirected by Clerk if they try to access a protected route.
     }
   }, [
     isClerkLoaded,
@@ -54,7 +53,7 @@ const AuthRedirector: React.FC<AuthRedirectorProps> = ({ children }) => {
     isCompanyRegistrationPath,
   ]);
 
-  if (hasCllerkAuth && (!isClerkLoaded || isUserCompanyLoading)) {
+  if (hasClerkAuth && (!isClerkLoaded || isUserCompanyLoading)) { // Corrected typo here
     // Show a loading spinner while auth and company data are being fetched
     return (
       <div className="flex min-h-screen items-center justify-center">
