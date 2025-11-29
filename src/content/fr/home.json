@@ -80,7 +80,7 @@
     "options": [
       {
         "name": "Basique",
-        "price": "99 €/mois",
+        "price": "20€/mois",
         "features": [
           "Gestion des tables",
           "Contrôle d'inventaire de base"
@@ -88,7 +88,7 @@
       },
       {
         "name": "Premium",
-        "price": "199 €/mois",
+        "price": "35€/mois",
         "features": [
           "Toutes les fonctionnalités du Basique",
           "Rapports avancés",

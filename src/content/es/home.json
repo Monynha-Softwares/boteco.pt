@@ -80,7 +80,7 @@
     "options": [
       {
         "name": "Básico",
-        "price": "$ 99/mes",
+        "price": "20€/mes",
         "features": [
           "Gestión de mesas",
           "Control de inventario básico"
@@ -88,7 +88,7 @@
       },
       {
         "name": "Premium",
-        "price": "$ 199/mes",
+        "price": "35€/mes",
         "features": [
           "Todas las funciones del Básico",
           "Reportes avanzados",

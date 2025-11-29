@@ -45,7 +45,7 @@
       },
       {
         "title": "Gestão de Estoque & Operações",
-        "description": "Controle itens, movimentações e vendas com relatórios simples do dia.",
+        "description": "Controle inventário, movimentações de stock e registros de vendas com relatórios simples do dia.",
         "href": "/gestao-estoque",
         "ctaLabel": "Gerenciar estoque"
       },
@@ -80,7 +80,7 @@
     "options": [
       {
         "name": "Básico",
-        "price": "R$ 99/mês",
+        "price": "20€/mês",
         "features": [
           "Gestão de Mesas",
           "Controle de Estoque Básico"
@@ -88,7 +88,7 @@
       },
       {
         "name": "Premium",
-        "price": "R$ 199/mês",
+        "price": "35€/mês",
         "features": [
           "Todas as funcionalidades do Básico",
           "Relatórios Avançados",

@@ -91,7 +91,7 @@
     "options": [
       {
         "name": "Basic",
-        "price": "$ 99/month",
+        "price": "20€/month",
         "features": [
           "Table Management",
           "Basic Inventory Control"
@@ -99,7 +99,7 @@
       },
       {
         "name": "Premium",
-        "price": "$ 199/month",
+        "price": "35€/month",
         "features": [
           "All Basic features",
           "Advanced Reports",
