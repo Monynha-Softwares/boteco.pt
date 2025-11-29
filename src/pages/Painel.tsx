@@ -2,20 +2,30 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useUser } from '@clerk/clerk-react';
-import { Users, Sparkles, BadgeCheck, Timer } from 'lucide-react';
+import { Users, Sparkles, BadgeCheck, Timer, MessageSquare } from 'lucide-react'; // Added MessageSquare icon
 import Seo from '@/components/Seo';
 import { useQuery } from '@tanstack/react-query';
 import {
   CONTACT_REQUESTS_QUERY_KEY,
   calculateContactRequestMetrics,
   getContactRequests,
+  ContactRequest, // Import ContactRequest type
 } from '@/lib/storage/contactRequests';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Progress } from '@/components/ui/progress';
 import { hasClerkAuth } from '@/utils/clerk';
-import { useUserCompany } from '@/hooks/use-user-company'; // NEW
+import { useUserCompany } from '@/hooks/use-user-company';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"; // Import table components
+import { format } from 'date-fns'; // Import date-fns for date formatting
 
 const cardIcons: Record<string, React.ReactNode> = {
   totalLeads: <Users className="h-8 w-8 text-boteco-secondary" />,
@@ -42,7 +52,7 @@ interface PainelContentProps {
 
 const PainelContent: React.FC<PainelContentProps> = ({ clerkUser }) => {
   const { t, i18n } = useTranslation('painel');
-  const { data: userCompanyData, isLoading: isUserCompanyLoading, isError: isUserCompanyError } = useUserCompany(); // NEW
+  const { data: userCompanyData, isLoading: isUserCompanyLoading, isError: isUserCompanyError } = useUserCompany();
 
   const contactRequestsQuery = useQuery({
     queryKey: CONTACT_REQUESTS_QUERY_KEY,
@@ -127,13 +137,21 @@ const PainelContent: React.FC<PainelContentProps> = ({ clerkUser }) => {
 
   // Use first_name from Supabase profile if available, otherwise Clerk's, then fallback to 'Guest'
   const userName = userCompanyData?.profile?.first_name || clerkUser?.firstName || t('guest', { defaultValue: 'Usuário' });
-  const companyName = userCompanyData?.company?.name || ''; // NEW
+  const companyName = userCompanyData?.company?.name || '';
 
   const pageTitle = t('title');
   const pageDescription = t('demoNotice');
 
-  const isLoading = contactRequestsQuery.isLoading || isUserCompanyLoading; // Combine loading states
-  const isError = contactRequestsQuery.isError || isUserCompanyError; // Combine error states
+  const isLoading = contactRequestsQuery.isLoading || isUserCompanyLoading;
+  const isError = contactRequestsQuery.isError || isUserCompanyError;
+
+  const recentContactRequests = React.useMemo(() => {
+    if (!contactRequestsQuery.data) return [];
+    // Sort by created_at descending and take the first 5
+    return [...contactRequestsQuery.data]
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      .slice(0, 5);
+  }, [contactRequestsQuery.data]);
 
   return (
     <>
@@ -148,7 +166,7 @@ const PainelContent: React.FC<PainelContentProps> = ({ clerkUser }) => {
         <h1 className="text-4xl font-bold mb-2 text-boteco-primary">
           {t('greeting', { userName })}
         </h1>
-        {companyName && ( // Display company name if available
+        {companyName && (
           <p className="text-2xl font-semibold text-boteco-neutral/90 mb-4">
             {companyName}
           </p>
@@ -325,6 +343,59 @@ const PainelContent: React.FC<PainelContentProps> = ({ clerkUser }) => {
               </CardContent>
             </Card>
           </div>
+        </section>
+
+        <section className="mt-12 space-y-6">
+          <h2 className="text-2xl font-semibold text-boteco-primary mb-2 flex items-center gap-2">
+            <MessageSquare className="h-6 w-6" />
+            {t('recentContactRequests.title')}
+          </h2>
+          <p className="text-sm text-boteco-neutral/80 mb-4">{t('recentContactRequests.description')}</p>
+
+          {isLoading ? (
+            <div className="space-y-4">
+              <Skeleton className="h-10 w-full" />
+              <Skeleton className="h-10 w-full" />
+              <Skeleton className="h-10 w-full" />
+            </div>
+          ) : recentContactRequests.length > 0 ? (
+            <Card depth="surface">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="text-boteco-neutral">{t('recentContactRequests.tableHeaders.name')}</TableHead>
+                    <TableHead className="text-boteco-neutral">{t('recentContactRequests.tableHeaders.email')}</TableHead>
+                    <TableHead className="text-boteco-neutral">{t('recentContactRequests.tableHeaders.status')}</TableHead>
+                    <TableHead className="text-boteco-neutral">{t('recentContactRequests.tableHeaders.date')}</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {recentContactRequests.map((request: ContactRequest) => (
+                    <TableRow key={request.id}>
+                      <TableCell className="font-medium text-boteco-neutral">{request.name}</TableCell>
+                      <TableCell className="text-boteco-neutral/80">{request.email}</TableCell>
+                      <TableCell>
+                        <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                          request.status === 'new' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
+                          request.status === 'contacted' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
+                          'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                        }`}>
+                          {t(`leadInsights.status.labels.${request.status}`, { defaultValue: request.status })}
+                        </span>
+                      </TableCell>
+                      <TableCell className="text-boteco-neutral/80">
+                        {format(new Date(request.createdAt), 'dd/MM/yyyy HH:mm')}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </Card>
+          ) : (
+            <p className="text-sm text-boteco-neutral/60">
+              {t('recentContactRequests.empty')}
+            </p>
+          )}
         </section>
       </div>
     </>

@@ -61,6 +61,17 @@
     },
     "empty": "Todavía no hay leads suficientes para generar insights."
   },
+  "recentContactRequests": {
+    "title": "Últimas Solicitudes de Contacto",
+    "description": "Visualiza las solicitudes de contacto más recientes enviadas a través del formulario del sitio web.",
+    "tableHeaders": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "status": "Estado",
+      "date": "Fecha"
+    },
+    "empty": "No hay solicitudes de contacto recientes."
+  },
   "errors": {
     "title": "No se pudieron cargar los datos",
     "leadsLoad": "No pudimos obtener los leads en este momento. Verifica tu conexión e inténtalo de nuevo."
