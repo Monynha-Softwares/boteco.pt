@@ -128,23 +128,25 @@ const validateTranslationMessages = (
 
 const createFormSchema = (messages?: Partial<FormValidationMessages>) => {
   const finalMessages: FormValidationMessages = {
-    firstName: {
-      min: messages?.firstName?.min ?? fallbackValidationMessages.firstName.min,
-      max: messages?.firstName?.max ?? fallbackValidationMessages.firstName.max,
+    name: {
+      min: messages?.name?.min ?? fallbackValidationMessages.name.min,
+      max: messages?.name?.max ?? fallbackValidationMessages.name.max,
     },
-    lastName: {
-      min: messages?.lastName?.min ?? fallbackValidationMessages.lastName.min,
-      max: messages?.lastName?.max ?? fallbackValidationMessages.lastName.max,
+    price: {
+      min: messages?.price?.min ?? fallbackValidationMessages.price.min,
+      invalid: messages?.price?.invalid ?? fallbackValidationMessages.price.invalid,
     },
-    companyName: {
-      min: messages?.companyName?.min ?? fallbackValidationMessages.companyName.min,
-      max: messages?.companyName?.max ?? fallbackValidationMessages.companyName.max,
+    stock: {
+      min: messages?.stock?.min ?? fallbackValidationMessages.stock.min,
+      invalid: messages?.stock?.invalid ?? fallbackValidationMessages.stock.invalid,
     },
-    companySlug: {
-      min: messages?.companySlug?.min ?? fallbackValidationMessages.companySlug.min,
-      max: messages?.companySlug?.max ?? fallbackValidationMessages.companySlug.max,
-      invalid: messages?.companySlug?.invalid ?? fallbackValidationMessages.companySlug.invalid,
-      exists: messages?.companySlug?.exists ?? fallbackValidationMessages.companySlug.exists,
+    category: {
+      min: messages?.category?.min ?? fallbackValidationMessages.category.min,
+      max: messages?.category?.max ?? fallbackValidationMessages.category.max,
+    },
+    unit: {
+      min: messages?.unit?.min ?? fallbackValidationMessages.unit.min,
+      max: messages?.unit?.max ?? fallbackValidationMessages.unit.max,
     },
   };
 
@@ -167,7 +169,7 @@ const createFormSchema = (messages?: Partial<FormValidationMessages>) => {
       .max(50, { message: finalMessages.companySlug.max })
       .regex(/^[a-z0-9-]+$/, { message: finalMessages.companySlug.invalid })
       .refine(async (slug) => {
-        // Check if slug already exists in boteco.companies
+        // Check if slug already exists in public.companies
         const { data, error } = await supabase
           .from('companies')
           .select('slug')
@@ -213,18 +215,24 @@ const CompanyRegistration: React.FC = () => {
   const form = useForm<CompanyRegistrationFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstName: userData?.profile?.first_name || '',
-      lastName: userData?.profile?.last_name || '',
-      companyName: userData?.company?.name || '',
-      companySlug: userData?.company?.slug || '',
-    },
-    values: { // Ensure form values are updated when userData changes
-      firstName: userData?.profile?.first_name || '',
-      lastName: userData?.profile?.last_name || '',
-      companyName: userData?.company?.name || '',
-      companySlug: userData?.company?.slug || '',
+      firstName: '', // Initialize with empty strings
+      lastName: '',
+      companyName: '',
+      companySlug: '',
     },
   });
+
+  // Use reset to set form values once userData is loaded
+  React.useEffect(() => {
+    if (userData && !isUserDataLoading) {
+      form.reset({
+        firstName: userData.profile?.first_name || '',
+        lastName: userData.profile?.last_name || '',
+        companyName: userData.company?.name || '',
+        companySlug: userData.company?.slug || '',
+      });
+    }
+  }, [userData, isUserDataLoading, form]);
 
   // Redirect if user already has a company
   React.useEffect(() => {
@@ -254,7 +262,7 @@ const CompanyRegistration: React.FC = () => {
         throw new Error(`Failed to update profile: ${profileUpdateError.message}`);
       }
 
-      // 2. Insert into boteco.companies
+      // 2. Insert into public.companies
       const { data: companyData, error: companyInsertError } = await supabase
         .from('companies')
         .insert({
@@ -271,7 +279,7 @@ const CompanyRegistration: React.FC = () => {
 
       const newCompanyId = companyData.id;
 
-      // 3. Insert into boteco.company_users (assign owner role)
+      // 3. Insert into public.company_users (assign owner role)
       const { error: companyUserInsertError } = await supabase
         .from('company_users')
         .insert({
@@ -382,7 +390,7 @@ const CompanyRegistration: React.FC = () => {
                       <FormLabel className="text-boteco-neutral">{t('form.companyNameLabel')}</FormLabel>
                       <FormControl>
                         <Input placeholder={t('form.companyNamePlaceholder')} {...field} className="mt-1" disabled={registerMutation.isPending} />
-                      </FormControl>
+                        </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}

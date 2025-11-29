@@ -17,7 +17,7 @@ import ptCommon from './content/pt/common.json';
 import ptGestaoEstoque from './content/pt/gestao-estoque.json';
 import ptRealtime from './content/pt/realtime.json';
 import ptCompanyRegistration from './content/pt/company-registration.json';
-import ptProducts from './content/pt/products.json'; // NEW
+import ptProducts from './content/pt/products.json';
 
 import enHome from './content/en/home.json';
 import enAbout from './content/en/about.json';
@@ -33,7 +33,7 @@ import enCommon from './content/en/common.json';
 import enGestaoEstoque from './content/en/gestao-estoque.json';
 import enRealtime from './content/en/realtime.json';
 import enCompanyRegistration from './content/en/company-registration.json';
-import enProducts from './content/en/products.json'; // NEW
+import enProducts from './content/en/products.json';
 
 import esHome from './content/es/home.json';
 import esAbout from './content/es/about.json';
@@ -49,7 +49,7 @@ import esCommon from './content/es/common.json';
 import esGestaoEstoque from './content/es/gestao-estoque.json';
 import esRealtime from './content/es/realtime.json';
 import esCompanyRegistration from './content/es/company-registration.json';
-import esProducts from './content/es/products.json'; // NEW
+import esProducts from './content/es/products.json';
 
 import frHome from './content/fr/home.json';
 import frAbout from './content/fr/about.json';
@@ -65,7 +65,7 @@ import frCommon from './content/fr/common.json';
 import frGestaoEstoque from './content/fr/gestao-estoque.json';
 import frRealtime from './content/fr/realtime.json';
 import frCompanyRegistration from './content/fr/company-registration.json';
-import frProducts from './content/fr/products.json'; // NEW
+import frProducts from './content/fr/products.json';
 
 const resources = {
   pt: {
@@ -83,7 +83,7 @@ const resources = {
     'gestao-estoque': ptGestaoEstoque,
     realtime: ptRealtime,
     'company-registration': ptCompanyRegistration,
-    products: ptProducts, // NEW
+    products: ptProducts,
   },
   en: {
     home: enHome,
@@ -100,7 +100,7 @@ const resources = {
     'gestao-estoque': enGestaoEstoque,
     realtime: enRealtime,
     'company-registration': enCompanyRegistration,
-    products: enProducts, // NEW
+    products: enProducts,
   },
   es: {
     home: esHome,
@@ -117,7 +117,7 @@ const resources = {
     'gestao-estoque': esGestaoEstoque,
     realtime: esRealtime,
     'company-registration': esCompanyRegistration,
-    products: esProducts, // NEW
+    products: esProducts,
   },
   fr: {
     home: frHome,
@@ -134,7 +134,7 @@ const resources = {
     'gestao-estoque': frGestaoEstoque,
     realtime: frRealtime,
     'company-registration': frCompanyRegistration,
-    products: frProducts, // NEW
+    products: frProducts,
   },
 };
 
@@ -163,7 +163,7 @@ i18n
       'gestao-estoque',
       'realtime',
       'company-registration',
-      'products', // NEW
+      'products',
     ],
     defaultNS: 'home',
     detection: {
