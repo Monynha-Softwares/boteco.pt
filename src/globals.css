@@ -64,28 +64,31 @@
   }
 
   .dark {
-    --boteco-primary: 341.8 64.5% 56%;
-    --boteco-primary-foreground: 42.4 70.8% 96%;
-
-    --boteco-secondary: 33.7 74.6% 52%;
-    --boteco-secondary-foreground: 42.4 70.8% 96%;
-
-    --boteco-tertiary: 26 28% 18%;
-    --boteco-tertiary-foreground: 42.4 70.8% 92%;
-
-    --boteco-neutral: 42.4 70.8% 92%;
-    --boteco-neutral-foreground: 22.3 40.2% 18%;
-
-    --boteco-neutral-soft: 26 28% 26%;
-    --boteco-neutral-soft-foreground: 42.4 70.8% 92%;
-
-    --depth-surface: 26 30% 12%;
-    --depth-overlay: 26 30% 18%;
-    --depth-elevated: 26 30% 26%;
+    /* Backgrounds - Dark Grey Tones */
+    --depth-surface: 0 0% 10%; /* Very dark grey */
+    --depth-overlay: 0 0% 15%; /* Slightly lighter dark grey */
+    --depth-elevated: 0 0% 20%; /* Even lighter dark grey */
 
     --background: var(--depth-surface);
-    --foreground: var(--boteco-neutral);
+    --foreground: 0 0% 100%; /* Pure white text */
 
+    /* Boteco Brand Colors (identical to light theme for components/accents) */
+    --boteco-primary: 341.8 64.5% 33.1%; /* Deep Rose */
+    --boteco-primary-foreground: 0 0% 100%; /* White */
+
+    --boteco-secondary: 33.7 74.6% 40.2%; /* Burnt Orange */
+    --boteco-secondary-foreground: 0 0% 100%; /* White */
+
+    --boteco-tertiary: var(--depth-elevated); /* Dark grey for cards/popovers */
+    --boteco-tertiary-foreground: 0 0% 100%; /* Pure white for text on tertiary */
+
+    --boteco-neutral: 0 0% 100%; /* Pure white for main text */
+    --boteco-neutral-foreground: var(--depth-surface); /* Dark background for contrast on white elements */
+
+    --boteco-neutral-soft: 0 0% 25%; /* Slightly lighter dark grey for muted elements */
+    --boteco-neutral-soft-foreground: 0 0% 100%; /* Pure white for text on soft neutral */
+
+    /* Shadcn/ui semantic colors */
     --card: var(--boteco-tertiary);
     --card-foreground: var(--boteco-tertiary-foreground);
 
@@ -104,21 +107,22 @@
     --accent: var(--boteco-secondary);
     --accent-foreground: var(--boteco-secondary-foreground);
 
-    --destructive: 4 84% 50%;
+    --destructive: 4 84% 58%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 26 26% 28%;
-    --input: 26 26% 28%;
-    --ring: var(--boteco-secondary);
+    --border: 0 0% 30%; /* Medium dark grey for borders */
+    --input: 0 0% 30%; /* Medium dark grey for input borders */
+    --ring: var(--boteco-primary); /* Deep Rose from light theme */
 
+    /* Sidebar colors */
     --sidebar-background: var(--boteco-tertiary);
     --sidebar-foreground: var(--boteco-neutral);
     --sidebar-primary: var(--boteco-primary);
     --sidebar-primary-foreground: var(--boteco-primary-foreground);
     --sidebar-accent: var(--boteco-secondary);
     --sidebar-accent-foreground: var(--boteco-secondary-foreground);
-    --sidebar-border: 26 26% 28%;
-    --sidebar-ring: var(--boteco-secondary);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
   }
 }
 
