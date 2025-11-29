@@ -40,7 +40,7 @@ export function ThemeToggle() {
           variant="ghost"
           size="icon"
           depth="overlay"
-          className="text-boteco-primary-foreground transition-colors hover:bg-boteco-primary/80"
+          className="text-boteco-neutral transition-colors hover:bg-boteco-primary/80"
         >
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
