@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Progress } from '@/components/ui/progress';
 import { hasClerkAuth } from '@/utils/clerk';
+import { useUserCompany } from '@/hooks/use-user-company'; // NEW
 
 const cardIcons: Record<string, React.ReactNode> = {
   totalLeads: <Users className="h-8 w-8 text-boteco-secondary" />,
@@ -26,35 +27,36 @@ const cardIcons: Record<string, React.ReactNode> = {
 // Internal component that uses Clerk hooks
 const PainelWithAuth: React.FC = () => {
   const { user } = useUser();
-  return <PainelContent user={user} />;
+  return <PainelContent clerkUser={user} />;
 };
 
 // Internal component without auth
 const PainelWithoutAuth: React.FC = () => {
-  return <PainelContent user={null} />;
+  return <PainelContent clerkUser={null} />;
 };
 
 // Main content component
 interface PainelContentProps {
-  user: { firstName?: string | null } | null;
+  clerkUser: { firstName?: string | null } | null;
 }
 
-const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
+const PainelContent: React.FC<PainelContentProps> = ({ clerkUser }) => {
   const { t, i18n } = useTranslation('painel');
+  const { data: userCompanyData, isLoading: isUserCompanyLoading, isError: isUserCompanyError } = useUserCompany(); // NEW
 
-  const query = useQuery({
+  const contactRequestsQuery = useQuery({
     queryKey: CONTACT_REQUESTS_QUERY_KEY,
     queryFn: getContactRequests,
     staleTime: 60 * 1000,
   });
 
   const metrics = React.useMemo(() => {
-    if (!query.data) {
+    if (!contactRequestsQuery.data) {
       return null;
     }
 
-    return calculateContactRequestMetrics(query.data);
-  }, [query.data]);
+    return calculateContactRequestMetrics(contactRequestsQuery.data);
+  }, [contactRequestsQuery.data]);
 
   const numberFormatter = React.useMemo(
     () => new Intl.NumberFormat(i18n.language),
@@ -123,9 +125,15 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
     [percentageFormatter],
   );
 
-  const userName = user?.firstName || t('guest', { defaultValue: 'Usuário' });
+  // Use first_name from Supabase profile if available, otherwise Clerk's, then fallback to 'Guest'
+  const userName = userCompanyData?.profile?.first_name || clerkUser?.firstName || t('guest', { defaultValue: 'Usuário' });
+  const companyName = userCompanyData?.company?.name || ''; // NEW
+
   const pageTitle = t('title');
   const pageDescription = t('demoNotice');
+
+  const isLoading = contactRequestsQuery.isLoading || isUserCompanyLoading; // Combine loading states
+  const isError = contactRequestsQuery.isError || isUserCompanyError; // Combine error states
 
   return (
     <>
@@ -137,18 +145,23 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
         locale={i18n.language}
       />
       <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-4 text-boteco-primary">
+        <h1 className="text-4xl font-bold mb-2 text-boteco-primary">
           {t('greeting', { userName })}
         </h1>
+        {companyName && ( // Display company name if available
+          <p className="text-2xl font-semibold text-boteco-neutral/90 mb-4">
+            {companyName}
+          </p>
+        )}
         <p className="text-xl text-boteco-neutral/90 mb-4">{t('title')}</p>
         <p className="text-sm text-boteco-neutral/80 mb-8 italic">{t('demoNotice')}</p>
 
-        {query.isError && (
+        {isError && (
           <Alert variant="destructive" className="mb-8">
             <AlertTitle>{t('errors.title')}</AlertTitle>
             <AlertDescription className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <span>{t('errors.leadsLoad')}</span>
-              <Button variant="outline" size="sm" onClick={() => query.refetch()}>
+              <Button variant="outline" size="sm" onClick={() => contactRequestsQuery.refetch()}>
                 {t('actions.retry')}
               </Button>
             </AlertDescription>
@@ -169,7 +182,7 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
                 {cardIcons[card.id] ?? null}
               </CardHeader>
               <CardContent>
-                {query.isLoading ? (
+                {isLoading ? (
                   <>
                     <Skeleton className="h-8 w-24 mb-2" />
                     <Skeleton className="h-4 w-32" />
@@ -204,7 +217,7 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
                 <CardDescription>{t('leadInsights.averageResponseTime.helper')}</CardDescription>
               </CardHeader>
               <CardContent>
-                {query.isLoading ? (
+                {isLoading ? (
                   <>
                     <Skeleton className="h-8 w-28 mb-3" />
                     <Skeleton className="h-4 w-40" />
@@ -238,7 +251,7 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
                 <CardDescription>{t('leadInsights.channels.helper')}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                {query.isLoading ? (
+                {isLoading ? (
                   Array.from({ length: 3 }).map((_, index) => (
                     <div key={index} className="space-y-2">
                       <Skeleton className="h-4 w-32" />
@@ -279,7 +292,7 @@ const PainelContent: React.FC<PainelContentProps> = ({ user }) => {
                 <CardDescription>{t('leadInsights.status.helper')}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                {query.isLoading ? (
+                {isLoading ? (
                   Array.from({ length: 3 }).map((_, index) => (
                     <div key={index} className="space-y-2">
                       <Skeleton className="h-4 w-28" />
