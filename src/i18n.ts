@@ -16,6 +16,7 @@ import ptIntegracoes from './content/pt/integracoes.json';
 import ptCommon from './content/pt/common.json';
 import ptGestaoEstoque from './content/pt/gestao-estoque.json';
 import ptRealtime from './content/pt/realtime.json';
+import ptCompanyRegistration from './content/pt/company-registration.json'; // NEW
 
 import enHome from './content/en/home.json';
 import enAbout from './content/en/about.json';
@@ -30,6 +31,7 @@ import enIntegracoes from './content/en/integracoes.json';
 import enCommon from './content/en/common.json';
 import enGestaoEstoque from './content/en/gestao-estoque.json';
 import enRealtime from './content/en/realtime.json';
+import enCompanyRegistration from './content/en/company-registration.json'; // NEW
 
 import esHome from './content/es/home.json';
 import esAbout from './content/es/about.json';
@@ -44,6 +46,7 @@ import esIntegracoes from './content/es/integracoes.json';
 import esCommon from './content/es/common.json';
 import esGestaoEstoque from './content/es/gestao-estoque.json';
 import esRealtime from './content/es/realtime.json';
+import esCompanyRegistration from './content/es/company-registration.json'; // NEW
 
 import frHome from './content/fr/home.json';
 import frAbout from './content/fr/about.json';
@@ -58,6 +61,7 @@ import frIntegracoes from './content/fr/integracoes.json';
 import frCommon from './content/fr/common.json';
 import frGestaoEstoque from './content/fr/gestao-estoque.json';
 import frRealtime from './content/fr/realtime.json';
+import frCompanyRegistration from './content/fr/company-registration.json'; // NEW
 
 const resources = {
   pt: {
@@ -74,6 +78,7 @@ const resources = {
     common: ptCommon,
     'gestao-estoque': ptGestaoEstoque,
     realtime: ptRealtime,
+    'company-registration': ptCompanyRegistration, // NEW
   },
   en: {
     home: enHome,
@@ -89,6 +94,7 @@ const resources = {
     common: enCommon,
     'gestao-estoque': enGestaoEstoque,
     realtime: enRealtime,
+    'company-registration': enCompanyRegistration, // NEW
   },
   es: {
     home: esHome,
@@ -104,6 +110,7 @@ const resources = {
     common: esCommon,
     'gestao-estoque': esGestaoEstoque,
     realtime: esRealtime,
+    'company-registration': esCompanyRegistration, // NEW
   },
   fr: {
     home: frHome,
@@ -119,6 +126,7 @@ const resources = {
     common: frCommon,
     'gestao-estoque': frGestaoEstoque,
     realtime: frRealtime,
+    'company-registration': frCompanyRegistration, // NEW
   },
 };
 
@@ -143,9 +151,10 @@ i18n
       'menu-digital',
       'fornecedores',
       'integracoes',
-      'common', // Added common namespace
+      'common',
       'gestao-estoque',
       'realtime',
+      'company-registration', // NEW
     ],
     defaultNS: 'home',
     detection: {

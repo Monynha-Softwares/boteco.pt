@@ -1,0 +1,45 @@
+{
+  "seo": {
+    "title": "Registro de Empresa | Boteco Pro",
+    "description": "Complete seu perfil e registre sua empresa no Boteco Pro."
+  },
+  "title": "Complete seu Perfil e Registre sua Empresa",
+  "description": "Para começar a usar o Boteco Pro, precisamos de algumas informações sobre você e seu negócio.",
+  "form": {
+    "firstNameLabel": "Primeiro Nome",
+    "firstNamePlaceholder": "Seu primeiro nome",
+    "lastNameLabel": "Sobrenome",
+    "lastNamePlaceholder": "Seu sobrenome",
+    "companyNameLabel": "Nome da Empresa",
+    "companyNamePlaceholder": "Nome do seu bar ou restaurante",
+    "companySlugLabel": "Identificador Único (Slug)",
+    "companySlugPlaceholder": "ex: meu-boteco-pt",
+    "submitButton": "Registrar Empresa",
+    "submitting": "Registrando...",
+    "successMessage": "Empresa registrada com sucesso!",
+    "successDescription": "Seu perfil e empresa foram criados. Você será redirecionado para o painel.",
+    "errorMessage": "Erro ao registrar empresa.",
+    "errorDescription": "Ocorreu um erro ao registrar sua empresa. Por favor, tente novamente.",
+    "validation": {
+      "firstName": {
+        "min": "O primeiro nome deve ter pelo menos 2 caracteres.",
+        "max": "O primeiro nome não pode ter mais de 50 caracteres."
+      },
+      "lastName": {
+        "min": "O sobrenome deve ter pelo menos 2 caracteres.",
+        "max": "O sobrenome não pode ter mais de 50 caracteres."
+      },
+      "companyName": {
+        "min": "O nome da empresa deve ter pelo menos 2 caracteres.",
+        "max": "O nome da empresa não pode ter mais de 100 caracteres."
+      },
+      "companySlug": {
+        "min": "O identificador único deve ter pelo menos 3 caracteres.",
+        "max": "O identificador único não pode ter mais de 50 caracteres.",
+        "invalid": "O identificador único deve conter apenas letras minúsculas, números e hífens.",
+        "exists": "Este identificador único já está em uso. Por favor, escolha outro."
+      }
+    }
+  },
+  "redirecting": "Você já tem uma empresa registrada. Redirecionando para o painel..."
+}

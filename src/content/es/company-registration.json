@@ -1,0 +1,45 @@
+{
+  "seo": {
+    "title": "Registro de Empresa | Boteco Pro",
+    "description": "Completa tu perfil y registra tu empresa en Boteco Pro."
+  },
+  "title": "Completa tu Perfil y Registra tu Empresa",
+  "description": "Para empezar a usar Boteco Pro, necesitamos información sobre ti y tu negocio.",
+  "form": {
+    "firstNameLabel": "Nombre",
+    "firstNamePlaceholder": "Tu nombre",
+    "lastNameLabel": "Apellido",
+    "lastNamePlaceholder": "Tu apellido",
+    "companyNameLabel": "Nombre de la Empresa",
+    "companyNamePlaceholder": "Nombre de tu bar o restaurante",
+    "companySlugLabel": "Identificador Único (Slug)",
+    "companySlugPlaceholder": "ej: mi-boteco-es",
+    "submitButton": "Registrar Empresa",
+    "submitting": "Registrando...",
+    "successMessage": "¡Empresa registrada con éxito!",
+    "successDescription": "Tu perfil y empresa han sido creados. Serás redirigido al panel.",
+    "errorMessage": "Error al registrar empresa.",
+    "errorDescription": "Ocurrió un error al registrar tu empresa. Por favor, inténtalo de nuevo.",
+    "validation": {
+      "firstName": {
+        "min": "El nombre debe tener al menos 2 caracteres.",
+        "max": "El nombre no puede tener más de 50 caracteres."
+      },
+      "lastName": {
+        "min": "El apellido debe tener al menos 2 caracteres.",
+        "max": "El apellido no puede tener más de 50 caracteres."
+      },
+      "companyName": {
+        "min": "El nombre de la empresa debe tener al menos 2 caracteres.",
+        "max": "El nombre de la empresa no puede tener más de 100 caracteres."
+      },
+      "companySlug": {
+        "min": "El identificador único debe tener al menos 3 caracteres.",
+        "max": "El identificador único no puede tener más de 50 caracteres.",
+        "invalid": "El identificador único debe contener solo letras minúsculas, números y guiones.",
+        "exists": "Este identificador único ya está en uso. Por favor, elige otro."
+      }
+    }
+  },
+  "redirecting": "Ya tienes una empresa registrada. Redirigiendo al panel..."
+}

@@ -1,0 +1,45 @@
+{
+  "seo": {
+    "title": "Company Registration | Boteco Pro",
+    "description": "Complete your profile and register your company with Boteco Pro."
+  },
+  "title": "Complete Your Profile and Register Your Company",
+  "description": "To start using Boteco Pro, we need some information about you and your business.",
+  "form": {
+    "firstNameLabel": "First Name",
+    "firstNamePlaceholder": "Your first name",
+    "lastNameLabel": "Last Name",
+    "lastNamePlaceholder": "Your last name",
+    "companyNameLabel": "Company Name",
+    "companyNamePlaceholder": "Name of your bar or restaurant",
+    "companySlugLabel": "Unique Identifier (Slug)",
+    "companySlugPlaceholder": "e.g., my-boteco-en",
+    "submitButton": "Register Company",
+    "submitting": "Registering...",
+    "successMessage": "Company registered successfully!",
+    "successDescription": "Your profile and company have been created. You will be redirected to the dashboard.",
+    "errorMessage": "Error registering company.",
+    "errorDescription": "An error occurred while registering your company. Please try again.",
+    "validation": {
+      "firstName": {
+        "min": "First name must be at least 2 characters.",
+        "max": "First name cannot be longer than 50 characters."
+      },
+      "lastName": {
+        "min": "Last name must be at least 2 characters.",
+        "max": "Last name cannot be longer than 50 characters."
+      },
+      "companyName": {
+        "min": "Company name must be at least 2 characters.",
+        "max": "Company name cannot be longer than 100 characters."
+      },
+      "companySlug": {
+        "min": "Unique identifier must be at least 3 characters.",
+        "max": "Unique identifier cannot be longer than 50 characters.",
+        "invalid": "Unique identifier must contain only lowercase letters, numbers, and hyphens.",
+        "exists": "This unique identifier is already in use. Please choose another."
+      }
+    }
+  },
+  "redirecting": "You already have a company registered. Redirecting to dashboard..."
+}

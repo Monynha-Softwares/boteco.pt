@@ -1,0 +1,45 @@
+{
+  "seo": {
+    "title": "Enregistrement d'Entreprise | Boteco Pro",
+    "description": "Complétez votre profil et enregistrez votre entreprise sur Boteco Pro."
+  },
+  "title": "Complétez Votre Profil et Enregistrez Votre Entreprise",
+  "description": "Pour commencer à utiliser Boteco Pro, nous avons besoin de quelques informations sur vous et votre entreprise.",
+  "form": {
+    "firstNameLabel": "Prénom",
+    "firstNamePlaceholder": "Votre prénom",
+    "lastNameLabel": "Nom de Famille",
+    "lastNamePlaceholder": "Votre nom de famille",
+    "companyNameLabel": "Nom de l'Entreprise",
+    "companyNamePlaceholder": "Nom de votre bar ou restaurant",
+    "companySlugLabel": "Identifiant Unique (Slug)",
+    "companySlugPlaceholder": "ex: mon-boteco-fr",
+    "submitButton": "Enregistrer l'Entreprise",
+    "submitting": "Enregistrement...",
+    "successMessage": "Entreprise enregistrée avec succès !",
+    "successDescription": "Votre profil et votre entreprise ont été créés. Vous serez redirigé vers le tableau de bord.",
+    "errorMessage": "Erreur lors de l'enregistrement de l'entreprise.",
+    "errorDescription": "Une erreur est survenue lors de l'enregistrement de votre entreprise. Veuillez réessayer.",
+    "validation": {
+      "firstName": {
+        "min": "Le prénom doit contenir au moins 2 caractères.",
+        "max": "Le prénom ne peut pas dépasser 50 caractères."
+      },
+      "lastName": {
+        "min": "Le nom de famille doit contenir au moins 2 caractères.",
+        "max": "Le nom de famille ne peut pas dépasser 50 caractères."
+      },
+      "companyName": {
+        "min": "Le nom de l'entreprise doit contenir au moins 2 caractères.",
+        "max": "Le nom de l'entreprise ne peut pas dépasser 100 caractères."
+      },
+      "companySlug": {
+        "min": "L'identifiant unique doit contenir au moins 3 caractères.",
+        "max": "L'identifiant unique ne peut pas dépasser 50 caractères.",
+        "invalid": "L'identifiant unique doit contenir uniquement des lettres minuscules, des chiffres et des tirets.",
+        "exists": "Cet identifiant unique est déjà utilisé. Veuillez en choisir un autre."
+      }
+    }
+  },
+  "redirecting": "Vous avez déjà une entreprise enregistrée. Redirection vers le tableau de bord..."
+}
