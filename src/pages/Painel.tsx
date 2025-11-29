@@ -2,15 +2,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useUser } from '@clerk/clerk-react';
-import { Users, Sparkles, BadgeCheck, Timer } from 'lucide-react'; // Removed MessageSquare icon
+// Removed Users, Sparkles, BadgeCheck, Timer icons as they are no longer used for cards
 import Seo from '@/components/Seo';
-import { useQuery } from '@tanstack/react-query';
 import {
-  CONTACT_REQUESTS_QUERY_KEY,
-  calculateContactRequestMetrics,
-  getContactRequests,
-  // Removed ContactRequest type import
-} from '@/lib/storage/contactRequests';
+  // Removed CONTACT_REQUESTS_QUERY_KEY, calculateContactRequestMetrics, getContactRequests, ContactRequest
+} from '@/lib/storage/contactRequests'; // No longer needed for Painel
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -20,23 +16,8 @@ import { useUserCompany } from '@/hooks/use-user-company';
 // Removed Table components import
 // Removed format from date-fns import
 
-const cardIcons: Record<string, React.ReactNode> = {
-  totalLeads: <Users className="h-8 w-8 text-boteco-secondary" />,
-  leadsThisWeek: <Sparkles className="h-8 w-8 text-boteco-secondary" />,
-  qualifiedLeads: <BadgeCheck className="h-8 w-8 text-boteco-secondary" />,
-  responseRate24h: <Timer className="h-8 w-8 text-boteco-secondary" />,
-};
-
-// Internal component that uses Clerk hooks
-const PainelWithAuth: React.FC = () => {
-  const { user } = useUser();
-  return <PainelContent clerkUser={user} />;
-};
-
-// Internal component without auth
-const PainelWithoutAuth: React.FC = () => {
-  return <PainelContent clerkUser={null} />;
-};
+// Removed cardIcons as cards are being removed
+// Removed PainelWithAuth and PainelWithoutAuth as they are no longer needed with simplified content
 
 // Main content component
 interface PainelContentProps {
@@ -47,86 +28,16 @@ const PainelContent: React.FC<PainelContentProps> = ({ clerkUser }) => {
   const { t, i18n } = useTranslation('painel');
   const { data: userCompanyData, isLoading: isUserCompanyLoading, isError: isUserCompanyError } = useUserCompany();
 
-  const contactRequestsQuery = useQuery({
-    queryKey: CONTACT_REQUESTS_QUERY_KEY,
-    queryFn: getContactRequests,
-    staleTime: 60 * 1000,
-  });
-
-  const metrics = React.useMemo(() => {
-    if (!contactRequestsQuery.data) {
-      return null;
-    }
-
-    return calculateContactRequestMetrics(contactRequestsQuery.data);
-  }, [contactRequestsQuery.data]);
-
-  const numberFormatter = React.useMemo(
-    () => new Intl.NumberFormat(i18n.language),
-    [i18n.language],
-  );
-
-  const percentageFormatter = React.useMemo(
-    () => new Intl.NumberFormat(i18n.language, { maximumFractionDigits: 0 }),
-    [i18n.language],
-  );
-
-  const cards = t('cards', { returnObjects: true }) as {
-    id: string;
-    title: string;
-    description: string;
-  }[];
-
-  const cardValues = metrics
-    ? {
-        totalLeads: numberFormatter.format(metrics.totalLeads),
-        leadsThisWeek: numberFormatter.format(metrics.leadsThisWeek),
-        qualifiedLeads: numberFormatter.format(metrics.qualifiedLeads),
-        responseRate24h: `${percentageFormatter.format(metrics.responseRate24h)}%`,
-      }
-    : {};
-
-  const channelEntries = React.useMemo(() => {
-    if (!metrics) {
-      return [] as Array<[string, number]>;
-    }
-
-    return Object.entries(metrics.channelBreakdown).sort(([, a], [, b]) => b - a);
-  }, [metrics]);
-
-  const statusEntries = React.useMemo(() => {
-    if (!metrics) {
-      return [] as Array<[string, number]>;
-    }
-
-    return Object.entries(metrics.statusBreakdown);
-  }, [metrics]);
-
-  const formatAverageResponseTime = React.useCallback(
-    (value: number | null) => {
-      if (value === null) {
-        return t('leadInsights.averageResponseTime.empty');
-      }
-
-      if (value < 1) {
-        const minutes = Math.max(1, Math.round(value * 60));
-        return t('leadInsights.averageResponseTime.lessThanHour', { minutes });
-      }
-
-      if (value >= 24) {
-        const days = Math.round(value / 24);
-        return t('leadInsights.averageResponseTime.inDays', { days });
-      }
-
-      return t('leadInsights.averageResponseTime.inHours', { hours: Math.round(value) });
-    },
-    [t],
-  );
-
-  const formatPercentageValue = React.useCallback(
-    (value: number) => `${percentageFormatter.format(value)}%`,
-    [percentageFormatter],
-  );
+  // Removed contactRequestsQuery as it's no longer needed
+  // Removed metrics useMemo
+  // Removed numberFormatter useMemo
+  // Removed percentageFormatter useMemo
+  // Removed cards array
+  // Removed cardValues object
+  // Removed channelEntries useMemo
+  // Removed statusEntries useMemo
+  // Removed formatAverageResponseTime useCallback
+  // Removed formatPercentageValue useCallback
 
   // Use first_name from Supabase profile if available, otherwise Clerk's, then fallback to 'Guest'
   const userName = userCompanyData?.profile?.first_name || clerkUser?.firstName || t('guest', { defaultValue: 'Usuário' });
@@ -135,10 +46,8 @@ const PainelContent: React.FC<PainelContentProps> = ({ clerkUser }) => {
   const pageTitle = t('title');
   const pageDescription = t('demoNotice');
 
-  const isLoading = contactRequestsQuery.isLoading || isUserCompanyLoading;
-  const isError = contactRequestsQuery.isError || isUserCompanyError;
-
-  // Removed recentContactRequests useMemo block
+  const isLoading = isUserCompanyLoading; // Only depend on user company loading
+  const isError = isUserCompanyError; // Only depend on user company error
 
   return (
     <>
@@ -161,176 +70,36 @@ const PainelContent: React.FC<PainelContentProps> = ({ clerkUser }) => {
         <p className="text-xl text-boteco-neutral/90 mb-4">{t('title')}</p>
         <p className="text-sm text-boteco-neutral/80 mb-8 italic">{t('demoNotice')}</p>
 
-        {isError && (
+        {isLoading && ( // Show loading for user/company data
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <Card key={index} depth="overlay">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <Skeleton className="h-6 w-32" />
+                  <Skeleton className="h-8 w-8 rounded-full" />
+                </CardHeader>
+                <CardContent>
+                  <Skeleton className="h-8 w-24 mb-2" />
+                  <Skeleton className="h-4 w-32" />
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
+
+        {isError && ( // Show error for user/company data
           <Alert variant="destructive" className="mb-8">
             <AlertTitle>{t('errors.title')}</AlertTitle>
             <AlertDescription className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <span>{t('errors.leadsLoad')}</span>
-              <Button variant="outline" size="sm" onClick={() => contactRequestsQuery.refetch()}>
+              <span>{t('errors.userCompanyLoad')}</span> {/* New translation key */}
+              <Button variant="outline" size="sm" onClick={() => window.location.reload()}> {/* Simple reload for now */}
                 {t('actions.retry')}
               </Button>
             </AlertDescription>
           </Alert>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {cards.map((card) => (
-            <Card
-              key={card.id}
-              depth="overlay"
-              className="transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-            >
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-lg font-medium text-boteco-neutral">
-                  {card.title}
-                </CardTitle>
-                {cardIcons[card.id] ?? null}
-              </CardHeader>
-              <CardContent>
-                {isLoading ? (
-                  <>
-                    <Skeleton className="h-8 w-24 mb-2" />
-                    <Skeleton className="h-4 w-32" />
-                  </>
-                ) : (
-                  <>
-                    <div className="text-3xl font-bold text-boteco-primary">
-                      {cardValues[card.id as keyof typeof cardValues] ?? '—'}
-                    </div>
-                    <p className="text-xs text-boteco-neutral/80">{card.description}</p>
-                  </>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <section className="mt-12 space-y-6">
-          <div>
-            <h2 className="text-2xl font-semibold text-boteco-primary mb-2">
-              {t('leadInsights.title')}
-            </h2>
-            <p className="text-sm text-boteco-neutral/80">{t('leadInsights.subtitle')}</p>
-          </div>
-
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-            <Card depth="surface" className="h-full">
-              <CardHeader>
-                <CardTitle className="text-lg text-boteco-neutral">
-                  {t('leadInsights.averageResponseTime.title')}
-                </CardTitle>
-                <CardDescription>{t('leadInsights.averageResponseTime.helper')}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                {isLoading ? (
-                  <>
-                    <Skeleton className="h-8 w-28 mb-3" />
-                    <Skeleton className="h-4 w-40" />
-                  </>
-                ) : metrics ? (
-                  <>
-                    <div className="text-2xl font-semibold text-boteco-primary">
-                      {formatAverageResponseTime(metrics.averageResponseTimeHours)}
-                    </div>
-                    <div className="mt-4 space-y-2">
-                      <div className="flex items-center justify-between text-sm text-boteco-neutral/80">
-                        <span>{t('leadInsights.averageResponseTime.responseRateLabel')}</span>
-                        <span>{formatPercentageValue(metrics.responseRate24h)}</span>
-                      </div>
-                      <Progress value={Math.round(metrics.responseRate24h)} />
-                    </div>
-                  </>
-                ) : (
-                  <p className="text-sm text-boteco-neutral/60">
-                    {t('leadInsights.empty')}
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-
-            <Card depth="surface" className="h-full">
-              <CardHeader>
-                <CardTitle className="text-lg text-boteco-neutral">
-                  {t('leadInsights.channels.title')}
-                </CardTitle>
-                <CardDescription>{t('leadInsights.channels.helper')}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {isLoading ? (
-                  Array.from({ length: 3 }).map((_, index) => (
-                    <div key={index} className="space-y-2">
-                      <Skeleton className="h-4 w-32" />
-                      <Skeleton className="h-3 w-full" />
-                    </div>
-                  ))
-                ) : metrics && channelEntries.length > 0 ? (
-                  channelEntries.map(([channel, count]) => {
-                    const percentage = metrics.totalLeads
-                      ? Math.round((count / metrics.totalLeads) * 100)
-                      : 0;
-
-                    return (
-                      <div key={channel} className="space-y-2">
-                        <div className="flex items-center justify-between text-sm text-boteco-neutral/80">
-                          <span>{t(`leadInsights.channels.labels.${channel}`, { defaultValue: channel })}</span>
-                          <span>
-                            {numberFormatter.format(count)} ({percentageFormatter.format(percentage)}%)
-                          </span>
-                        </div>
-                        <Progress value={percentage} />
-                      </div>
-                    );
-                  })
-                ) : (
-                  <p className="text-sm text-boteco-neutral/60">
-                    {t('leadInsights.channels.empty')}
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-
-            <Card depth="surface" className="h-full">
-              <CardHeader>
-                <CardTitle className="text-lg text-boteco-neutral">
-                  {t('leadInsights.status.title')}
-                </CardTitle>
-                <CardDescription>{t('leadInsights.status.helper')}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {isLoading ? (
-                  Array.from({ length: 3 }).map((_, index) => (
-                    <div key={index} className="space-y-2">
-                      <Skeleton className="h-4 w-28" />
-                      <Skeleton className="h-3 w-full" />
-                    </div>
-                  ))
-                ) : metrics && statusEntries.length > 0 ? (
-                  statusEntries.map(([status, count]) => {
-                    const percentage = metrics.totalLeads
-                      ? Math.round((count / metrics.totalLeads) * 100)
-                      : 0;
-
-                    return (
-                      <div key={status} className="space-y-2">
-                        <div className="flex items-center justify-between text-sm text-boteco-neutral/80">
-                          <span>{t(`leadInsights.status.labels.${status}`, { defaultValue: status })}</span>
-                          <span>
-                            {numberFormatter.format(count)} ({percentageFormatter.format(percentage)}%)
-                          </span>
-                        </div>
-                        <Progress value={percentage} />
-                      </div>
-                    );
-                  })
-                ) : (
-                  <p className="text-sm text-boteco-neutral/60">
-                    {t('leadInsights.status.empty')}
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          </div>
-        </section>
+        {/* Removed the entire lead insights section */}
       </div>
     </>
   );
@@ -338,7 +107,7 @@ const PainelContent: React.FC<PainelContentProps> = ({ clerkUser }) => {
 
 // Main exported component that conditionally renders based on auth
 const Painel: React.FC = () => {
-  return hasClerkAuth ? <PainelWithAuth /> : <PainelWithoutAuth />;
+  return hasClerkAuth ? <PainelContent clerkUser={useUser().user} /> : <PainelContent clerkUser={null} />;
 };
 
 export default Painel;

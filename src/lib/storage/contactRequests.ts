@@ -20,19 +20,13 @@ export interface ContactRequest extends ContactRequestInput {
   estimatedValue?: number;
 }
 
-export interface ContactRequestMetrics {
-  totalLeads: number;
-  leadsThisWeek: number;
-  qualifiedLeads: number;
-  responseRate24h: number;
-  averageResponseTimeHours: number | null;
-  channelBreakdown: Record<string, number>;
-  statusBreakdown: Record<ContactRequestStatus, number>;
-}
+// Removed ContactRequestMetrics interface
+
+// Removed CONTACT_REQUESTS_QUERY_KEY as it's no longer used
 
 const CONTACT_REQUESTS_LOCAL_STORAGE_KEY = 'boteco.contactRequests';
 
-export const CONTACT_REQUESTS_QUERY_KEY = ['contactRequests'] as const;
+export const CONTACT_REQUESTS_QUERY_KEY = ['contactRequests'] as const; // Keep for Contact.tsx
 
 const isBrowser = () => typeof window !== 'undefined';
 
@@ -168,73 +162,4 @@ export const createContactRequest = async (
   return data as ContactRequest;
 };
 
-export const calculateContactRequestMetrics = (
-  requests: ContactRequest[],
-): ContactRequestMetrics => {
-  if (!requests.length) {
-    return {
-      totalLeads: 0,
-      leadsThisWeek: 0,
-      qualifiedLeads: 0,
-      responseRate24h: 0,
-      averageResponseTimeHours: null,
-      channelBreakdown: {},
-      statusBreakdown: {
-        new: 0,
-        contacted: 0,
-        qualified: 0,
-      },
-    };
-  }
-
-  const now = new Date();
-  const weekThreshold = subDays(now, 7);
-
-  const leadsThisWeek = requests.filter((request) =>
-    isAfter(new Date(request.createdAt), weekThreshold),
-  ).length;
-
-  const qualifiedLeads = requests.filter((request) => request.status === 'qualified').length;
-
-  const responded = requests.filter((request) => request.respondedAt);
-  const respondedWithin24h = responded.filter((request) => {
-    if (!request.respondedAt) {
-      return false;
-    }
-
-    const diff = differenceInHours(new Date(request.respondedAt), new Date(request.createdAt));
-    return diff <= 24;
-  });
-
-  const totalResponseHours = responded.reduce((accumulator, request) => {
-    if (!request.respondedAt) {
-      return accumulator;
-    }
-
-    return accumulator + differenceInHours(new Date(request.respondedAt), new Date(request.createdAt));
-  }, 0);
-
-  const channelBreakdown = requests.reduce<Record<string, number>>((accumulator, request) => {
-    accumulator[request.channel] = (accumulator[request.channel] ?? 0) + 1;
-    return accumulator;
-  }, {});
-
-  const statusBreakdown = requests.reduce<Record<ContactRequestStatus, number>>((accumulator, request) => {
-    accumulator[request.status] = (accumulator[request.status] ?? 0) + 1;
-    return accumulator;
-  }, {
-    new: 0,
-    contacted: 0,
-    qualified: 0,
-  });
-
-  return {
-    totalLeads: requests.length,
-    leadsThisWeek,
-    qualifiedLeads,
-    responseRate24h: responded.length ? (respondedWithin24h.length / responded.length) * 100 : 0,
-    averageResponseTimeHours: responded.length ? totalResponseHours / responded.length : null,
-    channelBreakdown,
-    statusBreakdown,
-  };
-};
+// Removed calculateContactRequestMetrics as it's no longer used
