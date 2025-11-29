@@ -1,15 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Lightbulb } from 'lucide-react';
 import { AnimatedItem, AnimatedSection } from '@/components/reactbits';
+import { useLocalizedPath } from '@/hooks/use-localized-path'; // Import the hook
 
 const FinalCtaSection = () => {
   const { t } = useTranslation('home');
-  const { locale } = useParams<{ locale: string }>();
-  const currentLocale = locale || 'pt';
-
-  const getLocalizedPath = (path: string) => `/${currentLocale}${path}`;
+  const localizePath = useLocalizedPath(); // Use the hook
 
   return (
     <AnimatedSection
@@ -27,7 +25,7 @@ const FinalCtaSection = () => {
           variant="secondary"
           className="transition-colors duration-300 active:scale-98"
         >
-          <Link to={getLocalizedPath('/contato')}>
+          <Link to={localizePath('/contato')}> {/* Use localizePath */}
             <span className="flex items-center gap-2">
               {t('finalCta.button')}
               <Lightbulb className="h-5 w-5" aria-hidden="true" />

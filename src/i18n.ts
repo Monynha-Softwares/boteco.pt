@@ -14,6 +14,8 @@ import ptMenuDigital from './content/pt/menu-digital.json';
 import ptFornecedores from './content/pt/fornecedores.json';
 import ptIntegracoes from './content/pt/integracoes.json';
 import ptCommon from './content/pt/common.json';
+import ptGestaoEstoque from './content/pt/gestao-estoque.json';
+import ptRealtime from './content/pt/realtime.json';
 
 import enHome from './content/en/home.json';
 import enAbout from './content/en/about.json';
@@ -26,6 +28,8 @@ import enMenuDigital from './content/en/menu-digital.json';
 import enFornecedores from './content/en/fornecedores.json';
 import enIntegracoes from './content/en/integracoes.json';
 import enCommon from './content/en/common.json';
+import enGestaoEstoque from './content/en/gestao-estoque.json';
+import enRealtime from './content/en/realtime.json';
 
 import esHome from './content/es/home.json';
 import esAbout from './content/es/about.json';
@@ -38,6 +42,8 @@ import esMenuDigital from './content/es/menu-digital.json';
 import esFornecedores from './content/es/fornecedores.json';
 import esIntegracoes from './content/es/integracoes.json';
 import esCommon from './content/es/common.json';
+import esGestaoEstoque from './content/es/gestao-estoque.json';
+import esRealtime from './content/es/realtime.json';
 
 import frHome from './content/fr/home.json';
 import frAbout from './content/fr/about.json';
@@ -50,6 +56,8 @@ import frMenuDigital from './content/fr/menu-digital.json';
 import frFornecedores from './content/fr/fornecedores.json';
 import frIntegracoes from './content/fr/integracoes.json';
 import frCommon from './content/fr/common.json';
+import frGestaoEstoque from './content/fr/gestao-estoque.json';
+import frRealtime from './content/fr/realtime.json';
 
 const resources = {
   pt: {
@@ -64,6 +72,8 @@ const resources = {
     fornecedores: ptFornecedores,
     integracoes: ptIntegracoes,
     common: ptCommon,
+    'gestao-estoque': ptGestaoEstoque,
+    realtime: ptRealtime,
   },
   en: {
     home: enHome,
@@ -77,6 +87,8 @@ const resources = {
     fornecedores: enFornecedores,
     integracoes: enIntegracoes,
     common: enCommon,
+    'gestao-estoque': enGestaoEstoque,
+    realtime: enRealtime,
   },
   es: {
     home: esHome,
@@ -90,6 +102,8 @@ const resources = {
     fornecedores: esFornecedores,
     integracoes: esIntegracoes,
     common: esCommon,
+    'gestao-estoque': esGestaoEstoque,
+    realtime: esRealtime,
   },
   fr: {
     home: frHome,
@@ -103,6 +117,8 @@ const resources = {
     fornecedores: frFornecedores,
     integracoes: frIntegracoes,
     common: frCommon,
+    'gestao-estoque': frGestaoEstoque,
+    realtime: frRealtime,
   },
 };
 
@@ -128,6 +144,8 @@ i18n
       'fornecedores',
       'integracoes',
       'common',
+      'gestao-estoque',
+      'realtime',
     ],
     defaultNS: 'home',
     detection: {
