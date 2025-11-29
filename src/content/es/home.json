@@ -152,6 +152,14 @@
       {
         "question": "¿Hay control de inventario listo para usar?",
         "answer": "Sí. Controla artículos, movimientos de stock y reportes simples del día para mantener la operación."
+      },
+      {
+        "question": "¿Cómo maneja Boteco Pro la seguridad y privacidad de los datos?",
+        "answer": "Implementamos medidas de seguridad robustas, incluyendo cifrado de extremo a extremo y auditorías regulares, para proteger tus datos. Nuestra política de privacidad detalla cómo recopilamos, usamos y almacenamos tu información de forma segura."
+      },
+      {
+        "question": "¿Dónde opera Boteco Pro y cómo funciona el soporte regional?",
+        "answer": "Boteco Pro atiende con orgullo a clientes en Brasil, Portugal y Suiza. Nuestros equipos de soporte regional están equipados con experiencia local para brindar asistencia personalizada, asegurando el cumplimiento de las regulaciones locales y los matices culturales. Ofrecemos canales de soporte y recursos dedicados específicos para cada región."
       }
     ]
   },

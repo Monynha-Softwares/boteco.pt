@@ -152,6 +152,14 @@
       {
         "question": "Existe-t-il un contrôle de stock prêt à l'emploi ?",
         "answer": "Oui. Contrôlez les articles, les mouvements de stock et les rapports quotidiens simples pour maintenir l'opération."
+      },
+      {
+        "question": "Comment Boteco Pro gère-t-il la sécurité et la confidentialité des données ?",
+        "answer": "Nous mettons en œuvre des mesures de sécurité robustes, y compris le chiffrement de bout en bout et des audits réguliers, pour protéger vos données. Notre politique de confidentialité détaille comment nous collectons, utilisons et stockons vos informations en toute sécurité."
+      },
+      {
+        "question": "Où Boteco Pro opère-t-il et comment fonctionne le support régional ?",
+        "answer": "Boteco Pro sert fièrement ses clients au Brésil, au Portugal et en Suisse. Nos équipes de support régional sont dotées d'une expertise locale pour fournir une assistance personnalisée, garantissant la conformité avec les réglementations locales et les nuances culturelles. Nous offrons des canaux de support et des ressources dédiés spécifiques à chaque région."
       }
     ]
   },

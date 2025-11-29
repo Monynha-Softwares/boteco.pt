@@ -28,6 +28,14 @@
     {
       "question": "Is there inventory control ready to use?",
       "answer": "Yes. Track items, stock movements and simple daily reports to keep operations aligned."
+    },
+    {
+      "question": "How does Boteco Pro handle data security and privacy?",
+      "answer": "We implement robust security measures, including end-to-end encryption and regular audits, to protect your data. Our privacy policy details how we collect, use, and store your information securely."
+    },
+    {
+      "question": "Where does Boteco Pro operate and how does regional support work?",
+      "answer": "Boteco Pro proudly serves clients in Brazil, Portugal, and Switzerland. Our regional support teams are equipped with local expertise to provide tailored assistance, ensuring compliance with local regulations and cultural nuances. We offer dedicated support channels and resources specific to each region."
     }
   ],
   "description": "Centralize suppliers, contracts, and deliveries with automated alerts.",
