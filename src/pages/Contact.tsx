@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { useToast } from '@/components/ui/use-toast';
 import Seo from '@/components/Seo';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -24,6 +23,7 @@ import {
   createContactRequest,
   ContactRequestInput,
 } from '@/lib/storage/contactRequests';
+import { showSuccess, showError } from '@/utils/toast'; // Import sonner toast utilities
 
 const fallbackValidationMessages = {
   name: {
@@ -143,12 +143,22 @@ type ContactFormValues = z.infer<ContactFormSchema>;
 
 const Contact: React.FC = () => {
   const { t, i18n } = useTranslation('contact');
-  const { toast } = useToast();
   const queryClient = useQueryClient();
   const contactMutation = useMutation({
     mutationFn: async (payload: ContactRequestInput) => createContactRequest(payload),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: CONTACT_REQUESTS_QUERY_KEY });
+      showSuccess(t('form.successMessage'));
+      form.reset();
+    },
+    onError: (error) => {
+      const description =
+        error instanceof Error
+          ? error.message
+          : t('form.errorDescription', {
+              defaultValue: t('form.errorMessage'),
+            });
+      showError(t('form.errorMessage'));
     },
   });
   const isSubmitting = contactMutation.isPending;
@@ -183,29 +193,7 @@ const Contact: React.FC = () => {
 
   // Função de submissão do formulário
   const onSubmit = async (data: ContactFormValues) => {
-    try {
-      await contactMutation.mutateAsync(data);
-      toast({
-        title: t('form.successMessage'),
-        description: t('form.successDescription', {
-          defaultValue: t('form.successMessage'),
-        }),
-        variant: "default",
-      });
-      form.reset();
-    } catch (error) {
-      const description =
-        error instanceof Error
-          ? error.message
-          : t('form.errorDescription', {
-              defaultValue: t('form.errorMessage'),
-            });
-      toast({
-        title: t('form.errorMessage'),
-        description,
-        variant: "destructive",
-      });
-    }
+    contactMutation.mutate(data);
   };
 
   const pageTitle = t('title');

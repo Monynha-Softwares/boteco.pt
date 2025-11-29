@@ -1,4 +1,5 @@
 import { differenceInHours, isAfter, subDays } from 'date-fns';
+import { supabase } from '@/integrations/supabase/client';
 
 export type ContactRequestStatus = 'new' | 'contacted' | 'qualified';
 
@@ -29,7 +30,6 @@ export interface ContactRequestMetrics {
   statusBreakdown: Record<ContactRequestStatus, number>;
 }
 
-const CONTACT_REQUESTS_ENDPOINT = '/data/contact-requests.json';
 const CONTACT_REQUESTS_LOCAL_STORAGE_KEY = 'boteco.contactRequests';
 
 export const CONTACT_REQUESTS_QUERY_KEY = ['contactRequests'] as const;
@@ -114,104 +114,58 @@ const normalizeRequests = (data: unknown): ContactRequest[] => {
 const sortRequestsByDate = (requests: ContactRequest[]): ContactRequest[] =>
   [...requests].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
-const fetchRemoteRequests = async (): Promise<ContactRequest[]> => {
-  const response = await fetch(CONTACT_REQUESTS_ENDPOINT, {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-    },
-    cache: 'no-store',
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch contact requests: ${response.status}`);
-  }
-
-  const data = await response.json();
-  return sortRequestsByDate(normalizeRequests(data));
-};
-
-const persistRemotely = async (requests: ContactRequest[]) => {
-  if (!import.meta.env.DEV) {
-    return false;
-  }
-
-  try {
-    const response = await fetch(CONTACT_REQUESTS_ENDPOINT, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requests, null, 2),
-      cache: 'no-store',
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to persist contact requests: ${response.status}`);
-    }
-
-    return true;
-  } catch (error) {
-    console.warn('Failed to persist contact requests via fetch PUT, falling back to localStorage.', error);
-    return false;
-  }
-};
-
 export const getContactRequests = async (): Promise<ContactRequest[]> => {
   try {
-    const remote = await fetchRemoteRequests();
-    writeToLocalStorage(remote);
-    return remote;
+    const { data, error } = await supabase
+      .from('contact_requests')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching contact requests from Supabase:', error);
+      throw error;
+    }
+
+    const normalizedData = normalizeRequests(data);
+    writeToLocalStorage(normalizedData); // Cache to local storage
+    return normalizedData;
   } catch (error) {
+    console.warn('Failed to fetch contact requests from Supabase, falling back to localStorage.', error);
     const fallback = readFromLocalStorage();
     if (fallback.length > 0) {
       return fallback;
     }
-
     throw error;
   }
-};
-
-const persistRequests = async (requests: ContactRequest[]) => {
-  const didPersistRemotely = await persistRemotely(requests);
-  if (!didPersistRemotely) {
-    writeToLocalStorage(requests);
-  }
-};
-
-const createRequestId = () => {
-  if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
-    return crypto.randomUUID();
-  }
-
-  return `req-${Date.now()}-${Math.floor(Math.random() * 1_000)}`;
 };
 
 export const createContactRequest = async (
   payload: ContactRequestInput,
 ): Promise<ContactRequest> => {
-  let existing: ContactRequest[] = [];
-  try {
-    existing = await getContactRequests();
-  } catch (error) {
-    console.warn('Falling back to cached contact requests before creating a new entry.', error);
-    existing = readFromLocalStorage();
-  }
-
-  const newRequest: ContactRequest = {
-    id: createRequestId(),
+  const newRequest = {
     name: payload.name.trim(),
     email: payload.email.trim(),
-    phone: payload.phone?.trim() || undefined,
+    phone: payload.phone?.trim() || null,
     message: payload.message.trim(),
-    createdAt: new Date().toISOString(),
     channel: 'web-form',
     status: 'new',
+    created_at: new Date().toISOString(), // Supabase will use this
   };
 
-  const updated = sortRequestsByDate([...existing, newRequest]);
-  await persistRequests(updated);
-  return newRequest;
+  const { data, error } = await supabase
+    .from('contact_requests')
+    .insert(newRequest)
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Error inserting new contact request into Supabase:', error);
+    throw error;
+  }
+
+  // Invalidate cache to refetch latest data
+  // This will be handled by the mutation's onSuccess in Contact.tsx
+  return data as ContactRequest;
 };
 
 export const calculateContactRequestMetrics = (
