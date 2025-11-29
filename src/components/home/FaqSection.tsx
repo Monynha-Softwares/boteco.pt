@@ -6,7 +6,7 @@ const FaqSection = () => {
 
   const faqItems = t('faq.items', { returnObjects: true }) as { question: string; answer: string }[];
 
-  return <Faq title={t('faq.title')} items={faqItems} depth="overlay" />;
+  return <Faq title={t('faq.title')} items={faqItems} depth="overlay" className="pt-8" />;
 };
 
 export default FaqSection;
