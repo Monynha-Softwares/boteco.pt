@@ -16,7 +16,8 @@ import ptIntegracoes from './content/pt/integracoes.json';
 import ptCommon from './content/pt/common.json';
 import ptGestaoEstoque from './content/pt/gestao-estoque.json';
 import ptRealtime from './content/pt/realtime.json';
-import ptCompanyRegistration from './content/pt/company-registration.json'; // NEW
+import ptCompanyRegistration from './content/pt/company-registration.json';
+import ptProducts from './content/pt/products.json'; // NEW
 
 import enHome from './content/en/home.json';
 import enAbout from './content/en/about.json';
@@ -31,7 +32,8 @@ import enIntegracoes from './content/en/integracoes.json';
 import enCommon from './content/en/common.json';
 import enGestaoEstoque from './content/en/gestao-estoque.json';
 import enRealtime from './content/en/realtime.json';
-import enCompanyRegistration from './content/en/company-registration.json'; // NEW
+import enCompanyRegistration from './content/en/company-registration.json';
+import enProducts from './content/en/products.json'; // NEW
 
 import esHome from './content/es/home.json';
 import esAbout from './content/es/about.json';
@@ -46,7 +48,8 @@ import esIntegracoes from './content/es/integracoes.json';
 import esCommon from './content/es/common.json';
 import esGestaoEstoque from './content/es/gestao-estoque.json';
 import esRealtime from './content/es/realtime.json';
-import esCompanyRegistration from './content/es/company-registration.json'; // NEW
+import esCompanyRegistration from './content/es/company-registration.json';
+import esProducts from './content/es/products.json'; // NEW
 
 import frHome from './content/fr/home.json';
 import frAbout from './content/fr/about.json';
@@ -61,7 +64,8 @@ import frIntegracoes from './content/fr/integracoes.json';
 import frCommon from './content/fr/common.json';
 import frGestaoEstoque from './content/fr/gestao-estoque.json';
 import frRealtime from './content/fr/realtime.json';
-import frCompanyRegistration from './content/fr/company-registration.json'; // NEW
+import frCompanyRegistration from './content/fr/company-registration.json';
+import frProducts from './content/fr/products.json'; // NEW
 
 const resources = {
   pt: {
@@ -78,7 +82,8 @@ const resources = {
     common: ptCommon,
     'gestao-estoque': ptGestaoEstoque,
     realtime: ptRealtime,
-    'company-registration': ptCompanyRegistration, // NEW
+    'company-registration': ptCompanyRegistration,
+    products: ptProducts, // NEW
   },
   en: {
     home: enHome,
@@ -94,7 +99,8 @@ const resources = {
     common: enCommon,
     'gestao-estoque': enGestaoEstoque,
     realtime: enRealtime,
-    'company-registration': enCompanyRegistration, // NEW
+    'company-registration': enCompanyRegistration,
+    products: enProducts, // NEW
   },
   es: {
     home: esHome,
@@ -110,7 +116,8 @@ const resources = {
     common: esCommon,
     'gestao-estoque': esGestaoEstoque,
     realtime: esRealtime,
-    'company-registration': esCompanyRegistration, // NEW
+    'company-registration': esCompanyRegistration,
+    products: esProducts, // NEW
   },
   fr: {
     home: frHome,
@@ -126,7 +133,8 @@ const resources = {
     common: frCommon,
     'gestao-estoque': frGestaoEstoque,
     realtime: frRealtime,
-    'company-registration': frCompanyRegistration, // NEW
+    'company-registration': frCompanyRegistration,
+    products: frProducts, // NEW
   },
 };
 
@@ -154,7 +162,8 @@ i18n
       'common',
       'gestao-estoque',
       'realtime',
-      'company-registration', // NEW
+      'company-registration',
+      'products', // NEW
     ],
     defaultNS: 'home',
     detection: {

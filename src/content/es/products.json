@@ -1,0 +1,113 @@
+{
+  "list": {
+    "title": "Gestión de Productos",
+    "addProductButton": "Añadir Producto",
+    "tableHeaders": {
+      "name": "Nombre",
+      "category": "Categoría",
+      "price": "Precio",
+      "stock": "Stock",
+      "status": "Estado",
+      "actions": "Acciones"
+    },
+    "status": {
+      "active": "Activo",
+      "inactive": "Inactivo"
+    },
+    "editProduct": "Editar producto {{productName}}",
+    "deleteProduct": "Eliminar producto {{productName}}",
+    "empty": "No hay productos registrados para esta empresa. ¡Empieza añadiendo un nuevo producto!"
+  },
+  "form": {
+    "createTitle": "Añadir Nuevo Producto",
+    "createDescription": "Rellena los detalles para añadir un nuevo producto a tu inventario.",
+    "editTitle": "Editar Producto",
+    "editDescription": "Actualiza los detalles del producto.",
+    "nameLabel": "Nombre del Producto",
+    "namePlaceholder": "Ej: Cerveza Artesanal IPA",
+    "descriptionLabel": "Descripción",
+    "descriptionPlaceholder": "Una breve descripción del producto...",
+    "priceLabel": "Precio de Venta",
+    "pricePlaceholder": "0.00",
+    "costLabel": "Costo (Opcional)",
+    "costPlaceholder": "0.00",
+    "stockLabel": "Cantidad en Stock",
+    "stockPlaceholder": "0",
+    "minStockLabel": "Stock Mínimo (Opcional)",
+    "minStockPlaceholder": "0",
+    "categoryLabel": "Categoría",
+    "categoryPlaceholder": "Selecciona una categoría",
+    "unitLabel": "Unidad",
+    "unitPlaceholder": "Selecciona una unidad",
+    "barcodeLabel": "Código de Barras (Opcional)",
+    "barcodePlaceholder": "Ej: 7891234567890",
+    "imageUrlLabel": "URL de la Imagen (Opcional)",
+    "imageUrlPlaceholder": "https://ejemplo.com/imagen.jpg",
+    "isActiveLabel": "Producto Activo",
+    "isActiveDescription": "Define si el producto está disponible para la venta.",
+    "internalNotesLabel": "Notas Internas (Opcional)",
+    "internalNotesPlaceholder": "Notas sobre el proveedor, preparación, etc.",
+    "cancelButton": "Cancelar",
+    "createButton": "Crear Producto",
+    "updateButton": "Actualizar Producto",
+    "createSuccess": "¡Producto creado con éxito!",
+    "updateSuccess": "¡Producto actualizado con éxito!",
+    "deleteSuccess": "¡Producto eliminado con éxito!",
+    "createError": "Error al crear producto.",
+    "updateError": "Error al actualizar producto.",
+    "deleteError": "Error al eliminar producto.",
+    "deleteConfirmTitle": "Confirmar Eliminación",
+    "deleteConfirmDescription": "¿Estás seguro de que quieres eliminar el producto \"{{productName}}\"? Esta acción no se puede deshacer.",
+    "deleteButton": "Eliminar",
+    "categories": [
+      "Bebidas",
+      "Comidas",
+      "Postres",
+      "Aperitivos",
+      "Cervezas",
+      "Vinos",
+      "Destilados",
+      "No Alcohólicos",
+      "Otros"
+    ],
+    "units": [
+      "ud",
+      "kg",
+      "g",
+      "L",
+      "ml",
+      "ración",
+      "caja",
+      "paquete"
+    ],
+    "validation": {
+      "name": {
+        "min": "El nombre del producto debe tener al menos 2 caracteres.",
+        "max": "El nombre del producto no puede tener más de 100 caracteres."
+      },
+      "price": {
+        "min": "El precio debe ser un número positivo.",
+        "invalid": "El precio debe ser un número válido."
+      },
+      "stock": {
+        "min": "El stock debe ser un número entero no negativo.",
+        "invalid": "El stock debe ser un número entero válido."
+      },
+      "category": {
+        "min": "La categoría debe tener al menos 2 caracteres.",
+        "max": "La categoría no puede tener más de 50 caracteres."
+      },
+      "unit": {
+        "min": "La unidad debe tener al menos 1 carácter.",
+        "max": "La unidad no puede tener más de 20 caracteres."
+      }
+    }
+  },
+  "errors": {
+    "title": "Error",
+    "loadProducts": "No se pudieron cargar los productos. Por favor, inténtalo de nuevo."
+  },
+  "actions": {
+    "retry": "Reintentar"
+  }
+}
