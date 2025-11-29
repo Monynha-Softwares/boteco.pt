@@ -1,19 +1,16 @@
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 import { Hero } from '@/components/reactbits';
+import { useLocalizedPath } from '@/hooks/use-localized-path'; // Import the hook
 
 const HeroSection = () => {
   const { t } = useTranslation('home');
-  const { locale } = useParams<{ locale: string }>();
-  const currentLocale = locale || 'pt';
-
-  const getLocalizedPath = (path: string) => `/${currentLocale}${path}`;
+  const localizePath = useLocalizedPath(); // Use the hook
 
   return (
     <Hero
       title={t('hero.title')}
       subtitle={t('hero.subtitle')}
-      action={{ label: t('hero.cta'), href: getLocalizedPath('/contato') }}
+      action={{ label: t('hero.cta'), href: localizePath('/contato') }}
       secondaryAction={{
         label: t('hero.demoCta'),
         href: 'https://app.boteco.pt',

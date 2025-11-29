@@ -27,7 +27,7 @@ interface MobileNavProps {
 }
 
 const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLocale, items }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common'); // Explicitly use 'common' namespace
 
   const getLabel = React.useCallback(
     (item: BaseNavItem) => item.label[currentLocale] ?? item.label.pt ?? Object.values(item.label)[0],
@@ -69,12 +69,12 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLoca
           className="lg:hidden text-boteco-primary-foreground hover:bg-boteco-primary/80 active:scale-98"
         >
           <Menu className="h-6 w-6" />
-          <span className="sr-only">{t('openMenu', { defaultValue: 'Abrir menu' })}</span>
+          <span className="sr-only">{t('openMenu')}</span> {/* Use translated string */}
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="w-[250px] sm:w-[300px] bg-background flex flex-col transition-colors duration-300">
         <SheetHeader className="mb-6">
-          <SheetTitle className="text-2xl font-bold text-boteco-primary">Boteco Pro</SheetTitle>
+          <SheetTitle className="text-2xl font-bold text-boteco-primary">{t('header.title')}</SheetTitle> {/* Use translated title */}
         </SheetHeader>
         <nav className="flex flex-col flex-grow">
           <Accordion type="multiple" className="space-y-2">
@@ -120,7 +120,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLoca
             <SignedIn>
               <div className="flex items-center justify-start">
                 <UserButton afterSignOutUrl="/" />
-                <span className="ml-2 text-foreground">{t('profile', { defaultValue: 'Perfil' })}</span>
+                <span className="ml-2 text-foreground">{t('profile')}</span> {/* Use translated string */}
               </div>
             </SignedIn>
           )}

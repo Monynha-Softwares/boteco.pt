@@ -143,7 +143,7 @@ i18n
       'menu-digital',
       'fornecedores',
       'integracoes',
-      'common',
+      'common', // Added common namespace
       'gestao-estoque',
       'realtime',
     ],

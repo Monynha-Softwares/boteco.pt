@@ -4,5 +4,14 @@
     "monynhaAriaLabel": "Monynha Softwares - abre em nova aba",
     "poweredBy": "Powered by Monynha Softwares",
     "poweredByAriaLabel": "Powered by Monynha Softwares - abre em nova aba"
-  }
+  },
+  "header": {
+    "title": "Boteco Pro"
+  },
+  "openMenu": "Abrir menu",
+  "profile": "Perfil",
+  "systemTheme": "Sistema",
+  "darkTheme": "Escuro",
+  "lightTheme": "Claro",
+  "toggleTheme": "Alternar tema"
 }

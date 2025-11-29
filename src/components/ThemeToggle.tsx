@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next";
 
 export function ThemeToggle() {
   const { setTheme, theme, resolvedTheme } = useTheme();
-  const { t } = useTranslation(); // Para traduzir os textos do toggle
+  const { t } = useTranslation('common'); // Explicitly use 'common' namespace
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -28,10 +28,10 @@ export function ThemeToggle() {
   // The fallback chain ensures a valid value is always present.
   const menuValue = theme ?? resolvedTheme ?? "system";
   const systemLabel = resolvedTheme
-    ? `${t('systemTheme', { defaultValue: 'Sistema' })} (${resolvedTheme === 'dark'
-        ? t('darkTheme', { defaultValue: 'Escuro' })
-        : t('lightTheme', { defaultValue: 'Claro' })})`
-    : t('systemTheme', { defaultValue: 'Sistema' });
+    ? `${t('systemTheme')} (${resolvedTheme === 'dark'
+        ? t('darkTheme')
+        : t('lightTheme')})`
+    : t('systemTheme');
 
   return (
     <DropdownMenu>
@@ -44,17 +44,17 @@ export function ThemeToggle() {
         >
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">{t('toggleTheme', { defaultValue: 'Alternar tema' })}</span>
+          <span className="sr-only">{t('toggleTheme')}</span>
         </Button>
       </DropdownMenuTrigger>
       {isMounted && (
         <DropdownMenuContent align="end" className="w-48">
           <DropdownMenuRadioGroup value={menuValue} onValueChange={setTheme}>
             <DropdownMenuRadioItem value="light">
-              {t('lightTheme', { defaultValue: 'Claro' })}
+              {t('lightTheme')}
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="dark">
-              {t('darkTheme', { defaultValue: 'Escuro' })}
+              {t('darkTheme')}
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="system">
               {systemLabel}

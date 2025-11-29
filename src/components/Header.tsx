@@ -20,12 +20,14 @@ import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/ca
 import { cn } from '@/lib/utils';
 import type { BaseNavItem, NavItem } from '@/types/navigation';
 import { hasClerkAuth } from '@/utils/clerk';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const Header: React.FC = () => {
   const { locale } = useParams<{ locale: string }>();
   const currentLocale = locale || 'pt';
   const isMobile = useIsMobile();
   const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false);
+  const { t } = useTranslation('common'); // Use common namespace for header title
 
   const getLabel = React.useCallback(
     (item: BaseNavItem) => item.label[currentLocale] ?? item.label.pt ?? Object.values(item.label)[0],
@@ -63,7 +65,7 @@ const Header: React.FC = () => {
           to={`/${currentLocale}`}
           className="text-2xl font-bold transition-colors hover:text-boteco-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-boteco-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-boteco-primary"
         >
-          Boteco Pro
+          {t('header.title')} {/* Use translated title */}
         </Link>
 
         {isMobile ? (
