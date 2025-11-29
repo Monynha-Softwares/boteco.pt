@@ -18,6 +18,7 @@ import { SignedIn, UserButton } from '@clerk/clerk-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import type { BaseNavItem, NavItem } from '@/types/navigation';
 import { hasClerkAuth } from '@/utils/clerk';
+import { cn } from '@/lib/utils'; // Import cn for class merging
 
 interface MobileNavProps {
   onOpenChange: (open: boolean) => void;
@@ -80,7 +81,10 @@ const MobileNav: React.FC<MobileNavProps> = ({ onOpenChange, isOpen, currentLoca
             {items.map((item) =>
               item.type === 'mega' && item.items?.length ? (
                 <AccordionItem key={item.id} value={item.id} className="border-b border-border/40">
-                  <AccordionTrigger className="text-left text-lg font-medium text-foreground transition-colors hover:text-boteco-primary">
+                  <AccordionTrigger className={cn(
+                    "text-left text-lg font-medium text-foreground transition-colors hover:text-boteco-primary",
+                    "py-2" // Adjusted padding here
+                  )}>
                     {getLabel(item)}
                   </AccordionTrigger>
                   <AccordionContent className="space-y-2 pb-3">
