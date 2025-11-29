@@ -31,7 +31,7 @@ const PlatformCarouselSection: React.FC = () => {
 
   return (
     <AnimatedSection depth="overlay" containerClassName="space-y-8">
-      <AnimatedItem as="h2" className="text-center text-3xl font-bold text-boteco-primary-foreground md:text-4xl">
+      <AnimatedItem as="h2" className="text-center text-3xl font-bold text-boteco-neutral md:text-4xl">
         {platform.title}
       </AnimatedItem>
       <Carousel opts={{ align: 'start' }} className="relative w-full">
