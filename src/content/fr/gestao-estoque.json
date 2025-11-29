@@ -1,10 +1,73 @@
 {
-  "seo": {"title": "Gestion des Stocks & Opérations | Boteco Pro"},
-  "hero": {
-    "title": "Gestion des stocks, commandes et ventes",
-    "description": "Contrôlez l'inventaire, les mouvements de stock et les ventes avec des mises à jour automatiques.",
-    "cta": {"label": "Découvrir la gestion des stocks", "href": "/contact"}
+  "seo": {
+    "title": "Gestion des Stocks & Opérations | Boteco Pro",
+    "description": "Contrôlez les articles, les mouvements de stock et les enregistrements de ventes avec des mises à jour automatiques et des rapports détaillés."
   },
-  "benefits": ["Contrôle d'inventaire", "Mouvements de stock", "Enregistrements de ventes et rapports simples quotidiens"],
-  "cta": {"label": "Demander une démo", "href": "/contact"}
+  "hero": {
+    "title": "Gestion Intelligente des Stocks et des Opérations",
+    "subtitle": "Gardez votre inventaire, vos commandes et vos ventes synchronisés avec des mises à jour automatiques et des informations opérationnelles.",
+    "cta": {
+      "label": "Découvrir la Gestion des Stocks",
+      "href": "/contact"
+    }
+  },
+  "benefits": {
+    "title": "Contrôle total pour votre opération",
+    "items": [
+      {
+        "title": "Inventaire en temps réel",
+        "description": "Surveillez le stock d'ingrédients et de produits finis avec précision, évitant les pertes et les ruptures."
+      },
+      {
+        "title": "Mouvements automatisés",
+        "description": "Enregistrez les entrées et sorties de stock automatiquement en fonction des ventes et des productions internes."
+      },
+      {
+        "title": "Rapports de ventes et de coûts",
+        "description": "Suivez les performances des ventes, les marges bénéficiaires et les coûts de stock avec des tableaux de bord intuitifs."
+      }
+    ]
+  },
+  "workflow": {
+    "title": "Simplifiez le flux de travail de votre inventaire",
+    "steps": [
+      {
+        "title": "Enregistrez vos produits",
+        "description": "Ajoutez tous les articles de votre menu et ingrédients avec les détails de coût et d'unité."
+      },
+      {
+        "title": "Gérez l'inventaire",
+        "description": "Effectuez des comptages de stock, des ajustements et des transferts entre différents points de vente."
+      },
+      {
+        "title": "Optimisez les achats",
+        "description": "Recevez des alertes de stock minimum et générez des bons de commande automatiquement pour les fournisseurs."
+      }
+    ]
+  },
+  "highlights": {
+    "title": "Fonctionnalités qui font la différence dans la gestion",
+    "items": [
+      {
+        "title": "Alertes de stock minimum",
+        "description": "Soyez averti lorsqu'un produit atteint son niveau minimum, vous assurant de ne jamais manquer d'articles essentiels."
+      },
+      {
+        "title": "Traçabilité complète",
+        "description": "Suivez l'historique de chaque article, de l'entrée en stock à la vente finale."
+      },
+      {
+        "title": "Intégration POS",
+        "description": "Synchronisez automatiquement les ventes de votre POS avec l'inventaire, en gardant les données toujours à jour."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Transformez la gestion de votre inventaire en un avantage concurrentiel",
+    "description": "Réduisez le gaspillage, optimisez les achats et augmentez la rentabilité de votre entreprise.",
+    "button": {
+      "label": "Demander une démo",
+      "href": "/contact"
+    }
+  }
 }

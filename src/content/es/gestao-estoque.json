@@ -1,10 +1,73 @@
 {
-  "seo": {"title": "Gestión de Inventario y Operaciones | Boteco Pro"},
-  "hero": {
-    "title": "Gestión de Inventario, Pedidos y Ventas",
-    "description": "Controle inventario, movimientos de stock y registros de ventas con actualizaciones automáticas.",
-    "cta": {"label": "Conocer Gestión de Inventario", "href": "/contacto"}
+  "seo": {
+    "title": "Gestión de Inventario y Operaciones | Boteco Pro",
+    "description": "Controla artículos, movimientos de stock y registros de ventas con actualizaciones automáticas e informes detallados."
   },
-  "benefits": ["Control de inventario", "Movimientos de stock", "Registros de ventas y reportes simples del día"],
-  "cta": {"label": "Solicitar demo", "href": "/contacto"}
+  "hero": {
+    "title": "Gestión Inteligente de Inventario y Operaciones",
+    "subtitle": "Mantén tu inventario, pedidos y ventas sincronizados con actualizaciones automáticas e insights operativos.",
+    "cta": {
+      "label": "Conocer Gestión de Inventario",
+      "href": "/contacto"
+    }
+  },
+  "benefits": {
+    "title": "Control total para tu operación",
+    "items": [
+      {
+        "title": "Inventario en tiempo real",
+        "description": "Monitorea el stock de ingredientes y productos terminados con precisión, evitando pérdidas y roturas."
+      },
+      {
+        "title": "Movimientos automatizados",
+        "description": "Registra entradas y salidas de stock automáticamente en base a ventas y producciones internas."
+      },
+      {
+        "title": "Informes de ventas y costos",
+        "description": "Sigue el rendimiento de ventas, márgenes de beneficio y costos de inventario con paneles intuitivos."
+      }
+    ]
+  },
+  "workflow": {
+    "title": "Simplifica el flujo de trabajo de tu inventario",
+    "steps": [
+      {
+        "title": "Registra tus productos",
+        "description": "Añade todos los artículos de tu menú e ingredientes con detalles de costo y unidad."
+      },
+      {
+        "title": "Gestiona el inventario",
+        "description": "Realiza recuentos de stock, ajustes y transferencias entre diferentes puntos de venta."
+      },
+      {
+        "title": "Optimiza las compras",
+        "description": "Recibe alertas de stock mínimo y genera pedidos de compra automáticamente para proveedores."
+      }
+    ]
+  },
+  "highlights": {
+    "title": "Características que marcan la diferencia en la gestión",
+    "items": [
+      {
+        "title": "Alertas de stock mínimo",
+        "description": "Recibe notificaciones cuando un producto alcance el nivel mínimo, asegurando que nunca te quedes sin artículos esenciales."
+      },
+      {
+        "title": "Trazabilidad completa",
+        "description": "Sigue el historial de cada artículo, desde la entrada en el stock hasta la venta final."
+      },
+      {
+        "title": "Integración con POS",
+        "description": "Sincroniza automáticamente las ventas de tu POS con el inventario, manteniendo los datos siempre actualizados."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Convierte la gestión de tu inventario en una ventaja competitiva",
+    "description": "Reduce desperdicios, optimiza compras y aumenta la rentabilidad de tu negocio.",
+    "button": {
+      "label": "Solicitar demostración",
+      "href": "/contacto"
+    }
+  }
 }

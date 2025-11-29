@@ -1,10 +1,73 @@
 {
-  "seo": {"title": "Realtime Sync | Boteco Pro"},
-  "hero": {
-    "title": "Realtime Synchronization & Broadcast",
-    "description": "Keep orders, tables and stock in sync across devices with near-instant updates.",
-    "cta": {"label": "Learn about Realtime", "href": "/contact"}
+  "seo": {
+    "title": "Realtime Sync & Broadcast | Boteco Pro",
+    "description": "Keep orders, tables, and stock automatically synchronized across devices with low latency and broadcast capabilities."
   },
-  "benefits": ["Automatic updates for orders, tables and stock", "Activity indicators and operational status", "Device-to-device broadcast"],
-  "cta": {"label": "Request demo", "href": "/contact"}
+  "hero": {
+    "title": "Realtime Synchronization and Broadcast",
+    "subtitle": "Update orders, tables, and stock automatically across devices with low latency and activity indicators.",
+    "cta": {
+      "label": "Learn about Realtime Sync",
+      "href": "/contact"
+    }
+  },
+  "benefits": {
+    "title": "Seamless operation with always up-to-date data",
+    "items": [
+      {
+        "title": "Automatic updates",
+        "description": "Orders, table statuses, and stock levels are updated instantly across all connected devices."
+      },
+      {
+        "title": "Activity indicators",
+        "description": "Visualize operational status in real-time, identifying bottlenecks and optimizing workflow."
+      },
+      {
+        "title": "Device-to-device broadcast",
+        "description": "Send important messages and alerts to the entire team or specific devices, ensuring efficient communication."
+      }
+    ]
+  },
+  "workflow": {
+    "title": "How real-time synchronization works",
+    "steps": [
+      {
+        "title": "Connect your devices",
+        "description": "Integrate POS systems, waiter tablets, and kitchen display screens for a unified operational view."
+      },
+      {
+        "title": "Configure sync rules",
+        "description": "Define which data should be synchronized and how often, adapting to your specific needs."
+      },
+      {
+        "title": "Monitor data flow",
+        "description": "Track synchronization performance and receive alerts in case of inconsistencies or failures."
+      }
+    ]
+  },
+  "highlights": {
+    "title": "Advantages of real-time synchronization",
+    "items": [
+      {
+        "title": "Reduced errors",
+        "description": "Avoid duplicate orders or outdated information, improving operational accuracy."
+      },
+      {
+        "title": "Faster service",
+        "description": "Waiters can register orders and send them to the kitchen instantly, speeding up service."
+      },
+      {
+        "title": "Better decision-making",
+        "description": "Access up-to-date data to manage tables, inventory, and staff more effectively."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Optimize your operation with real-time data",
+    "description": "Ensure your team always has the latest information for impeccable service.",
+    "button": {
+      "label": "Request a demo",
+      "href": "/contact"
+    }
+  }
 }

@@ -1,10 +1,73 @@
 {
-  "seo": {"title": "Gestão de Estoque & Operações | Boteco Pro"},
-  "hero": {
-    "title": "Gestão de Stock, Pedidos e Vendas",
-    "description": "Controle inventário, movimentações de stock e registros de vendas com atualizações automáticas.",
-    "cta": {"label": "Conhecer Gestão de Estoque", "href": "/contato"}
+  "seo": {
+    "title": "Gestão de Estoque & Operações | Boteco Pro",
+    "description": "Controle itens, movimentações de estoque e registros de vendas com atualizações automáticas e relatórios detalhados."
   },
-  "benefits": ["Controle de inventário", "Movimentações de stock", "Registros de vendas e relatórios do dia"],
-  "cta": {"label": "Solicitar demonstração", "href": "/contato"}
+  "hero": {
+    "title": "Gestão de Estoque e Operações Inteligente",
+    "subtitle": "Mantenha seu inventário, pedidos e vendas sincronizados com atualizações automáticas e insights operacionais.",
+    "cta": {
+      "label": "Conhecer Gestão de Estoque",
+      "href": "/contato"
+    }
+  },
+  "benefits": {
+    "title": "Controle total para sua operação",
+    "items": [
+      {
+        "title": "Inventário em tempo real",
+        "description": "Monitore o estoque de ingredientes e produtos acabados com precisão, evitando perdas e rupturas."
+      },
+      {
+        "title": "Movimentações automatizadas",
+        "description": "Registre entradas e saídas de estoque automaticamente com base em vendas e produções internas."
+      },
+      {
+        "title": "Relatórios de vendas e custos",
+        "description": "Acompanhe o desempenho de vendas, margens de lucro e custos de estoque com dashboards intuitivos."
+      }
+    ]
+  },
+  "workflow": {
+    "title": "Simplifique o fluxo de trabalho do seu estoque",
+    "steps": [
+      {
+        "title": "Cadastre seus produtos",
+        "description": "Adicione todos os itens do seu cardápio e ingredientes com detalhes de custo e unidade."
+      },
+      {
+        "title": "Gerencie o inventário",
+        "description": "Realize contagens de estoque, ajustes e transferências entre diferentes pontos de venda."
+      },
+      {
+        "title": "Otimize as compras",
+        "description": "Receba alertas de estoque mínimo e gere pedidos de compra automaticamente para fornecedores."
+      }
+    ]
+  },
+  "highlights": {
+    "title": "Recursos que fazem a diferença na gestão",
+    "items": [
+      {
+        "title": "Alertas de estoque mínimo",
+        "description": "Seja notificado quando um produto atingir o nível mínimo, garantindo que você nunca fique sem itens essenciais."
+      },
+      {
+        "title": "Rastreabilidade completa",
+        "description": "Acompanhe o histórico de cada item, desde a entrada no estoque até a venda final."
+      },
+      {
+        "title": "Integração com PDV",
+        "description": "Sincronize automaticamente as vendas do seu PDV com o estoque, mantendo os dados sempre atualizados."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Transforme a gestão do seu estoque em vantagem competitiva",
+    "description": "Reduza desperdícios, otimize compras e aumente a rentabilidade do seu negócio.",
+    "button": {
+      "label": "Solicitar demonstração",
+      "href": "/contato"
+    }
+  }
 }

@@ -1,10 +1,73 @@
 {
-  "seo": {"title": "Sincronización en Tiempo Real | Boteco Pro"},
+  "seo": {
+    "title": "Sincronización en Tiempo Real y Broadcast | Boteco Pro",
+    "description": "Mantén pedidos, mesas y stock sincronizados automáticamente entre dispositivos con baja latencia y broadcast."
+  },
   "hero": {
     "title": "Sincronización y Broadcast en Tiempo Real",
-    "description": "Actualiza pedidos, mesas y stock automáticamente entre dispositivos con baja latencia.",
-    "cta": {"label": "Conocer Sincronización", "href": "/contacto"}
+    "subtitle": "Actualiza pedidos, mesas y stock automáticamente entre dispositivos con baja latencia e indicadores de actividad.",
+    "cta": {
+      "label": "Conocer Sincronización",
+      "href": "/contacto"
+    }
   },
-  "benefits": ["Actualización automática de pedidos, mesas y stock", "Indicadores de actividad y estado operativo", "Broadcast entre dispositivos"],
-  "cta": {"label": "Solicitar demo", "href": "/contacto"}
+  "benefits": {
+    "title": "Operación fluida con datos siempre actualizados",
+    "items": [
+      {
+        "title": "Actualizaciones automáticas",
+        "description": "Pedidos, estados de mesas y niveles de stock se actualizan instantáneamente en todos los dispositivos conectados."
+      },
+      {
+        "title": "Indicadores de actividad",
+        "description": "Visualiza el estado operativo en tiempo real, identificando cuellos de botella y optimizando el flujo de trabajo."
+      },
+      {
+        "title": "Broadcast entre dispositivos",
+        "description": "Envía mensajes y alertas importantes a todo el equipo o a dispositivos específicos, garantizando una comunicación eficiente."
+      }
+    ]
+  },
+  "workflow": {
+    "title": "Cómo funciona la sincronización en tiempo real",
+    "steps": [
+      {
+        "title": "Conecta tus dispositivos",
+        "description": "Integra POS, tablets de camareros y pantallas de cocina para una visión unificada de la operación."
+      },
+      {
+        "title": "Configura las reglas de sincronización",
+        "description": "Define qué datos deben sincronizarse y con qué frecuencia, adaptándose a tu necesidad."
+      },
+      {
+        "title": "Monitorea el flujo de datos",
+        "description": "Sigue el rendimiento de la sincronización y recibe alertas en caso de inconsistencias o fallos."
+      }
+    ]
+  },
+  "highlights": {
+    "title": "Ventajas de la sincronización en tiempo real",
+    "items": [
+      {
+        "title": "Reducción de errores",
+        "description": "Evita pedidos duplicados o información desactualizada, mejorando la precisión de la operación."
+      },
+      {
+        "title": "Servicio más rápido",
+        "description": "Los camareros pueden registrar pedidos y enviarlos a la cocina instantáneamente, agilizando el servicio."
+      },
+      {
+        "title": "Mejor toma de decisiones",
+        "description": "Ten acceso a datos actualizados para gestionar mesas, inventario y personal de forma más eficaz."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Optimiza tu operación con datos en tiempo real",
+    "description": "Asegura que tu equipo siempre tenga la información más reciente para un servicio impecable.",
+    "button": {
+      "label": "Solicitar demostración",
+      "href": "/contacto"
+    }
+  }
 }

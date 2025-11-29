@@ -1,10 +1,73 @@
 {
-  "seo": {"title": "Synchronisation en Temps Réel | Boteco Pro"},
+  "seo": {
+    "title": "Synchronisation en Temps Réel et Broadcast | Boteco Pro",
+    "description": "Gardez les commandes, les tables et les stocks automatiquement synchronisés entre les appareils avec une faible latence et un broadcast."
+  },
   "hero": {
     "title": "Synchronisation et Broadcast en Temps Réel",
-    "description": "Mettez à jour commandes, tables et stock automatiquement entre appareils avec une faible latence.",
-    "cta": {"label": "Découvrir le temps réel", "href": "/contact"}
+    "subtitle": "Mettez à jour les commandes, les tables et les stocks automatiquement entre les appareils avec une faible latence et des indicateurs d'activité.",
+    "cta": {
+      "label": "Découvrir la Synchronisation en Temps Réel",
+      "href": "/contact"
+    }
   },
-  "benefits": ["Mises à jour automatiques des commandes, tables et stocks", "Indicateurs d'activité et statut opérationnel", "Broadcast entre appareils"],
-  "cta": {"label": "Demander une démo", "href": "/contact"}
+  "benefits": {
+    "title": "Opération fluide avec des données toujours à jour",
+    "items": [
+      {
+        "title": "Mises à jour automatiques",
+        "description": "Les commandes, les statuts de table et les niveaux de stock sont mis à jour instantanément sur tous les appareils connectés."
+      },
+      {
+        "title": "Indicadores d'activité",
+        "description": "Visualisez le statut opérationnel en temps réel, identifiant les goulots d'étranglement et optimisant le flux de travail."
+      },
+      {
+        "title": "Broadcast entre appareils",
+        "description": "Envoyez des messages et des alertes importants à toute l'équipe ou à des appareils spécifiques, assurant une communication efficace."
+      }
+    ]
+  },
+  "workflow": {
+    "title": "Comment fonctionne la synchronisation en temps réel",
+    "steps": [
+      {
+        "title": "Connectez vos appareils",
+        "description": "Intégrez les systèmes de point de vente, les tablettes des serveurs et les écrans de cuisine pour une vue opérationnelle unifiée."
+      },
+      {
+        "title": "Configurez les règles de synchronisation",
+        "description": "Définissez quelles données doivent être synchronisées et à quelle fréquence, en vous adaptant à vos besoins spécifiques."
+      },
+      {
+        "title": "Surveillez le flux de données",
+        "description": "Suivez les performances de la synchronisation et recevez des alertes en cas d'incohérences ou de pannes."
+      }
+    ]
+  },
+  "highlights": {
+    "title": "Avantages de la synchronisation en temps réel",
+    "items": [
+      {
+        "title": "Réduction des erreurs",
+        "description": "Évitez les commandes en double ou les informations obsolètes, améliorant la précision opérationnelle."
+      },
+      {
+        "title": "Service plus rapide",
+        "description": "Les serveurs peuvent enregistrer les commandes et les envoyer à la cuisine instantanément, accélérant le service."
+      },
+      {
+        "title": "Meilleure prise de décision",
+        "description": "Accédez à des données à jour pour gérer les tables, l'inventaire et le personnel plus efficacement."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Optimisez votre opération avec des données en temps réel",
+    "description": "Assurez-vous que votre équipe dispose toujours des dernières informations pour un service impeccable.",
+    "button": {
+      "label": "Demander une démo",
+      "href": "/contact"
+    }
+  }
 }

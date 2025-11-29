@@ -1,10 +1,73 @@
 {
-  "seo": {"title": "Inventory & Operations | Boteco Pro"},
-  "hero": {
-    "title": "Inventory, Orders and Sales Management",
-    "description": "Manage inventory, stock movements and sales records with automated updates.",
-    "cta": {"label": "Learn about Inventory", "href": "/contact"}
+  "seo": {
+    "title": "Inventory & Operations Management | Boteco Pro",
+    "description": "Control items, stock movements, and sales records with automatic updates and detailed reports."
   },
-  "benefits": ["Inventory control", "Stock movements", "Sales records and simple daily reports"],
-  "cta": {"label": "Request demo", "href": "/contact"}
+  "hero": {
+    "title": "Smart Inventory and Operations Management",
+    "subtitle": "Keep your inventory, orders, and sales synchronized with automatic updates and operational insights.",
+    "cta": {
+      "label": "Learn about Inventory Management",
+      "href": "/contact"
+    }
+  },
+  "benefits": {
+    "title": "Total control for your operation",
+    "items": [
+      {
+        "title": "Real-time inventory",
+        "description": "Monitor the stock of ingredients and finished products accurately, preventing losses and stockouts."
+      },
+      {
+        "title": "Automated movements",
+        "description": "Record stock entries and exits automatically based on sales and internal productions."
+      },
+      {
+        "title": "Sales and cost reports",
+        "description": "Track sales performance, profit margins, and inventory costs with intuitive dashboards."
+      }
+    ]
+  },
+  "workflow": {
+    "title": "Simplify your inventory workflow",
+    "steps": [
+      {
+        "title": "Register your products",
+        "description": "Add all your menu items and ingredients with cost and unit details."
+      },
+      {
+        "title": "Manage inventory",
+        "description": "Perform stock counts, adjustments, and transfers between different points of sale."
+      },
+      {
+        "title": "Optimize purchasing",
+        "description": "Receive low stock alerts and generate purchase orders automatically for suppliers."
+      }
+    ]
+  },
+  "highlights": {
+    "title": "Features that make a difference in management",
+    "items": [
+      {
+        "title": "Low stock alerts",
+        "description": "Be notified when a product reaches its minimum level, ensuring you never run out of essential items."
+      },
+      {
+        "title": "Complete traceability",
+        "description": "Track the history of each item, from entry into stock to final sale."
+      },
+      {
+        "title": "POS integration",
+        "description": "Automatically synchronize sales from your POS with inventory, keeping data always up-to-date."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Turn your inventory management into a competitive advantage",
+    "description": "Reduce waste, optimize purchasing, and increase your business's profitability.",
+    "button": {
+      "label": "Request a demo",
+      "href": "/contact"
+    }
+  }
 }
