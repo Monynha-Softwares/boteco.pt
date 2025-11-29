@@ -48,14 +48,15 @@ const MenuDigital = () => <MarketingPageTemplate translationNamespace="menu-digi
 Auto-renders Hero → Benefits → Workflow → Highlights → CTA from i18n JSON structure matching `types/marketing-page.ts`.
 
 ### 5. Data Persistence (Hybrid Approach)
-**Dev writes to localStorage, Prod reads from static JSON** (`src/lib/storage/`):
+**Dev writes to localStorage, Prod reads from static JSON/Supabase** (`src/lib/storage/`):
 ```typescript
 export const getContactRequests = async (): Promise<ContactRequest[]> => {
   try {
-    const remote = await fetch('/data/contact-requests.json');
-    writeToLocalStorage(await remote.json());
-    return data;
-  } catch {
+    const { data, error } = await supabase.from('contact_requests').select('*');
+    // ... handle error and normalize data
+    writeToLocalStorage(normalizedData); // Cache to local storage
+    return normalizedData;
+  } catch (error) {
     return readFromLocalStorage(); // Fallback
   }
 };
@@ -72,19 +73,21 @@ App degrades gracefully without `VITE_CLERK_PUBLISHABLE_KEY` env var.
 
 **Environment Setup**:
 - Use `VITE_` prefix for env vars (NOT `NEXT_PUBLIC_` or `REACT_APP_`)
-- Copy `.env.example` to `.env` and add your Clerk keys
+- Copy `.env.example` to `.env` and add your Clerk/Supabase keys
 - `.env` files are git-ignored - never commit credentials
 
 ## Pre-installed Components (DO NOT reinstall)
-- **shadcn/ui**: `src/components/ui/` - Import as `@/components/ui/button`. Never edit.
-- **React Bits**: `src/components/reactbits/` - Marketing sections (Hero, FeatureGrid, Stepper, etc.)
-- See `components.json` for registry (includes `@react-bits` custom registry)
+-   **shadcn/ui**: `src/components/ui/` - Import as `@/components/ui/button`. Never edit.
+-   **React Bits**: `src/components/reactbits/` - Marketing sections (Hero, FeatureGrid, Stepper, etc.)
+-   **@supabase/supabase-js**: Supabase client library.
+-   **sonner**: For toast notifications.
+-   See `components.json` for registry (includes `@react-bits` custom registry)
 
 ## Essential Commands
 ```bash
 pnpm dev              # Dev server on localhost:8080
 pnpm build            # Production build with chunk splitting
-pnpm test             # Node.js native test runner (NOT Jest)
+pnpm test             # Node.js native unit tests
 pnpm test:visual      # Playwright visual regression tests
 pnpm test:visual:ui   # Interactive Playwright UI mode
 pnpm lint             # ESLint with TypeScript
@@ -107,35 +110,36 @@ docker-compose up -d
 See `DOCKER_QUICK_REF.md` for common commands and `docs/DOCKER_DEPLOYMENT.md` for full guide.
 
 ## Testing Strategy
-1. **Unit tests** (`tests/*.test.mjs`): Node.js native runner validates JSON schemas, theme config, data flows
-2. **Visual tests** (`tests/visual/*.spec.ts`): Playwright cross-browser screenshots + CLS detection
-3. **CI/CD**: All PRs auto-run linting, tests, builds, Lighthouse audits, visual regression
+1.  **Unit tests** (`tests/*.test.mjs`): Node.js native runner validates JSON schemas, theme config, data flows (via `ci.yml`)
+2.  **Visual tests** (`tests/visual/*.spec.ts`): Playwright cross-browser screenshots + CLS detection (via `visual-regression.yml`)
+3.  **Lighthouse Audits**: Automated performance and accessibility checks (via `lighthouse.yml`)
+4.  **CI/CD**: All PRs auto-run linting, tests, builds, Lighthouse audits, visual regression
 
 ## Common Pitfalls
-1. **Locale routing**: URLs without `/:locale` prefix will 404. Test nav links after changes.
-2. **Missing i18n namespace**: Ensure imported in `src/i18n.ts` AND added to `ns` array.
-3. **Theme flash**: Don't override `ThemeProvider` `disableTransitionOnChange={true}`.
-4. **Clerk assumptions**: Always check `hasClerkAuth` before using auth components.
-5. **Hardcoded colors**: Use CSS vars (`bg-boteco-primary`), not inline styles.
+1.  **Locale routing**: URLs without `/:locale` prefix will 404. Test nav links after changes.
+2.  **Missing i18n namespace**: Ensure imported in `src/i18n.ts` AND added to `ns` array.
+3.  **Theme flash**: Don't override `ThemeProvider` `disableTransitionOnChange={true}`.
+4.  **Clerk assumptions**: Always check `hasClerkAuth` before using auth components.
+5.  **Hardcoded colors**: Use CSS vars (`bg-boteco-primary`), not inline styles.
+6.  **Supabase RLS**: Ensure RLS is enabled and policies are correctly defined for all tables.
 
 ## Utility Functions
-- **`cn()` (`src/lib/utils.ts`)**: Merge Tailwind classes with conflict resolution
-- **`useLocalizedPath()`**: Build locale-aware URLs from navigation items
-- **`useIsMobile()`**: Responsive hook for JS-based mobile decisions
+-   **`cn()` (`src/lib/utils.ts`)**: Merge Tailwind classes with conflict resolution
+-   **`useLocalizedPath()`**: Build locale-aware URLs from navigation items
+-   **`useIsMobile()`**: Responsive hook for JS-based mobile decisions
+-   **`useUserCompany()`**: Fetches user profile and company data from Supabase.
+-   **`showSuccess`, `showError`, `showLoading`, `dismissToast` (`src/utils/toast.ts`)**: Sonner toast helpers.
 
 ## Key Files
-- **Routing**: `src/App.tsx` (lazy-loaded routes)
-- **i18n**: `src/i18n.ts` (import all translations here)
-- **Theme**: `src/globals.css` (CSS vars), `tailwind.config.ts`
-- **Navigation**: `src/content/common/navigation.json` (multi-locale with mega menu support)
-- **Types**: `src/types/marketing-page.ts`, `src/types/navigation.ts`
-
-## Design System
-- **Spacing**: Tailwind 4px base (`gap-4`, `p-6`, `mt-8`)
-- **Typography**: Body text uses `text-boteco-neutral` or `text-foreground`
-- **Responsive**: Mobile-first design
-- **Accessibility**: All interactive elements need `focus-visible:ring-2`
-- **Transitions**: Include `transition-colors duration-300` on theme-aware elements
+-   **Routing**: `src/App.tsx` (lazy-loaded routes)
+-   **i18n**: `src/i18n.ts` (import all translations here)
+-   **Theme**: `src/globals.css` (CSS vars), `tailwind.config.ts`
+-   **Navigation**: `src/content/common/navigation.json` (multi-locale with mega menu support)
+-   **Types**: `src/types/marketing-page.ts`, `src/types/navigation.ts`
+-   **Supabase Client**: `src/integrations/supabase/client.ts`
+-   **Auth Redirector**: `src/components/AuthRedirector.tsx`
+-   **Company Registration Page**: `src/pages/CompanyRegistration.tsx`
+-   **User Company Hook**: `src/hooks/use-user-company.ts`
 
 ---
 **See also**: `AGENTS.md` (detailed conventions), `docs/VISUAL_TESTING.md`, `README.md`

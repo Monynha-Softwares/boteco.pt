@@ -19,6 +19,7 @@
 - **Theme**: next-themes (dark/light mode)
 - **Forms**: react-hook-form + zod validation
 - **Auth**: Clerk (optional, feature-flagged)
+- **Backend**: Supabase (Auth, Database, Edge Functions)
 - **SEO**: react-helmet-async
 
 ### Development Tools
@@ -37,6 +38,7 @@
 - **`App.tsx`** - Route configuration with lazy loading
 - **`i18n.ts`** - i18next configuration and translations import
 - **`globals.css`** - Global styles and CSS variables (Boteco brand colors)
+- **`integrations/supabase/client.ts`** - Supabase client initialization
 
 #### Components (`src/components/`)
 - **`Layout.tsx`** - Main layout wrapper (Header + Footer)
@@ -47,12 +49,14 @@
 - **`ThemeToggle.tsx`** - Theme switcher component
 - **`Seo.tsx`** - SEO meta tags component
 - **`ScrollToTop.tsx`** - Auto-scroll on route change
+- **`AuthRedirector.tsx`** - Manages authentication redirects based on Clerk and company registration status.
 
 ##### Home Section Components (`src/components/home/`)
 Specialized components for the homepage:
 - `HeroSection.tsx`, `FeaturesSection.tsx`, `SolutionsSection.tsx`
 - `PlansSection.tsx`, `TestimonialsSection.tsx`, `FaqSection.tsx`
 - `PlatformCarouselSection.tsx`, `EcosystemCtaSection.tsx`, `FinalCtaSection.tsx`
+- `GeographicPresenceSection.tsx` - Displays global presence.
 
 ##### React Bits (`src/components/reactbits/`)
 Pre-built marketing components from @react-bits registry:
@@ -77,6 +81,7 @@ Pre-built marketing components from @react-bits registry:
 - **`Blog.tsx`** - Blog listing
 - **`BlogPost.tsx`** - Individual blog post
 - **`Painel.tsx`** - Dashboard (auth-protected if Clerk enabled)
+- **`CompanyRegistration.tsx`** - Page for new users to complete profile and register their company.
 - **Solution Pages**: `MenuDigital.tsx`, `Fornecedores.tsx`, `Fidelidade.tsx`, `Eventos.tsx`, `Integracoes.tsx`
 - **Solution Pages**: `MenuDigital.tsx`, `Fornecedores.tsx`, `Integracoes.tsx`
 - **Legal**: `legal/PrivacyPolicy.tsx`, `legal/TermsOfService.tsx`
@@ -92,13 +97,14 @@ Pre-built marketing components from @react-bits registry:
 - **`utils.ts`** - Utility functions (`cn()` for class merging)
 - **`blog.ts`** - Blog post utilities
 - **`storage/`** - Data persistence layer
-  - `contactRequests.ts` - Contact form data management
-  - Hybrid approach: reads from JSON, writes to localStorage
+  - `contactRequests.ts` - Contact form data management (now integrated with Supabase)
+  - Hybrid approach: reads from JSON/Supabase, writes to localStorage
 
 #### Hooks (`src/hooks/`)
 - **`use-mobile.tsx`** - Responsive breakpoint detection
 - **`use-localized-path.ts`** - Build locale-aware URLs
 - **`use-toast.ts`** - Toast notifications
+- **`use-user-company.ts`** - Fetches user profile and company data from Supabase.
 
 #### Types (`src/types/`)
 - **`marketing-page.ts`** - Marketing page template types
@@ -106,7 +112,7 @@ Pre-built marketing components from @react-bits registry:
 
 #### Utils (`src/utils/`)
 - **`clerk.ts`** - Clerk auth feature flag
-- **`toast.ts`** - Toast helper functions
+- **`toast.ts`** - Toast helper functions (using `sonner`)
 
 ### Tests (`tests/`)
 
@@ -157,7 +163,7 @@ resources: {
   // ... other locales
 }
 
-ns: ['home', 'about', 'nova-pagina', ...] // Add to array!
+ns: ['home', 'about', 'nova-pagina', 'company-registration', ...] // Add to array!
 ```
 
 **In component**:
@@ -200,17 +206,18 @@ Hybrid approach (dev + production):
 // src/lib/storage/contactRequests.ts
 export const getContactRequests = async (): Promise<ContactRequest[]> => {
   try {
-    const remote = await fetch('/data/contact-requests.json');
-    writeToLocalStorage(await remote.json());
-    return data;
-  } catch {
+    const { data, error } = await supabase.from('contact_requests').select('*');
+    // ... handle error and normalize data
+    writeToLocalStorage(normalizedData); // Cache to local storage
+    return normalizedData;
+  } catch (error) {
     return readFromLocalStorage(); // Fallback
   }
 };
 ```
 
 ### 6. Optional Feature Flags
-**Clerk auth is optional**:
+**Clerk auth is optional** - check before using:
 ```tsx
 import { hasClerkAuth } from '@/utils/clerk';
 
@@ -221,32 +228,32 @@ import { hasClerkAuth } from '@/utils/clerk';
 
 ### Adding a New Page
 
-1. **Create route** in `src/App.tsx`:
-   ```tsx
-   <Route path="/:locale" element={<LocaleWrapper />}>
-     <Route path="nova-pagina" element={<NovaPagina />} />
-   </Route>
-   ```
+1.  **Create route** in `src/App.tsx`:
+    ```tsx
+    <Route path="/:locale" element={<LocaleWrapper />}>
+      <Route path="nova-pagina" element={<NovaPagina />} />
+    </Route>
+    ```
 
-2. **Create component** in `src/pages/NovaPagina.tsx`
+2.  **Create component** in `src/pages/NovaPagina.tsx`
 
-3. **Add translations** in `src/content/{pt,en,es,fr}/nova-pagina.json`
+3.  **Add translations** in `src/content/{pt,en,es,fr}/nova-pagina.json`
 
-4. **Update i18n** in `src/i18n.ts`:
-   - Import JSON files for all locales
-   - Add to `resources` object
-   - Add `'nova-pagina'` to `ns` array
+4.  **Update i18n** in `src/i18n.ts`:
+    - Import JSON files for all locales
+    - Add to `resources` object
+    - Add `'nova-pagina'` to `ns` array
 
-5. **(Optional) Add navigation** in `src/content/common/navigation.json`
+5.  **(Optional) Add navigation** in `src/content/common/navigation.json`
 
 ### Component Guidelines
 
-- **Use shadcn/ui**: Import from `@/components/ui/` - DO NOT edit these
-- **Tailwind first**: Use utility classes, not inline styles
-- **Responsive**: Mobile-first with `useIsMobile()` hook
-- **Accessibility**: Include `focus-visible:ring-2` on interactive elements
-- **Theme-aware**: Use CSS variables, add `transition-colors duration-300`
-- **i18n**: No hardcoded strings - use `useTranslation()` hook
+-   **Use shadcn/ui**: Import from `@/components/ui/` - DO NOT edit these
+-   **Tailwind first**: Use utility classes, not inline styles
+-   **Responsive**: Mobile-first with `useIsMobile()` hook
+-   **Accessibility**: Include `focus-visible:ring-2` on interactive elements
+-   **Theme-aware**: Use CSS variables, add `transition-colors duration-300`
+-   **i18n**: No hardcoded strings - use `useTranslation()` hook
 
 ### Styling Conventions
 
@@ -289,55 +296,59 @@ docker-compose up -d  # Start with compose
 
 ## Common Pitfalls
 
-1. **Locale routing**: URLs without `/:locale` will 404
-2. **Missing i18n namespace**: Must import in `i18n.ts` AND add to `ns` array
-3. **Theme flash**: Don't override `ThemeProvider` `disableTransitionOnChange={true}`
-4. **Hardcoded colors**: Use CSS vars, never hex/rgb values
-5. **Editing shadcn/ui**: Don't edit `src/components/ui/` - create wrappers
-6. **Environment vars**: Must use `VITE_` prefix, not `NEXT_PUBLIC_` or `REACT_APP_`
+1.  **Locale routing**: URLs without `/:locale` will 404
+2.  **Missing i18n namespace**: Must import in `i18n.ts` AND add to `ns` array
+3.  **Theme flash**: Don't override `ThemeProvider` `disableTransitionOnChange={true}`
+4.  **Hardcoded colors**: Use CSS vars, never hex/rgb values
+5.  **Editing shadcn/ui**: Don't edit `src/components/ui/` - create wrappers
+6.  **Environment vars**: Must use `VITE_` prefix, not `NEXT_PUBLIC_` or `REACT_APP_`
+7.  **Supabase RLS**: Always ensure Row Level Security is enabled and policies are defined for all tables.
 
 ## Key Files Reference
 
-- **Routing**: `src/App.tsx`
-- **i18n Setup**: `src/i18n.ts`
-- **Theme Config**: `src/globals.css`, `tailwind.config.ts`
-- **Navigation**: `src/content/common/navigation.json`
-- **Type Definitions**: `src/types/`
-- **Component Registry**: `components.json` (includes @react-bits)
+-   **Routing**: `src/App.tsx`
+-   **i18n Setup**: `src/i18n.ts`
+-   **Theme Config**: `src/globals.css`, `tailwind.config.ts`
+-   **Navigation**: `src/content/common/navigation.json`
+-   **Type Definitions**: `src/types/`
+-   **Component Registry**: `components.json` (includes @react-bits)
+-   **Supabase Client**: `src/integrations/supabase/client.ts`
 
 ## Available Packages & Libraries
 
 ### Pre-installed - DO NOT REINSTALL
-- ✅ **All shadcn/ui components** (`src/components/ui/`)
-- ✅ **All Radix UI primitives**
-- ✅ **lucide-react** for icons
-- ✅ **React Bits** marketing components
-- ✅ **Framer Motion** for animations
-- ✅ **TanStack Query** for data fetching
-- ✅ **react-hook-form + zod** for forms
-- ✅ **Clerk** for authentication (optional)
+-   ✅ **All shadcn/ui components** (`src/components/ui/`)
+-   ✅ **All Radix UI primitives**
+-   ✅ **lucide-react** for icons
+-   ✅ **React Bits** marketing components
+-   ✅ **Framer Motion** for animations
+-   ✅ **TanStack Query** for data fetching
+-   ✅ **react-hook-form + zod** for forms
+-   ✅ **Clerk** for authentication (optional)
+-   ✅ **@supabase/supabase-js** for Supabase integration
+-   ✅ **sonner** for toast notifications
 
 ### Custom Registries
-- `@react-bits` - Marketing component registry (see `components.json`)
+-   `@react-bits` - Marketing component registry (see `components.json`)
 
 ## Design System
 
-- **Spacing**: `gap-4`, `p-6`, `mt-8` (4px base scale)
-- **Typography**: `text-boteco-neutral` or `text-foreground`
-- **Breakpoints**: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`
-- **Containers**: `container mx-auto px-4`
-- **Transitions**: `transition-colors duration-300`
-- **Focus States**: `focus-visible:ring-2 focus-visible:ring-boteco-primary`
+-   **Spacing**: `gap-4`, `p-6`, `mt-8` (4px base scale)
+-   **Typography**: Body text uses `text-boteco-neutral` or `text-foreground`
+-   **Breakpoints**: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`
+-   **Containers**: `container mx-auto px-4`
+-   **Transitions**: `transition-colors duration-300`
+-   **Focus States**: `focus-visible:ring-2 focus-visible:ring-boteco-primary`
 
 ## Documentation Reference
 
-- **AI Instructions**: `.github/copilot-instructions.md` (concise version)
-- **Full Guide**: This file (`AGENTS.md`)
-- **Environment Setup**: `docs/ENVIRONMENT_SETUP.md`
-- **Docker Deployment**: `docs/DOCKER_DEPLOYMENT.md`
-- **Performance**: `docs/PERFORMANCE_OPTIMIZATIONS.md`
-- **Visual Testing**: `docs/VISUAL_TESTING.md`
-- **Main README**: `README.md`
+-   **AI Instructions**: `.github/copilot-instructions.md` (concise version)
+-   **Full Guide**: This file (`AGENTS.md`)
+-   **Environment Setup**: `docs/ENVIRONMENT_SETUP.md`
+-   **Docker Deployment**: `docs/DOCKER_DEPLOYMENT.md`
+-   **Performance**: `docs/PERFORMANCE_OPTIMIZATIONS.md`
+-   **Visual Testing**: `docs/VISUAL_TESTING.md`
+-   **Main README**: `README.md`
 
 ---
 
