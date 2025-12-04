@@ -20,7 +20,7 @@ This project uses **Vite** (not Next.js), so environment variables must be prefi
 3.  Add your Supabase credentials to `.env`:
     ```bash
     VITE_SUPABASE_URL=your_supabase_url_here
-    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key_here
+    VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key_here
     ```
 
 ### Available Environment Variables
@@ -30,14 +30,14 @@ This project uses **Vite** (not Next.js), so environment variables must be prefi
 | `VITE_CLERK_PUBLISHABLE_KEY` | No | Clerk publishable key for authentication (app works without it) |
 | `VITE_CLERK_FRONTEND_API_URL` | No | Clerk frontend API URL |
 | `VITE_SUPABASE_URL` | Yes | Your Supabase project URL |
-| `VITE_SUPABASE_ANON_KEY` | Yes | Your Supabase public (anon) key |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | Yes | Your Supabase public (anon) key |
 | `VITE_PROVISIONAL_REDIRECT` | No | If set to `true` at build-time, the app redirects likely-authenticated users to [https://painel.boteco.pt](https://painel.boteco.pt). **This is a build-time flag** |
 
 ### Important Notes
 
 -   ✅ **Vite uses `VITE_` prefix**, not `NEXT_PUBLIC_` (Next.js) or `REACT_APP_` (Create React App)
 -   ✅ Clerk authentication is **optional** - the app gracefully degrades if keys are missing
--   ✅ Supabase keys (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`) are **required** for database and auth functionality.
+-   ✅ Supabase keys (`VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`) are **required** for database and auth functionality.
 -   ❌ **Never commit `.env` files** to version control (already in `.gitignore`)
 -   ❌ `CLERK_SECRET_KEY` and `SUPABASE_SERVICE_ROLE_KEY` should **never** be used in frontend code (server-side/Edge Functions only)
 

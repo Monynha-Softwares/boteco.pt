@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MadeWithDyad } from './made-with-dyad';
+import { Monynha } from './Monynha';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
             Monynha Softwares
           </a>
         </p>
-        <MadeWithDyad />
+        <Monynha />
       </div>
     </footer>
   );

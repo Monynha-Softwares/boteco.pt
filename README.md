@@ -46,7 +46,7 @@ pnpm install
 3.  Add your Supabase credentials to `.env`:
     ```bash
     VITE_SUPABASE_URL=your_supabase_url_here
-    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key_here
+    VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key_here
     ```
 
     **Note**: The app works perfectly without Clerk authentication. See `docs/ENVIRONMENT_SETUP.md` for details.
